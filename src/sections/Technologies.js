@@ -50,7 +50,7 @@ const Technologies = () => {
         Strength
       </h1> */}
       <div className="flex flex-col lg:flex-row relative justify-center w-full gap-10">
-        <div className="mt-10 p-10 flex flex-col justify-start items-start w-full lg:w-[30%]">
+        <div className="mt-10 p-10 flex flex-col justify-start items-start w-full lg:w-[40%]">
           <WordPullUp
             className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
             words="One step a Head"
