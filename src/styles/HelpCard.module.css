@@ -1,6 +1,6 @@
 .card {
-  width: 250px;
-  height: 200px;
+  width: 300px;
+  height: 250px;
   border-radius: 15px;
   /* background: var(--color-darkBlue); */
   background: radial-gradient(circle 280px at 0% 0%, #0f0f0f, #0c0d0d);
@@ -15,8 +15,8 @@
   height: 100px;
   width: 100px;
   position: absolute;
-  top: -40%;
-  left: -20%;
+  top: -35%;
+  left: -15%;
   border-radius: 50%;
   border: 35px solid var(--color-secondary);
   transition: all 0.8s ease;
@@ -31,8 +31,9 @@
   color: var(--color-white);
 
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
+
 .title {
   background: linear-gradient(
     45deg,
@@ -43,11 +44,12 @@
   -webkit-text-fill-color: transparent;
 }
 .subtitle {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--color-white);
   margin-top: 6px;
-  line-height: 1rem;
+  line-height: 1.2rem;
+  margin-top: 1.2rem;
 }
 
 .icons {

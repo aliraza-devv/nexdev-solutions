@@ -73,7 +73,7 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="flex flex-col relative mt-24 gap-16">
+    <div id="services" className="flex flex-col relative mt-24 gap-16">
       <h1 className="text-center">
         <SparklesText text="What do we do?" />
       </h1>

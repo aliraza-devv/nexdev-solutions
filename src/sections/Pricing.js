@@ -4,7 +4,10 @@ import React from "react";
 
 const Pricing = () => {
   return (
-    <div className="flex relative flex-col justify-center items-center w-full h-[100%]">
+    <div
+      id="pricing"
+      className="flex relative flex-col justify-center items-center w-full h-[100%]"
+    >
       <h1 className="text-center mb-20">
         <SparklesText text="Get a Quote Now" />
       </h1>

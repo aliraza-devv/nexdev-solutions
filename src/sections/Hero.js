@@ -58,13 +58,16 @@ const Hero = () => {
       >
         <div className="index flex min-h-[15rem] mt-20 items-center justify-center">
           <AnimatedGradientText>
-            {/* 🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "} */}
+            <span className="inline animate-gradient bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#a89bff] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
+              Aug
+            </span>{" "}
+            <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
             <span
               className={cn(
-                `inline animate-gradient bg-gradient-to-r from-[#5c45fd] via-[#a89bff] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
+                `inline animate-gradient bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#a89bff] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
               )}
             >
-              Solution to your Next gen problems
+              Only 5 Spots Left for the month
             </span>
             <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
           </AnimatedGradientText>

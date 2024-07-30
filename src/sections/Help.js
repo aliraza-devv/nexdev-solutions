@@ -4,6 +4,7 @@ import SparklesText from "@/components/Text/SparklesText";
 import Graph from "../../public/Assets/icons/graph-up-svgrepo-com.svg";
 import Happy from "../../public/Assets/icons/happy-face-2-svgrepo-com.svg";
 import Boost from "../../public/Assets/icons/boost-for-reddit-svgrepo-com.svg";
+import Solution from "../../public/Assets/icons/solution-bulb-concept-svgrepo-com.svg";
 import BtnPrimary from "@/components/Buttons/BtnPrimary";
 
 const helpCardsData = [
@@ -24,6 +25,12 @@ const helpCardsData = [
     description:
       "We help you boost your Sales through our proven K-SIGHT mechanism",
     icon: Boost,
+  },
+  {
+    title: "Custom Solutions",
+    description:
+      "We do not follow typical themes or templates, Instead we go an extra mile for our clients with custom solutions of design & development.",
+    icon: Solution,
   },
 ];
 

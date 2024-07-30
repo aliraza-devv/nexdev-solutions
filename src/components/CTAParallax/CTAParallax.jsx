@@ -44,6 +44,7 @@ export const CTAParallax = ({ products }) => {
   );
   return (
     <div
+      id="audit"
       ref={ref}
       className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
@@ -131,13 +132,13 @@ export const ProductCard = ({ product, translate }) => {
         href={product.link}
         className="block group-hover/product:shadow-2xl"
       > */}
-        <Image
-          src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
-          alt={product.title}
-        />
+      <Image
+        src={product.thumbnail}
+        height="600"
+        width="600"
+        className="object-cover object-left-top absolute h-full w-full inset-0"
+        alt={product.title}
+      />
       {/* </Link> */}
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">

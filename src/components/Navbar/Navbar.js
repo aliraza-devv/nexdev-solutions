@@ -52,12 +52,24 @@ const Navbar = () => {
       {isOpen && (
         <div className="absolute index-2 top-20 left-0 right-0 bg-[#161616] rounded flex flex-col items-center">
           <ul className="flex index-2 flex-col items-center">
-            <li className="text-[#f5f5f5] py-2 link-hover">Services</li>
-            <li className="text-[#f5f5f5] py-2 link-hover">Work</li>
-            <li className="text-[#f5f5f5] py-2 link-hover">Process</li>
-            <li className="text-[#f5f5f5] py-2 link-hover">Get a Quote</li>
-            <li className="text-[#f5f5f5] py-2 link-hover">Why us?</li>
-            <li className="text-[#f5f5f5] py-2 link-hover">FAQs</li>
+            <li className="text-[#f5f5f5] py-2 link-hover">
+              <Link href={"#services"}>Services </Link>
+            </li>
+            <li className="text-[#f5f5f5] py-2 link-hover">
+              <Link href="#projects">Work </Link>
+            </li>
+            <li className="text-[#f5f5f5] py-2 link-hover">
+              <Link href={"#process"}>Process </Link>
+            </li>
+            <li className="text-[#f5f5f5] py-2 link-hover">
+              <Link href="#pricing">Packages </Link>
+            </li>
+            <li className="text-[#f5f5f5] py-2 link-hover">
+              <Link href="#comparison">Why us? </Link>
+            </li>
+            <li className="text-[#f5f5f5] py-2 link-hover">
+              <Link href="#audit">Free audit </Link>
+            </li>
           </ul>
           <div className="py-4">
             <BtnPrimary
@@ -90,11 +102,24 @@ const SlideTabs = () => {
       }}
       className="relative mx-auto flex w-fit p-1"
     >
-      <Tab setPosition={setPosition}>Services</Tab>
-      <Tab setPosition={setPosition}>Work</Tab>
-      <Tab setPosition={setPosition}>Process</Tab>
-      <Tab setPosition={setPosition}>Get a Quote</Tab>
-      <Tab setPosition={setPosition}>FAQs</Tab>
+      <Tab setPosition={setPosition}>
+        <Link href={"#services"}>Services </Link>
+      </Tab>
+      <Tab setPosition={setPosition}>
+        <Link href="#projects">Work </Link>
+      </Tab>
+      <Tab setPosition={setPosition}>
+        <Link href={"#process"}>Process </Link>
+      </Tab>
+      <Tab setPosition={setPosition}>
+        <Link href="#pricing">Packages </Link>
+      </Tab>
+      <Tab setPosition={setPosition}>
+        <Link href="#comparison">Why us? </Link>
+      </Tab>
+      <Tab setPosition={setPosition}>
+        <Link href="#audit">Free audit </Link>
+      </Tab>
 
       <Cursor position={position} />
     </ul>

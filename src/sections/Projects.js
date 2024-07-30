@@ -13,7 +13,10 @@ import SellerGoals from "../../public/Assets/mockups/sellergoals.png";
 
 export function Projects() {
   return (
-    <div className="w-[100%] h-full mt-36 relative flex flex-col items-center">
+    <div
+      id="projects"
+      className="w-[100%] h-full mt-36 relative flex flex-col items-center"
+    >
       <h1 className="text-center mb-20">
         <SparklesText text="Our Work" />
       </h1>
@@ -26,7 +29,11 @@ export function Projects() {
             className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
             words="Smarter Form"
           />
-          <TertiaryButton title="Learn More" url="https://smarterform.online/" className="mt-4 md:mt-0" />
+          <TertiaryButton
+            title="Learn More"
+            url="https://smarterform.online/"
+            className="mt-4 md:mt-0"
+          />
         </div>
         <hr className="w-full border-[#f5f5f5] mt-6 md:mt-0" />
         <div className="flex flex-col lg:flex-row justify-around items-start gap-10 mt-6">
@@ -105,7 +112,11 @@ export function Projects() {
             className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
             words="L&A Outsource"
           />
-          <TertiaryButton title="Learn More" url="https://laoutsourced.com/" className="mt-4 md:mt-0" />
+          <TertiaryButton
+            title="Learn More"
+            url="https://laoutsourced.com/"
+            className="mt-4 md:mt-0"
+          />
         </div>
         <hr className="w-full border-[#f5f5f5] mt-6 md:mt-0" />
         <div className="flex flex-col lg:flex-row justify-around items-start gap-10 mt-6">
@@ -184,7 +195,11 @@ export function Projects() {
             className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
             words="Seller Goals"
           />
-          <TertiaryButton title="Learn More" url="https://sellergoals.com/" className="mt-4 md:mt-0" />
+          <TertiaryButton
+            title="Learn More"
+            url="https://sellergoals.com/"
+            className="mt-4 md:mt-0"
+          />
         </div>
         <hr className="w-full border-[#f5f5f5] mt-6 md:mt-0" />
         <div className="flex flex-col lg:flex-row justify-around items-start gap-10 mt-6">

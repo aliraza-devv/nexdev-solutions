@@ -13,7 +13,7 @@ const content = [
     number: "01",
     title: "Select Package/Book a Call",
     description:
-      "Select the package or book a free call with us to discuss your project and you needs in detail with free consultation fro our experts with more than 8 years of experience.",
+      "Select the package or book a free call with us to discuss your project and your needs in detail with free consultation from our experts with more than 8 years of experience.",
     content: (
       <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
@@ -51,7 +51,7 @@ const content = [
     content: (
       <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
-          src={Testing}
+          src={Deploy}
           width={500}
           height={500}
           //   className="h-full w-full object-cover"
@@ -81,7 +81,7 @@ const content = [
 
 function Process() {
   return (
-    <div className="p-10 over w-[100%] h-[100vh]">
+    <div id="process" className="p-10 over w-[100%] h-[100vh]">
       <h1 className="text-center mb-20">
         <SparklesText text="Our Process" />
       </h1>

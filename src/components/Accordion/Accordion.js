@@ -8,7 +8,10 @@ const Accordion = () => {
   const [questions, setQuestions] = useState(data);
 
   return (
-    <main className="flex flex-col justify-center items-center w-[100%]">
+    <main
+      id="faqs"
+      className="flex flex-col justify-center items-center w-[100%]"
+    >
       <h1 className="text-center mb-10 mt-20">
         <SparklesText text="You got Questions?" />
         <h2 className="text-[#f5f5f5] mt-6 font-semibold text-lg">

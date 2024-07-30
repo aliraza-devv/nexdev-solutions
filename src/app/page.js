@@ -16,6 +16,8 @@ import { CallToAction } from "@/sections/CallToAction";
 import Logo from "@/components/HorizontalLogoSlider/Logo";
 import CustomCursor from "@/components/Cursor/CustomCursor";
 import Help from "@/sections/Help";
+import Image from "next/image";
+import Logo1 from "../../public/Assets/Logos/nexdev-logo-full.png";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -30,7 +32,13 @@ export default function Home() {
   return (
     <>
       {loading ? (
-        <div className="flex justify-center items-center w-full h-[100vh]">
+        <div className="flex flex-col justify-center mt-10 items-center overflow-hidden w-full h-[100vh]">
+          <Image
+            src={Logo1}
+            height={240}
+            width={240}
+            alt="NeXDev Solutions Logo"
+          />
           <Loader />
         </div>
       ) : (

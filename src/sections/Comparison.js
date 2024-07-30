@@ -14,7 +14,10 @@ import Secure from "../../public/Assets/icons/secure-shield-password-protect-saf
 
 const Comparison = () => {
   return (
-    <div className="relative flex flex-col items-center jus min-h-screen  p-10 index">
+    <div
+      id="comparison"
+      className="relative flex flex-col items-center jus min-h-screen  p-10 index"
+    >
       <div className="absolute inset-0 z-0">
         <RetroThreeD />
       </div>
