@@ -81,7 +81,7 @@ const content = [
 
 function Process() {
   return (
-    <div id="process" className="p-10 over w-[100%] h-[100vh]">
+    <div id="process" className="p-10 over w-[100%] mb-30">
       <h1 className="text-center mb-20">
         <SparklesText text="Our Process" />
       </h1>

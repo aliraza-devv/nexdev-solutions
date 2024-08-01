@@ -16,7 +16,7 @@ const Comparison = () => {
   return (
     <div
       id="comparison"
-      className="relative flex flex-col items-center jus min-h-screen  p-10 index"
+      className="relative flex flex-col items-center jus min-h-screen  p-10 z-10 "
     >
       <div className="absolute inset-0 z-0">
         <RetroThreeD />
@@ -50,7 +50,7 @@ const Comparison = () => {
       <div className="relative z-10 flex flex-col items-center gap-10 lg:gap-20 mt-6 lg:mt-10 w-full">
         <div className="flex flex-col md:flex-row lg:flex-row justify-center items-center gap-10 w-full max-w-screen-lg">
           <div className="w-full lg:w-1/2 lg:text-left">
-            <h2 className="text-[#f5f5f5] mt-6 font-semibold index text-lg">
+            <h2 className="text-[#f5f5f5] mt-6 font-semibold z-10 text-lg">
               Other Agencies / Freelancers
             </h2>
             <div className="mt-4">
@@ -68,7 +68,7 @@ const Comparison = () => {
                 ].map((text, index) => (
                   <div key={index} className="flex gap-2 items-start">
                     <Image src={Cross} height={24} width={24} alt="List Icon" />
-                    <span className="text-[#f5f5f5] index">{text}</span>
+                    <span className="text-[#f5f5f5] z-10">{text}</span>
                   </div>
                 ))}
               </div>
@@ -76,7 +76,7 @@ const Comparison = () => {
           </div>
 
           <div className="w-full lg:w-1/2 lg:text-left">
-            <h2 className="text-[#f5f5f5] mt-6 index font-semibold text-lg">
+            <h2 className="text-[#f5f5f5] mt-6 z-10 font-semibold text-lg">
               NeXDev Solutions
             </h2>
             <div className="mt-4">
@@ -102,7 +102,7 @@ const Comparison = () => {
                       width={24}
                       alt="List Icon"
                     />
-                    <span className="text-[#f5f5f5] index">{item.text}</span>
+                    <span className="text-[#f5f5f5] z-10">{item.text}</span>
                   </div>
                 ))}
               </div>

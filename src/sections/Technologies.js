@@ -41,7 +41,7 @@ const slugs = [
 
 const Technologies = () => {
   return (
-    <div className="relatve">
+    <div className="relatve mt-30">
       <h1 className="text-center">
         <SparklesText text="Technologies" />
       </h1>

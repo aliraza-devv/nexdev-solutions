@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "Kollektif ";
-  src: url("/public/fonts/Kollektif.ttf");
+  src: url("/fonts/Kollektif.ttf");
   font-weight: 400;
   font-style: normal;
 }
@@ -44,8 +44,9 @@ html {
 
 body {
   background-color: var(--color-black);
-  /* cursor: none; */
+  cursor: url("/Assets/icons/cursor-svgrepo-com.png"), auto;
 }
+
 /* Scrolbar */
 ::-webkit-scrollbar {
   width: 1rem;
@@ -97,6 +98,31 @@ body {
   z-index: 101;
 }
 
+.side-gradient {
+  background: -webkit-linear-gradient(
+      to left,
+      transparent,
+      transparent,
+      transparent,
+      rgba(92, 69, 253, 0.4)
+    ),
+    -webkit-linear-gradient(to right, transparent, transparent, transparent, rgba(92, 69, 253, 0.4));
+  background: linear-gradient(
+      to left,
+      transparent,
+      transparent,
+      transparent,
+      rgba(92, 69, 253, 0.4)
+    ),
+    linear-gradient(
+      to right,
+      transparent,
+      transparent,
+      transparent,
+      rgba(92, 69, 253, 0.4)
+    );
+}
+
 .index {
   z-index: 9999999999999999999999;
 }
@@ -117,7 +143,7 @@ body {
 .glassmorphism {
   background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);
   /* border-radius: 12px; */
-  z-index: 999999999999;
+  /* z-index: 9999999999999999999999999999999999999999999999; */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12.6px);
   -webkit-backdrop-filter: blur(12.6px);

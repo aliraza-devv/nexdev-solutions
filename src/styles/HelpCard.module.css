@@ -3,7 +3,7 @@
   height: 250px;
   border-radius: 15px;
   /* background: var(--color-darkBlue); */
-  background: radial-gradient(circle 280px at 0% 0%, #0f0f0f, #0c0d0d);
+  /* background: radial-gradient(circle 280px at 0% 0%, #0f0f0f, #0c0d0d); */
   display: flex;
   flex-direction: column;
   position: relative;
