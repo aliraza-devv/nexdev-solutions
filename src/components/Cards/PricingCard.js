@@ -142,7 +142,7 @@ const PricingCard = ({
           <hr className={`${styles.line_second}`} />
           <div className={styles.card_title__container}>
             <span className={`${styles.card_sub_title} flex flex-col`}>
-              You'll also get
+              You&apos;ll also get
             </span>
           </div>
           <hr className={`${styles.line_second}`} />
