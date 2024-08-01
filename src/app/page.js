@@ -1,19 +1,73 @@
+"use client";
+import { useEffect, useState } from "react";
+import Faq from "@/sections/Faq";
+import Hero from "@/sections/Hero";
+import Pricing from "@/sections/Pricing";
+import Process from "@/sections/Process";
+import Services from "@/sections/Services";
+import { Reviews } from "@/sections/Reviews";
+import { Projects } from "@/sections/Projects";
+import Comparison from "@/sections/Comparison";
+import Navbar from "@/components/Navbar/Navbar";
+import Loader from "@/components/Loader/Loader";
+import Footer from "@/components/Footer/Footer";
+import Technologies from "@/sections/Technologies";
+import { CallToAction } from "@/sections/CallToAction";
+import Logo from "@/components/HorizontalLogoSlider/Logo";
+import CustomCursor from "@/components/Cursor/CustomCursor";
+import Help from "@/sections/Help";
 import Image from "next/image";
-import Logo from "../Assets/Logos/nexdev-logo-full.png";
+import Logo1 from "../../public/Assets/Logos/nexdev-logo-full.png";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
   return (
-    <main className="flex w-[100vw] h-[100vh] flex-col items-center p-24 bg-[#161616]">
-      <Image src={Logo} alt="Nexdev Solutions Logo" width={250} height={250} />
-      <h1 className="text-[#f5f5f5] font-extrabold text-6xl">Launching Soon</h1>
-      <div className="🤚 mt-16">
-        <div className="👉"></div>
-        <div className="👉"></div>
-        <div className="👉"></div>
-        <div className="👉"></div>
-        <div className="🌴"></div>
-        <div className="👍"></div>
-      </div>
-    </main>
+    <>
+      {loading ? (
+        <div className="flex flex-col justify-center mt-10 items-center overflow-hidden w-full h-[100vh]">
+          <Image
+            src={Logo1}
+            height={240}
+            width={240}
+            alt="NeXDev Solutions Logo"
+          />
+          <Loader />
+        </div>
+      ) : (
+        <main className="w-[100%] ">
+          {/* <Cursor /> */}
+          <CustomCursor />
+          <div className="index w-full flex items-center justify-center">
+            <Navbar />
+          </div>
+          <Hero />
+          <Services />
+          <Help />
+          <Reviews />
+          <Projects />
+          <Process />
+          <Technologies />
+          <Pricing />
+          <Comparison />
+          <CallToAction />
+          <h1 className="text-[#f5f5f5] heading-primary flex justify-center items-center font-bold mt-10">
+            Trusted by 200+ Businesses
+          </h1>
+          <div className="overflow-hidden">
+            <Logo />
+          </div>
+          <Faq />
+          <Footer />
+        </main>
+      )}
+    </>
   );
 }

@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "NeXDev Solutions",
-  description: "Nexdev solutions is a software development agency.",
+  description: "NeXDev solutions is a website and app development agency.",
 };
 
 export default function RootLayout({ children }) {
