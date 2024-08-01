@@ -101,10 +101,10 @@ export const Header = () => {
         </h1>
         <p className="max-w-2xl px-6 text-base md:text-xl mt-8 dark:text-neutral-200 mb-10">
           Get a free Audit of your website by NeXDev Solutions to know about
-          your website's health. The audit will contain a deep study of your
-          website including problems, SEO, design issues, their solutions, and
-          much more.
-        </p>
+          your website&apos;s health. The audit will contain a deep study of
+          your website including problems, SEO, design issues, their solutions,
+          and much more.
+        </p>d 
       </div>
       <div className="max-w-7xl px-6 index relative mx-auto w-full left-0 top-[-2.5rem] md:top-[-10rem]">
         <BtnPrimary
