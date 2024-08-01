@@ -41,7 +41,7 @@ const Comparison = () => {
       </div>
 
       <h2 className="relative z-10 text-[#f5f5f5] mt-6 font-semibold text-lg text-center">
-        "Excellence is not a skill, it's an attitude." - Ralph Marston
+        &quot;Excellence is not a skill, it&apos;s an attitude.&quot; - Ralph Marston
       </h2>
       <h2 className="relative z-10 text-[#b5b5b5] text-lg text-center">
         We treat your business as if it were our own
