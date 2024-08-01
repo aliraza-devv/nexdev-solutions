@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed index-2 glassmorphism rounded-full w-[90%] lg:w-[80%] h-[10%] mt-[8rem] flex justify-between items-center px-4 lg:px-8">
+    <div className="fixed z-50 glassmorphism rounded-full w-[90%] lg:w-[80%] h-[10%] mt-[8rem] flex justify-between items-center px-4 lg:px-8">
       <Link href={"#home"}>
         <div>
           <Image src={nexdev} height={75} width={75} alt="NeXDev Solutions" />
