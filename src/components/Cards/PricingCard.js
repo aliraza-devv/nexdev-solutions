@@ -35,7 +35,7 @@ const PricingCard = ({
         <p className={`${styles.card_paragraph} mt-3`}>{subTitle}</p>
       </div>
       <hr className={styles.line} />
-      <ul className={styles.card__list}>
+      <ul className={`${styles.card__list} sub-font`}>
         <li className={styles.card__list_item}>
           <span className={styles.check}>
             <svg
@@ -216,7 +216,7 @@ const PricingCard = ({
           <span className={styles.list_text}>{point10}</span>
         </li>
       </ul>
-      <button className={styles.button}>
+      <button className={`${styles.button} sub-font font-bold`}>
         <Link href={`${url}`}>Get a Quote</Link>
       </button>
     </div>

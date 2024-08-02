@@ -37,9 +37,14 @@ const helpCardsData = [
 const Help = () => {
   return (
     <>
-      <h1 className="text-center mb-20 mt-20">
-        <SparklesText text="How we help you?" />
-      </h1>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-center mb-2 mt-20">
+          <SparklesText text="How we help you?" />
+        </h1>
+        <h3 className="mb-20 text-xl text-center sub-font text-[#f5f5f5]">
+          We Guarantee 100% Staisfaction to our clients
+        </h3>
+      </div>
       <div className="flex flex-col items-center gap-4 lg:gap-10 md:flex-row justify-center">
         {helpCardsData.map((card, index) => (
           <HelpCard

@@ -3,14 +3,13 @@
   padding: 12px 35px;
   background: var(--color-primary);
   font-size: 17px;
-  font-weight: 500;
   color: var(--color-white);
   border: 3px solid var(--color-primary);
   border-radius: 50px;
   box-shadow: 0 0 0 var(--color-primary) 8c;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
-  font-weight: 700;
+  word-spacing: 3px;
 }
 
 .star1 {

@@ -17,11 +17,25 @@
 }
 
 @font-face {
-  font-family: "Kollektif ";
-  src: url("/fonts/Kollektif.ttf");
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/BricolageGrotesque_24pt_SemiCondensed-Bold.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+} */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -45,6 +59,7 @@ html {
 body {
   background-color: var(--color-black);
   cursor: url("/Assets/icons/cursor-svgrepo-com.png"), auto;
+  font-family: "Bricolage Grotesque";
 }
 
 /* Scrolbar */
@@ -74,9 +89,15 @@ body {
   font-weight: 400;
 }
 
-.sub-font {
-  font-style: "Kollektif";
+.sub-font{
+  font-family: "Bricolage Grotesque";
+  /* font-weight: 400; */
 }
+
+/* .sub-font-bold{
+  font-family: "Bricolage Grotesque";
+  font-weight: 400;
+} */
 
 .gradient-text {
   background: linear-gradient(
@@ -201,6 +222,65 @@ body {
     1% 100%
   );
 }
+
+/* Loader */
+
+.loading {
+	font-size: 84px;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 800;
+	text-align: center;
+}
+
+.loading span {
+	display: inline-block;
+	/* margin: 0 -0.05em; */
+}
+
+.loading05 {
+	perspective: 1000px;
+}
+
+.loading05 span {
+	transform-origin: 50% 50% -25px;
+	transform-style: preserve-3d;
+	animation: loading05 1.6s infinite;
+}
+
+/* Generate styles for each nth-child */
+.loading05 span:nth-child(2) {
+	animation-delay: 0.1s;
+}
+
+.loading05 span:nth-child(3) {
+	animation-delay: 0.2s;
+}
+
+.loading05 span:nth-child(4) {
+	animation-delay: 0.3s;
+}
+
+.loading05 span:nth-child(5) {
+	animation-delay: 0.4s;
+}
+
+.loading05 span:nth-child(6) {
+	animation-delay: 0.5s;
+}
+
+.loading05 span:nth-child(7) {
+	animation-delay: 0.6s;
+}
+
+@keyframes loading05 {
+	0% {
+		transform: rotateX(-360deg);
+	}
+	70% {
+		transform: rotateX(0);
+	}
+}
+
 
 .🤚 {
   --skin-color: #5c45fd;

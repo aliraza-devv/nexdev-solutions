@@ -8,9 +8,12 @@ const Pricing = () => {
       id="pricing"
       className="flex relative flex-col justify-center items-center w-full h-[100%]"
     >
-      <h1 className="text-center mb-20">
+      <h1 className="text-center mb-2">
         <SparklesText text="Get a Quote Now" />
       </h1>
+      <h3 className="mb-24 text-xl text-center sub-font text-[#f5f5f5]">
+        Are you ready to boost your online credibility?
+      </h3>
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Pricing
       </h1>

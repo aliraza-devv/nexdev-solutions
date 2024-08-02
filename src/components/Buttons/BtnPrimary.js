@@ -7,7 +7,7 @@ import Link from "next/link";
 const BtnPrimary = ({ title, url }) => {
   return (
     <Link href={`${url}`} target="_blank">
-      <button className={styles.btnPrimary}>
+      <button className={`${styles.btnPrimary} heading-primary`}>
         {title}
         <div className={styles.star1}>
           <Image src={star} />

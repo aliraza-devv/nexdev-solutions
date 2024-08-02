@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import nexdev from "../../../public/Assets/Logos/nexdev-logo.png";
 import BtnPrimary from "../Buttons/BtnPrimary";
+import BtnLight from "../Buttons/BtnLight";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -25,10 +26,10 @@ const Navbar = () => {
         <SlideTabs />
         {/* </div> */}
       </div>
-      <div className="hidden lg:block">
+      <div className="hidden lg:block ">
         <BtnPrimary
           url="https://cal.com/nexdevsolutions/discovery-call"
-          title="Book a Call"
+          title="Book a Free Call"
         />
       </div>
       <div className="lg:hidden flex items-center">
@@ -51,7 +52,7 @@ const Navbar = () => {
       </div>
       {isOpen && (
         <div className="absolute index-2 top-20 left-0 right-0 bg-[#161616] rounded flex flex-col items-center">
-          <ul className="flex index-2 flex-col items-center">
+          <ul className="flex sub-font index-2 flex-col items-center">
             <li className="text-[#f5f5f5] py-2 link-hover">
               <Link href={"#services"}>Services </Link>
             </li>
@@ -74,7 +75,7 @@ const Navbar = () => {
           <div className="py-4">
             <BtnPrimary
               url="https://cal.com/nexdevsolutions/discovery-call"
-              title="Book a Call"
+              title="Book a Free Call"
             />
           </div>
         </div>
@@ -120,7 +121,6 @@ const SlideTabs = () => {
       <Tab setPosition={setPosition}>
         <Link href="#audit">Free audit </Link>
       </Tab>
-
       <Cursor position={position} />
     </ul>
   );
@@ -143,7 +143,7 @@ const Tab = ({ children, setPosition }) => {
           opacity: 1,
         });
       }}
-      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-[#f5f5f5] md:px-5 md:py-3 md:text-base"
+      className="relative sub-font z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-[#f5f5f5] md:px-5 md:py-3 md:text-lg"
     >
       {children}
     </li>

@@ -18,7 +18,7 @@ const FloatingCallBooking = () => {
           <h5 className="font-bold text-start text-2xl heading-primary">
             Ali Raza
           </h5>
-          <h5 className="font-sm text-start">Growth & Strategy</h5>
+          <h5 className="font-sm text-start sub-font">Growth & Strategy</h5>
         </div>
         <BtnLight
           title="Book a Call"

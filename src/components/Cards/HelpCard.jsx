@@ -13,8 +13,8 @@ const HelpCard = ({ icon, title, description }) => {
         className="pt-[15px] px-[15px]"
       />
       <div className={styles.text}>
-        <span className={styles.title}>{title}</span>
-        <p className={styles.subtitle}>{description}</p>
+        <span className={`${styles.title} heading-primary`}>{title}</span>
+        <p className={`${styles.subtitle} sub-font`}>{description}</p>
       </div>
       {/* <div className="icons">
         <a className="btn" href="#">
