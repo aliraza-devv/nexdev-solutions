@@ -21,7 +21,7 @@ const cardDetails = [
     icon: web3d,
     title: "3D Development",
     description:
-      "We are specialized in 3D web development using Threejs, Babylon.js, Blender with other tech stacks. Including the integration of 3D models and creating complex 3D environments",
+      "We are specialized in 3D web development using Threejs, Babylon.js, Blender with other tech stacks and creating complex 3D environments",
   },
   {
     icon: web,
@@ -97,7 +97,7 @@ const Services = () => {
         ))}
       </div>
       {showFloatingCallBooking && (
-        <div className="fixed right-4 bottom-4 w-[100%] sm:w-[75%] md:w-[50%] lg:w-[30%] p-4 index  shadow-lg rounded-lg">
+        <div className="fixed right-4 bottom-4 w-[100%] sm:w-[75%] md:w-[50%] lg:w-[30%] p-4 z-50 shadow-lg rounded-lg">
           <FloatingCallBooking />
         </div>
       )}

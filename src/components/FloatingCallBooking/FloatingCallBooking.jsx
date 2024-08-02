@@ -5,7 +5,7 @@ import BtnLight from "../Buttons/BtnLight";
 
 const FloatingCallBooking = () => {
   return (
-    <div className="w-[100%] h-[6rem] text-center bg-[#5c45fd] text-[#f5f5f5] rounded-full">
+    <div className="w-[100%] h-[6rem] z-50 text-center bg-[#5c45fd] text-[#f5f5f5] rounded-full">
       <div className="flex justify-around items-center h-full">
         <Image
           src={Ali}
