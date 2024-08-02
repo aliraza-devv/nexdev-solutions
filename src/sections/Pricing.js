@@ -20,9 +20,9 @@ const Pricing = () => {
       <div className="flex flex-col lg:flex-row justify-around items-center gap-10">
         <PricingCard
           title="WordPress Website"
-          price="$699"
-          subTitle="Web Design & Develoment"
-          point1="3-pages High Conversion Design"
+          price="starting from $699"
+          subTitle="WordPress Design & Develoment"
+          point1="4-pages High Conversion Design"
           point2="Best Practice Developement"
           point3="Complete SEO focused content Writing"
           point4="Fast & Secure Integration of Plugins"
