@@ -95,7 +95,8 @@
   color: var(--white);
 }
 .card .card_title__container .card_price {
-  font-size: 2rem;
+  font-size: 1.2rem;
+  word-spacing: 3px;
   font-weight: 500;
 }
 

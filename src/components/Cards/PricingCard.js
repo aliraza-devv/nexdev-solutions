@@ -28,7 +28,7 @@ const PricingCard = ({
           {title}
         </span>
         <span
-          className={`${styles.card_price} gradient-text heading-secondary `}
+          className={`${styles.card_price} border rounded-full border-[#5c45fd] bg-none px-3 py-1 text-[#f5f5f5] heading-secondary `}
         >
           {price}
         </span>
