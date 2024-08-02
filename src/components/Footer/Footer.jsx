@@ -19,14 +19,17 @@ const Footer = () => {
                 className="tracking-[-0.02em] text-[#f5f5f5] text-3xl md:text-4xl text-start mb-10 w-full md:w-[17rem]"
                 words="Do you like what you see?"
               />
-              <BtnPrimary title="Contact Now" url="https://cal.com/nexdevsolutions/discovery-call" />
+              <BtnPrimary
+                title="Contact Now"
+                url="https://cal.com/nexdevsolutions/discovery-call"
+              />
             </div>
             <div>
               <WordPullUp
                 className="tracking-[-0.02em] text-[#f5f5f5] text-3xl md:text-4xl text-start mb-10 w-full md:w-[17rem]"
                 words="Services"
               />
-              <ul className="text-[#f5f5f5] flex flex-col gap-3">
+              <ul className="text-[#f5f5f5] sub-font flex flex-col gap-3">
                 <li>Web Development</li>
                 <li>3D web Development</li>
                 <li>UI/UX Design</li>
@@ -38,10 +41,10 @@ const Footer = () => {
                 className="tracking-[-0.02em] text-[#f5f5f5] text-3xl md:text-4xl text-start mb-10 w-full md:w-[17rem]"
                 words="Get in Touch"
               />
-              <h4 className="text-[#f5f5f5] mb-5">
+              <h4 className="text-[#f5f5f5] mb-5 sub-font">
                 contact@nexdevsolutions.com
               </h4>
-              <h4 className="text-[#f5f5f5] mb-5">+923081992088</h4>
+              <h4 className="text-[#f5f5f5] mb-5 sub-font">+923081992088</h4>
               <SocialMedia />
             </div>
           </div>

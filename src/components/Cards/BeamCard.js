@@ -18,8 +18,10 @@ const BeamCard = ({ title, description }) => {
           width={70}
           alt={`Nexdev solutions ${title} service`}
         /> */}
-        <h1 className={`${styles.text} ml-14 mt-8`}>{title}</h1>
-        <p className="ml-14 mt-6 w-[75%] ">{description}</p>
+        <h1 className={`${styles.text} heading-secondary ml-14 mt-8`}>
+          {title}
+        </h1>
+        <p className="ml-14 mt-6 w-[75%] sub-font text-lg">{description}</p>
         <div className="ml-14 mt-10">
           <BtnPrimary
             title="Get a Quote"

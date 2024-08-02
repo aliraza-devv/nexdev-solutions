@@ -99,7 +99,7 @@ export const Header = () => {
           <br />
           Website Audit Now
         </h1>
-        <p className="max-w-2xl px-6 text-base md:text-xl mt-8 dark:text-neutral-200 mb-10">
+        <p className="max-w-2xl sub-font px-6 text-base md:text-xl mt-8 dark:text-neutral-200 mb-10">
           Get a free Audit of your website by NeXDev Solutions to know about
           your website&apos;s health. The audit will contain a deep study of
           your website including problems, SEO, design issues, their solutions,

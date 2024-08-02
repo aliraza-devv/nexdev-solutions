@@ -13,7 +13,7 @@ const content = [
     number: "01",
     title: "Select Package/Book a Call",
     description:
-      "Select the package or book a free call with us to discuss your project and your needs in detail with free consultation from our experts with more than 8 years of experience.",
+      "Select the package or book a free call with us to discuss your project and your needs in detail with free consultation from our experts with more than 10 years of experience.",
     content: (
       <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
@@ -82,9 +82,14 @@ const content = [
 function Process() {
   return (
     <div id="process" className="p-10 over w-[100%] mb-30">
-      <h1 className="text-center mb-20">
-        <SparklesText text="Our Process" />
-      </h1>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-center mb-2">
+          <SparklesText text="Our Process" />
+        </h1>
+        <h3 className="mb-20 text-xl sub-font text-center text-[#f5f5f5]">
+          How we can help you achieve your goals
+        </h3>
+      </div>
       <StickyScroll content={content} />
     </div>
   );

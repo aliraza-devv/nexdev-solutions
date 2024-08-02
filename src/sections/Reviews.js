@@ -12,7 +12,7 @@ import Image from "next/image";
 
 const reviews = [
   {
-    name: "Trshelle",
+    name: "Trishelle",
     username: "Co-Founder & CEO",
     body: `I enthusiastically endorse NeXDev Solutions for any web or software development needs. Their expertise and talent shine through in every project.`,
     img: Trish,
@@ -103,16 +103,19 @@ const ReviewCard = ({ img, name, username, body }) => {
 
 export function Reviews() {
   return (
-    <div id="reviews" className="relative flex h-[70vh] w-full flex-col items-center mt-10 justify-center overflow-hidden bg-background md:shadow-xl">
+    <div
+      id="reviews"
+      className="relative flex h-[70vh] w-full flex-col items-center mt-10 justify-center overflow-hidden bg-background md:shadow-xl"
+    >
       <h1 className="text-center">
         <SparklesText text="Words from Our Clients" />
       </h1>
-      <Marquee pauseOnHover className="[--duration:20s] mt-10">
+      <Marquee pauseOnHover className="[--duration:20s] mt-10 sub-font">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s]">
+      <Marquee reverse pauseOnHover className="[--duration:20s] sub-font">
         {secondRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}

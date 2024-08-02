@@ -8,7 +8,7 @@ const TertiaryButton = ({ title, url }) => {
         <span className={styles.circle} aria-hidden="true">
           <span className={`${styles.icon} ${styles.arrow}`}></span>
         </span>
-        <span className={styles.buttonText}>{title}</span>
+        <span className={`${styles.buttonText}`}>{title}</span>
       </Link>
     </button>
   );

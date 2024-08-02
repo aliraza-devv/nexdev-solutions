@@ -29,9 +29,9 @@ const Comparison = () => {
         />
         <div className="flex justify-center items-center gap-2 lg:gap-4">
           <div className="flex justify-center shadow-md shadow-[#5c45fd] mt-2 text-[#f5f5f5] border rounded-full border-[#5c45fd] w-16 h-16 lg:w-20 lg:h-20 text-2xl lg:text-4xl font-bold items-center">
-            <span className="mr-[-4px] z-10">V</span>
+            <span className="mr-[-2px] z-10 heading-primary">V</span>
             <div className="h-16 w-2 lg:h-20 lg:w-2 rotate-12 shadow-md blur-[1px] bg-[#5c45fd] shadow-[#5c45fd] border border-[#5c45fd]"></div>
-            <span className="ml-[-4px] z-10">S</span>
+            <span className="ml-[-2px] z-10 heading-primary">S</span>
           </div>
           <WordPullUp
             className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
@@ -40,21 +40,22 @@ const Comparison = () => {
         </div>
       </div>
 
-      <h2 className="relative z-10 text-[#f5f5f5] mt-6 font-semibold text-lg text-center">
-        &quot;Excellence is not a skill, it&apos;s an attitude.&quot; - Ralph Marston
+      <h2 className="relative z-10 text-[#f5f5f5] mt-6 font-semibold sub-font text-lg text-center">
+        &quot;Excellence is not a skill, it&apos;s an attitude.&quot; - Ralph
+        Marston
       </h2>
-      <h2 className="relative z-10 text-[#b5b5b5] text-lg text-center">
+      <h2 className="relative z-10 text-[#b5b5b5] sub-font text-lg text-center">
         We treat your business as if it were our own
       </h2>
 
       <div className="relative z-10 flex flex-col items-center gap-10 lg:gap-20 mt-6 lg:mt-10 w-full">
         <div className="flex flex-col md:flex-row lg:flex-row justify-center items-center gap-10 w-full max-w-screen-lg">
           <div className="w-full lg:w-1/2 lg:text-left">
-            <h2 className="text-[#f5f5f5] mt-6 font-semibold z-10 text-lg">
+            <h2 className="text-[#f5f5f5] mt-6 font-semibold sub-font z-10 text-lg">
               Other Agencies / Freelancers
             </h2>
             <div className="mt-4">
-              <div className="flex flex-col gap-4 items-start">
+              <div className="flex flex-col gap-4 sub-font items-start">
                 {[
                   "Inexperienced Juniors",
                   "Old & typical",
@@ -76,11 +77,11 @@ const Comparison = () => {
           </div>
 
           <div className="w-full lg:w-1/2 lg:text-left">
-            <h2 className="text-[#f5f5f5] mt-6 z-10 font-semibold text-lg">
+            <h2 className="text-[#f5f5f5] mt-6 z-10 sub-font font-semibold text-lg">
               NeXDev Solutions
             </h2>
             <div className="mt-4">
-              <div className="flex flex-col gap-4 items-start">
+              <div className="flex flex-col gap-4 sub-font items-start">
                 {[
                   { text: "Top Experienced Team", icon: Person },
                   { text: "Use Proven K-Sight Mechanism", icon: Secure },

@@ -17,11 +17,25 @@
 }
 
 @font-face {
-  font-family: "Kollektif ";
-  src: url("/fonts/Kollektif.ttf");
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/BricolageGrotesque_24pt_SemiCondensed-Bold.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+} */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -45,6 +59,7 @@ html {
 body {
   background-color: var(--color-black);
   cursor: url("/Assets/icons/cursor-svgrepo-com.png"), auto;
+  font-family: "Bricolage Grotesque";
 }
 
 /* Scrolbar */
@@ -74,9 +89,15 @@ body {
   font-weight: 400;
 }
 
-.sub-font {
-  font-style: "Kollektif";
+.sub-font{
+  font-family: "Bricolage Grotesque";
+  /* font-weight: 400; */
 }
+
+/* .sub-font-bold{
+  font-family: "Bricolage Grotesque";
+  font-weight: 400;
+} */
 
 .gradient-text {
   background: linear-gradient(

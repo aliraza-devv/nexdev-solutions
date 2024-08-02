@@ -74,17 +74,21 @@ const Hero = () => {
         </div>
         <div className="flex justify-center items-center w-full">
           <div className="w-full md:w-4/5 flex flex-col justify-center items-center text-center px-4 md:px-0">
+            <div className="w-32 h-32 bg-blue absolute right-48 border-[#5c45fd]"></div>
             <h1 className="z-10 text-white text-4xl sm:text-5xl heading-primary md:text-6xl lg:text-6xl xl:text-7xl font-bold mt-[-3rem]">
               <span className="gradient-text">Top 1% </span>web/app <br />
               Development Agency, <br />
               <span className="gradient-text">Helped 200+ Businesses</span>
             </h1>
 
-            <p className="text-[#f5f5f5] mt-12 sub-font font-medium text-base sm:text-lg md:text-xl lg:text-2xl mb-14 z-10">
-              We helped 200+ businesses convert{" "}
-              <span className="gradient-text ">40%</span> of web traffic
-              into paying <br className="hidden md:block" /> customers with our
-              proven <span className="gradient-text">K-SHIGT mechanism</span>.
+            <p className="text-[#f5f5f5] mt-12 sub-font font-medium text-base sm:text-lg sub-font md:text-xl lg:text-2xl mb-14 z-10">
+              NeXDev Solutions helped 200+ businesses convert{" "}
+              <span className="gradient-text font-bold">40%</span> of web
+              traffic into
+              <br className="hidden md:block" /> paying customers with our
+              proven{" "}
+              <span className="gradient-text font-bold">K-SHIGT mechanism</span>
+              .
             </p>
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-16 w-full">
@@ -97,7 +101,7 @@ const Hero = () => {
                   <AnimatedTooltip items={people} />
                 </div>
               </Link>
-              <div className="flex flex-col text-start gap-1 text-white mt-4 md:mt-0 md:ml-[-2rem] z-10">
+              <div className="flex flex-col text-start sub-font text-white mt-4 md:mt-0 md:ml-[-2rem] z-10">
                 <span className="font-bold text-lg md:text-xl">200+</span>
                 <span className="font-light text-sm md:text-base">
                   Satisfied clients

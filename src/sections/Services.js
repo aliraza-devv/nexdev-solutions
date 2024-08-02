@@ -19,7 +19,7 @@ const cardDetails = [
   },
   {
     icon: web3d,
-    title: "3D Web Development",
+    title: "3D Development",
     description:
       "We are specialized in 3D web development using Threejs, Babylon.js, Blender with other tech stacks. Including the integration of 3D models and creating complex 3D environments",
   },
@@ -45,7 +45,7 @@ const cardDetails = [
     icon: content,
     title: "Content Writing",
     description:
-      "We are specialized in SEO based content writing to for the website aiming to high conversion rate.",
+      "We are specialized in SEO based content writing to for the website aiming to high conversion rate and boost sales.",
   },
 ];
 
@@ -74,9 +74,14 @@ const Services = () => {
 
   return (
     <div id="services" className="flex flex-col relative mt-24 gap-16">
-      <h1 className="text-center">
-        <SparklesText text="What do we do?" />
-      </h1>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-center">
+          <SparklesText text="What do we do?" />
+        </h1>
+        <h3 className="sub-font mb-20 text-xl text-[#f5f5f5]">
+          Solution to your Next Gen Problems
+        </h3>
+      </div>
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Services
       </h1>
@@ -92,7 +97,7 @@ const Services = () => {
         ))}
       </div>
       {showFloatingCallBooking && (
-        <div className="fixed right-4 bottom-4 w-[90%] sm:w-[75%] md:w-[50%] lg:w-[25%] p-4 index  shadow-lg rounded-lg">
+        <div className="fixed right-4 bottom-4 w-[100%] sm:w-[75%] md:w-[50%] lg:w-[30%] p-4 index  shadow-lg rounded-lg">
           <FloatingCallBooking />
         </div>
       )}
