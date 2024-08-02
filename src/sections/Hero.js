@@ -82,8 +82,8 @@ const Hero = () => {
 
             <p className="text-[#f5f5f5] mt-12 sub-font font-medium text-base sm:text-lg md:text-xl lg:text-2xl mb-14 z-10">
               We helped 200+ businesses convert{" "}
-              <span className="gradient-text">40%</span> of web traffic into
-              paying <br className="hidden md:block" /> customers with our
+              <span className="gradient-text ">40%</span> of web traffic
+              into paying <br className="hidden md:block" /> customers with our
               proven <span className="gradient-text">K-SHIGT mechanism</span>.
             </p>
 

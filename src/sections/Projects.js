@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import FadeText from "@/components/Text/FadeText";
 import WordPullUp from "@/components/Text/WordPullUp";
 import BtnPrimary from "@/components/Buttons/BtnPrimary";
@@ -23,7 +24,15 @@ export function Projects() {
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Proud
       </h1>
-      <div className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded dark:bg-gray-50/[.10] p-10">
+      <motion.div
+        animate={{
+          x: -5,
+          y: 66,
+          scale: 0.7,
+          rotate: 0,
+        }}
+        className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded dark:bg-gray-50/[.10] p-10"
+      >
         <div className="flex flex-col md:flex-row justify-between items-center">
           <WordPullUp
             className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
@@ -103,7 +112,7 @@ export function Projects() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* 2nd Project */}
       <div className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded dark:bg-gray-50/[.10] p-10">

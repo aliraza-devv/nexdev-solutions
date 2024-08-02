@@ -32,13 +32,7 @@ export default function Home() {
   return (
     <>
       {loading ? (
-        <div className="flex flex-col justify-center mt-10 items-center overflow-hidden w-full h-[100vh]">
-          <Image
-            src={Logo1}
-            height={240}
-            width={240}
-            alt="NeXDev Solutions Logo"
-          />
+        <div className="flex flex-col justify-center mt-10 items-center overflow-hidden w-full h-[90vh]">
           <Loader />
         </div>
       ) : (
