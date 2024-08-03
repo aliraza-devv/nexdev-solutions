@@ -13,6 +13,7 @@ import { VelocityScroll } from "@/components/Text/VelocityScroll";
 import LandA from "../../public/Assets/mockups/LandA.png";
 import Smartform from "../../public/Assets/mockups/Smarterform.png";
 import SellerGoals from "../../public/Assets/mockups/sellergoals.png";
+import lighthouse from "../../public/Assets/mockups/lighthouse-reality.png";
 
 export function Projects() {
   const projectData = [
@@ -26,7 +27,7 @@ export function Projects() {
       stats: [
         { label: "Increased Leads", value: "100%" },
         { label: "Increased Investment", value: "67%" },
-        { label: "Increased Perfomance", value: "200%" },
+        { label: "Increased Perfomance", value: "120%" },
       ],
       tags: ["Development", "Database", "DevOps"],
     },
@@ -57,6 +58,20 @@ export function Projects() {
         { label: "Boost Sales", value: "90%" },
       ],
       tags: ["Development", "UI/UX", "SEO"],
+    },
+    {
+      title: "Light House Reality",
+      imageUrl: lighthouse,
+      url: "https://www.behance.net/gallery/181830587/Lighthouse-Reality",
+      subtitle: "Real Esate Website",
+      description:
+        "NeXDev Solutions created and designed this real estate website to showcase real estate properties, realtors, and much more functionalities. The website has ability to sell or rnt the proprty with complete management system. Realtors can list the properties and also can manage their profile.",
+      stats: [
+        { label: "Increased Conversion", value: "60%" },
+        { label: "Increased Revenue", value: "130%" },
+        { label: "Boost Sales", value: "85%" },
+      ],
+      tags: ["Development", "UI/UX"],
     },
   ];
 

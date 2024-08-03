@@ -51,7 +51,7 @@ const Navbar = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="absolute index-2 top-20 glassmorphism left-0 right-0 bg-[#161616] rounded flex flex-col items-center">
+        <div className="absolute index-2 top-20 left-0 right-0 bg-[#161616] rounded flex flex-col items-center">
           <ul className="flex sub-font index-2 flex-col items-center">
             <li className="text-[#f5f5f5] py-2 link-hover">
               <Link href={"#services"}>Services </Link>

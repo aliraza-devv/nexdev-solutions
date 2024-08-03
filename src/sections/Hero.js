@@ -7,6 +7,7 @@ import img2 from "../../public/Assets/images/Uzair.jpeg";
 import img3 from "../../public/Assets/images/Sheraz.jpeg";
 import img4 from "../../public/Assets/images/Naveed.jpg";
 import img5 from "../../public/Assets/images//Najam.jpg";
+import Star from "../../public/Assets/icons/star-alt-3-svgrepo-com.svg";
 import RetroGrid from "@/components/Backgrounds/RetroGrid";
 import HorizontalLogoSlider from "@/components/HorizontalLogoSlider/HorizontalLogoSlider";
 import { AnimatedTooltip } from "@/components/AnimatedTooltip/AnimatedTooltip";
@@ -76,7 +77,17 @@ const Hero = () => {
           <div className="w-full md:w-4/5 flex flex-col justify-center items-center text-center px-4 md:px-0">
             <div className="w-32 h-32 bg-blue absolute right-48 border-[#5c45fd]"></div>
             <h1 className="z-10 text-white text-[2rem] sm:text-5xl heading-primary md:text-6xl lg:text-6xl xl:text-7xl font-bold mt-[-3rem]">
-              <span className="gradient-text">Top 1% </span>web/app <br />
+              <span className="flex justify-center items-center">
+                <span className="gradient-text">Top 1% </span>web/app{" "}
+                <Image
+                  src={Star}
+                  height={50}
+                  width={50}
+                  className="mb-10"
+                  alt="Star Icon"
+                />{" "}
+                <br />
+              </span>
               Development Agency, <br />
               <span className="gradient-text">Helped 200+ Businesses</span>
             </h1>

@@ -43,8 +43,8 @@ export default function Home() {
             <Navbar />
           </div>
           <Hero />
-          <Services />
           <Help />
+          <Services />
           <Reviews />
           <Projects />
           <Process />
