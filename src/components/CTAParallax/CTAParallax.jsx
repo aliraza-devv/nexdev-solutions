@@ -104,9 +104,10 @@ export const Header = () => {
           your website&apos;s health. The audit will contain a deep study of
           your website including problems, SEO, design issues, their solutions,
           and much more.
-        </p>d 
+        </p>
+        d
       </div>
-      <div className="max-w-7xl px-6 index relative mx-auto w-full left-0 top-[-2.5rem] md:top-[-10rem]">
+      <div className="max-w-7xl px-6 z-50 relative mx-auto w-full left-0 top-[-2.5rem] md:top-[-10rem]">
         <BtnPrimary
           url="https://form.jotform.com/242006777431454"
           title="Get a Free Website Audit"
