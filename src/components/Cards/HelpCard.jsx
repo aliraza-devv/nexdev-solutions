@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const HelpCard = ({ icon, title, description }) => {
   return (
-    <div className={`${styles.card} dark:bg-gray-50/[.10]`}>
+    <div className={`${styles.card}  dark:bg-gray-50/[.10]`}>
       <Image
         src={icon}
         height={70}

@@ -10,7 +10,7 @@ const Footer = () => {
       id="footer"
       className="w-full h-[95vh] md:h-[70vh] flex flex-col justify-center items-center p-5 mt-20"
     >
-      <div className="w-[95%] relative h-full flex flex-col justify-center items-center border rounded-xl">
+      <div className="w-[95%] relative h-full flex flex-col justify-center items-center border rounded-[1rem]">
         <RetroGrid />
         <div className="w-full p-10 absolute top-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">

@@ -79,7 +79,7 @@ export function Projects() {
         <motion.div
           key={index}
           animate={{ x: -5, y: 66, scale: 0.7, rotate: 0 }}
-          className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded dark:bg-gray-50/[.10] p-10"
+          className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded-[1rem] dark:bg-gray-50/[.10] p-10"
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <WordPullUp
