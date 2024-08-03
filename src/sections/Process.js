@@ -7,6 +7,9 @@ import Planning from "../../public/Assets/3d images/download.gif";
 import Develop from "../../public/Assets/3d images/download2.gif";
 import Testing from "../../public/Assets/3d images/download3.gif";
 import Deploy from "../../public/Assets/3d images/download4.gif";
+import call from "../../public/Assets/graphics/02.png";
+import discuss from "../../public/Assets/graphics/01.png";
+import launch from "../../public/Assets/graphics/03.png";
 
 const content = [
   {
@@ -17,7 +20,7 @@ const content = [
     content: (
       <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
-          src={Planning}
+          src={call}
           width={500}
           height={500}
           //   className="h-full w-full object-cover"
@@ -34,7 +37,7 @@ const content = [
     content: (
       <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
-          src={Develop}
+          src={discuss}
           width={500}
           height={500}
           //   className="h-full w-full object-cover"
@@ -51,9 +54,9 @@ const content = [
     content: (
       <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
-          src={Deploy}
-          width={500}
-          height={500}
+          src={launch}
+          width={420}
+          height={420}
           //   className="h-full w-full object-cover"
           alt="linear board demo"
         />

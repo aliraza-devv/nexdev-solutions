@@ -58,13 +58,13 @@ const Hero = () => {
       >
         <div className="z-10 flex min-h-[15rem] mt-20 items-center justify-center">
           <AnimatedGradientText>
-            <span className="inline animate-gradient bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
+            <span className="inline animate-gradient sub-font bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
               Aug
             </span>{" "}
             <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
             <span
               className={cn(
-                `inline animate-gradient bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
+                `inline sub-font animate-gradient bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
               )}
             >
               Only 5 Spots Left for the month
@@ -75,7 +75,7 @@ const Hero = () => {
         <div className="flex justify-center items-center w-full">
           <div className="w-full md:w-4/5 flex flex-col justify-center items-center text-center px-4 md:px-0">
             <div className="w-32 h-32 bg-blue absolute right-48 border-[#5c45fd]"></div>
-            <h1 className="z-10 text-white text-4xl sm:text-5xl heading-primary md:text-6xl lg:text-6xl xl:text-7xl font-bold mt-[-3rem]">
+            <h1 className="z-10 text-white text-[2rem] sm:text-5xl heading-primary md:text-6xl lg:text-6xl xl:text-7xl font-bold mt-[-3rem]">
               <span className="gradient-text">Top 1% </span>web/app <br />
               Development Agency, <br />
               <span className="gradient-text">Helped 200+ Businesses</span>

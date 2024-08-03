@@ -81,11 +81,11 @@ body {
 }
 
 .heading-primary {
-  font-family: "Clash Display";
+  font-family: "Bricolage Grotesque";
   font-weight: 500;
 }
 .heading-secondary {
-  font-family: "Clash Display";
+  font-family: "Bricolage Grotesque";
   font-weight: 400;
 }
 
@@ -520,9 +520,6 @@ a {
 /* Media Querry */
 
 @media only screen and (max-width: 1440px) {
-  .heading-responsive {
-    /* font-size: 3.5rem; */
-  }
   .float-container {
     width: 30%;
   }
