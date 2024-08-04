@@ -28,8 +28,10 @@ export function Lamp() {
               <span className="gradient-text font-bold">Ali Raza</span>. I have
               always been a tech enthusiast. With more than 8 years of
               experience in my field, learning from the best in the industury,
-              investing my time and money, I have found my proven{" "}
-              <span className="gradient-text font-bold">K-SIGHT mechanism</span>{" "}
+              investing my time and money, I have found my proven <br />
+              <span className="gradient-text font-bold">
+                K-SIGHT mechanism
+              </span>{" "}
               which can boost your business and conversion in the best way
               possible.{" "}
               <span className="gradient-text font-bold">My Goal </span>
