@@ -121,13 +121,13 @@ export function Projects() {
                 width={400}
                 height={400}
                 alt={`${project.title} Project Mockup`}
-                className="rounded"
+                className="rounded-[1rem]"
               />
               <div className="flex mt-6 gap-4 flex-wrap">
                 {project.tags.map((tag, i) => (
                   <div
                     key={i}
-                    className="flex sub-font justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-full border-[#a89bff] text-[#f5f5f5]"
+                    className="flex sub-font justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
                   >
                     {tag}
                   </div>
@@ -151,7 +151,7 @@ export function Projects() {
               {project.stats.map((stat, i) => (
                 <div key={i} className="flex flex-col items-center">
                   <div>
-                    <h4 className="w-[9rem] sub-font h-[10vh] mb-6 flex justify-center items-center text-[#f5f5f5] rounded bg-[#5c45fd] path-clip">
+                    <h4 className="w-[9rem] sub-font h-[10vh] mb-6 flex justify-center items-center text-[#f5f5f5] rounded-[1rem] bg-[#5c45fd] path-clip">
                       {stat.value}
                     </h4>
                     <p className="text-[#f5f5f5] sub-font text-md text-center">
