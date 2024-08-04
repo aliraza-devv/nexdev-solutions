@@ -27,16 +27,16 @@ const Navbar = () => {
         {/* </div> */}
       </div>
       <div className="hidden lg:block">
-        <span className="mr-2">
-          <BtnLight
-            title="Free Audit"
-            url="https://form.jotform.com/242006777431454"
-          />
-        </span>
         <BtnPrimary
           url="https://cal.com/nexdevsolutions/discovery-call"
           title="Book a Free Call"
         />
+        <span className="ml-2">
+          <BtnLight
+            title="Get Free Audit"
+            url="https://form.jotform.com/242006777431454"
+          />
+        </span>
       </div>
       <div className="lg:hidden flex items-center">
         <button onClick={toggleMenu} className="text-[#f5f5f5]">
@@ -83,7 +83,10 @@ const Navbar = () => {
               url="https://cal.com/nexdevsolutions/discovery-call"
               title="Book a Free Call"
             />
-            <BtnLight title="Free Audit" url="https://form.jotform.com/242006777431454" />
+            <BtnLight
+              title="Get Free Audit"
+              url="https://form.jotform.com/242006777431454"
+            />
           </div>
         </div>
       )}
