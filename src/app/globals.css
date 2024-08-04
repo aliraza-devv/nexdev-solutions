@@ -28,6 +28,14 @@
   font-family: "Bricolage Grotesque";
   src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf")
     format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MrsSaint Delafield";
+  src: url("/fonts/MrsSaintDelafield-Regular.ttf")
+    format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -96,6 +104,11 @@ body {
   /* font-weight: 400; */
 }
 
+.signature-font{
+  font-family: "MrsSaint Delafield";
+  font-weight: 400;
+}
+
 /* .sub-font-bold{
   font-family: "Bricolage Grotesque";
   font-weight: 400;
@@ -155,10 +168,6 @@ body {
 
 .image-border {
   border: 3px solid var(--color-white);
-}
-
-.custom-text-cursor {
-  cursor: url("/public//Assets//icons//cursor.svg"), auto;
 }
 
 /* Glass Effect */

@@ -93,7 +93,13 @@ export function Projects() {
       {projectData.map((project, index) => (
         <motion.div
           key={index}
-          animate={{ x: -5, y: 66, scale: 0.7, rotate: 0 }}
+          initial={{ opacity: 0.5, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.5,
+            ease: "easeInOut",
+          }}
           className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded-[1rem] dark:bg-gray-50/[.10] p-10"
         >
           <div className="flex flex-col md:flex-row justify-between items-center">

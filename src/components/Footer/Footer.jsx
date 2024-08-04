@@ -45,7 +45,7 @@ const Footer = () => {
                 contact@nexdevsolutions.com
               </h4>
               <h4 className="text-[#f5f5f5] mb-5 sub-font">+923081992088</h4>
-              <SocialMedia />
+              {/* <SocialMedia /> */}
             </div>
           </div>
           <div className="">

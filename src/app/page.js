@@ -15,9 +15,11 @@ import Technologies from "@/sections/Technologies";
 import { CallToAction } from "@/sections/CallToAction";
 import Logo from "@/components/HorizontalLogoSlider/Logo";
 import CustomCursor from "@/components/Cursor/CustomCursor";
+import { initializeScroll } from "@/utils/locomotiveScroll";
 import Help from "@/sections/Help";
 import Image from "next/image";
 import Logo1 from "../../public/Assets/Logos/nexdev-logo-full.png";
+import { AboutFounder } from "@/sections/AboutFounder";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -29,6 +31,14 @@ export default function Home() {
 
     return () => clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    const scrollInstance = initializeScroll();
+
+    return () => {
+      if (scrollInstance) scrollInstance.destroy();
+    };
+  }, [loading]);
   return (
     <>
       {loading ? (
@@ -52,7 +62,8 @@ export default function Home() {
           <Pricing />
           <Comparison />
           <CallToAction />
-          <h1 className="text-[#f5f5f5] heading-primary flex justify-center items-center font-bold mt-10">
+          <AboutFounder />
+          <h1 className="text-[#f5f5f5] heading-primary flex justify-center items-center font-bold mt-60 md:mt-5">
             Trusted by 200+ Businesses
           </h1>
           <div className="overflow-hidden">
