@@ -26,7 +26,13 @@ const Navbar = () => {
         <SlideTabs />
         {/* </div> */}
       </div>
-      <div className="hidden lg:block ">
+      <div className="hidden lg:block">
+        <span className="mr-2">
+          <BtnLight
+            title="Free Audit"
+            url="https://form.jotform.com/242006777431454"
+          />
+        </span>
         <BtnPrimary
           url="https://cal.com/nexdevsolutions/discovery-call"
           title="Book a Free Call"
@@ -68,15 +74,16 @@ const Navbar = () => {
             <li className="text-[#f5f5f5] py-2 link-hover">
               <Link href="#comparison">Why us? </Link>
             </li>
-            <li className="text-[#f5f5f5] py-2 link-hover">
+            {/* <li className="text-[#f5f5f5] py-2 link-hover">
               <Link href="#audit">Free audit </Link>
-            </li>
+            </li> */}
           </ul>
-          <div className="py-4">
+          <div className="py-4 flex flex-col gap-3">
             <BtnPrimary
               url="https://cal.com/nexdevsolutions/discovery-call"
               title="Book a Free Call"
             />
+            <BtnLight title="Free Audit" url="https://form.jotform.com/242006777431454" />
           </div>
         </div>
       )}
@@ -118,9 +125,9 @@ const SlideTabs = () => {
       <Tab setPosition={setPosition}>
         <Link href="#comparison">Why us? </Link>
       </Tab>
-      <Tab setPosition={setPosition}>
+      {/* <Tab setPosition={setPosition}>
         <Link href="#audit">Free audit </Link>
-      </Tab>
+      </Tab> */}
       <Cursor position={position} />
     </ul>
   );
