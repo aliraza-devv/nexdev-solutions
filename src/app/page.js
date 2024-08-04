@@ -15,10 +15,7 @@ import Technologies from "@/sections/Technologies";
 import { CallToAction } from "@/sections/CallToAction";
 import Logo from "@/components/HorizontalLogoSlider/Logo";
 import CustomCursor from "@/components/Cursor/CustomCursor";
-import { initializeScroll } from "@/utils/locomotiveScroll";
 import Help from "@/sections/Help";
-import Image from "next/image";
-import Logo1 from "../../public/Assets/Logos/nexdev-logo-full.png";
 import { AboutFounder } from "@/sections/AboutFounder";
 
 export default function Home() {
@@ -32,13 +29,6 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, []);
 
-  useEffect(() => {
-    const scrollInstance = initializeScroll();
-
-    return () => {
-      if (scrollInstance) scrollInstance.destroy();
-    };
-  }, [loading]);
   return (
     <>
       {loading ? (
