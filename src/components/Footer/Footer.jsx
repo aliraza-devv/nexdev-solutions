@@ -10,7 +10,7 @@ const Footer = () => {
       id="footer"
       className="w-full h-[95vh] md:h-[70vh] flex flex-col justify-center items-center p-5 mt-20"
     >
-      <div className="w-[95%] relative h-full flex flex-col justify-center items-center border rounded-[1rem]">
+      <div className="w-[95%] relative h-full flex flex-col justify-center items-center side-gradient border rounded-[1rem]">
         <RetroGrid />
         <div className="w-full p-10 absolute top-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
@@ -45,7 +45,7 @@ const Footer = () => {
                 contact@nexdevsolutions.com
               </h4>
               <h4 className="text-[#f5f5f5] mb-5 sub-font">+923081992088</h4>
-              <SocialMedia />
+              {/* <SocialMedia /> */}
             </div>
           </div>
           <div className="">

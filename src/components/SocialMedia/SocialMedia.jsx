@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/SocialMedia.module.css";
 import Link from "next/link";
-import Linkedin from "../../../public/Assets/icons/linkedin-svgrepo-com.svg";
 
 const SocialMedia = () => {
   return (

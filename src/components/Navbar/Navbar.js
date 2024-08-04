@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed z-50 glassmorphism rounded-full w-[90%] lg:w-[80%] h-[10%] mt-[8rem] flex justify-between items-center px-4 lg:px-8">
+    <div className="fixed z-50 glassmorphism rounded-[1rem] w-[90%] lg:w-[80%] h-[10%] mt-[8rem] flex justify-between items-center px-4 lg:px-8">
       <Link href={"#home"}>
         <div>
           <Image src={nexdev} height={75} width={75} alt="NeXDev Solutions" />
@@ -51,8 +51,8 @@ const Navbar = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="absolute index-2 top-20 glassmorphism left-0 right-0 bg-[#161616] rounded flex flex-col items-center">
-          <ul className="flex sub-font index-2 flex-col items-center">
+        <div className="absolute index-2 top-20 left-0 right-0 bg-[#161616] rounded-[1rem] flex flex-col items-center">
+          <ul className="flex sub-font flex-col items-center">
             <li className="text-[#f5f5f5] py-2 link-hover">
               <Link href={"#services"}>Services </Link>
             </li>
@@ -156,7 +156,7 @@ const Cursor = ({ position }) => {
       animate={{
         ...position,
       }}
-      className="absolute z-0 h-7 rounded-full  bg-[#5c45fd] md:h-12"
+      className="absolute z-0 h-7 rounded-[1rem]  bg-[#5c45fd] md:h-12"
     />
   );
 };

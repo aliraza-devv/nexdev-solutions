@@ -14,10 +14,10 @@ const Accordion = () => {
     >
       <h1 className="text-center mb-10 mt-20">
         <SparklesText text="You got Questions?" />
-        <h2 className="text-[#f5f5f5] mt-6 font-semibold sub-font text-lg">
-          We have got the Answers
-        </h2>
       </h1>
+      <h2 className="text-[#f5f5f5] font-semibold sub-font text-lg">
+        We have got the Answers
+      </h2>
       <div className="container w-[100%] xl:w-[60%]">
         <section className="info sub-font w-[100%] index">
           {questions.map((question) => (
