@@ -23,17 +23,18 @@ export function Lamp() {
             <motion.h1 className="bg-gradient-to-br w-full from-slate-300 to-slate-500 py-4 bg-clip-text text-start text-4xl font-medium tracking-tight text-transparent md:text-7xl">
               Meet the Founder
             </motion.h1>
-            <p className="mt-1 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-start text-xl font-medium tracking-tight text-transparent md:text-2xl">
+            <p className="mt-1 bg-gradient-to-br text-[#f5f5f5] py-4 bg-clip-text text-start text-xl font-medium tracking-tight md:text-2xl">
               Hey, I am{" "}
               <span className="gradient-text font-bold">Ali Raza</span>. I have
               always been a tech enthusiast. With more than 8 years of
               experience in my field, learning from the best in the industury,
               investing my time and money, I have found my proven <br />
+              The
               <span className="gradient-text font-bold">
-                K-SIGHT mechanism
+                {" "}K-SIGHT mechanism
               </span>{" "}
-              which can boost your business and conversion in the best way
-              possible.{" "}
+              which can boost your leads, conversion, sales, and business in the
+              best way possible.{" "}
               <span className="gradient-text font-bold">My Goal </span>
               through NeXDev Solutions is to create the best web experiences
               that that actually sells and convert normal user into your loyal
@@ -55,7 +56,7 @@ export function Lamp() {
               height={350}
               width={450}
               alt="Nexdev solutions Founder"
-              className="rounded-[1rem] mt-8 mb-4 bg-gradient-to-r from-[#5c45fd] via-[#a89bff] to-[#f5f5f5] p-1 inline-block border-[#f5f5f5] border"
+              className="rounded-[1rem] mt-8 mb-4 bg-gradient-to-r from-[#5c45fd]  to-[#a89bff] p-1 inline-block border-[#f5f5f5] border"
             />
             <span className="signature-font text-5xl text-center w-full text-[#f5f5f5] mt-3">
               Ali Raza

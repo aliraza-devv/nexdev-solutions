@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed z-50 glassmorphism rounded-[1rem] w-[90%] lg:w-[80%] h-[10%] mt-[8rem] flex justify-between items-center px-4 lg:px-8">
+    <div className="fixed z-50 glassmorphism rounded-[1rem] w-[100%] lg:w-[80%] h-[10%] mt-[8rem] flex justify-between items-center px-4 lg:px-8">
       <Link href={"#home"}>
         <div>
           <Image src={nexdev} height={75} width={75} alt="NeXDev Solutions" />
@@ -81,7 +81,7 @@ const Navbar = () => {
             duration: 0.3, // Adjust duration for a smoother fade out
             ease: "easeInOut",
           }}
-          className="absolute h-[100vh] w-full index-2 top-20 left-0 right-0 bg-[#161616] rounded-[1rem] flex flex-col items-start justify-around"
+          className="absolute h-[100vh] w-full index-2 top-20 p-10 left-0 right-0 bg-[#161616] rounded-[1rem] flex flex-col items-start justify-start gap-32"
         >
           <ul className="flex sub-font text-3xl font-bold flex-col items-start">
             <motion.li

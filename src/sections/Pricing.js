@@ -30,8 +30,8 @@ const Pricing = () => {
           point6="Newsletter Setup"
           point7="FREE Premium Theme (Worth: $299)"
           point8="FREE Elementor Pro (Worth: $99)"
-          point9="1 Year FREE Hosting"
-          point10="1 Month Revision"
+          point10="FREE 6 Months Hosting"
+          point9="FREE 2 Months Technical Support"
           url="https://cal.com/nexdevsolutions/discovery-call"
         />
 
@@ -43,7 +43,7 @@ const Pricing = () => {
           point2="Complete Development"
           point3="Fast Page Speed"
           point4="Bugs Free"
-          point5="Experienced Team"
+          point5="Dedicated & Experienced Team"
           point6="SEO Focused Content Writing & Graphics"
           point7="Fast Hosting Server"
           point8="DevOps Pipeline"
@@ -62,7 +62,7 @@ const Pricing = () => {
           point4="We Have Best Team of SEO"
           point5="High Conversion Approach"
           point6="Highly Skilled DevOps Team"
-          point7="Technical Support"
+          point7="FREE 2 months Technical Support"
           point8="FREE Consultation From Experts"
           point9="A One Stop Permanent Solution"
           point10="Solution to Your Problems"
