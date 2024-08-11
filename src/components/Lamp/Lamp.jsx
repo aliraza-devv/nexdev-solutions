@@ -8,8 +8,8 @@ import Image from "next/image";
 export function Lamp() {
   return (
     <LampContainer>
-      <div className="w-[100%] lg:w-[60%]">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-20">
+      <div className="w-[100%] lg:w-[80%]">
+        <div className="flex flex-col lg:flex-row items-center w-full justify-center gap-20">
           <motion.div
             initial={{ opacity: 0.5, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export function Lamp() {
             }}
             className="w-full md:w-[60%] lg:w-[70%]"
           >
-            <motion.h1 className="bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-start text-4xl font-medium tracking-tight text-transparent md:text-7xl">
+            <motion.h1 className="bg-gradient-to-br w-full from-slate-300 to-slate-500 py-4 bg-clip-text text-start text-4xl font-medium tracking-tight text-transparent md:text-7xl">
               Meet the Founder
             </motion.h1>
             <p className="mt-1 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-start text-xl font-medium tracking-tight text-transparent md:text-2xl">
@@ -48,7 +48,7 @@ export function Lamp() {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="w-full md:w-[40%] lg:w-[30%] flex flex-col"
+            className="w-full md:w-[40%] flex flex-col"
           >
             <Image
               src={Founder}
@@ -135,7 +135,7 @@ export const LampContainer = ({ children, className }) => {
         <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-[#161616] "></div>
       </div>
 
-      <div className="relative lg:top-[-17rem] z-50 flex flex-col items-center heading-primary px-5">
+      <div className="relative lg:top-[-15rem] z-50 flex flex-col items-center heading-primary px-5">
         {children}
       </div>
     </div>

@@ -450,13 +450,9 @@ a {
 }
 
 .container {
-  /* width: 50%; */
-  /* margin: 5rem auto; */
   color: var(--color-white);
   border-radius: var(--radius);
   padding: 2.5rem 2rem;
-  /* max-width: var(--fixed-width); */
-  /* display: grid; */
   gap: 1rem 2rem;
 }
 .container h3 {
@@ -476,6 +472,8 @@ a {
   margin-bottom: 1rem;
   border-radius: 12px;
   box-shadow: var(--dark-shadow);
+  background-color: rgba(22, 22, 22, 0.3);
+
 }
 .expanded {
   padding: 1rem 1.5rem;

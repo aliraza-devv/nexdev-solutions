@@ -147,7 +147,7 @@ export function Projects() {
                 framerProps={{ show: { transition: { delay: 0.2 } } }}
               />
             </div>
-            <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row justify-around w-full lg:w-[40%] gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 w-full lg:w-[40%]">
               {project.stats.map((stat, i) => (
                 <div key={i} className="flex flex-col items-center">
                   <div>
@@ -175,7 +175,27 @@ export function Projects() {
       <VelocityScroll
         text="Let's Work Together."
         default_velocity={2}
-        className="font-display index text-center font-bold tracking-[-0.02em] heading-primary text-black drop-shadow-xl dark:text-white text-[8rem] mb-14 leading-[5rem]"
+        className="
+          font-display 
+          index 
+          text-center 
+          font-bold 
+          tracking-[-0.02em] 
+          heading-primary 
+          text-black 
+          drop-shadow-xl 
+          dark:text-white 
+          text-[4rem] 
+          sm:text-[6rem] 
+          md:text-[8rem] 
+          lg:text-[10rem] 
+          xl:text-[12rem] 
+          mb-14 
+          leading-[3rem] 
+          sm:leading-[4rem] 
+          md:leading-[5rem] 
+          lg:leading-[6rem] 
+          xl:leading-[7rem]"
       />
     </div>
   );
