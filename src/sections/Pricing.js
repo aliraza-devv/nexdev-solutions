@@ -17,7 +17,7 @@ const Pricing = () => {
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Pricing
       </h1>
-      <div className="flex flex-col lg:flex-row justify-around items-center gap-10">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-10 justify-items-center">
         <PricingCard
           title="WordPress Website"
           price="Starting from $699"

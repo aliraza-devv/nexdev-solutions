@@ -97,7 +97,7 @@ const Services = () => {
         ))}
       </div>
       {showFloatingCallBooking && (
-        <div className="fixed sm:right-4 bottom-4 w-[100%] sm:w-[75%] md:w-[50%] lg:w-[30%] p-4 z-50 shadow-lg rounded-lg">
+        <div className="fixed sm:right-4 bottom-4 w-[100%] sm:w-[75%] md:w-[60%] lg:w-[30%] p-4 z-50 shadow-lg rounded-lg">
           <FloatingCallBooking />
         </div>
       )}

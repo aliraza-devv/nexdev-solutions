@@ -7,6 +7,7 @@ import img2 from "../../public/Assets/images/Uzair.jpeg";
 import img3 from "../../public/Assets/images/Sheraz.jpeg";
 import img4 from "../../public/Assets/images/Naveed.jpg";
 import img5 from "../../public/Assets/images//Najam.jpg";
+import arrow from "../../public/Assets/graphics/arrow0.png";
 import Star from "../../public/Assets/icons/star-alt-3-svgrepo-com.svg";
 import RetroGrid from "@/components/Backgrounds/RetroGrid";
 import HorizontalLogoSlider from "@/components/HorizontalLogoSlider/HorizontalLogoSlider";
@@ -57,7 +58,7 @@ const Hero = () => {
         id="home"
         className=" flex flex-col justify-center items-center w-full h-[100%] side-gradient"
       >
-        <div className="z-10 flex min-h-[15rem] mt-20 items-center justify-center">
+        <div className="z-10 flex min-h-[15rem] mt-20 mb-[-2rem] lg:mb-[-4rem] items-center justify-center">
           <AnimatedGradientText>
             <span className="inline animate-gradient sub-font bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
               Aug
@@ -76,23 +77,31 @@ const Hero = () => {
         <div className="flex justify-center items-center w-full">
           <div className="w-full md:w-4/5 flex flex-col justify-center items-center text-center px-4 md:px-0">
             <div className="w-32 h-32 bg-blue absolute right-48 border-[#5c45fd]"></div>
-            <h1 className="z-10 text-white text-[2rem] sm:text-5xl heading-primary md:text-6xl lg:text-6xl xl:text-7xl font-bold mt-[-3rem]">
-              <span className="flex justify-center items-center">
-                <span className="gradient-text">Top 1% </span>web/app{" "}
-                <Image
-                  src={Star}
-                  height={50}
-                  width={50}
-                  className="mb-10"
-                  alt="Star Icon"
-                />{" "}
-                <br />
-              </span>
-              Development Agency, <br />
-              <span className="gradient-text">Helped 200+ Businesses</span>
-            </h1>
-
-            <p className="text-[#f5f5f5] mt-12 sub-font font-medium text-base sm:text-lg sub-font md:text-xl lg:text-2xl mb-14 z-10">
+            <div className="flex w-full justify-center items-center">
+              <Image
+                src={arrow}
+                height={150}
+                width={100}
+                alt="NexDev Solutions Arrow"
+                className="hidden lg:block z-50 mr-[-1rem] mt-6"
+              />
+              <h1 className="z-10 text-white text-[2rem] sm:text-5xl heading-primary md:text-6xl lg:text-6xl xl:text-7xl font-bold mt-[-3rem]">
+                <span className="flex justify-center items-center m-[-1rem] md:m-0">
+                  <span className="gradient-text">Top 1% </span>web/app{" "}
+                  <Image
+                    src={Star}
+                    height={50}
+                    width={50}
+                    className="mb-10"
+                    alt="Star Icon"
+                  />{" "}
+                  <br />
+                </span>
+                Development Agency, <br />
+                <span className="gradient-text">Helped 200+ Businesses</span>
+              </h1>
+            </div>
+            <p className="text-[#f5f5f5] w-full mt-4 sub-font font-medium text-base sm:text-lg sub-font md:text-xl lg:text-2xl mb-14 z-10">
               NeXDev Solutions helped 200+ businesses convert{" "}
               <span className="gradient-text font-bold">40%</span> of web
               traffic into
@@ -101,7 +110,6 @@ const Hero = () => {
               <span className="gradient-text font-bold">K-SHIGT mechanism</span>
               .
             </p>
-
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-16 w-full">
               <BtnPrimary
                 url="https://cal.com/nexdevsolutions/discovery-call"

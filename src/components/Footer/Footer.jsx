@@ -12,7 +12,7 @@ const Footer = () => {
     >
       <div className="w-[95%] relative h-full flex flex-col justify-center items-center side-gradient border rounded-[1rem]">
         <RetroGrid />
-        <div className="w-full p-10 absolute top-4">
+        <div className="w-full p-10 absolute flex flex-col justify-between h-full top-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
             <div>
               <WordPullUp

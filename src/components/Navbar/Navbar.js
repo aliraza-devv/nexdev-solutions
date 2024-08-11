@@ -21,12 +21,10 @@ const Navbar = () => {
           <Image src={nexdev} height={75} width={75} alt="NeXDev Solutions" />
         </div>
       </Link>
-      <div className="hidden lg:flex justify-center items-center">
-        {/* <div className=""> */}
+      <div className="hidden xl:flex justify-center items-center">
         <SlideTabs />
-        {/* </div> */}
       </div>
-      <div className="hidden lg:block">
+      <div className="hidden xl:block">
         <BtnPrimary
           url="https://cal.com/nexdevsolutions/discovery-call"
           title="Book a Free Call"
@@ -38,47 +36,121 @@ const Navbar = () => {
           />
         </span>
       </div>
-      <div className="lg:hidden flex items-center">
+      <div className="xl:hidden flex items-center">
         <button onClick={toggleMenu} className="text-[#f5f5f5]">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            ></path>
-          </svg>
+          {!isOpen ? (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          ) : (
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          )}
         </button>
       </div>
       {isOpen && (
-        <div className="absolute index-2 top-20 left-0 right-0 bg-[#161616] rounded-[1rem] flex flex-col items-center">
-          <ul className="flex sub-font flex-col items-center">
-            <li className="text-[#f5f5f5] py-2 link-hover">
+        <motion.div
+          initial={{ opacity: 0.8, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0.2, y: -20 }} // Fade away and move up slightly when exiting
+          transition={{
+            delay: 0.2,
+            duration: 0.3, // Adjust duration for a smoother fade out
+            ease: "easeInOut",
+          }}
+          className="absolute h-[100vh] w-full index-2 top-20 left-0 right-0 bg-[#161616] rounded-[1rem] flex flex-col items-start justify-around"
+        >
+          <ul className="flex sub-font text-3xl font-bold flex-col items-start">
+            <motion.li
+              onClick={toggleMenu}
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.3,
+                ease: "easeInOut",
+              }}
+              className="text-[#f5f5f5] py-2 link-hover"
+            >
               <Link href={"#services"}>Services </Link>
-            </li>
-            <li className="text-[#f5f5f5] py-2 link-hover">
+            </motion.li>
+            <motion.li
+              onClick={toggleMenu}
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.4,
+                ease: "easeInOut",
+              }}
+              className="text-[#f5f5f5] py-2 link-hover"
+            >
               <Link href="#projects">Work </Link>
-            </li>
-            <li className="text-[#f5f5f5] py-2 link-hover">
+            </motion.li>
+            <motion.li
+              onClick={toggleMenu}
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.5,
+                ease: "easeInOut",
+              }}
+              className="text-[#f5f5f5] py-2 link-hover"
+            >
               <Link href={"#process"}>Process </Link>
-            </li>
-            <li className="text-[#f5f5f5] py-2 link-hover">
+            </motion.li>
+            <motion.li
+              onClick={toggleMenu}
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.6,
+                ease: "easeInOut",
+              }}
+              className="text-[#f5f5f5] py-2 link-hover"
+            >
               <Link href="#pricing">Packages </Link>
-            </li>
-            <li className="text-[#f5f5f5] py-2 link-hover">
+            </motion.li>
+            <motion.li
+              onClick={toggleMenu}
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.7,
+                ease: "easeInOut",
+              }}
+              className="text-[#f5f5f5] py-2 link-hover"
+            >
               <Link href="#comparison">Why us? </Link>
-            </li>
-            {/* <li className="text-[#f5f5f5] py-2 link-hover">
-              <Link href="#audit">Free audit </Link>
-            </li> */}
+            </motion.li>
           </ul>
-          <div className="py-4 flex flex-col gap-3">
+          <div className="py-4 flex flex-col gap-3" onClick={toggleMenu}>
             <BtnPrimary
               url="https://cal.com/nexdevsolutions/discovery-call"
               title="Book a Free Call"
@@ -88,7 +160,7 @@ const Navbar = () => {
               url="https://form.jotform.com/242006777431454"
             />
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
@@ -128,9 +200,6 @@ const SlideTabs = () => {
       <Tab setPosition={setPosition}>
         <Link href="#comparison">Why us? </Link>
       </Tab>
-      {/* <Tab setPosition={setPosition}>
-        <Link href="#audit">Free audit </Link>
-      </Tab> */}
       <Cursor position={position} />
     </ul>
   );
