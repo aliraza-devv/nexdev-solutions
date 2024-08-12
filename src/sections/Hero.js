@@ -69,7 +69,7 @@ const Hero = () => {
                 `inline sub-font animate-gradient bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
               )}
             >
-              Only 5 Spots Left for the month
+              Only 5 Spots Left For the Month
             </span>
             <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
           </AnimatedGradientText>
