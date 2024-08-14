@@ -17,6 +17,7 @@ import Logo from "@/components/HorizontalLogoSlider/Logo";
 import CustomCursor from "@/components/Cursor/CustomCursor";
 import Help from "@/sections/Help";
 import { AboutFounder } from "@/sections/AboutFounder";
+import Head from "next/head";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,13 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>
+          NeXDev Solutions - Website Development Agency - Best Web Developement
+          Agency
+        </title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {loading ? (
         <div className="flex flex-col justify-center mt-10 items-center overflow-hidden w-full h-[90vh]">
           <Loader />
