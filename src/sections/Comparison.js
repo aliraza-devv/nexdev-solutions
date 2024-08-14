@@ -10,6 +10,7 @@ import Team from "../../public/Assets/icons/team-3-svgrepo-com.svg";
 import Top from "../../public/Assets/icons/top-right-svgrepo-com.svg";
 import Extra from "../../public/Assets/icons/bulb-on-svgrepo-com.svg";
 import Plan from "../../public/Assets/icons/plan-svgrepo-com.svg";
+import Boost from "../../public/Assets/icons/boost-for-reddit-svgrepo-coma.svg";
 import Secure from "../../public/Assets/icons/secure-shield-password-protect-safe-svgrepo-com.svg";
 
 const Comparison = () => {
@@ -22,17 +23,17 @@ const Comparison = () => {
         <RetroThreeD />
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row justify-center gap-6 lg:gap-10 mt-6 lg:mt-10">
+      <div className="relative z-10 flex flex-col items-center lg:flex-row justify-center gap-6 lg:gap-10 mt-6 lg:mt-10">
         <WordPullUp
           className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
           words="Other Agencies"
         />
+        <div className="flex justify-center shadow-md shadow-[#5c45fd] mt-2 text-[#f5f5f5] border rounded-full border-[#5c45fd] w-16 h-16 lg:w-20 lg:h-20 text-2xl lg:text-4xl font-bold items-center">
+          <span className="mr-[-2px] z-10 heading-primary">V</span>
+          <div className="h-16 w-2 lg:h-20 lg:w-2 rotate-12 shadow-md blur-[1px] bg-[#5c45fd] shadow-[#5c45fd] border border-[#5c45fd]"></div>
+          <span className="ml-[-2px] z-10 heading-primary">S</span>
+        </div>
         <div className="flex justify-center items-center gap-2 lg:gap-4">
-          <div className="flex justify-center shadow-md shadow-[#5c45fd] mt-2 text-[#f5f5f5] border rounded-full border-[#5c45fd] w-16 h-16 lg:w-20 lg:h-20 text-2xl lg:text-4xl font-bold items-center">
-            <span className="mr-[-2px] z-10 heading-primary">V</span>
-            <div className="h-16 w-2 lg:h-20 lg:w-2 rotate-12 shadow-md blur-[1px] bg-[#5c45fd] shadow-[#5c45fd] border border-[#5c45fd]"></div>
-            <span className="ml-[-2px] z-10 heading-primary">S</span>
-          </div>
           <WordPullUp
             className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
             words="NeXDev Solutions"
@@ -58,6 +59,7 @@ const Comparison = () => {
               <div className="flex flex-col gap-4 sub-font items-start">
                 {[
                   "Inexperienced Juniors",
+                  "No focus on conversion, growth, & Sales",
                   "Old & typical",
                   "Slow Implementation",
                   "Lack of Creativity & Implementation Power.",
@@ -84,6 +86,10 @@ const Comparison = () => {
               <div className="flex flex-col gap-4 sub-font items-start">
                 {[
                   { text: "Top Experienced Team", icon: Person },
+                  {
+                    text: "High-conversion, Sales & business growth approach",
+                    icon: Boost,
+                  },
                   { text: "Use Proven K-Sight Mechanism", icon: Secure },
                   { text: "Lightning Fast Implementation", icon: Speed },
                   { text: "World-class designer & dev team", icon: Team },

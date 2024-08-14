@@ -78,7 +78,7 @@ const Services = () => {
         <h1 className="text-center">
           <SparklesText text="What do we do?" />
         </h1>
-        <h3 className="sub-font mb-20 text-xl text-[#f5f5f5]">
+        <h3 className="sub-font mb-20 text-lg text-[#f5f5f5]">
           Solution to your Next Gen Problems
         </h3>
       </div>
