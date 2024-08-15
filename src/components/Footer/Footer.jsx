@@ -42,7 +42,7 @@ const Footer = () => {
                 words="Get in Touch"
               />
               <h4 className="text-[#f5f5f5] mb-5 sub-font">
-                contact@nexdevsolutions.com
+                info@nexdevsolutions.net
               </h4>
               <h4 className="text-[#f5f5f5] mb-5 sub-font">+923081992088</h4>
               {/* <SocialMedia /> */}

@@ -22,7 +22,7 @@ const Pricing = () => {
           title="WordPress Website"
           price="Starting from $699"
           subTitle="WordPress Design & Develoment"
-          point1="4-pages High Conversion Design"
+          point1="High Conversion Design"
           point2="Best Practice Developement"
           point3="Complete SEO focused content Writing"
           point4="Fast & Secure Integration of Plugins"
