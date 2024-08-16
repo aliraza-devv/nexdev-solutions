@@ -102,7 +102,8 @@ const Hero = () => {
               </h1>
             </div>
             <p className="text-[#f5f5f5] w-full mt-4 sub-font font-medium text-base sm:text-lg sub-font md:text-xl lg:text-2xl mb-14 z-10">
-            <span className="gradient-text font-bold">NeXDev Solutions</span> helped 200+ businesses convert{" "}
+              <span className="gradient-text font-bold">NeXDev Solutions</span>{" "}
+              helped 200+ businesses convert{" "}
               <span className="gradient-text font-bold">40%</span> of web
               traffic into
               <br className="hidden md:block" /> paying customers with our
