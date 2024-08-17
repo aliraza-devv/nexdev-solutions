@@ -32,13 +32,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>
-          NeXDev Solutions - Website Development Agency - Best Web Developement
-          Agency
-        </title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       {loading ? (
         <div className="flex flex-col justify-center mt-10 items-center overflow-hidden w-full h-[90vh]">
           <Loader />
