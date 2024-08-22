@@ -25,7 +25,7 @@ const Comparison = () => {
 
       <div className="relative z-10 flex flex-col items-center lg:flex-row justify-center gap-6 lg:gap-10 mt-6 lg:mt-10">
         <WordPullUp
-          className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
+          className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
           words="Other Agencies"
         />
         <div className="flex justify-center shadow-md shadow-[#5c45fd] mt-2 text-[#f5f5f5] border rounded-full border-[#5c45fd] w-16 h-16 lg:w-20 lg:h-20 text-2xl lg:text-4xl font-bold items-center">
@@ -35,7 +35,7 @@ const Comparison = () => {
         </div>
         <div className="flex justify-center items-center gap-2 lg:gap-4">
           <WordPullUp
-            className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
+            className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
             words="NeXDev Solutions"
           />
         </div>

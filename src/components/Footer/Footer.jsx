@@ -53,7 +53,7 @@ const Footer = () => {
               className="tracking-[-0.02em] heading-primary gradient-text text-[3rem] sm:text-[4rem] md:text-[5rem] xl:text-[8rem] p-10 leading-[5rem]"
               words="Crafting Since 2016"
             />
-            <p className="text-[#f5f5f5] text-lg text-center mt-6 index">
+            <p className="text-[#f5f5f5] text-lg text-center mt-6">
               © nexdevsolutions.com 2024. All rights reserved.
             </p>
           </div>

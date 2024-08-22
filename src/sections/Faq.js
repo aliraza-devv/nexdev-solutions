@@ -4,7 +4,7 @@ import BtnPrimary from "@/components/Buttons/BtnPrimary";
 
 const Faq = () => {
   return (
-    <div className="w-[100%] h-full index">
+    <div className="w-[100%] h-full">
       <Accordion />
       <div className="flex items-center justify-center w-full">
         <BtnPrimary
