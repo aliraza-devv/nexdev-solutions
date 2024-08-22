@@ -40,7 +40,7 @@ export default function Home() {
         <main className="w-[100%] ">
           {/* <Cursor /> */}
           <CustomCursor />
-          <div className="index w-full flex items-center justify-center">
+          <div className="w-full flex items-center justify-center">
             <Navbar />
           </div>
           <Hero />

@@ -100,11 +100,11 @@ export function Projects() {
             duration: 0.5,
             ease: "easeInOut",
           }}
-          className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded-[1rem] dark:bg-gray-50/[.10] p-10"
+          className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded-[1rem] bg-gray-50/[.10] p-10"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between gap-5 items-center">
             <WordPullUp
-              className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
+              className="text-4xl font-bold tracking-[-0.02em] text-black text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
               words={project.title}
             />
             <TertiaryButton
@@ -142,7 +142,7 @@ export function Projects() {
                 {project.description}
               </p>
               <FadeText
-                className="text-lg text-black dark:text-white mt-10"
+                className="text-lg text-black text-white mt-10"
                 direction="up"
                 framerProps={{ show: { transition: { delay: 0.2 } } }}
               />
@@ -181,10 +181,9 @@ export function Projects() {
           text-center 
           font-bold 
           tracking-[-0.02em] 
-          heading-primary 
-          text-black 
+          heading-primary
           drop-shadow-xl 
-          dark:text-white 
+          text-white 
           text-[4rem] 
           sm:text-[6rem] 
           md:text-[8rem] 

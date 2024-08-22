@@ -19,7 +19,7 @@ const Accordion = () => {
         We have got the Answers
       </h2>
       <div className="container w-[100%] xl:w-[60%]">
-        <section className="info sub-font w-[100%] index">
+        <section className="info sub-font w-[100%]">
           {questions.map((question) => (
             <SingleQuestion key={question.id} {...question} />
           ))}

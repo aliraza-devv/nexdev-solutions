@@ -94,12 +94,12 @@ export const Header = () => {
   return (
     <>
       <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-        <h1 className="text-4xl px-6 md:text-7xl font-bold dark:text-white heading-primary">
+        <h1 className="text-4xl px-6 md:text-7xl font-bold text-white heading-primary">
           Get a Free
           <br />
           Website Audit Now
         </h1>
-        <p className="max-w-2xl sub-font px-6 text-base md:text-xl mt-8 dark:text-neutral-200 mb-10">
+        <p className="max-w-2xl sub-font px-6 text-base md:text-xl mt-8 text-neutral-200 mb-10">
           Get a free Audit of your website by NeXDev Solutions to know about
           your website&apos;s health. The audit will contain a deep study of
           your website including problems, SEO, design issues, their solutions,
