@@ -17,7 +17,6 @@ import Logo from "@/components/HorizontalLogoSlider/Logo";
 import CustomCursor from "@/components/Cursor/CustomCursor";
 import Help from "@/sections/Help";
 import { AboutFounder } from "@/sections/AboutFounder";
-import Head from "next/head";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);

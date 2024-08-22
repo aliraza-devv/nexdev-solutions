@@ -104,7 +104,7 @@ export function Projects() {
         >
           <div className="flex flex-col md:flex-row justify-between gap-5 items-center">
             <WordPullUp
-              className="text-4xl font-bold tracking-[-0.02em] text-black text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
+              className="text-4xl font-bold tracking-[-0.02em]  text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
               words={project.title}
             />
             <TertiaryButton
@@ -142,7 +142,7 @@ export function Projects() {
                 {project.description}
               </p>
               <FadeText
-                className="text-lg text-black text-white mt-10"
+                className="text-lg text-white mt-10"
                 direction="up"
                 framerProps={{ show: { transition: { delay: 0.2 } } }}
               />
