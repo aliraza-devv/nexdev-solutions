@@ -83,7 +83,7 @@ const Hero = () => {
                 height={150}
                 width={100}
                 alt="NexDev Solutions Arrow"
-                className="hidden lg:block z-50 mr-[-1rem] mt-6"
+                className="hidden lg:block z-40 mr-[-1rem] mt-6"
               />
               <h1 className="z-10 text-white text-[2rem] sm:text-5xl heading-primary md:text-6xl lg:text-6xl xl:text-7xl font-bold mt-[-3rem]">
                 <span className="flex justify-center items-center m-[-1rem] md:m-0">
