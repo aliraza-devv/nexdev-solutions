@@ -11,12 +11,18 @@
   position: relative;
 }
 
-.outer :before{
+.outer :before {
   .first:before {
-    background:
-      radial-gradient(40px at 0 0,#0000 calc(98% - 10px),red calc(100% - 10px) 98%,#0000),
-      conic-gradient(from 180deg at right 10px top    10px, #0000 0 90deg,green 0) 100% 0/calc(100% - 40px + 10px) 100% no-repeat,
-      conic-gradient(from 0deg   at left  10px bottom 10px, #0000 0 90deg,blue 0) 0 100%/100% calc(100% - 40px + 10px) no-repeat;
+    background: radial-gradient(
+        40px at 0 0,
+        #0000 calc(98% - 10px),
+        red calc(100% - 10px) 98%,
+        #0000
+      ),
+      conic-gradient(from 180deg at right 10px top 10px, #0000 0 90deg, green 0)
+        100% 0 / calc(100% - 40px + 10px) 100% no-repeat,
+      conic-gradient(from 0deg at left 10px bottom 10px, #0000 0 90deg, blue 0)
+        0 100%/100% calc(100% - 40px + 10px) no-repeat;
   }
 }
 .dot {

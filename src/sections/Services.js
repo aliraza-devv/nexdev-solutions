@@ -9,6 +9,7 @@ import web3d from "../../public/Assets/icons/3dweb.png";
 import seo from "../../public/Assets/icons/seo.png";
 import content from "../../public/Assets/icons/content writing.png";
 import uiux from "../../public/Assets/icons/ui-ux.png";
+import CircleButton from "@/components/Buttons/CircleButton";
 
 const cardDetails = [
   {
@@ -89,7 +90,6 @@ const Services = () => {
         {cardDetails.map((card) => (
           <BeamCard
             key={card.title}
-            // icon={card.icon}
             title={card.title}
             description={card.description}
             className="w-full"
@@ -97,8 +97,9 @@ const Services = () => {
         ))}
       </div>
       {showFloatingCallBooking && (
-        <div className="fixed sm:right-4 bottom-4 w-[100%] sm:w-[75%] md:w-[60%] lg:w-[30%] p-4 z-50 shadow-lg rounded-lg">
-          <FloatingCallBooking />
+        <div className="fixed right-4 bottom-4 p-4 z-50 shadow-lg">
+          {/* <FloatingCallBooking /> */}
+          <CircleButton />
         </div>
       )}
       <div className="flex items-center justify-center w-full">
