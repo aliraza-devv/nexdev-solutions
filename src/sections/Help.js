@@ -52,7 +52,7 @@ const Help = () => {
           We Guarantee 100% Staisfaction to our clients
         </h3>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-5 gap-4 lg:gap-10 place-items-center w-full place-content-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-4 lg:gap-10 responsive-grid place-items-center w-full place-content-center">
         {helpCardsData.map((card, index) => (
           <HelpCard
             key={index}

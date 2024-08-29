@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Faq from "@/sections/Faq";
 import Hero from "@/sections/Hero";
 import Pricing from "@/sections/Pricing";
-import Process from "@/sections/Process";
+import { Process } from "@/sections/Process";
 import Services from "@/sections/Services";
 import { Reviews } from "@/sections/Reviews";
 import { Projects } from "@/sections/Projects";
@@ -36,7 +36,7 @@ export default function Home() {
           <Loader />
         </div>
       ) : (
-        <main className="w-[100%] ">
+        <main className="w-[100%]">
           {/* <Cursor /> */}
           <CustomCursor />
           <div className="w-full flex items-center justify-center">

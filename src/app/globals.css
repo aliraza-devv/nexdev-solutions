@@ -537,6 +537,19 @@ a {
     font-size: 4rem;
   }
 }
+
+@media (min-width: 1550px) {
+  .responsive-grid {
+    .parent {
+      /* display: grid; */
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 1fr;
+      /* grid-column-gap: 10px;
+      grid-row-gap: 0px; */
+      }
+  }
+}
+
 /* Animation */
 
 @keyframes tap-upper-1 {

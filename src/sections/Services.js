@@ -10,6 +10,7 @@ import seo from "../../public/Assets/icons/seo.png";
 import content from "../../public/Assets/icons/content writing.png";
 import uiux from "../../public/Assets/icons/ui-ux.png";
 import CircleButton from "@/components/Buttons/CircleButton";
+import PulseButton from "@/components/Buttons/PulseButton";
 
 const cardDetails = [
   {

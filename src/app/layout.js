@@ -9,7 +9,7 @@ export const metadata = {
   title:
     "NeXDev Solutions - Website Development Agency - Best Web Developement Agency",
   description:
-    "NeXDev solutions is a website development agency. NeXDev Solutions is expert in WordPress, Shopify, Custom, 3D website, and no-code development and design.",
+    "NeXDev solutions is a website development agency. NeXDev Solutions is expert in WordPress, Shopify, Custom, 3D website, and no-code development and design. We help businesses create powerful, engaging and high-cenversion websites which drive more sales, leads, and busiess growth.",
 };
 
 export default function RootLayout({ children }) {
