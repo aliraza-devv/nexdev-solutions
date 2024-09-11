@@ -16,6 +16,8 @@ import Link from "next/link";
 import AnimatedGradientText from "@/components/Text/AnimatedGradientText";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Google from "../../public/Assets/graphics/google.png";
+import Clutch from "../../public/Assets/graphics/clutch.png";
 
 const people = [
   {
@@ -127,6 +129,20 @@ const Hero = () => {
                   Satisfied clients
                 </span>
               </div>
+            </div>
+            <div className="flex gap-5 z-50 mt-6">
+              <Image
+                src={Google}
+                alt="Google review badge"
+                height={50}
+                width={120}
+              />
+              <Image
+                src={Clutch}
+                alt="Clutch review badge"
+                height={50}
+                width={50}
+              />
             </div>
           </div>
         </div>
