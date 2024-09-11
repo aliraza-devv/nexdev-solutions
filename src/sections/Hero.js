@@ -63,7 +63,7 @@ const Hero = () => {
         <div className="z-10 flex min-h-[15rem] mt-20 mb-[-2rem] lg:mb-[-4rem] items-center justify-center">
           <AnimatedGradientText>
             <span className="inline animate-gradient sub-font bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
-              Aug
+              Sep
             </span>{" "}
             <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
             <span
