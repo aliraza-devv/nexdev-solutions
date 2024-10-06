@@ -15,8 +15,10 @@ import Technologies from "@/sections/Technologies";
 import { CallToAction } from "@/sections/CallToAction";
 import Logo from "@/components/HorizontalLogoSlider/Logo";
 import CustomCursor from "@/components/Cursor/CustomCursor";
-import Help from "@/sections/Help";
+import PainPoint from "@/sections/PainPoint";
 import { AboutFounder } from "@/sections/AboutFounder";
+import ReviewsImageSlider from "@/components/HorizontalLogoSlider/Reviews";
+import Solution from "@/sections/Solution";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -43,12 +45,14 @@ export default function Home() {
             <Navbar />
           </div>
           <Hero />
-          <Help />
+          <PainPoint />
+          <Solution />
           <Services />
           <Reviews />
           <Projects />
           <Process />
           <Technologies />
+          {/* <ReviewsImageSlider /> */}
           <Pricing />
           <Comparison />
           <CallToAction />

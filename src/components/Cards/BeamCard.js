@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../styles/BeamCard.module.css";
-import BtnPrimary from "../Buttons/BtnPrimary";
 
 const BeamCard = ({ title, description }) => {
   // const iconSrc = icon === "ICON" ? "/fallback/path/to/icon.png" : icon;
@@ -21,12 +20,7 @@ const BeamCard = ({ title, description }) => {
           {title}
         </h1>
         <p className="ml-14 mt-6 w-[75%] sub-font text-lg">{description}</p>
-        <div className="ml-14 mt-10">
-          <BtnPrimary
-            title="Get a Quote"
-            url="https://cal.com/nexdevsolutions/discovery-call"
-          />
-        </div>
+        <div className="ml-14 mt-10"></div>
         <div className={`${styles.topl} ${styles.line}`}></div>
         <div className={`${styles.leftl} ${styles.line}`}></div>
         <div className={`${styles.bottoml} ${styles.line}`}></div>

@@ -63,7 +63,7 @@ const Hero = () => {
         <div className="z-10 flex min-h-[15rem] mt-20 mb-[-2rem] lg:mb-[-4rem] items-center justify-center">
           <AnimatedGradientText>
             <span className="inline animate-gradient sub-font bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
-              Sep
+              Hurry
             </span>{" "}
             <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
             <span
@@ -71,7 +71,7 @@ const Hero = () => {
                 `inline sub-font animate-gradient bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
               )}
             >
-              Only 5 Spots Left For the Month
+              Only 4 Spots Left For this Month
             </span>
             <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
           </AnimatedGradientText>
@@ -103,10 +103,10 @@ const Hero = () => {
                 <span className="gradient-text">Helped 200+ Businesses</span>
               </h1>
             </div>
-            <p className="text-[#f5f5f5] w-full mt-4 sub-font font-medium text-base sm:text-lg sub-font md:text-xl lg:text-2xl mb-14 z-10">
+            <p className="text-[#f5f5f5] w-full mt-4 font-medium text-base sm:text-lg sub-font md:text-xl lg:text-2xl mb-14 z-10">
               <span className="gradient-text font-bold">NeXDev Solutions</span>{" "}
               helped 200+ businesses convert{" "}
-              <span className="gradient-text font-bold">40%</span> of web
+              <span className="gradient-text font-bold">55%</span> of web
               traffic into
               <br className="hidden md:block" /> paying customers with our
               proven{" "}

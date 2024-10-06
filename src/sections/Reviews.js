@@ -105,7 +105,7 @@ export function Reviews() {
   return (
     <div
       id="reviews"
-      className="relative flex h-[70vh] w-full flex-col items-center mt-10 justify-center overflow-hidden bg-background md:shadow-xl"
+      className="relative bg-[#161616] flex h-[70vh] w-full flex-col items-center mt-10 justify-center overflow-hidden md:shadow-xl"
     >
       <h1 className="text-center">
         <SparklesText text="Words from Our Clients" />

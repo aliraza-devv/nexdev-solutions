@@ -1,6 +1,6 @@
 .outer {
-  width: 500px;
-  height: 400px;
+  width: 450px;
+  height: 350px;
   border-radius: 1rem;
   padding: 1px;
   background: radial-gradient(
@@ -130,7 +130,7 @@
 @media only screen and (max-width: 440px) {
   .outer {
     width: 400px;
-    height: 400px;
+    height: 350px;
   }
 
   .text {
