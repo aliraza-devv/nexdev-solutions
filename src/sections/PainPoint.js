@@ -73,8 +73,14 @@ const PainPoint = () => {
       <div className="w-full">
         <div className="flex flex-col text-[#f5f5f5] justify-center items-center gap-5 mt-10 w-full px-4 md:px-0">
           {data.map((text) => (
-            <div className="p-7 w-full md:w-[42%] bg-gray-50/[.10]  flex gap-4 rounded-[1rem] items-start">
-              <div className="w-3 h-3 mt-2 bg-[#5c45fd] rounded-full shrink-0 blur-sm"></div>
+            <div
+              key={text.id}
+              className="p-7 w-full md:w-[42%] bg-gray-50/[.10]  flex gap-4 rounded-[1rem] items-start"
+            >
+              <div
+                key={text.id}
+                className="w-3 h-3 mt-2 bg-[#5c45fd] rounded-full shrink-0 blur-sm"
+              ></div>
               <p className="text-base md:text-lg sub-font" id={text.id}>
                 {text.text}
               </p>
