@@ -46,7 +46,7 @@ const data = [
   },
   {
     id: 1,
-    text: "Your have visitors but they’re not taking any actions.",
+    text: "Your have visitors but they are not taking any actions.",
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ const data = [
   },
   {
     id: 3,
-    text: "You care about your brand and hold yourself to high standards, but you're unsure who can meet your expectations and deliver the results you're looking for.",
+    text: "You care about your brand and hold yourself to high standards, but you are unsure who can meet your expectations and deliver the results you're looking for.",
   },
   {
     id: 4,
@@ -81,7 +81,7 @@ const PainPoint = () => {
             </div>
           ))}
           <h1 className="text-[#f5f5f5] heading-primary text-3xl flex justify-center items-center font-bold mt-60 md:mt-5">
-            You're on the right place. Read on.
+            You&apos;re on the right place. Read on.
           </h1>
         </div>
       </div>

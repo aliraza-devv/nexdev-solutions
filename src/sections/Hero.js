@@ -146,7 +146,6 @@ const Hero = () => {
             </div>
           </div>
         </div>
-
         <HorizontalLogoSlider />
       </div>
     </>
