@@ -1,5 +1,4 @@
 import React from "react";
-import HelpCard from "@/components/Cards/HelpCard";
 import SparklesText from "@/components/Text/SparklesText";
 import Graph from "../../public/Assets/icons/graph-up-svgrepo-com.svg";
 import Happy from "../../public/Assets/icons/happy-face-2-svgrepo-com.svg";
@@ -40,34 +39,60 @@ const helpCardsData = [
     icon: Solution,
   },
 ];
+const data = [
+  {
+    id: 0,
+    text: "You want to scale your business because you are missing on potential leads.",
+  },
+  {
+    id: 1,
+    text: "Your have visitors but they are not taking any actions.",
+  },
+  {
+    id: 2,
+    text: "Your website has an outdated design which loses trust and credibility. And it does not make your business stand out.",
+  },
+  {
+    id: 3,
+    text: "You care about your brand and hold yourself to high standards, but you are unsure who can meet your expectations and deliver the results you're looking for.",
+  },
+  {
+    id: 4,
+    text: "You want to build something special and complex web app.",
+  },
+];
 
-const Help = () => {
+const PainPoint = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-center mb-2 mt-20">
-          <SparklesText text="How we help you?" />
+          <SparklesText text="If You Are Here..." />
         </h1>
-        <h3 className="mb-20 text-xl text-center sub-font text-[#f5f5f5]">
-          We Guarantee 100% Staisfaction to our clients
-        </h3>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-4 lg:gap-10 responsive-grid place-items-center w-full place-content-center">
-        {helpCardsData.map((card, index) => (
-          <HelpCard
-            key={index}
-            title={card.title}
-            description={card.description}
-            icon={card.icon}
-          />
-        ))}
+      <div className="w-full">
+        <div className="flex flex-col text-[#f5f5f5] justify-center items-center gap-5 mt-10 w-full px-4 md:px-0">
+          {data.map((text) => (
+            <div
+              key={text.id}
+              className="p-7 w-full md:w-[42%] bg-gray-50/[.10]  flex gap-4 rounded-[1rem] items-start"
+            >
+              <div
+                key={text.id}
+                className="w-3 h-3 mt-2 bg-[#5c45fd] rounded-full shrink-0 blur-sm"
+              ></div>
+              <p className="text-base md:text-lg sub-font" id={text.id}>
+                {text.text}
+              </p>
+            </div>
+          ))}
+          <h1 className="text-[#f5f5f5] heading-primary text-3xl flex justify-center items-center font-bold mt-60 md:mt-5">
+            You&apos;re on the right place. Read on.
+          </h1>
+        </div>
       </div>
-
-      {/* <div className="w-full flex justify-center items-center mt-10">
-        <BtnPrimary title="Book a Free Call" />
-      </div> */}
     </>
   );
 };
 
-export default Help;
+export default PainPoint;
