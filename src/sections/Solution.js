@@ -1,11 +1,8 @@
 import React from "react";
 import WordPullUp from "@/components/Text/WordPullUp";
-import { FeaturedSection } from "@/components/Cards/FeaturedSection";
 import RetroGrid from "@/components/Backgrounds/RetroGrid";
 import { CardSpotlight } from "@/components/CardSpotlight/CardSpotlight";
 import { RevealText } from "@/components/RevealText/RevealText";
-import man from "../../public/Assets/3dimages/man.png";
-import Image from "next/image";
 
 const Solution = () => {
   return (
@@ -15,20 +12,20 @@ const Solution = () => {
         text="You only need a design optimed for high-conversion."
       />
       <div className="w-full flex justify-center items-center mt-20">
-        <div className="flex justify-between items-center border-[#5c45fd] border-2 flex-col rounded-[1rem] p-7 relative side-gradient w-[70%]">
+        <div className="flex justify-between items-center border-[#5c45fd] border-2 flex-col rounded-[1rem] p-7 relative side-gradient w-[95%] sm:w-[80%] md:w-[70%]">
           {/* <RetroGrid className="mt-[-1.8rem] z-[-1]" /> */}
-          <div className="flex justify-between">
+          <div className="flex justify-between flex-col sm:flex-row">
             <div className="flex flex-col justify-start items-start">
-              <h1 className="text-[#f5f5f5] heading-primary text-3xl flex justify-center items-center font-bold mt-60 md:mt-5">
+              <h1 className="text-[#f5f5f5] heading-primary text-xl sm:text-2xl md:text-3xl flex justify-center items-center font-bold md:mt-5">
                 The Solution:
               </h1>
               <WordPullUp
-                className="text-6xl font-bold tracking-[-0.02em] text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
-                words="K-SIGHT Mechanism"
+                className="text-2xl sm:text-6xl font-bold tracking-[-0.02em] text-[#f5f5f5] md:leading-[4rem]"
+                words="K-SIGHT"
               />
             </div>
-            <div className="w-[50%]">
-              <p className="text-[#f5f5f5] text-lg">
+            <div className="w-full sm:w-[50%] mt-10 sm:mt-0">
+              <p className="text-[#f5f5f5] text-md sm:text-lg">
                 We specialize in crafting high-converting landing pages,
                 websites, and sales funnels for entrepreneurs, coaches, and
                 consultants like you. <br /> <br />
@@ -42,9 +39,9 @@ const Solution = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col z-10 w-full">
-            <div className="flex justify-evenly w-full">
-              <CardSpotlight className="glassmorphism w-96 mt-10">
+          <div className="flex flex-col z-10 w-full ">
+            <div className="flex flex-col sm:flex-row gap-2 justify-evenly w-full">
+              <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
                 <h3 className="heading-primary text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
                   Design Meets Marketing
                 </h3>
@@ -54,7 +51,7 @@ const Solution = () => {
                   specifically to grow your brand.
                 </p>
               </CardSpotlight>
-              <CardSpotlight className="glassmorphism w-96 mt-10">
+              <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
                 <h3 className="heading-primary text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
                   Boost Conversions
                 </h3>
@@ -65,8 +62,8 @@ const Solution = () => {
                 </p>
               </CardSpotlight>
             </div>
-            <div className="flex justify-evenly w-full">
-              <CardSpotlight className="glassmorphism w-96 mt-10">
+            <div className="flex flex-col sm:flex-row gap-2 justify-evenly w-full">
+              <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
                 <h3 className="heading-primary text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
                   Brand Excellence
                 </h3>
@@ -76,7 +73,7 @@ const Solution = () => {
                   attracts attention.
                 </p>
               </CardSpotlight>
-              <CardSpotlight className="glassmorphism w-96 mt-10">
+              <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
                 <h3 className="heading-primary text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
                   Custom Approach
                 </h3>
