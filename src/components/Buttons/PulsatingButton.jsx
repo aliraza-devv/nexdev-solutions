@@ -16,7 +16,7 @@ export function PulsatingButton({
     <Link href={`${url}`} target="_blank">
       <button
         className={cn(
-          "relative text-center cursor-pointer flex justify-center items-center rounded-lg text-[#f5f5f5] bg-[#5c45fd] px-4 py-2",
+          "relative text-center text-xl heading-primary cursor-pointer flex justify-center items-center rounded-lg text-[#f5f5f5] bg-[#5c45fd] px-4 py-2",
           className
         )}
         style={{

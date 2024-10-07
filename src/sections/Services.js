@@ -102,13 +102,6 @@ const Services = () => {
           <CircleButton />
         </div>
       )}
-      <div className="flex items-center justify-center w-full">
-        <BtnPrimary
-          url="https://cal.com/nexdevsolutions/discovery-call"
-          title="Book Your Call"
-          className="md:w-1/2 lg:w-1/3 xl:w-1/4"
-        />
-      </div>
     </div>
   );
 };
