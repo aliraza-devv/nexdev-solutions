@@ -3,6 +3,9 @@ import WordPullUp from "@/components/Text/WordPullUp";
 import RetroGrid from "@/components/Backgrounds/RetroGrid";
 import { CardSpotlight } from "@/components/CardSpotlight/CardSpotlight";
 import { RevealText } from "@/components/RevealText/RevealText";
+import Announce from "../../public/Assets/icons/announce.gif";
+import Image from "next/image";
+import { PulsatingButton } from "@/components/Buttons/PulsatingButton";
 
 const Solution = () => {
   return (
@@ -42,7 +45,8 @@ const Solution = () => {
           <div className="flex flex-col z-10 w-full ">
             <div className="flex flex-col sm:flex-row gap-2 justify-evenly w-full">
               <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
-                <h3 className="heading-primary text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
+                <h3 className="heading-primary flex gap-3 text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
+                  <Image src={Announce} width={24} height={24} alt="Icon" />
                   Design Meets Marketing
                 </h3>
                 <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
@@ -52,7 +56,8 @@ const Solution = () => {
                 </p>
               </CardSpotlight>
               <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
-                <h3 className="heading-primary text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
+                <h3 className="heading-primary flex gap-3  text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
+                  <Image src={Announce} width={24} height={24} alt="Icon" />
                   Boost Conversions
                 </h3>
                 <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
@@ -64,7 +69,8 @@ const Solution = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-2 justify-evenly w-full">
               <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
-                <h3 className="heading-primary text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
+                <h3 className="heading-primary text-xl flex gap-3 heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
+                  <Image src={Announce} width={24} height={24} alt="Icon" />
                   Brand Excellence
                 </h3>
                 <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
@@ -74,7 +80,8 @@ const Solution = () => {
                 </p>
               </CardSpotlight>
               <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
-                <h3 className="heading-primary text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
+                <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
+                  <Image src={Announce} width={24} height={24} alt="Icon" />
                   Custom Approach
                 </h3>
                 <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
@@ -84,6 +91,11 @@ const Solution = () => {
                 </p>
               </CardSpotlight>
             </div>
+          </div>
+          <div className="mt-20">
+            <PulsatingButton url="https://cal.com/nexdevsolutions/discovery-call">
+              Book Your Call Now
+            </PulsatingButton>
           </div>
         </div>
       </div>

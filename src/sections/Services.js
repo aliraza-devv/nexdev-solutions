@@ -10,7 +10,6 @@ import seo from "../../public/Assets/icons/seo.png";
 import content from "../../public/Assets/icons/content writing.png";
 import uiux from "../../public/Assets/icons/ui-ux.png";
 import CircleButton from "@/components/Buttons/CircleButton";
-import PulseButton from "@/components/Buttons/PulseButton";
 
 const cardDetails = [
   {
@@ -106,7 +105,7 @@ const Services = () => {
       <div className="flex items-center justify-center w-full">
         <BtnPrimary
           url="https://cal.com/nexdevsolutions/discovery-call"
-          title="Book a Call"
+          title="Book Your Call"
           className="md:w-1/2 lg:w-1/3 xl:w-1/4"
         />
       </div>

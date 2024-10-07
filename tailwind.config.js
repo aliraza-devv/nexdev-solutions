@@ -17,7 +17,8 @@ module.exports = {
   			slide: 'slide var(--speed) ease-in-out infinite alternate',
   			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
   			gradient: 'gradient 8s linear infinite',
-  			shine: 'shine var(--duration) infinite linear'
+  			shine: 'shine var(--duration) infinite linear',
+  			pulse: 'pulse var(--duration) ease-out infinite'
   		},
   		keyframes: {
   			gradient: {
@@ -82,6 +83,14 @@ module.exports = {
   				},
   				to: {
   					'background-position': '0% 0%'
+  				}
+  			},
+  			pulse: {
+  				'0%, 100%': {
+  					boxShadow: '0 0 0 0 var(--pulse-color)'
+  				},
+  				'50%': {
+  					boxShadow: '0 0 0 8px var(--pulse-color)'
   				}
   			}
   		},
