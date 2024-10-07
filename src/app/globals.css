@@ -18,23 +18,23 @@
 
 @font-face {
   font-family: "Bricolage Grotesque";
-  src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf") format("woff2");
+  src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf")
+    format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Bricolage Grotesque";
-  src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf") format("woff2");
+  src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf")
+    format("woff2");
   font-weight: 700;
   font-style: normal;
 }
 
-
 @font-face {
   font-family: "MrsSaint Delafield";
-  src: url("/fonts/MrsSaintDelafield-Regular.ttf")
-    format("woff2");
+  src: url("/fonts/MrsSaintDelafield-Regular.ttf") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -100,16 +100,9 @@ body {
   /* font-weight: 400; */
 }
 
-.signature-font{
+.signature-font {
   font-family: "MrsSaint Delafield";
   font-weight: 400;
-}
-
-.bg-man{
-  /* background-image: url("../../public/Assets/3dimages/man.png");
-  background-repeat: no-repeat;
-  background-size: cover; */
-  /* z-index: 20; */
 }
 
 .gradient-text {
@@ -171,12 +164,34 @@ body {
 /* Glass Effect */
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
-  backdrop-filter: blur(10px); /* Adds a blurring effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Semi-transparent border */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border: 1px solid rgba(92, 69, 253, 0.4);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bg-object {
+  background-image: url("../../public/Assets/3dimages/circles.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 20;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
 }
 
 
@@ -473,7 +488,6 @@ a {
   border-radius: 12px;
   box-shadow: var(--dark-shadow);
   background-color: rgba(22, 22, 22, 0.3);
-
 }
 .expanded {
   padding: 1rem 1.5rem;
@@ -546,7 +560,7 @@ a {
       grid-template-rows: 1fr;
       /* grid-column-gap: 10px;
       grid-row-gap: 0px; */
-      }
+    }
   }
 }
 

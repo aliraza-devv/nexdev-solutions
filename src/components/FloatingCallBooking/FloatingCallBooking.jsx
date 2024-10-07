@@ -21,7 +21,7 @@ const FloatingCallBooking = () => {
           <h5 className="font-sm text-start sub-font">Growth & Strategy</h5>
         </div>
         <BtnLight
-          title="Book a Call"
+          title="Book Your Call"
           url="https://cal.com/nexdevsolutions/discovery-call"
         />
       </div>

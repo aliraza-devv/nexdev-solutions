@@ -9,7 +9,7 @@ const Faq = () => {
       <div className="flex items-center justify-center w-full">
         <BtnPrimary
           url="https://cal.com/nexdevsolutions/discovery-call"
-          title="Book a Free Call"
+          title="Book Your Call Now"
         />
       </div>
     </div>

@@ -166,12 +166,6 @@ export function Projects() {
       ))}
 
       <div className="h-full w-full flex items-center justify-center"></div>
-      <div className="flex items-center justify-center w-full mb-10">
-        <BtnPrimary
-          url="https://cal.com/nexdevsolutions/discovery-call"
-          title="Book a Call"
-        />
-      </div>
       <VelocityScroll
         text="Let's Work Together."
         default_velocity={2}
