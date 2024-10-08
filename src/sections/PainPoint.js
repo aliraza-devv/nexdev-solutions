@@ -86,8 +86,8 @@ const PainPoint = () => {
               </p>
             </div>
           ))}
-          <h1 className="text-[#f5f5f5] heading-primary text-3xl flex justify-center items-center font-bold mt-60 md:mt-5">
-            You&apos;re on the right place. Read on.
+          <h1 className="text-[#f5f5f5] heading-primary text-3xl flex justify-center items-center font-bold mt-7">
+            You&apos;re on the right place. Read on...
           </h1>
         </div>
       </div>
