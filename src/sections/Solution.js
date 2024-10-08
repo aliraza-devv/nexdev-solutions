@@ -13,7 +13,7 @@ const Solution = () => {
     <>
       <RevealText
         className="heading-bold"
-        text="You only need a design optimed for high-conversion."
+        text="You only need a website optimized for high-conversion."
       />
       <div className="w-full flex justify-center items-center mt-20">
         <div className="flex justify-between items-center border-[#5c45fd] border-2 flex-col rounded-[1rem] p-7 relative side-gradient w-[95%] sm:w-[80%] md:w-[70%]">
