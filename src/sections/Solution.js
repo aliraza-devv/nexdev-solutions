@@ -24,7 +24,7 @@ const Solution = () => {
                 The Solution:
               </h1>
               <WordPullUp
-                className="text-2xl sm:text-6xl font-bold tracking-[-0.02em] text-[#f5f5f5] md:leading-[4rem]"
+                className="text-3xl sm:text-6xl heading-bold tracking-[-0.02em] text-[#f5f5f5] md:leading-[4rem]"
                 words="K-SIGHT"
               />
             </div>
@@ -43,7 +43,7 @@ const Solution = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col z-10 w-full ">
+          <div className="flex flex-col items-center z-10 w-full ">
             <div className="flex flex-col sm:flex-row gap-2 justify-evenly w-full">
               <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
                 <h3 className="heading-primary flex gap-3 text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">

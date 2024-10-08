@@ -24,7 +24,7 @@ export const RevealText = ({ text, className }) => {
         <p
           ref={targetRef}
           className={
-            "flex flex-wrap text-2xl font-bold text-white/20 md:p-8 md:text-6xl lg:p-10 lg:text-6xl xl:text-6xl"
+            "flex flex-wrap text-3xl font-bold text-white/20 md:p-8 md:text-6xl lg:p-10 lg:text-6xl xl:text-6xl"
           }
         >
           {words.map((word, i) => {
