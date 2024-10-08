@@ -6,6 +6,7 @@ import { RevealText } from "@/components/RevealText/RevealText";
 import Announce from "../../public/Assets/icons/announce.gif";
 import Image from "next/image";
 import { PulsatingButton } from "@/components/Buttons/PulsatingButton";
+import Process from "../../public/Assets/images/Process.png";
 
 const Solution = () => {
   return (
@@ -98,6 +99,14 @@ const Solution = () => {
             </PulsatingButton>
           </div>
         </div>
+      </div>
+      <div className="w-full flex justify-center items-center mt-20">
+        <Image
+          src={Process}
+          width={1000}
+          height={1000}
+          alt="How K-SIGHT works?"
+        />
       </div>
     </>
   );

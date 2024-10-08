@@ -14,9 +14,9 @@
 // const content = [
 //   {
 //     number: "01",
-//     title: "Select Package/Book Your Call",
+//     title: "Select Package/Book a Call",
 //     description:
-//       "Select the package or Book Your Call Now with us to discuss your project and your needs in detail with free consultation from our experts with more than 10 years of experience.",
+//       "Select the package or book a free call with us to discuss your project and your needs in detail with free consultation from our experts with more than 10 years of experience.",
 //     content: (
 //       <div className="h-full w-full  flex items-center justify-center text-white">
 //         <Image
@@ -101,11 +101,11 @@ import Schedule5 from "../../public/Assets/graphics/Schedule-5.svg";
 export function Process() {
   const data = [
     {
-      title: "01. Book Your Call",
+      title: "01. Book a Call",
       content: (
         <div>
           <p className="heading-secondary text-[#f5f5f5] text-sm md:text-lg font-normal mb-8">
-            Select the package or Book Your Call Now with us to discuss your
+            Book your call with us to discuss your
             project and your needs in detail with free consultation from our
             experts with more than 10 years of experience.
           </p>
