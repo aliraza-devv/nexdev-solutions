@@ -58,7 +58,7 @@ const data = [
   },
   {
     id: 4,
-    text: "You want to build something special and complex web app.",
+    text: "You want to build a complex web app.",
   },
 ];
 

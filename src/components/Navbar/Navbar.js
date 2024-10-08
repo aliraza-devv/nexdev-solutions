@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="hidden xl:block">
         <BtnPrimary
           url="https://cal.com/nexdevsolutions/discovery-call"
-          title="Book Your Call Now"
+          title="Book a Free Call"
         />
         <span className="ml-2">
           <BtnLight
@@ -153,7 +153,7 @@ const Navbar = () => {
           <div className="py-4 flex flex-col gap-3" onClick={toggleMenu}>
             <BtnPrimary
               url="https://cal.com/nexdevsolutions/discovery-call"
-              title="Book Your Call Now"
+              title="Book a Free Call"
             />
             <BtnLight
               title="Get Free Audit"

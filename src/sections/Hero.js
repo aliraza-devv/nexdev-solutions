@@ -116,7 +116,7 @@ const Hero = () => {
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-16 w-full">
               <BtnPrimary
                 url="https://cal.com/nexdevsolutions/discovery-call"
-                title="Book Your Call Now"
+                title="Book a Free Call"
               />
               <Link href="#reviews">
                 <div className="flex flex-row items-center">
