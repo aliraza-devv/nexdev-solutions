@@ -13,6 +13,12 @@ import CircleButton from "@/components/Buttons/CircleButton";
 
 const cardDetails = [
   {
+    icon: uiux,
+    title: "Web Design",
+    description:
+      "We are specialized in creating good looking and high conversion UI and UX designs of mobile apps and web application/website.",
+  },
+  {
     icon: web,
     title: "Web Development",
     description:
@@ -24,18 +30,12 @@ const cardDetails = [
     description:
       "We are specialized in 3D web development using Threejs, Babylon.js, Blender with other tech stacks and creating complex 3D environments",
   },
-  {
-    icon: web,
-    title: "No-Code ",
-    description:
-      "We are specialized in mobile app development creating complex and high-performing mobile applications using Flutter and Android Studio.",
-  },
-  {
-    icon: uiux,
-    title: "Web Design",
-    description:
-      "We are specialized in creating good looking and high conversion UI and UX designs of mobile apps and web application/website.",
-  },
+  // {
+  //   icon: web,
+  //   title: "No-Code ",
+  //   description:
+  //     "We are specialized in mobile app development creating complex and high-performing mobile applications using Flutter and Android Studio.",
+  // },
   {
     icon: seo,
     title: "SEO",

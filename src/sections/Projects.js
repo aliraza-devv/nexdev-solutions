@@ -10,24 +10,25 @@ import SparklesText from "@/components/Text/SparklesText";
 import TertiaryButton from "@/components/Buttons/TertiaryButton";
 import { VelocityScroll } from "@/components/Text/VelocityScroll";
 
-import LandA from "../../public/Assets/mockups/LandA.png";
+import LandA from "../../public/Assets/mockups/Mockup-2.png";
 import Smartform from "../../public/Assets/mockups/Smarterform.png";
-import SellerGoals from "../../public/Assets/mockups/sellergoals.png";
+import SellerGoals from "../../public/Assets/mockups/Mockup-3.png";
+import Alphagon from "../../public/Assets/mockups/Mockup-7.png";
 import lighthouse from "../../public/Assets/mockups/lighthouse-reality.png";
 
 export function Projects() {
   const projectData = [
     {
-      title: "Smarter Form",
-      imageUrl: Smartform,
-      url: "https://smarterform.online/",
-      subtitle: "SaaS CRM with complex multi-step forms and Dashboards",
+      title: "The Alphagon ",
+      imageUrl: Alphagon,
+      url: "https://thealphagon.com/",
+      subtitle: "WordPress website for digital markeing agency",
       description:
-        "NeXDev Solutions and their team created this SaaS CRM web app for multiple business owners to create their own flow of forms. All three users have their own dashboards where they can create, submit, and review the forms.",
+        "NeXDev Solutions and their team created designed and developed a wordpress website for The Alphagon which helped them attract more leads and convert them into loyal clients.",
       stats: [
-        { label: "Increased Leads", value: "100%" },
-        { label: "Increased Investment", value: "67%" },
-        { label: "Increased Perfomance", value: "120%" },
+        { label: "Increased Conversion", value: "59%" },
+        { label: "Increased Sales", value: "62%" },
+        { label: "Increased Perfomance", value: "100%" },
       ],
       tags: ["Development", "Database", "DevOps"],
     },
@@ -35,13 +36,13 @@ export function Projects() {
       title: "L&A Outsource",
       imageUrl: LandA,
       url: "https://laoutsourced.com/",
-      subtitle: "WordPress Website",
+      subtitle: "WordPress Website for and outsource company",
       description:
         "NeXDev Solutions and their team created this WordPress website to showcase an outsource company and their services of outsourcing administration, compliance, and software.",
       stats: [
-        { label: "Increased Leads", value: "100%" },
-        { label: "Increased Traffic", value: "87%" },
-        { label: "Increased Revenue", value: "100%" },
+        { label: "Increased Conversion", value: "57%" },
+        // { label: "Booking Leads/month", value: "20-25" },
+        { label: "Increased Sales", value: "76%" },
       ],
       tags: ["Development", "UI/UX", "SEO"],
     },
@@ -53,9 +54,9 @@ export function Projects() {
       description:
         "NeXDev Solutions created and designed this website to showcase an Amazon Agency and their services of outsourcing administration compliance, and software. Users can view all the details about the agency and their services. NeXDev Solutions integrated multi-step forms with complex logic.",
       stats: [
-        { label: "Increased Leads", value: "80%" },
-        { label: "Increased Revenue", value: "140%" },
-        { label: "Boost Sales", value: "90%" },
+        { label: "Increased Conversion", value: "62%" },
+        // { label: "Booking Leads", value: "20-30" },
+        { label: "Increased Sales", value: "73%" },
       ],
       tags: ["Development", "UI/UX", "SEO"],
     },
@@ -81,7 +82,7 @@ export function Projects() {
       className="w-full h-full mt-36 relative flex flex-col items-center"
     >
       <h1 className="text-center mb-2">
-        <SparklesText text="Our Work" />
+        <SparklesText text="More Work" />
       </h1>
       <h3 className="mb-20 text-xl text-[#f5f5f5] sub-font text-center">
         We create websites that Inspire & Boost Sales.

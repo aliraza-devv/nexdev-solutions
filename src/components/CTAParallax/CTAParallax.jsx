@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BtnPrimary from "../Buttons/BtnPrimary";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { PulsatingButton } from "../Buttons/PulsatingButton";
 
 export const CTAParallax = ({ products }) => {
   const firstRow = products.slice(0, 5);
@@ -108,10 +109,9 @@ export const Header = () => {
         d
       </div>
       <div className="max-w-7xl px-6 z-50 relative mx-auto w-full left-0 top-[-2.5rem] md:top-[-10rem]">
-        <BtnPrimary
-          url="https://form.jotform.com/242006777431454"
-          title="Get a Free Website Audit"
-        />
+        <PulsatingButton url="https://form.jotform.com/242006777431454">
+          Get a Free Website Audit
+        </PulsatingButton>
       </div>
     </>
   );

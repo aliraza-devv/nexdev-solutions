@@ -19,6 +19,8 @@ import PainPoint from "@/sections/PainPoint";
 import { AboutFounder } from "@/sections/AboutFounder";
 import ReviewsImageSlider from "@/components/HorizontalLogoSlider/Reviews";
 import Solution from "@/sections/Solution";
+import Success from "@/sections/Success";
+import CallToActions from "@/components/CallToActions/CallToActions";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -47,9 +49,10 @@ export default function Home() {
           <Hero />
           <PainPoint />
           <Solution />
-          <Services />
-          <Reviews />
+          <Success />
           <Projects />
+          <Reviews />
+          <Services />
           <Process />
           <Technologies />
           {/* <ReviewsImageSlider /> */}
@@ -64,6 +67,7 @@ export default function Home() {
             <Logo />
           </div>
           <Faq />
+          <CallToActions />
           <Footer />
         </main>
       )}

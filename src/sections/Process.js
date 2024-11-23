@@ -97,6 +97,11 @@ import Schedule from "../../public/Assets/graphics/Schedule-2.svg";
 import Schedule3 from "../../public/Assets/graphics/Schedule-3.gif";
 import Schedule4 from "../../public/Assets/graphics/Schedule-4.gif";
 import Schedule5 from "../../public/Assets/graphics/Schedule-5.svg";
+import { CardSpotlight } from "@/components/CardSpotlight/CardSpotlight";
+import SparklesText from "@/components/Text/SparklesText";
+import Meeting from "../../public/Assets/icons/meeting.gif";
+import Dev from "../../public/Assets/icons/dev.gif";
+import launch from "../../public/Assets/icons/launch.gif";
 
 export function Process() {
   const data = [
@@ -105,9 +110,9 @@ export function Process() {
       content: (
         <div>
           <p className="heading-secondary text-[#f5f5f5] text-sm md:text-lg font-normal mb-8">
-            Book your call with us to discuss your
-            project and your needs in detail with free consultation from our
-            experts with more than 10 years of experience.
+            Book your call with us to discuss your project and your needs in
+            detail with free consultation from our experts with more than 10
+            years of experience.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
@@ -252,8 +257,58 @@ export function Process() {
     },
   ];
   return (
-    <div className="w-full">
-      <Timeline data={data} />
+    <div className="w-full h-[70vh] fle flex-col justify-evenly items-center">
+      {/* <Timeline data={data} /> */}
+      <div className="flex flex-col mt-20">
+        <h1 className="text-center mb-2">
+          <SparklesText text="Our Process" />
+        </h1>
+        <h3 className="mb-20 text-xl text-[#f5f5f5] sub-font text-center">
+          We create websites that Inspire & Boost Sales.
+        </h3>
+      </div>
+      <div className="flex w-full justify-evenly items-center">
+        <div>
+          <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
+            <Image src={Meeting} width={75} height={75} alt="Icon" />
+            <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
+              <span className="text-[#5c45fd] text-2xl">01</span> Book Your Call
+            </h3>
+            <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
+              We discuss your goals and needs in details and get to the
+              solutionand create a custom planfor you, and then we onboard you.
+            </p>
+          </CardSpotlight>
+        </div>
+
+        <div>
+          <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
+            <Image src={Dev} width={75} height={75} alt="Icon" />
+            <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
+              <span className="text-[#5c45fd] text-2xl">02</span> Design,
+              Development, Test
+            </h3>
+            <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
+              We start working on the project, providing you updates to stay
+              up-to-date. Giving you the freedom to focus on what truly matters:
+              profitability.
+            </p>
+          </CardSpotlight>
+        </div>
+        <div>
+          <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
+            <Image src={launch} width={75} height={75} alt="Icon" />
+            <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
+              <span className="text-[#5c45fd] text-2xl">03</span> Launch and
+              deliever
+            </h3>
+            <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
+              After your 100% satisfaction, we launch the project and deliever
+              its ownership to you. And make sure everything works fine.
+            </p>
+          </CardSpotlight>
+        </div>
+      </div>
     </div>
   );
 }

@@ -19,15 +19,17 @@ const Pricing = () => {
       </h1>
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-10 justify-items-center">
         <PricingCard
-          title="WordPress Website"
-          price="Starting from $699"
-          subTitle="WordPress Design & Develoment"
+          miniTitle="One Off"
+          title="Design + Develop + Copywriting"
+          price="$2099"
+          priceCut="$3500"
+          subTitle="Conversion-driven landing page design"
           point1="High Conversion Design"
           point2="Best Practice Developement"
           point3="Complete SEO focused content Writing"
-          point4="Fast & Secure Integration of Plugins"
-          point5="Website Bradning"
-          point6="Newsletter Setup"
+          point4="Updates every 2-3 days"
+          point5="Unlimited revisions"
+          point6="Guide to manage your site"
           point7="FREE Premium Theme (Worth: $299)"
           point8="FREE Elementor Pro (Worth: $99)"
           point10="FREE 6 Months Hosting"
@@ -36,6 +38,7 @@ const Pricing = () => {
         />
 
         <PricingCard
+          miniTitle="One Off"
           title="Custom Coding"
           price="Starting from $899"
           subTitle="Have a custom coding Project?"
@@ -53,6 +56,7 @@ const Pricing = () => {
         />
 
         <PricingCard
+          miniTitle="Monthly Subscription"
           title="Custom Poject"
           price="Get a Quote"
           subTitle="Have an idea to discuss & Implement"

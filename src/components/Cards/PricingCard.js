@@ -17,19 +17,29 @@ const PricingCard = ({
   point9,
   point10,
   url,
+  miniTitle,
+  priceCut,
 }) => {
   return (
     <div className={styles.card}>
       <div className={styles.card__border}></div>
       <div className={styles.card_title__container}>
         <span
-          className={`${styles.card_title} mb-3 heading-secondary flex flex-col`}
+          className={`${styles.card_miniTitle} border rounded-full border-[#5c45fd] bg-none px-3 py-1 text-[#f5f5f5] heading-secondary `}
+        >
+          {miniTitle}
+        </span>
+        <span
+          className={`${styles.card_title} mb-3 mt-4 heading-secondary flex flex-col`}
         >
           {title}
         </span>
         <span
-          className={`${styles.card_price} border rounded-full border-[#5c45fd] bg-none px-3 py-1 text-[#f5f5f5] heading-secondary `}
+          className={`${styles.card_price} bg-none px-3 py-1 text-[#f5f5f5] heading-secondary `}
         >
+          <span className={`${styles.card_priceCut} text-[#9b9b9b] mr-2`}>
+            {priceCut}
+          </span>
           {price}
         </span>
         <p className={`${styles.card_paragraph} mt-3`}>{subTitle}</p>

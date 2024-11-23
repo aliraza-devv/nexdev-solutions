@@ -18,6 +18,7 @@ import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Google from "../../public/Assets/graphics/google.png";
 import Clutch from "../../public/Assets/graphics/clutch.png";
+import BtnLight from "../components/Buttons/BtnLight";
 
 const people = [
   {
@@ -118,30 +119,36 @@ const Hero = () => {
                 url="https://cal.com/nexdevsolutions/discovery-call"
                 title="Book a Free Call"
               />
-              <Link href="#reviews">
-                <div className="flex flex-row items-center">
-                  <AnimatedTooltip items={people} />
-                </div>
-              </Link>
-              <div className="flex flex-col text-start sub-font text-white mt-4 md:mt-0 md:ml-[-2rem] z-10">
-                <span className="font-bold text-lg md:text-xl">200+</span>
-                <span className="font-light text-sm md:text-base">
-                  Satisfied clients
-                </span>
-              </div>
+              <BtnLight
+                title="Get Free Audit"
+                url="https://form.jotform.com/242006777431454"
+              />
             </div>
-            <div className="flex gap-5 z-50 mt-6">
+            <div className="flex gap-7 z-50 mt-6">
+              <div className="flex flex-between gap-16">
+                <Link href="#reviews">
+                  <div className="flex flex-row items-center">
+                    <AnimatedTooltip items={people} />
+                  </div>
+                </Link>
+                <div className="flex flex-col text-start sub-font text-white mt-4 md:mt-0 md:ml-[-2rem] z-10">
+                  <span className="font-bold text-lg md:text-xl">200+</span>
+                  <span className="font-light text-sm md:text-base">
+                    Satisfied clients
+                  </span>
+                </div>
+              </div>
               <Image
                 src={Google}
                 alt="Google review badge"
                 height={50}
-                width={120}
+                width={150}
               />
               <Image
                 src={Clutch}
                 alt="Clutch review badge"
                 height={50}
-                width={50}
+                width={70}
               />
             </div>
           </div>

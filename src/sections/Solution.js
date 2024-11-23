@@ -31,15 +31,15 @@ const Solution = () => {
             <div className="w-full sm:w-[50%] mt-10 sm:mt-0">
               <p className="text-[#f5f5f5] text-md sm:text-lg">
                 We specialize in crafting high-converting landing pages,
-                websites, and sales funnels for entrepreneurs, coaches, and
-                consultants like you. <br /> <br />
+                websites, sales funnels, and web apps for entrepreneurs, coaches,
+                and consultants like you. <br /> <br />
                 <span className="gradient-text text-2xl font-bold">
                   Our secret sauce?
                 </span>{" "}
                 <br /> <br />
-                Conversion-driven design that follow design, marketing,
-                copywriting rules which we have discovered with 8+ years of
-                research and development.
+                Conversion-driven design that follow psychology, design,
+                marketing, copywriting rules which we have discovered with 8+
+                years of research and development.
               </p>
             </div>
           </div>

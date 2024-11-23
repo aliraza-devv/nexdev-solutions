@@ -18,7 +18,12 @@ const Navbar = () => {
     <div className="fixed z-50 glassmorphism rounded-[1rem] w-[100%] lg:w-[80%] h-[10%] mt-[5rem] md:mt-[7rem] flex justify-between items-center px-4 lg:px-8">
       <Link href={"#home"}>
         <div>
-          <Image src={nexdev} height={75} width={75} alt="NeXDev Solutions" />
+          <Image
+            src={nexdev}
+            height={75}
+            width={75}
+            alt="NeXDev Solutions Logo"
+          />
         </div>
       </Link>
       <div className="hidden xl:flex justify-center items-center">
@@ -29,12 +34,12 @@ const Navbar = () => {
           url="https://cal.com/nexdevsolutions/discovery-call"
           title="Book a Free Call"
         />
-        <span className="ml-2">
+        {/* <span className="ml-2">
           <BtnLight
             title="Get Free Audit"
             url="https://form.jotform.com/242006777431454"
           />
-        </span>
+        </span> */}
       </div>
       <div className="xl:hidden flex items-center">
         <button onClick={toggleMenu} className="text-[#f5f5f5]">
@@ -155,10 +160,10 @@ const Navbar = () => {
               url="https://cal.com/nexdevsolutions/discovery-call"
               title="Book a Free Call"
             />
-            <BtnLight
+            {/* <BtnLight
               title="Get Free Audit"
               url="https://form.jotform.com/242006777431454"
-            />
+            /> */}
           </div>
         </motion.div>
       )}
@@ -183,7 +188,7 @@ const SlideTabs = () => {
           opacity: 0,
         }));
       }}
-      className="relative mx-auto flex w-fit p-1"
+      className="relative mx-auto flex w-fit p-1 heading-primary"
     >
       <Tab setPosition={setPosition}>
         <Link href={"#services"}>Services </Link>

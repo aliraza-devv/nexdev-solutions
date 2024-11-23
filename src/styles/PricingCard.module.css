@@ -83,7 +83,7 @@
 }
 
 .card .card_title__container .card_title {
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: var(--white);
 }
@@ -95,7 +95,18 @@
   color: var(--white);
 }
 .card .card_title__container .card_price {
-  font-size: 1.2rem;
+  font-size: 2rem;
+  word-spacing: 3px;
+  font-weight: 500;
+}
+.card .card_title__container .card_priceCut {
+  font-size: 2rem;
+  word-spacing: 3px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+.card .card_title__container .card_miniTitle {
+  font-size: 1rem;
   word-spacing: 3px;
   font-weight: 500;
 }

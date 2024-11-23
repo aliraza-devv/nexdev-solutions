@@ -9,6 +9,7 @@ import Abrar from "../../public/Assets/images/Abrar.jpg";
 import Uzair from "../../public/Assets/images/Uzair.jpeg";
 import Najam from "../../public/Assets/images/Najam.jpg";
 import Image from "next/image";
+// import Testimonial1 from "../../public/Assets/Videos/Testionominal-1.mp4";
 
 const reviews = [
   {
@@ -120,6 +121,13 @@ export function Reviews() {
           <ReviewCard key={review.name} {...review} />
         ))}
       </Marquee>
+      {/* <div>
+        <video width="600" controls>
+          <source src={Testimonial1} type="video/mp4" />
+          <source src="/myvideo.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+      </div> */}
       {/* <div className="pointer-events-none absolute inset-y-0 left-0 w-1/5 bg-gradient-to-r from-black dark:from-background"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/5 bg-gradient-to-l from-black dark:from-background"></div> */}
     </div>
