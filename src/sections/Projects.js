@@ -76,6 +76,7 @@ export function Projects() {
     },
   ];
 
+  
   return (
     <div
       id="projects"
