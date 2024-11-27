@@ -9,14 +9,24 @@ import BtnPrimary from "@/components/Buttons/BtnPrimary";
 import SparklesText from "@/components/Text/SparklesText";
 import TertiaryButton from "@/components/Buttons/TertiaryButton";
 import { VelocityScroll } from "@/components/Text/VelocityScroll";
-
+import { useState, useEffect } from "react";
 import LandA from "../../public/Assets/mockups/Mockup-2.png";
 import Smartform from "../../public/Assets/mockups/Smarterform.png";
 import SellerGoals from "../../public/Assets/mockups/Mockup-3.png";
 import Alphagon from "../../public/Assets/mockups/Mockup-7.png";
 import lighthouse from "../../public/Assets/mockups/lighthouse-reality.png";
+import { IconCode, IconDatabase, IconSettings } from "@tabler/icons-react";
+import {useResponsive} from "/src/constants/MediaQueries";
 
 export function Projects() {
+  const {isBp20} = useResponsive();
+  const [fullCycleHovered, setFullCycleHovered] = useState(false);
+  const handleFullCycleHovered = () => {
+    setFullCycleHovered(true);
+  }
+  const handleFullCycleNotHovered = () => {
+    setFullCycleHovered(false);
+  };
   const projectData = [
     {
       title: "The Alphagon ",
@@ -28,7 +38,7 @@ export function Projects() {
       stats: [
         { label: "Increased Conversion", value: "59%" },
         { label: "Increased Sales", value: "62%" },
-        { label: "Increased Perfomance", value: "100%" },
+        { label: "Increased Performance", value: "100%" },
       ],
       tags: ["Development", "Database", "DevOps"],
     },
@@ -75,6 +85,10 @@ export function Projects() {
       tags: ["Development", "UI/UX"],
     },
   ];
+
+  useEffect(() => {
+    console.log("value of fullCycleHovered is", fullCycleHovered);
+  }, [fullCycleHovered])
 
   
   return (
@@ -123,24 +137,40 @@ export function Projects() {
                 width={400}
                 height={400}
                 alt={`${project.title} Project Mockup`}
-                className="rounded-[1rem]"
+                className="rounded-[1rem] sm-7:w-[100%]"
               />
-              <div className="flex mt-6 gap-4 flex-wrap">
-                {project.tags.map((tag, i) => (
+              <div className={`flex ${isBp20 ? "flex-col items-center" : ""} min-w-max mt-6 gap-4 flex-wrap`}>
+                {(isBp20) && (
+                  <div
+                  onMouseEnter={handleFullCycleHovered}
+                  onMouseLeave={handleFullCycleNotHovered}
+                  className={`cursor-pointer flex min-w-max sub-font justify-center items-center w-[100%]  hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]`}
+                >
+                  Full-cycle Solution
+                </div>
+                )}  
+                {fullCycleHovered ? project.tags.map((tag, i) => (
                   <div
                     key={i}
-                    className="flex sub-font justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
+                    className="flex min-w-max sub-font justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
                   >
-                    {tag}
+                    { tag}
                   </div>
-                ))}
+                )) : !isBp20 ? project.tags.map((tag, i) => (
+                  <div
+                    key={i}
+                    className="flex min-w-max sub-font justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
+                  >
+                    { tag}
+                  </div>
+                )) : null}
               </div>
             </div>
             <div className="w-full lg:w-[43%]">
               <h3 className="text-[#f5f5f5] sub-font mb-10 font-medium text-2xl md:text-3xl heading-sub-responsive">
                 {project.subtitle}
               </h3>
-              <p className="text-[#f5f5f5] sub-font mb-10 font-sm text-xl heading-sub-responsive">
+              <p className="text-[#f5f5f5] sub-font mb-10 font-sm text-xl heading-sub-responsive sm-11:hidden">
                 {project.description}
               </p>
               <FadeText
@@ -149,14 +179,14 @@ export function Projects() {
                 framerProps={{ show: { transition: { delay: 0.2 } } }}
               />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 gap-4 w-full lg:w-[40%]">
+            <div  className="grid sm-11:mt-[-35px] lg-3:grid-cols-1 sm-9:grid-cols-1 lg:grid-cols-2  sm-8:w-[100%]  sm-7:grid-cols-2 lg-4:grid-cols-3 gap-4 w-full lg-4:w-[100%] sm-11:w-[100%] lg-3:w-[20%] sm-7:w-[70%] lg:w-[40%]">
               {project.stats.map((stat, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <div>
+                <div  key={i} className="flex flex-col items-center lg-3:items-start sm-9:ml-[27%] sm-10:ml-[0] sm-11:w-[100%]">
+                  <div className={`sm-11:w-[100%] ${stat.label == "Increased Conversion" ? "sm-11:ml-[43%]" : stat.label == "Increased Performance" ? "sm-11:ml-[43%]" : stat.label == "Boost Sales" ? "sm-11:ml-[43%]" : ""}`}>
                     <h4 className="w-[9rem] sub-font h-[10vh] mb-6 flex justify-center items-center text-[#f5f5f5] rounded-[1rem] bg-[#5c45fd] path-clip">
                       {stat.value}
                     </h4>
-                    <p className="text-[#f5f5f5] sub-font text-md text-center">
+                    <p className={`text-[#f5f5f5] sub-font text-md ${stat.label == "Increased Sales" ? "lg-3:ml-[15px]" : stat.label == "Increased Conversion" ? "lg-3:ml-[-8px]" : stat.label == "Increased Revenue" ? "lg-3:ml-[3px]" : stat.label == "Boost Sales" ? "lg-3:ml-[30px]" : ""} lg-3:ml-[-15px]`}>
                       {stat.label}
                     </p>
                   </div>

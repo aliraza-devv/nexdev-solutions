@@ -267,12 +267,31 @@ export function Process() {
           We create websites that Inspire & Boost Sales.
         </h3>
       </div>
+      <div className="flex w-full  justify-center">
+        <div className="w-[75%] flex items-center">
+          <div className="w-24 h-24 rounded-full bg-transparent 
+              ring-8 ring-offset-4 ring-offset-[#241c45] 
+              ring-[#9687ff] shadow-[inset_0_0_15px_#6b5fd4,0_0_10px_#9687ff] 
+              flex items-center justify-center text-3xl text-white" >1</div>
+          <div className="w-[33%] border-t-[4px] border-[#9687ff] h-[0] ml-[10px]"></div>
+          <div className="w-24 h-24 rounded-full bg-transparent 
+              ring-8 ring-offset-4 ring-offset-[#241c45] 
+              ring-[#9687ff] shadow-[inset_0_0_15px_#6b5fd4,0_0_10px_#9687ff] 
+              flex items-center justify-center text-3xl text-white" >2</div>
+          <div className="w-[33%] border-t-[4px] border-[#9687ff] h-[0] ml-[10px]"></div>
+          <div className="w-24 h-24 rounded-full bg-transparent 
+              ring-8 ring-offset-4 ring-offset-[#241c45] 
+              ring-[#9687ff] shadow-[inset_0_0_15px_#6b5fd4,0_0_10px_#9687ff] 
+              flex items-center justify-center text-3xl text-white" >3</div>
+
+        </div>
+      </div>
       <div className="flex w-full justify-evenly items-center">
         <div>
           <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
             <Image src={Meeting} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
-              <span className="text-[#5c45fd] text-2xl">01</span> Book Your Call
+              Book Your Call
             </h3>
             <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
               We discuss your goals and needs in details and get to the
@@ -285,7 +304,7 @@ export function Process() {
           <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
             <Image src={Dev} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
-              <span className="text-[#5c45fd] text-2xl">02</span> Design,
+              Design,
               Development, Test
             </h3>
             <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">
@@ -299,7 +318,7 @@ export function Process() {
           <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10">
             <Image src={launch} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
-              <span className="text-[#5c45fd] text-2xl">03</span> Launch and
+              Launch and
               deliever
             </h3>
             <p className="text-neutral-200 heading-secondary mt-4 relative z-20 text-md">

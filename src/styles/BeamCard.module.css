@@ -35,7 +35,7 @@
   z-index: 2;
   right: 10%;
   top: 10%;
-  animation: moveDot 6s linear infinite;
+  /* animation: moveDot 6s linear infinite; */
 }
 
 @keyframes moveDot {

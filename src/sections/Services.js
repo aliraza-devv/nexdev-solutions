@@ -74,7 +74,7 @@ const Services = () => {
   }, []);
 
   return (
-    <div id="services" className="flex flex-col relative mt-24 gap-16">
+    <div id="services" className="flex flex-col items-center justify-center relative mt-24 gap-16">
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-center">
           <SparklesText text="What do we do?" />
@@ -86,15 +86,17 @@ const Services = () => {
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Services
       </h1>
-      <div className="grid grid-cols-1 gap-y-8 gap-x-20 lg:grid-cols-2 xl:grid-cols-3 justify-center mx-auto">
-        {cardDetails.map((card) => (
-          <BeamCard
-            key={card.title}
-            title={card.title}
-            description={card.description}
-            className="w-full"
-          />
-        ))}
+      <div>
+        <div  className="grid grid-cols-1 sm-12:grid-cols-1 sm-14:ml-[15px] gap-y-8 gap-x-20 4xl:gap-x-10 4xl:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:ml-[20px] justify-center mx-auto">
+          {cardDetails.map((card) => (
+            <BeamCard
+              key={card.title}
+              title={card.title}
+              description={card.description}
+              className="w-full"
+            />
+          ))}
+        </div>
       </div>
       {showFloatingCallBooking && (
         <div className="fixed right-4 bottom-4 p-4 z-50 shadow-lg">

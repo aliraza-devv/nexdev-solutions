@@ -226,7 +226,7 @@ const PricingCard = ({
           <span className={styles.list_text}>{point10}</span>
         </li>
       </ul>
-      <button className={`${styles.button} sub-font font-bold`}>
+      <button className={`${styles.button} sub-font font-bold mt-4`}>
         <Link href={`${url}`}>Get a Quote</Link>
       </button>
     </div>
