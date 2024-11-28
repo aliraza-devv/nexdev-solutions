@@ -7,7 +7,7 @@ const BeamCard = ({ title, description }) => {
   return (
     <div className={styles.outer}>
       {/* <div className={styles.dot}></div> */}
-      <div className={`${styles.card} sm-13:w-[50%]`}>
+      <div className={`${styles.card} sm-13:w-[50%] min-sm:w-[30%]`}>
         <div className={styles.ray}></div>
         {/* <Image
           className="ml-14 mt-10"

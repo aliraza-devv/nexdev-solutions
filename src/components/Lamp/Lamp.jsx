@@ -7,9 +7,9 @@ import Image from "next/image";
 
 export function Lamp() {
   return (
-    <LampContainer>
-      <div className="w-[100%] lg:w-[80%]">
-        <div className="flex flex-col lg:flex-row items-center w-full justify-center gap-20">
+    <LampContainer className="h-[300px] ">
+      <div className="w-[100%] lg:w-[80%] pt-[200px]">
+        <div className="flex flex-col lg:flex-row sm-20:mt-[300px] items-center sm-20:gap-[5px] w-full justify-center sm-20:justify-end gap-20">
           <motion.div
             initial={{ opacity: 0.5, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -37,8 +37,8 @@ export function Lamp() {
               best way possible.{" "}
               <span className="gradient-text font-bold">My Goal </span>
               through NeXDev Solutions is to create the best web experiences
-              that that actually sells and convert normal user into your loyal
-              customer.
+              that actually sell and convert normal users into your loyal
+              customers.
             </p>
           </motion.div>
           <motion.div
@@ -62,17 +62,19 @@ export function Lamp() {
               Ali Raza
             </span>
           </motion.div>
-        </div>
       </div>
+        </div>
+       
     </LampContainer>
   );
 }
 
 export const LampContainer = ({ children, className }) => {
   return (
+    <div className="w-full z-0 h-full pt-[400px] sm-20:h-[500px]  sm-20:pt-[30px]">
     <div
       className={cn(
-        "relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#161616] w-full rounded-md z-0 mb-20 mt-20",
+        "relative sm-20:min-h-screen flex flex-col sm-20:overflow-scroll items-center justify-center bg-[#161616] w-full rounded-md  z-0 mb-20",
         className
       )}
     >
@@ -139,6 +141,7 @@ export const LampContainer = ({ children, className }) => {
       <div className="relative lg:top-[-15rem] z-50 flex flex-col items-center heading-primary px-5">
         {children}
       </div>
+    </div>
     </div>
   );
 };

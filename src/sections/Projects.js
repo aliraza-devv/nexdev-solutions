@@ -16,17 +16,10 @@ import SellerGoals from "../../public/Assets/mockups/Mockup-3.png";
 import Alphagon from "../../public/Assets/mockups/Mockup-7.png";
 import lighthouse from "../../public/Assets/mockups/lighthouse-reality.png";
 import { IconCode, IconDatabase, IconSettings } from "@tabler/icons-react";
-import {useResponsive} from "/src/constants/MediaQueries";
+
 
 export function Projects() {
-  const {isBp20} = useResponsive();
-  const [fullCycleHovered, setFullCycleHovered] = useState(false);
-  const handleFullCycleHovered = () => {
-    setFullCycleHovered(true);
-  }
-  const handleFullCycleNotHovered = () => {
-    setFullCycleHovered(false);
-  };
+ 
   const projectData = [
     {
       title: "The Alphagon ",
@@ -40,7 +33,7 @@ export function Projects() {
         { label: "Increased Sales", value: "62%" },
         { label: "Increased Performance", value: "100%" },
       ],
-      tags: ["Development", "Database", "DevOps"],
+      tags: ["Development", "Design"],
     },
     {
       title: "L&A Outsource",
@@ -86,10 +79,7 @@ export function Projects() {
     },
   ];
 
-  useEffect(() => {
-    console.log("value of fullCycleHovered is", fullCycleHovered);
-  }, [fullCycleHovered])
-
+  
   
   return (
     <div
@@ -120,7 +110,7 @@ export function Projects() {
         >
           <div className="flex flex-col md:flex-row justify-between gap-5 items-center">
             <WordPullUp
-              className="text-4xl font-bold tracking-[-0.02em]  text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
+              className="text-4xl font-bold tracking-[-0.02em] sm-20:text-3xl  text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
               words={project.title}
             />
             <TertiaryButton
@@ -139,31 +129,15 @@ export function Projects() {
                 alt={`${project.title} Project Mockup`}
                 className="rounded-[1rem] sm-7:w-[100%]"
               />
-              <div className={`flex ${isBp20 ? "flex-col items-center" : ""} min-w-max mt-6 gap-4 flex-wrap`}>
-                {(isBp20) && (
-                  <div
-                  onMouseEnter={handleFullCycleHovered}
-                  onMouseLeave={handleFullCycleNotHovered}
-                  className={`cursor-pointer flex min-w-max sub-font justify-center items-center w-[100%]  hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]`}
-                >
-                  Full-cycle Solution
-                </div>
-                )}  
-                {fullCycleHovered ? project.tags.map((tag, i) => (
+              <div className={"flex  min-w-max mt-6 gap-4 flex-wrap"}>
+                 {project.tags.map((tag, i) => (
                   <div
                     key={i}
                     className="flex min-w-max sub-font justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
                   >
                     { tag}
                   </div>
-                )) : !isBp20 ? project.tags.map((tag, i) => (
-                  <div
-                    key={i}
-                    className="flex min-w-max sub-font justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
-                  >
-                    { tag}
-                  </div>
-                )) : null}
+                ))}
               </div>
             </div>
             <div className="w-full lg:w-[43%]">

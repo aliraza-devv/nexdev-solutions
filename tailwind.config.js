@@ -48,7 +48,11 @@ module.exports = {
 			"sm-16": {max: '642px'},
 			"sm-17": {max: '436px'},
 			"sm-18": {max: '394px'},
-			"sm-19": {max: '379px'}// Ultra large screens
+			"sm-19": {max: '379px'},
+			"sm-20": {max: '768px'},
+			"lg-5": {max: '1024px'},
+			"min-sm": {max: '377px'},
+			"max-sm": {max: '320px'}// Ultra large screens
 		},
 		animation: {
 		  grid: "grid 15s linear infinite",
@@ -187,6 +191,9 @@ module.exports = {
 		extend: {
 		  backgroundColor: ["hover"],
 		},
+		fontFamily: {
+			'bricolage-grotesque': ['"Bricolage Grotesque"', 'serif'], // Define custom font
+		  },
 	  },
 	},
 	plugins: [require("tailwindcss-animate")],

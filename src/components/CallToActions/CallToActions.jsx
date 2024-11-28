@@ -46,7 +46,7 @@ const CallToActions = () => {
 
   return (
     <div className="w-full flex justify-center items-center mt-20">
-      <div className="w-[50%] rounded-[1rem] bg-[#5c45fd] p-10">
+      <div className="w-[50%] lg-5:w-[80%] rounded-[1rem] bg-[#5c45fd] p-10">
         <div className="flex flex-between gap-16">
           <Link href="#reviews">
             <div className="flex flex-row items-center">

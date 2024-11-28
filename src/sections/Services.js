@@ -87,7 +87,7 @@ const Services = () => {
         Services
       </h1>
       <div>
-        <div  className="grid grid-cols-1 sm-12:grid-cols-1 sm-14:ml-[15px] gap-y-8 gap-x-20 4xl:gap-x-10 4xl:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:ml-[20px] justify-center mx-auto">
+        <div  className="grid grid-cols-1 sm-12:grid-cols-1 gap-y-8 gap-x-20 4xl:gap-x-10 4xl:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:ml-[20px] justify-center mx-auto">
           {cardDetails.map((card) => (
             <BeamCard
               key={card.title}

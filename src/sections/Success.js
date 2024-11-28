@@ -15,6 +15,7 @@ const Success = () => {
       />
 
       {/* 1st */}
+      <div className="h-full pt-20 w-full flex flex-col items-center">
       <div  className="flex flex-row justify-evenly items-center sm-6:items-start  sm-2:ml-40 sm-4:ml-[0] sm-3:ml-[200px] sm-3:w-[85vw] sm-5:flex-col sm-5:gap-[30px] w-[60%] mt-36 max-xl:w-[75vw] max-lg:w-[78vw] lg-1:ml-[0] max-xl:ml-[100px]">
         <div className="w-[40%] sm-5:w-[100%] relative" >
           <div className="glassmorphism p-7 w-30% absolute top-[-3rem] text-center left-[-9rem] lg-1:hidden">
@@ -38,8 +39,8 @@ const Success = () => {
         </div>
         <div className="flex flex-col w-[60%] sm-5:w-[100%] sm-5:ml-[0] max-2xl:ml-6">
           <h3 className="font-bold xs-1:font-normal xs-2:font-light mb-5 xs-2:text-md text-3xl xs-1:text-2xl w-full text-[#f5f5f5]">
-            EXAMANAGEMENT closed 15+ leads from website in 3 day of launch and
-            making $120k/month
+            EXAMANAGEMENT closed 15+ leads from website in 3 days of launch and
+            makes $120k/month
           </h3>
           <p className="text-xl xs-2:font-thin xs-1:text-lg xs-2:text-sm text-[#f5f5f5] w-[100%]">
             We built a service base website funnel which helps EXAMANAGEMENT
@@ -122,6 +123,7 @@ const Success = () => {
           {/* <source src="/myvideo.webm" type="video/webm" /> */}
           Your browser does not support the video tag.
         </video>
+      </div>
       </div>
     </div>
   );

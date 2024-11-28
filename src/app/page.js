@@ -60,9 +60,11 @@ export default function Home() {
           <Comparison />
           <CallToAction />
           <AboutFounder />
-          <h1 className="text-[#f5f5f5] heading-primary flex justify-center items-center font-bold mt-60 md:mt-5">
-            Trusted by 200+ Businesses
-          </h1>
+          <div className="pt-[40px] mt-[10px] lg-5:mt-[50px]">
+            <h1 className="text-[#f5f5f5] heading-primary sm-20:text-3xl lg-5:heading-secondary flex justify-center items-center font-bold md:mt-5">
+              Trusted by 200+ Businesses
+            </h1>
+          </div>
           <div className="overflow-hidden">
             <Logo />
           </div>

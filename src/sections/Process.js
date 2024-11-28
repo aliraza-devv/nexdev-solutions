@@ -257,7 +257,7 @@ export function Process() {
     },
   ];
   return (
-    <div className="w-full h-[70vh] flex flex-col justify-evenly items-center">
+    <div className="w-full flex flex-col justify-evenly items-center">
       {/* <Timeline data={data} /> */}
       <div className="flex flex-col mt-20">
         <h1 className="text-center mb-2">
@@ -267,29 +267,26 @@ export function Process() {
           We create websites that Inspire & Boost Sales.
         </h3>
       </div>
-      <div className="flex w-full  flex-col 5xl:h-[100%] 5xl:flex-row 5xl:gap-[60px] ">
-      <div className="flex  5xl:h-[530px]  5xl:w-[60%]  5xl:mt-[30px]  5xl:hidden 5xl:flex-row w-full 5xl:items-center 5xl:justify-end  justify-center">
-        <div className="w-[75%]   5xl:w-[110px] 5xl:flex-col justify-center flex items-center">
-          <div className="w-24 h-24 5xl:mt-[430px] rounded-full bg-transparent 
-              ring-8 ring-offset-4 ring-offset-[#241c45] 
-              ring-[#9687ff] shadow-[inset_0_0_15px_#6b5fd4,0_0_10px_#9687ff] 
-              flex items-center justify-center text-3xl text-white" >1</div>
-          <div className="w-[33%] border-t-[4px] 5xl:border-t-[0] 5xl:mt-[20px] 5xl:ml-[30px] 5xl:border-l-[4px] border-[#9687ff] h-[0] 5xl:h-[200px] ml-[10px]"></div>
-          <div className="w-24 h-24 rounded-full bg-transparent 
-              ring-8 ring-offset-4 ring-offset-[#241c45] 
-              ring-[#9687ff] shadow-[inset_0_0_15px_#6b5fd4,0_0_10px_#9687ff] 
-              flex items-center justify-center text-3xl text-white" >2</div>
-          <div className="w-[33%] border-t-[4px]  5xl:border-t-[0] 5xl:border-l-[4px] 5xl:ml-[30px] 5xl:mt-[20px] border-[#9687ff] 5xl:h-[200px] h-[0] ml-[10px]"></div>
-          <div className="w-24 h-24 rounded-full bg-transparent 
-              ring-8 ring-offset-4 ring-offset-[#241c45] 
-              ring-[#9687ff] shadow-[inset_0_0_15px_#6b5fd4,0_0_10px_#9687ff] 
-              flex items-center justify-center text-3xl text-white" >3</div>
+      <div className="flex w-full items-center  flex-col 5xl:h-[100%] lg-5:gap-[30px] 5xl:gap-[60px] ">
+      <div className="flex        sm-20:hidden  w-full   justify-center">
+        <div className="w-[90%]     justify-center flex items-center">
+          <div className="w-[30px] h-[30px]  rounded-full bg-transparent 
+              border-[2px] border-[#9687ff]
+              flex items-center justify-center text-lg text-white font-bricolage-grotesque" >1</div>
+          <div className="w-[33%] border-t-[2px]  border-[#9687ff] h-[0]  "></div>
+          <div className="w-[30px] h-[30px]  rounded-full bg-transparent 
+              border-[2px] border-[#9687ff]
+              flex items-center justify-center text-lg text-white font-bricolage-grotesque" >2</div>
+          <div className="w-[33%] border-t-[2px] border-[#9687ff] h-[0]"></div>
+          <div className="w-[30px] h-[30px] rounded-full bg-transparent 
+              border-[2px] border-[#9687ff]
+              flex items-center justify-center text-lg text-white font-bricolage-grotesque" >3</div>
 
         </div>
       </div>
-      <div className="flex  5xl:flex-col w-full justify-evenly sm-16:items-center items-center sm-16:w-[100%]">
-        <div className="sm-16:w-[90%] 5xl:w-[60%]">
-          <CardSpotlight className="glassmorphism overflow-hidden 5xl:w-[100%] w-80 sm-16:w-[100%]  mt-10">
+      <div className="flex  lg-5:gap-[15px] lg-5:w-[90%]  sm-20:flex-col w-full justify-evenly sm-16:items-center items-center sm-16:w-[100%]">
+        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] min-sm:w-[100%]">
+          <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden  5xl:w-[100%] min-sm:w-[100%] w-80 sm-16:w-[100%]  mt-10">
             <Image src={Meeting} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Book Your Call
@@ -301,8 +298,8 @@ export function Process() {
           </CardSpotlight>
         </div>
 
-        <div className="sm-16:w-[90%] 5xl:w-[60%]">
-          <CardSpotlight className="glassmorphism overflow-hidden 5xl:w-[100%] sm-16:w-[100%]  w-80  mt-10">
+        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] min-sm:w-[100%]">
+          <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden min-sm:w-[100%] 5xl:w-[100%] sm-16:w-[100%]  w-80  mt-10">
             <Image src={Dev} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Design,
@@ -315,8 +312,8 @@ export function Process() {
             </p>
           </CardSpotlight>
         </div>
-        <div className="sm-16:w-[90%] 5xl:w-[60%]" >
-          <CardSpotlight className="glassmorphism 5xl:w-[100%] overflow-hidden sm-16:w-[100%] w-80  mt-10">
+        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] min-sm:w-[100%]" >
+          <CardSpotlight className="glassmorphism lg-5:w-[100%] 5xl:w-[100%] min-sm:w-[100%] overflow-hidden sm-16:w-[100%] w-80  mt-10">
             <Image src={launch} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Launch and
