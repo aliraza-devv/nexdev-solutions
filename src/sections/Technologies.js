@@ -41,7 +41,7 @@ const slugs = [
 
 const Technologies = () => {
   return (
-    <div className="relatve mt-30">
+    <div className="relative max-2xl:mt-[270px] 5xl:mt-[750px] sm-17:mt-[170%] sm-18:mt-[800px] sm-19:mt-[850px]">
       <h1 className="text-center mt-20">
         <SparklesText text="Technologies" />
       </h1>

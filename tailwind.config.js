@@ -42,7 +42,13 @@ module.exports = {
 			"4xl": {max: '1287px'},
 			"sm-12": {max: '944px'},
 			"sm-13": {max: '479px'},
-			"sm-14": {max: '499px'}// Ultra large screens
+			"sm-14": {max: '499px'},
+			"5xl": {max: '1205px'},
+			"sm-15": {max: '677px'},
+			"sm-16": {max: '642px'},
+			"sm-17": {max: '436px'},
+			"sm-18": {max: '394px'},
+			"sm-19": {max: '379px'}// Ultra large screens
 		},
 		animation: {
 		  grid: "grid 15s linear infinite",
