@@ -46,24 +46,24 @@ const CallToActions = () => {
 
   return (
     <div className="w-full flex justify-center items-center mt-20">
-      <div className="w-[50%] lg-5:w-[80%] rounded-[1rem] bg-[#5c45fd] p-10">
-        <div className="flex flex-between gap-16">
-          <Link href="#reviews">
-            <div className="flex flex-row items-center">
+      <div className="w-[50%] base-sm:w-[95%] lg-5:w-[80%] base-sm:flex base-sm:flex-col base-sm:items-center base-sm:justify-center rounded-[1rem] bg-[#5c45fd] p-10">
+        <div className="flex  base-sm:w-[100%] base-sm:flex-col base-sm:gap-[20px] base-sm:items-center flex-between gap-16">
+          <Link href="#reviews" className="base-sm:w-[100%] base-sm:ml-[-10px] base-sm:flex base-sm:justify-center ">
+            <div className="flex flex-row items-center base-sm:justify-center base-sm:w-[100%]">
               <AnimatedTooltip items={people} />
             </div>
           </Link>
-          <div className="flex flex-col text-start sub-font text-[#f5f5f5] mt-4 md:mt-0 md:ml-[-2rem] z-10">
-            <span className="font-light text-sm md:text-base">Loved by</span>
+          <div className="flex flex-col base-sm:flex-row base-sm:gap-[5px] text-start sub-font text-[#f5f5f5] mt-4 md:mt-0 md:ml-[-2rem] z-10">
+            <span className="font-light text-sm md:text-base base-sm:mt-[4.6px]">Loved by</span>
             <span className="font-bold text-lg md:text-lg">
               200+ businesses
             </span>
           </div>
         </div>
-        <h2 className="text-[#f5f5f5] heading-primary mt-9 w-[70%]">
+        <h2 className="text-[#f5f5f5] base-sm:flex base-sm:justify-center heading-primary mt-9 base-sm:w-[100%] w-[70%]">
           Your Business Deserves Great Designs
         </h2>
-        <p className="text-[#f5f5f5] mt-7 mb-7 w-[70%]">
+        <p className="text-[#f5f5f5] mt-7 mb-7 w-[70%] base-sm:w-[87%] base-sm:flex base-sm:justify-center">
           After working with 200+ businesses since 2016, we know how to combine
           design, psychology, and marketing to create pages that don't just look
           good, but sell.

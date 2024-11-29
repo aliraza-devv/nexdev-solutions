@@ -6,7 +6,7 @@ const Pricing = () => {
   return (
     <div
       id="pricing"
-      className="flex relative flex-col justify-center items-center w-full h-[100%]"
+      className="flex relative flex-col justify-center  items-center min-sm:w-[100%] w-full h-full"
     >
       <h1 className="text-center mb-2">
         <SparklesText text="Get a Quote Now" />
@@ -17,7 +17,8 @@ const Pricing = () => {
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Pricing
       </h1>
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-10 justify-items-center">
+      <div className="grid min-sm:w-[95%] grid-cols-1 min-sm:flex min-sm:flex-col xl:grid-cols-3 gap-10  min-sm:justify-items-start justify-items-center">
+        {/* <div className="w-[100%]"> */}
         <PricingCard
           miniTitle="One Off"
           title="Design + Develop + Copywriting"
@@ -35,8 +36,10 @@ const Pricing = () => {
           point10="FREE 6 Months Hosting"
           point9="FREE 2 Months Technical Support"
           url="https://cal.com/nexdevsolutions/discovery-call"
+         
         />
-
+        {/* </div>
+        <div className="min-sm:w-[80%] min-sm:p-[5px]"> */}
         <PricingCard
           miniTitle="One Off"
           title="Custom Coding"
@@ -54,7 +57,8 @@ const Pricing = () => {
           point10="FREE 2 month SEO"
           url="https://cal.com/nexdevsolutions/discovery-call"
         />
-
+        {/* </div>
+        <div className="min-sm:w-[80%] min-sm:p-[5px]"> */}
         <PricingCard
           miniTitle="Monthly Subscription"
           title="Custom Poject"
@@ -72,6 +76,7 @@ const Pricing = () => {
           point10="Solution to Your Problems"
           url="https://cal.com/nexdevsolutions/discovery-call"
         />
+      {/* </div> */}
       </div>
     </div>
   );

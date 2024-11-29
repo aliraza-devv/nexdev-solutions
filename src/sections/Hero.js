@@ -78,7 +78,7 @@ const Hero = () => {
           </AnimatedGradientText>
         </div>
         <div className="flex justify-center items-center w-full">
-          <div className="w-full md:w-4/5 flex flex-col justify-center items-center text-center px-4 md:px-0">
+          <div className="w-full md:w-4/5 min-sm:w-5/5 flex flex-col justify-center items-center text-center px-4 md:px-0">
             <div className="w-32 h-32 bg-blue absolute right-48 border-[#5c45fd]"></div>
             <div className="flex w-full justify-center items-center">
               <Image
@@ -126,7 +126,7 @@ const Hero = () => {
             </div>
             <div className="flex gap-7 z-50 mt-6">
               <div className="flex flex-between gap-16">
-                <Link href="#reviews" className="max-sm:hidden min-sm:hidden">
+                <Link href="#reviews" className="max-sm:hidden base-sm:hidden">
                   <div className="flex flex-row items-center">
                     <AnimatedTooltip items={people} />
                   </div>
@@ -149,7 +149,7 @@ const Hero = () => {
                 alt="Clutch review badge"
                 height={50}
                 width={70}
-                className="max-sm:hidden"
+                className="min-sm:hidden"
               />
             </div>
           </div>

@@ -263,7 +263,7 @@ export function Process() {
         <h1 className="text-center mb-2">
           <SparklesText text="Our Process" />
         </h1>
-        <h3 className="mb-20 text-xl text-[#f5f5f5] sub-font text-center">
+        <h3 className="mb-20 min-sm:p-[6px] text-xl text-[#f5f5f5] sub-font text-center">
           We create websites that Inspire & Boost Sales.
         </h3>
       </div>
@@ -285,8 +285,8 @@ export function Process() {
         </div>
       </div>
       <div className="flex  lg-5:gap-[15px] lg-5:w-[90%]  sm-20:flex-col w-full justify-evenly sm-16:items-center items-center sm-16:w-[100%]">
-        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] min-sm:w-[100%]">
-          <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden  5xl:w-[100%] min-sm:w-[100%] w-80 sm-16:w-[100%]  mt-10">
+        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] base-sm:w-[100%]">
+          <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden  5xl:w-[100%] base-sm:w-[100%] w-80 sm-16:w-[100%]  mt-10">
             <Image src={Meeting} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Book Your Call
@@ -298,8 +298,8 @@ export function Process() {
           </CardSpotlight>
         </div>
 
-        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] min-sm:w-[100%]">
-          <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden min-sm:w-[100%] 5xl:w-[100%] sm-16:w-[100%]  w-80  mt-10">
+        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] base-sm:w-[100%]">
+          <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden base-sm:w-[100%] 5xl:w-[100%] sm-16:w-[100%]  w-80  mt-10">
             <Image src={Dev} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Design,
@@ -312,8 +312,8 @@ export function Process() {
             </p>
           </CardSpotlight>
         </div>
-        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] min-sm:w-[100%]" >
-          <CardSpotlight className="glassmorphism lg-5:w-[100%] 5xl:w-[100%] min-sm:w-[100%] overflow-hidden sm-16:w-[100%] w-80  mt-10">
+        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] base-sm:w-[100%]" >
+          <CardSpotlight className="glassmorphism lg-5:w-[100%] 5xl:w-[100%] base-sm:w-[100%] overflow-hidden sm-16:w-[100%] w-80  mt-10">
             <Image src={launch} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Launch and

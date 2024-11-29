@@ -89,7 +89,7 @@ export function Projects() {
       <h1 className="text-center mb-2">
         <SparklesText text="More Work" />
       </h1>
-      <h3 className="mb-20 text-xl text-[#f5f5f5] sub-font text-center">
+      <h3 className="mb-20 min-sm:p-[6px] text-xl text-[#f5f5f5] sub-font text-center">
         We create websites that Inspire & Boost Sales.
       </h3>
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
@@ -153,14 +153,14 @@ export function Projects() {
                 framerProps={{ show: { transition: { delay: 0.2 } } }}
               />
             </div>
-            <div  className="grid sm-11:mt-[-35px] lg-3:grid-cols-1 sm-9:grid-cols-1 lg:grid-cols-2  sm-8:w-[100%]  sm-7:grid-cols-2 lg-4:grid-cols-3 gap-4 w-full lg-4:w-[100%] sm-11:w-[100%] lg-3:w-[20%] sm-7:w-[70%] lg:w-[40%]">
+            <div  className="grid   sm-11:mt-[-35px] lg-3:grid-cols-1 sm-9:grid-cols-1 lg:grid-cols-2  sm-8:w-[100%]  sm-7:grid-cols-2 lg-4:grid-cols-3 gap-4 w-full lg-4:w-[100%] sm-11:w-[100%] lg-3:w-[20%] sm-7:w-[70%] lg:w-[40%]">
               {project.stats.map((stat, i) => (
-                <div  key={i} className="flex flex-col items-center lg-3:items-start sm-9:ml-[27%] sm-10:ml-[0] sm-11:w-[100%]">
-                  <div className={`sm-11:w-[100%] ${stat.label == "Increased Conversion" ? "sm-11:ml-[43%]" : stat.label == "Increased Performance" ? "sm-11:ml-[43%]" : stat.label == "Boost Sales" ? "sm-11:ml-[43%]" : ""}`}>
+                <div  key={i} className="flex flex-col  items-center lg-3:items-start base-sm:items-center sm-9:ml-[27%] sm-10:ml-[0] sm-11:w-[100%]">
+                  <div className={"sm-11:w-[100%] base-sm:flex base-sm:justify-center base-sm:flex-col base-sm:items-center"}>
                     <h4 className="w-[9rem] sub-font h-[10vh] mb-6 flex justify-center items-center text-[#f5f5f5] rounded-[1rem] bg-[#5c45fd] path-clip">
                       {stat.value}
                     </h4>
-                    <p className={`text-[#f5f5f5] sub-font text-md ${stat.label == "Increased Sales" ? "lg-3:ml-[15px]" : stat.label == "Increased Conversion" ? "lg-3:ml-[-8px]" : stat.label == "Increased Revenue" ? "lg-3:ml-[3px]" : stat.label == "Boost Sales" ? "lg-3:ml-[30px]" : ""} lg-3:ml-[-15px]`}>
+                    <p className={"text-[#f5f5f5] sub-font text-md"}>
                       {stat.label}
                     </p>
                   </div>

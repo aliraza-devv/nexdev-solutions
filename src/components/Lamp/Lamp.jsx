@@ -7,8 +7,8 @@ import Image from "next/image";
 
 export function Lamp() {
   return (
-    <LampContainer className="h-[300px] ">
-      <div className="w-[100%] lg:w-[80%] pt-[200px]">
+    <LampContainer className="h-[300px] sm-20:w-full ">
+      <div className="w-[100%] lg:w-[80%] sm-20:w-[100%] pt-[200px]">
         <div className="flex flex-col lg:flex-row sm-20:mt-[300px] items-center sm-20:gap-[5px] w-full justify-center sm-20:justify-end gap-20">
           <motion.div
             initial={{ opacity: 0.5, y: 100 }}
@@ -18,7 +18,7 @@ export function Lamp() {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="w-full md:w-[60%] lg:w-[70%]"
+            className="w-full md:w-[60%] sm-20:w-[100%] lg:w-[70%]"
           >
             <motion.h1 className="bg-gradient-to-br w-full from-slate-300 to-slate-500 py-4 bg-clip-text text-start text-4xl font-medium tracking-tight text-transparent md:text-7xl">
               Meet the Founder

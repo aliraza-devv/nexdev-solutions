@@ -21,9 +21,9 @@ const PricingCard = ({
   priceCut,
 }) => {
   return (
-    <div className={styles.card}>
+    <div className={`min-sm:w-[50px] ${styles.card} `}>
       <div className={styles.card__border}></div>
-      <div className={styles.card_title__container}>
+      <div className={`${styles.card_title__container}`}>
         <span
           className={`${styles.card_miniTitle} border rounded-full border-[#5c45fd] bg-none px-3 py-1 text-[#f5f5f5] heading-secondary `}
         >
@@ -44,7 +44,7 @@ const PricingCard = ({
         </span>
         <p className={`${styles.card_paragraph} mt-3`}>{subTitle}</p>
       </div>
-      <hr className={styles.line} />
+      <hr className={`${styles.line} max-sm:mb-[15px] max-sm:mt-[10px]`} />
       <ul className={`${styles.card__list} sub-font`}>
         <li className={styles.card__list_item}>
           <span className={styles.check}>
@@ -148,7 +148,7 @@ const PricingCard = ({
           </span>
           <span className={styles.list_text}>{point6}</span>
         </li>
-        <div className="w-full flex justify-center items-center gap-2 mt-6 mb-6">
+        <div className="w-full flex justify-center items-center gap-2 max-sm:gap-[0] mt-6 mb-6">
           <hr className={`${styles.line_second}`} />
           <div className={styles.card_title__container}>
             <span className={`${styles.card_sub_title} flex flex-col`}>

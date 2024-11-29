@@ -10,6 +10,7 @@ import seo from "../../public/Assets/icons/seo.png";
 import content from "../../public/Assets/icons/content writing.png";
 import uiux from "../../public/Assets/icons/ui-ux.png";
 import CircleButton from "@/components/Buttons/CircleButton";
+import { CardSpotlight } from "@/components/CardSpotlight/CardSpotlight";
 
 const cardDetails = [
   {
@@ -86,15 +87,17 @@ const Services = () => {
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Services
       </h1>
-      <div>
-        <div  className="grid grid-cols-1 sm-12:grid-cols-1 gap-y-8 gap-x-20 4xl:gap-x-10 4xl:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:ml-[20px] justify-center mx-auto">
+      <div className="base-sm:w-[92%]">
+        <div  className="grid grid-cols-1 sm-20:w-[50%] base-sm:w-[95%] sm-12:grid-cols-1 min-sm:grid-cols-1 min-sm:w-[100%] gap-y-8 gap-x-20 3xl:ml-[40px] 3xl:mr-[40px] 4xl:gap-x-10 4xl:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:ml-[20px] justify-center mx-auto">
           {cardDetails.map((card) => (
+            <CardSpotlight className="overflow-hidden p-[0] cursor-pointer border-[0.4px] border-[#9687ff]">
             <BeamCard
               key={card.title}
               title={card.title}
               description={card.description}
-              className="w-full"
+
             />
+            </CardSpotlight>
           ))}
         </div>
       </div>

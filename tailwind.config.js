@@ -10,6 +10,7 @@ module.exports = {
 	theme: {
 	  extend: {
 		screens: {
+			
 		  sm: "640px", // Small screens
 		  md: "768px", // Medium screens
 		  lg: "1024px", // Large screens
@@ -17,7 +18,7 @@ module.exports = {
 		   // 2X large screens
 		  // Custom breakpoints
 		  xs: "480px", // Extra small screens
-		  "3xl": "1920px",
+		  "3xl": "1440px",
 		  'max-2xl': { max: '1537px' },
 		  "2xl": "1536px",
 		  "max-xl": {max: '1287px'},
@@ -51,6 +52,7 @@ module.exports = {
 			"sm-19": {max: '379px'},
 			"sm-20": {max: '768px'},
 			"lg-5": {max: '1024px'},
+			"base-sm": {max: '427px'},
 			"min-sm": {max: '377px'},
 			"max-sm": {max: '320px'}// Ultra large screens
 		},
