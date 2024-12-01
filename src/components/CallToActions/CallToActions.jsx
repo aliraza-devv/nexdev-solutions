@@ -60,10 +60,10 @@ const CallToActions = () => {
             </span>
           </div>
         </div>
-        <h2 className="text-[#f5f5f5] base-sm:flex base-sm:justify-center sm-525:text-[30px] sm-465:text-[28px] sm-441:text-[26px] sm-417:text-[22px] sm-370:text-[19px] heading-primary sm-805:text-[35px] mt-9 4xl:w-[100%] sm-15:w-[100%] w-[70%]">
+        <h2 className="text-[#f5f5f5] base-sm:flex sm-15:text-center base-sm:justify-center sm-525:text-[30px] sm-465:text-[28px] sm-441:text-[26px] sm-417:text-[22px] sm-370:text-[19px] heading-primary sm-805:text-[35px] mt-9 4xl:w-[100%] sm-15:w-[100%] w-[70%]">
           Your Business Deserves Great Designs
         </h2>
-        <p className="text-[#f5f5f5] mt-7 mb-7 4xl:w-[100%] w-[70%] sm-15:w-[100%] base-sm:w-[100%] base-sm:flex base-sm:justify-center">
+        <p className="text-[#f5f5f5] sm-15:text-center mt-7 mb-7 4xl:w-[100%] w-[70%] sm-15:w-[100%] base-sm:w-[100%] base-sm:flex base-sm:justify-center">
           After working with 200+ businesses since 2016, we know how to combine
           design, psychology, and marketing to create pages that don't just look
           good, but sell.

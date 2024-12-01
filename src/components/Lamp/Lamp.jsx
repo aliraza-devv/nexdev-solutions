@@ -9,7 +9,7 @@ export function Lamp() {
   return (
     <LampContainer className="h-[300px] sm-20:w-full ">
       <div className="w-[100%] lg:w-[80%] sm-20:w-[100%] pt-[200px]">
-        <div className="flex flex-col lg:flex-row sm-20:mt-[300px] lg-5:mt-[150px] items-center sm-20:gap-[5px] w-full justify-center lg-5:justify-end gap-20">
+        <div className="flex flex-col lg:flex-row sm-20:mt-[300px] lg-5:mt-[300px] items-center sm-20:gap-[5px] w-full justify-center lg-5:justify-end gap-20">
           <motion.div
             initial={{ opacity: 0.5, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -20,10 +20,10 @@ export function Lamp() {
             }}
             className="w-full md:w-[60%] sm-20:w-[100%] lg:w-[70%]"
           >
-            <motion.h1 className="bg-gradient-to-br w-full from-slate-300 to-slate-500 py-4 bg-clip-text text-start text-4xl font-medium tracking-tight text-transparent md:text-7xl">
+            <motion.h1 className="bg-gradient-to-br w-full sm-20:text-center from-slate-300 lg-1189:text-5xl to-slate-500 py-4 bg-clip-text text-start text-4xl font-medium tracking-tight text-transparent md:text-7xl">
               Meet the Founder
             </motion.h1>
-            <p className="mt-1 bg-gradient-to-br text-[#f5f5f5] py-4 bg-clip-text text-start text-xl font-medium tracking-tight md:text-2xl">
+            <p className="mt-1 bg-gradient-to-br sm-20:text-center text-[#f5f5f5] py-4 bg-clip-text text-start text-xl font-medium tracking-tight md:text-2xl">
               Hey, I am{" "}
               <span className="gradient-text font-bold">Ali Raza</span>. I have
               always been a tech enthusiast. With more than 8 years of
@@ -49,14 +49,14 @@ export function Lamp() {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="w-full md:w-[40%] flex flex-col"
+            className="w-full md:w-[40%] flex flex-col sm-20:items-center"
           >
             <Image
               src={Founder}
               height={350}
               width={450}
               alt="Nexdev solutions Founder"
-              className="rounded-[1rem] mt-8 mb-4 bg-gradient-to-r from-[#5c45fd]  to-[#a89bff] p-1 inline-block border-[#f5f5f5] border"
+              className="rounded-[1rem] mt-8 mb-4 bg-gradient-to-r from-[#5c45fd]   to-[#a89bff] p-1 inline-block border-[#f5f5f5] border"
             />
             <span className="signature-font text-5xl text-center w-full text-[#f5f5f5] mt-3">
               Ali Raza

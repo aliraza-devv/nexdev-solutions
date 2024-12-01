@@ -28,6 +28,7 @@ module.exports = {
 			"lg-3": {max: '1248px'},
 			"5xl": {max: '1205px'},
 			"8xl": {max: "1204px"},
+			"lg-1189": {max: '1189px'},
 			"lg-1178": {max: "1178px"},
 			"lg-1163": {max: "1163px"},
 			"lg-2": {max: '1144px'},
