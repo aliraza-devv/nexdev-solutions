@@ -11,7 +11,7 @@ export default function AnimatedGradientText({ children, className }) {
       )}
     >
       <div
-        className={`absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#a89bff]/50 via-[#f5f5f5]/50 to-[#5c45fd]/50 bg-[length:var(--bg-size)_100%] p-[1px] ![mask-composite:subtract] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`}
+        className={`absolute inset-0 block w-[100%] animate-gradient bg-gradient-to-r from-[#a89bff]/50 via-[#f5f5f5]/50 to-[#5c45fd]/50 bg-[length:var(--bg-size)_100%] p-[1px] ![mask-composite:subtract] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`}
       />
 
       {children}

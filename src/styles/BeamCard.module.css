@@ -90,8 +90,8 @@
 }
 
 .card .text {
-  font-weight: bolder;
-  font-size: 2rem;
+  /* font-weight: 600; */
+  /* font-size: 2rem; */
   background-clip: text;
   color: white;
 }

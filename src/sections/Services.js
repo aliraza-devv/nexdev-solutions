@@ -87,8 +87,8 @@ const Services = () => {
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Services
       </h1>
-      <div className="base-sm:w-[92%]">
-        <div  className="grid grid-cols-1 sm-20:w-[50%] base-sm:w-[95%] sm-12:grid-cols-1 min-sm:grid-cols-1 min-sm:w-[100%] gap-y-8 gap-x-20 3xl:ml-[40px] 3xl:mr-[40px] 4xl:gap-x-10 4xl:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:ml-[20px] justify-center mx-auto">
+      <div className="base-sm:w-[100%] sm-448:w-[100%] sm-654:w-[100%] sm-20:flex sm-383:flex sm-383:justify-center sm-20:justify-center">
+        <div  className="grid grid-cols-1 sm-20:w-[65%] sm-16:w-[90%] 4xl:ml-[20px] sm-991:ml-[10px] sm-991:mr-[10px] lg-4:grid-cols-2 sm-383:w-[90%] sm-383:ml-[0px] sm-383:mr-[0px] 4xl:mr-[20px] sm-448:w-[100%] sm-654:ml-[0] sm-654:mr-[0]  sm-654:ml-[5px] sm-654:mr-[5px] sm-617:ml-[20px] sm-617:mr-[20px] sm-617:grid-cols-1 sm-20:grid-cols-1 min-sm:grid-cols-1 min-sm:w-[95%] gap-y-8 gap-x-20 3xl:ml-[40px] 3xl:mr-[40px] 4xl:gap-x-10 lg-1074:gap-x-[15px] 4xl:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:ml-[20px] justify-center mx-auto">
           {cardDetails.map((card) => (
             <CardSpotlight className="overflow-hidden p-[0] cursor-pointer border-[0.4px] border-[#9687ff]">
             <BeamCard

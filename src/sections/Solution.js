@@ -16,8 +16,8 @@ const Solution = () => {
         text="You only need a website optimized for high-conversion."
       />
       <div className="w-full  flex flex-col items-center  pt-10 sm-20:pt-20 h-full">
-      <div className="w-full sm-20:w-[90vw]  flex justify-center mt-20 items-center">
-        <div className="flex justify-between min-sm:p-[10px] min-sm:pt-[20px] sm-20:w-[100%] items-center border-[#5c45fd] border-2 flex-col rounded-[1rem] p-7 relative side-gradient w-[95%] sm:w-[80%] md:w-[70%]">
+      <div className="w-full sm-20:w-[90vw] sm-805:w-[95vw]  flex justify-center mt-20 items-center">
+        <div className="flex justify-between min-sm:p-[10px] min-sm:pt-[20px] sm-20:w-[100%] items-center border-[#5c45fd] border-2 flex-col rounded-[1rem] p-7 relative side-gradient w-[95%] lg-1093:w-[90%] sm-12:w-[95%] sm-805:w-[100%] sm:w-[80%]">
           {/* <RetroGrid className="mt-[-1.8rem] z-[-1]" /> */}
           <div className="flex justify-between flex-col sm:flex-row">
             <div className="flex flex-col justify-start items-start">
@@ -45,8 +45,8 @@ const Solution = () => {
             </div>
           </div>
           <div className="flex flex-col items-center z-10 w-full ">
-            <div className="flex flex-col sm:flex-row gap-2 justify-evenly w-full">
-              <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10 min-sm:w-[100%]">
+            <div className="flex sm-20:flex-col sm-20:items-center flex-row gap-2 justify-evenly w-full">
+              <CardSpotlight className="glassmorphism w-80 sm-20:w-[100%] sm:w-96 mt-10 min-sm:w-[100%]">
                 <h3 className="heading-primary flex gap-3 text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
                   <Image src={Announce} width={24} height={24} className="min-sm:hidden" alt="Icon" />
                   Design Meets Marketing
@@ -57,7 +57,7 @@ const Solution = () => {
                   specifically to grow your brand.
                 </p>
               </CardSpotlight>
-              <CardSpotlight className="glassmorphism w-80 sm:w-96 min-sm:w-[100%] mt-10">
+              <CardSpotlight className="glassmorphism w-80 sm-20:w-[100%] sm:w-96 min-sm:w-[100%] mt-10">
                 <h3 className="heading-primary flex gap-3  text-xl heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
                   <Image src={Announce} width={24} className="min-sm:hidden" height={24} alt="Icon" />
                   Boost Conversions
@@ -69,8 +69,8 @@ const Solution = () => {
                 </p>
               </CardSpotlight>
             </div>
-            <div className="flex flex-col sm:flex-row gap-2 justify-evenly w-full">
-              <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10 min-sm:w-[100%]">
+            <div className="flex  flex-row sm-20:flex-col sm-20:items-center gap-2 justify-evenly w-full">
+              <CardSpotlight className="glassmorphism w-80 sm-20:w-[100%] sm:w-96 mt-10 min-sm:w-[100%]">
                 <h3 className="heading-primary text-xl flex gap-3 heading-bold font-bold relative z-20 mt-2 text-[#f5f5f5]">
                   <Image src={Announce} className="min-sm:hidden" width={24} height={24} alt="Icon" />
                   Brand Excellence
@@ -81,7 +81,7 @@ const Solution = () => {
                   attracts attention.
                 </p>
               </CardSpotlight>
-              <CardSpotlight className="glassmorphism w-80 sm:w-96 mt-10 min-sm:w-[100%]">
+              <CardSpotlight className="glassmorphism w-80 sm-20:w-[100%] sm:w-96 mt-10 min-sm:w-[100%]">
                 <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
                   <Image src={Announce} className="min-sm:hidden" width={24} height={24} alt="Icon" />
                   Custom Approach

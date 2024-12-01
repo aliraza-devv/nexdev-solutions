@@ -94,7 +94,7 @@ export const CTAParallax = ({ products }) => {
 export const Header = () => {
   return (
     <>
-      <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
+      <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 sm-17:p-[0] w-full left-0 top-0">
         <h1 className="text-4xl px-6 md:text-7xl font-bold text-white heading-primary">
           Get a Free
           <br />

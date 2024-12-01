@@ -4,7 +4,7 @@ export default function RetroGrid({ className }) {
   return (
     <div
       className={cn(
-        "pointer-events-none absolute h-full w-full overflow-hidden opacity-100 ",
+        "pointer-events-none absolute h-full max-2xl:h-[140vh] w-full overflow-hidden opacity-100 ",
         className
       )}
     >

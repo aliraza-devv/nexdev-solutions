@@ -17,7 +17,7 @@ const BeamCard = ({ title, description }) => {
           width={70}
           alt={`Nexdev solutions ${title} service`}
         /> */}
-        <h1 className={`${styles.text} mb-[20px]   text-white heading-secondary `}>
+        <h1 className={`${styles.text} text-[2rem] lg-1178:text-[28px] sm-700:text-[25px] lg-4:text-[28px] mb-[20px] font-bold  lg-1178:font-semibold  text-white  `}>
           {title}
         </h1>
         <p className="   sub-font text-lg">{description}</p>

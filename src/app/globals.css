@@ -62,6 +62,9 @@ body {
   background-color: var(--color-black);
   cursor: url("/Assets/cursor-svgrepo-com.png") auto;
   font-family: "Bricolage Grotesque";
+  overflow-x: hidden;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 /* Scrolbar */

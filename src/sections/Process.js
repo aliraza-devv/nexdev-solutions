@@ -268,7 +268,7 @@ export function Process() {
         </h3>
       </div>
       <div className="flex w-full items-center  flex-col 5xl:h-[100%] lg-5:gap-[30px] 5xl:gap-[60px] ">
-      <div className="flex        sm-20:hidden  w-full   justify-center">
+      <div className="flex        sm-961:hidden  w-full   justify-center">
         <div className="w-[90%]     justify-center flex items-center">
           <div className="w-[30px] h-[30px]  rounded-full bg-transparent 
               border-[2px] border-[#9687ff]
@@ -284,8 +284,8 @@ export function Process() {
 
         </div>
       </div>
-      <div className="flex  lg-5:gap-[15px] lg-5:w-[90%]  sm-20:flex-col w-full justify-evenly sm-16:items-center items-center sm-16:w-[100%]">
-        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] base-sm:w-[100%]">
+      <div className="flex  lg-5:gap-[15px] lg-5:w-[90%]  sm-961:flex-col w-full justify-evenly sm-16:items-center items-center sm-16:w-[100%]">
+        <div className="sm-16:w-[90%] lg-5:w-[50%] sm-20:w-[70%] 5xl:w-[60%] base-sm:w-[95%]">
           <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden  5xl:w-[100%] base-sm:w-[100%] w-80 sm-16:w-[100%]  mt-10">
             <Image src={Meeting} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
@@ -298,7 +298,7 @@ export function Process() {
           </CardSpotlight>
         </div>
 
-        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] base-sm:w-[100%]">
+        <div className="sm-16:w-[90%] lg-5:w-[50%] sm-20:w-[70%] 5xl:w-[60%] base-sm:w-[95%]">
           <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden base-sm:w-[100%] 5xl:w-[100%] sm-16:w-[100%]  w-80  mt-10">
             <Image src={Dev} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
@@ -312,7 +312,7 @@ export function Process() {
             </p>
           </CardSpotlight>
         </div>
-        <div className="sm-16:w-[90%] lg-5:w-[50%] 5xl:w-[60%] base-sm:w-[100%]" >
+        <div className="sm-16:w-[90%] lg-5:w-[50%] sm-20:w-[70%] 5xl:w-[60%] base-sm:w-[95%]" >
           <CardSpotlight className="glassmorphism lg-5:w-[100%] 5xl:w-[100%] base-sm:w-[100%] overflow-hidden sm-16:w-[100%] w-80  mt-10">
             <Image src={launch} width={75} height={75} alt="Icon" />
             <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">

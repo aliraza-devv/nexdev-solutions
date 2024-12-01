@@ -21,7 +21,7 @@ const App = () => {
   return (
     <>
       <div className="">
-        <div className="ball bg-[#5c45fd] w-5 h-5 fixed top-0 left-0 rounded-full z-[-1]"></div>
+        <div  className="ball bg-[#5c45fd] w-5 h-5 fixed top-0 left-0 rounded-full z-[-1]"></div>
         <div className="ball bg-[#5c45fd] w-5 h-5 fixed top-0 left-0 rounded-full z-[-1]"></div>
         <div className="ball bg-[#5c45fd] w-5 h-5 fixed top-0 left-0 rounded-full z-[-1]"></div>
         <div className="ball bg-[#5c45fd] w-5 h-5 fixed top-0 left-0 rounded-full z-[-1]"></div>

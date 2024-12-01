@@ -31,7 +31,7 @@ export function Projects() {
       stats: [
         { label: "Increased Conversion", value: "59%" },
         { label: "Increased Sales", value: "62%" },
-        { label: "Increased Performance", value: "100%" },
+        { label: "Increased Response", value: "100%" },
       ],
       tags: ["Development", "Design"],
     },
@@ -153,10 +153,11 @@ export function Projects() {
                 framerProps={{ show: { transition: { delay: 0.2 } } }}
               />
             </div>
-            <div  className="grid   sm-11:mt-[-35px] lg-3:grid-cols-1 sm-9:grid-cols-1 lg:grid-cols-2  sm-8:w-[100%]  sm-7:grid-cols-2 lg-4:grid-cols-3 gap-4 w-full lg-4:w-[100%] sm-11:w-[100%] lg-3:w-[20%] sm-7:w-[70%] lg:w-[40%]">
+            <div  className="grid sm-660:grid-cols-2 sm-660:w-[100%]   sm-11:mt-[-35px] lg-3:grid-cols-1 sm-521:grid-cols-1  sm-521:flex sm-521:flex-col sm-521:items-center sm-9:grid-cols-1 lg:grid-cols-2  sm-8:w-[100%]  sm-7:grid-cols-2 lg-5:grid-cols-3 gap-4 max-xl:gap-x-[0] w-full lg-5:w-[100%] sm-11:w-[100%] lg-3:w-[20%]  lg:w-[40%]">
+              {/* <div className="sm-521:w-[50%] sm-521:flex sm-521:flex-col  items-center"> */}
               {project.stats.map((stat, i) => (
-                <div  key={i} className="flex flex-col  items-center lg-3:items-start base-sm:items-center sm-9:ml-[27%] sm-10:ml-[0] sm-11:w-[100%]">
-                  <div className={"sm-11:w-[100%] base-sm:flex base-sm:justify-center base-sm:flex-col base-sm:items-center"}>
+                <div  key={i} className="flex flex-col  w-[100%]  items-center lg-3:items-start base-sm:items-center sm-9:ml-[27%] sm-10:ml-[0] sm-11:w-[100%]">
+                  <div className={"sm-11:w-[100%] flex justify-center flex-col  w-[100%] items-center"}>
                     <h4 className="w-[9rem] sub-font h-[10vh] mb-6 flex justify-center items-center text-[#f5f5f5] rounded-[1rem] bg-[#5c45fd] path-clip">
                       {stat.value}
                     </h4>
@@ -166,6 +167,7 @@ export function Projects() {
                   </div>
                 </div>
               ))}
+              {/* </div> */}
             </div>
           </div>
         </motion.div>

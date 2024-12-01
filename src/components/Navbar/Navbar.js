@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div style={{zIndex: '999999'}} className="fixed glassmorphism rounded-[1rem] w-[100%] max-2xl:w-[90%] lg:w-[80%] 3xl:w-[60%] max-sm:w-[75%] sm-20:w-[85%] h-[10%] mt-[5rem] md:mt-[7rem] flex justify-between items-center px-4 lg:px-8">
+    <div style={{zIndex: '999999'}} className="fixed glassmorphism rounded-[1rem] w-[100%] max-2xl:w-[90%] lg:w-[80%] 3xl:w-[60%] max-sm:w-[75%] sm-20:w-[85%] h-[80px] mt-[5rem] 4xl:w-[80%] md:mt-[7rem] flex justify-between items-center px-4 lg:px-8">
       <Link href={"#home"}>
         <div>
           <Image
