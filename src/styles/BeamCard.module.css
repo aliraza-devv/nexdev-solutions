@@ -61,14 +61,14 @@
 .card {
   z-index: 1;
   width: 100%;
-  height: 300px;
+  height: 360px;
   border-radius: 1rem;
   border: solid 1px #202222;
   /* background-size: 20px 20px; */
   /* background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d); */
   background: rgba(255, 255, 255, 0.2);
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   position: relative;
   flex-direction: column;
   color: var(--color-white);

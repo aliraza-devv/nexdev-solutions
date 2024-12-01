@@ -11,13 +11,15 @@ import content from "../../public/Assets/icons/content writing.png";
 import uiux from "../../public/Assets/icons/ui-ux.png";
 import CircleButton from "@/components/Buttons/CircleButton";
 import { CardSpotlight } from "@/components/CardSpotlight/CardSpotlight";
+import webDesign from "/public/Assets/icons/web-design.gif";
 
 const cardDetails = [
   {
-    icon: uiux,
+    // icon: uiux,
     title: "Web Design",
     description:
       "We are specialized in creating good looking and high conversion UI and UX designs of mobile apps and web application/website.",
+    icon: webDesign
   },
   {
     icon: web,
@@ -95,6 +97,7 @@ const Services = () => {
               key={card.title}
               title={card.title}
               description={card.description}
+              icon={card.icon}
 
             />
             </CardSpotlight>
