@@ -55,11 +55,13 @@ const people = [
 
 const Hero = () => {
   return (
-    <>
-      <RetroGrid />
+    <div className="overflow-hidden">
+      <div className="">
+        <RetroGrid />
+      </div>
       <div
         id="home"
-        className=" flex flex-col justify-center items-center w-full h-[100%] side-gradient"
+        className=" flex flex-col justify-center overflow-hidden items-center w-full h-[100%] side-gradient"
       >
         <div className="z-10 max-sm:mt-[17px] flex min-h-[15rem] mt-20 mb-[-2rem] lg:mb-[-4rem] items-center justify-center">
           <AnimatedGradientText>
@@ -149,14 +151,14 @@ const Hero = () => {
                 alt="Clutch review badge"
                 height={50}
                 width={70}
-                className="min-sm:hidden"
+                className="base-sm:hidden"
               />
             </div>
           </div>
         </div>
         <HorizontalLogoSlider />
       </div>
-    </>
+    </div>
   );
 };
 

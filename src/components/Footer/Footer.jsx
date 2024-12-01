@@ -8,11 +8,11 @@ const Footer = () => {
   return (
     <div
       id="footer"
-      className="w-full base-sm:w-[100%] overflow-hidden max-2xl:h-[95vh]  h-[95vh] md:h-[70vh] flex flex-col justify-center items-center base-sm:p-[10px] p-5 mt-20"
+      className="w-full base-sm:w-[100%] overflow-hidden max-2xl:h-[95vh] lg-5:h-[130vh] base-sm:h-[160vh] sm-20:h-[150vh]  h-[95vh] md:h-[70vh] flex flex-col justify-center items-center base-sm:p-[10px] p-5 sm-817:p-[0] mt-20"
     >
-      <div className="w-[95%] relative base-sm:w-[100%] max-2xl:h-[100%] overflow-hidden h-[100%] flex flex-col justify-center items-center side-gradient  rounded-[1rem]">
+      <div className="w-[95%] relative base-sm:w-[100%] max-2xl:h-[100%] base-sm:h-[100%] sm-20:w-[100%] base-sm:overflow-hidden overflow-hidden h-[100%] flex flex-col justify-center items-center side-gradient  rounded-[1rem]">
         <RetroGrid />
-        <div className="w-full p-10 absolute flex flex-col justify-between h-full top-4">
+        <div className="w-full p-10 sm-15:p-[30px] sm-611:p-[20px] absolute flex flex-col justify-between h-full top-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-[100%] sm-20:gap-[10%] gap-10 w-full">
             <div>
               <WordPullUp
@@ -24,7 +24,7 @@ const Footer = () => {
                 url="https://cal.com/nexdevsolutions/discovery-call"
               />
             </div>
-            <div className="sm-20:ml-[37%] base-sm:ml-[0]">
+            <div className=" lg-5:justify-self-end lg-5:w-[50%] sm-20:w-[100%] sm-20:justify-self-start base-sm:ml-[0]">
               <WordPullUp
                 className="tracking-[-0.02em] text-[#f5f5f5] text-3xl md:text-4xl text-start mb-10 w-full md:w-[17rem]"
                 words="Services"
@@ -50,10 +50,10 @@ const Footer = () => {
           </div>
           <div className="base-sm:mt-[80px]">
             <WordPullUp
-              className=" tracking-[-0.02em] heading-primary text-white text-[3rem] min-sm:w-[100%] max-sm:ml-[-10px] min-sm:text-[3rem] sm:text-[4rem] md:text-[3rem] max-2xl:text-[8rem] p-10 leading-[5rem]"
+              className=" tracking-[-0.02em] sm-13:text-start sm-13:p-[0px] heading-primary text-white text-[3rem] min-sm:w-[100%] max-sm:ml-[-10px] sm-542:text-[4rem] min-sm:text-[3rem] sm:text-[4rem] md:text-[3rem] sm-603:text-[5rem] sm-742:text-[6rem] max-2xl:text-[8rem] p-10 leading-[5rem] sm-603:leading-[5rem] 4xl:leading-[8rem]"
               words="Crafting Since 2016"
             />
-            <p className="text-[#f5f5f5] text-lg text-center mt-6">
+            <p className="text-[#f5f5f5] sm-583:w-[100%] text-lg sm-547:text-[14px] text-center mt-6">
               © nexdevsolutions.com 2024. All rights reserved.
             </p>
           </div>
