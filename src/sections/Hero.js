@@ -63,12 +63,12 @@ const Hero = () => {
         id="home"
         className=" flex flex-col justify-center overflow-hidden items-center w-full h-[100%] side-gradient"
       >
-        <div className="z-10 max-sm:mt-[17px] flex min-h-[15rem] mt-20 mb-[-2rem] lg:mb-[-4rem] items-center justify-center">
+        <div className="z-10 min-sm:mt-[17px] min-sm:mb-[10px] flex min-h-[15rem] mt-20 mb-[-2rem] lg:mb-[-4rem] items-center justify-center">
           <AnimatedGradientText>
-            <span className="inline max-sm:hidden animate-gradient sub-font bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
+            <span className="inline min-sm:hidden animate-gradient sub-font bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent">
               Hurry
             </span>{" "}
-            <hr className="mx-2 max-sm:hidden h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
+            <hr className="mx-2 min-sm:hidden h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
             <span
               className={cn(
                 `inline sub-font animate-gradient bg-gradient-to-r from-[#a89bff] via-[#f5f5f5] to-[#5c45fd] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
@@ -97,7 +97,7 @@ const Hero = () => {
                     src={Star}
                     height={50}
                     width={50}
-                    className="mb-10 max-sm:hidden"
+                    className="mb-10 min-sm:hidden"
                     alt="Star Icon"
                   />{" "}
                   <br />
@@ -128,7 +128,7 @@ const Hero = () => {
             </div>
             <div className="flex gap-7 z-50 mt-6">
               <div className="flex flex-between gap-16">
-                <Link href="#reviews" className="max-sm:hidden base-sm:hidden">
+                <Link href="#reviews" className="sm-595:hidden">
                   <div className="flex flex-row items-center">
                     <AnimatedTooltip items={people} />
                   </div>
@@ -151,7 +151,7 @@ const Hero = () => {
                 alt="Clutch review badge"
                 height={50}
                 width={70}
-                className="base-sm:hidden"
+                className="sm-694:hidden"
               />
             </div>
           </div>

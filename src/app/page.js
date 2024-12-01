@@ -61,7 +61,7 @@ export default function Home() {
           <CallToAction />
           <AboutFounder />
           <div className="pt-[40px] mt-[10px] lg-5:mt-[50px]">
-            <h1 className="text-[#f5f5f5] heading-primary sm-20:text-3xl min-sm:text-xl lg-5:heading-secondary flex justify-center items-center font-bold md:mt-5">
+            <h1 className="text-[#f5f5f5] heading-primary sm-20:text-3xl sm-420:text-2xl min-sm:text-xl lg-5:heading-secondary flex justify-center items-center font-bold md:mt-5">
               Trusted by 200+ Businesses
             </h1>
           </div>
