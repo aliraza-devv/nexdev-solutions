@@ -15,8 +15,8 @@ const Success = () => {
       />
 
       {/* 1st */}
-      <div className="h-full pt-20 w-full flex flex-col items-center">
-      <div  className="flex flex-row justify-evenly items-center sm-6:items-start   sm-4:ml-[0] sm-3:ml-[200px] sm-3:w-[85vw] sm-5:flex-col sm-5:gap-[30px] w-[60%] mt-36 max-xl:w-[75vw] max-lg:w-[78vw] lg-1:ml-[0] max-xl:ml-[100px]">
+      <div className="h-full pt-20 lg-3:pt-20 w-full flex flex-col items-center">
+      <div  className="flex flex-row justify-evenly items-center sm-6:items-start sm-945:ml-[0px]   sm-4:ml-[0]  sm-3:w-[85vw] sm-5:flex-col sm-5:gap-[30px] w-[60%] mt-36 max-xl:w-[75vw] max-lg:w-[78vw] lg-1:ml-[0] max-xl:ml-[100px]">
         <div className="w-[40%] sm-5:w-[100%] relative" >
           <div className="glassmorphism p-7 w-30% absolute top-[-3rem] text-center left-[-9rem] lg-1:hidden">
             <span className="text-[#f5f5f5] max-lg:text-md heading-bold text-xl lg-1:hidden">

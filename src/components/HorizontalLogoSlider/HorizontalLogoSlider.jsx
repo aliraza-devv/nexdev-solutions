@@ -81,7 +81,7 @@ const ImageCard = ({ img, caption }) => {
 };
 const HorizontalLogoSlider = () => {
   return (
-    <div className="w-full">
+    <div className="w-full mt-[70px] bg-[#161616]">
       <Marquee pauseOnHover className="[--duration:30s]">
         {slideImages.map((image) => (
           <ImageCard

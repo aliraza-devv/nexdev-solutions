@@ -42,7 +42,7 @@ export default function Home() {
       ) : (
         <main className="w-[100%]">
           {/* <Cursor /> */}
-          <CustomCursor />
+          {/* <CustomCursor /> */}
           <div className="w-full flex items-center justify-center">
             <Navbar />
           </div>
@@ -60,7 +60,7 @@ export default function Home() {
           <Comparison />
           <CallToAction />
           <AboutFounder />
-          <div className="pt-[40px] mt-[10px] lg-5:mt-[50px]">
+          <div className="pt-[40px] mt-[10px] lg-1023:mt-[220px]">
             <h1 className="text-[#f5f5f5] heading-primary sm-20:text-3xl sm-420:text-2xl min-sm:text-xl lg-5:heading-secondary flex justify-center items-center font-bold md:mt-5">
               Trusted by 200+ Businesses
             </h1>

@@ -120,8 +120,8 @@ export function Projects() {
             />
           </div>
           <hr className="w-full border-[#f5f5f5] mt-6 md:mt-0" />
-          <div className="flex flex-col lg:flex-row justify-around items-start gap-10 mt-6">
-            <div className="w-full lg:w-[30%]">
+          <div className="flex flex-col lg:flex-row lg-5:flex-col justify-around items-start gap-10 mt-6">
+            <div className="w-full lg-5:w-[100%] lg:w-[30%]">
               <Image
                 src={project.imageUrl}
                 width={400}
@@ -140,11 +140,11 @@ export function Projects() {
                 ))}
               </div>
             </div>
-            <div className="w-full lg:w-[43%]">
+            <div className="w-full lg-5:w-[100%] lg:w-[43%]">
               <h3 className="text-[#f5f5f5] sub-font mb-10 font-medium text-2xl md:text-3xl heading-sub-responsive">
                 {project.subtitle}
               </h3>
-              <p className="text-[#f5f5f5] sub-font mb-10 font-sm text-xl heading-sub-responsive sm-11:hidden">
+              <p className="text-[#f5f5f5] lg-5:w-[100%] sub-font mb-10 font-sm text-xl heading-sub-responsive sm-11:hidden">
                 {project.description}
               </p>
               <FadeText

@@ -8,8 +8,8 @@ import Image from "next/image";
 export function Lamp() {
   return (
     <LampContainer className="h-[300px] sm-20:w-full ">
-      <div className="w-[100%] lg:w-[80%] sm-20:w-[100%] pt-[200px]">
-        <div className="flex flex-col lg:flex-row sm-20:mt-[300px] lg-5:mt-[300px] items-center sm-20:gap-[5px] w-full justify-center lg-5:justify-end gap-20">
+      <div className="w-[100%] lg:w-[80%] sm-20:w-[100%] lg-1023:pt-[10px] pt-[200px]">
+        <div className="flex flex-col lg:flex-row   items-center sm-20:gap-[5px] w-full justify-center lg-5:justify-end gap-20">
           <motion.div
             initial={{ opacity: 0.5, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,10 +71,10 @@ export function Lamp() {
 
 export const LampContainer = ({ children, className }) => {
   return (
-    <div className="w-full z-0 h-full pt-[400px] lg-5:h-[500px]  lg-5:pt-[30px]">
+    <div className="w-full z-0 h-full pt-[400px] lg-5:h-[100vh] lg-5:mt-[10rem]  lg-5:pt-[30px]">
     <div
       className={cn(
-        "relative lg-5:min-h-screen flex flex-col lg-5:overflow-scroll items-center justify-center bg-[#161616] w-full rounded-md  z-0 mb-20",
+        "relative lg-5:min-h-screen flex flex-col  items-center justify-center bg-[#161616] w-full rounded-md  z-0 mb-20",
         className
       )}
     >

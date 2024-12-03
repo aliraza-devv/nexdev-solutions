@@ -15,7 +15,7 @@ const Solution = () => {
         className="heading-bold relative z-10"
         text="You only need a website optimized for high-conversion."
       />
-      <div className="w-full  flex flex-col items-center  pt-10 sm-20:pt-20 h-full">
+      <div className="w-full  flex flex-col items-center lg-3:pt-20 sm-12:mt-[70px]   pt-10 sm-20:pt-20 h-full">
       <div className="w-full sm-20:w-[90vw] sm-805:w-[95vw]  flex justify-center mt-20 items-center">
         <div className="flex justify-between min-sm:p-[10px] min-sm:pt-[20px] sm-20:w-[100%] items-center border-[#5c45fd] border-2 flex-col rounded-[1rem] p-7 relative side-gradient w-[95%] lg-1093:w-[90%] sm-12:w-[95%] sm-805:w-[100%] sm:w-[80%]">
           {/* <RetroGrid className="mt-[-1.8rem] z-[-1]" /> */}

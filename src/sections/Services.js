@@ -6,12 +6,17 @@ import SparklesText from "@/components/Text/SparklesText";
 import { useState, useEffect } from "react";
 import web from "../../public/Assets/icons/Web.png";
 import web3d from "../../public/Assets/icons/3dweb.png";
-import seo from "../../public/Assets/icons/seo.png";
+// import seo from "../../public/Assets/icons/seo.png";
 import content from "../../public/Assets/icons/content writing.png";
 import uiux from "../../public/Assets/icons/ui-ux.png";
 import CircleButton from "@/components/Buttons/CircleButton";
 import { CardSpotlight } from "@/components/CardSpotlight/CardSpotlight";
 import webDesign from "/public/Assets/icons/web-design.gif";
+import webDevelopment from "/public/Assets/icons/web-development.gif";
+import d3Dev from "/public/Assets/icons/3D-Dev.gif";
+import seo from "/public/Assets/icons/seo.gif";
+import contentWriting from "/public/Assets/icons/content-writing.gif";
+
 
 const cardDetails = [
   {
@@ -22,13 +27,14 @@ const cardDetails = [
     icon: webDesign
   },
   {
-    icon: web,
+    // icon: web,
+    icon: webDevelopment,
     title: "Web Development",
     description:
       "We are specialized in custom web development, frontend, backend CRM, CMS, LMS, WordPress, Shopify, and no-code web/app development",
   },
   {
-    icon: web3d,
+    icon: d3Dev,
     title: "3D Development",
     description:
       "We are specialized in 3D web development using Threejs, Babylon.js, Blender with other tech stacks and creating complex 3D environments",
@@ -46,7 +52,7 @@ const cardDetails = [
       "We are specialized in ranking your website to high ranking on search engine with on-page SEO, off-page SEO, technical SEO, and semantic SEO.",
   },
   {
-    icon: content,
+    icon: contentWriting,
     title: "Content Writing",
     description:
       "We are specialized in SEO based content writing to for the website aiming to high conversion rate and boost sales.",
@@ -90,7 +96,7 @@ const Services = () => {
         Services
       </h1>
       <div className="base-sm:w-[100%] sm-448:w-[100%] sm-654:w-[100%] sm-20:flex sm-383:flex sm-383:justify-center sm-20:justify-center">
-        <div  className="grid grid-cols-1 sm-20:w-[65%] sm-16:w-[90%] 4xl:ml-[20px] sm-991:ml-[10px] sm-991:mr-[10px] lg-4:grid-cols-2 sm-383:w-[90%] sm-383:ml-[0px] sm-383:mr-[0px] 4xl:mr-[20px] sm-448:w-[100%] sm-654:ml-[0] sm-654:mr-[0]  sm-654:ml-[5px] sm-654:mr-[5px] sm-617:ml-[20px] sm-617:mr-[20px] sm-617:grid-cols-1 sm-20:grid-cols-1 min-sm:grid-cols-1 min-sm:w-[95%] gap-y-8 gap-x-20 3xl:ml-[40px] 3xl:mr-[40px] 4xl:gap-x-10 lg-1074:gap-x-[15px] 4xl:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:ml-[20px] justify-center mx-auto">
+        <div  className="grid grid-cols-1 sm-20:w-[65%] sm-16:w-[90%] 4xl:ml-[20px] sm-991:ml-[10px] sm-991:mr-[10px] lg-4:grid-cols-2 sm-383:w-[90%] sm-383:ml-[0px] sm-383:mr-[0px] 4xl:mr-[20px] sm-448:w-[100%] sm-654:ml-[0] sm-654:mr-[0]  sm-654:ml-[5px] sm-654:mr-[5px] sm-617:ml-[20px] sm-617:mr-[20px] sm-617:grid-cols-1 sm-20:grid-cols-1 min-sm:grid-cols-1 min-sm:w-[95%] gap-y-8 gap-x-20 3xl:ml-[40px] max-2xl:mr-[20px] 3xl:mr-[40px] 4xl:gap-x-10 lg-1074:gap-x-[15px] 4xl:grid-cols-3  lg:grid-cols-2 xl:grid-cols-3 max-2xl:ml-[20px] justify-center mx-auto">
           {cardDetails.map((card) => (
             <CardSpotlight className="overflow-hidden p-[0] cursor-pointer border-[0.4px] border-[#9687ff]">
             <BeamCard
