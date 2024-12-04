@@ -284,7 +284,7 @@ export function Process() {
 
         </div>
       </div>
-      <div className="flex 5xl:gap-[20px] h-[320px] mt-10 items-center  lg-5:gap-[15px] lg-5:w-[90%] 5xl:w-[94%]  sm-961:flex-col w-full justify-evenly sm-16:items-center items-center sm-16:w-[100%]">
+      <div className="flex 5xl:gap-[20px] mt-10 items-center  lg-5:gap-[15px] lg-5:w-[90%] 5xl:w-[94%]  sm-961:flex-col w-full justify-evenly sm-16:items-center items-center sm-16:w-[100%]">
         <div className="sm-16:w-[90%] lg-5:w-[50%] sm-20:w-[70%] 5xl:w-[60%] base-sm:w-[95%]">
           <CardSpotlight className="glassmorphism lg-5:w-[100%] overflow-hidden  5xl:w-[100%] base-sm:w-[100%] w-80 sm-16:w-[100%]  ">
             <Image src={Meeting} width={75} height={75} alt="Icon" />
