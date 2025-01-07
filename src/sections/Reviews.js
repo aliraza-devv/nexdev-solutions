@@ -111,12 +111,12 @@ export function Reviews() {
       <h1 className="text-center">
         <SparklesText text="Words from Our Clients" />
       </h1>
-      <Marquee pauseOnHover className="[--duration:20s] mt-10 sub-font">
+      <Marquee pauseOnHover className="[--duration:20s] mt-10 bricolage-font-family">
         {firstRow.map((review) => (
           <ReviewCard key={review.name} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s] sub-font">
+      <Marquee reverse pauseOnHover className="[--duration:20s] bricolage-font-family">
         {secondRow.map((review) => (
           <ReviewCard key={review.name} {...review} />
         ))}

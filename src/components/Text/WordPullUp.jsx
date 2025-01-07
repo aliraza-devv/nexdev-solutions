@@ -27,7 +27,7 @@ function WordPullUp({
       whileInView="show" // <--- Add this prop
       viewport={{ once: true }} // <--- Add this prop
       className={cn(
-        "font-display text-center text-4xl font-bold leading-[5rem] tracking-[0.2em] drop-shadow-sm heading-primary",
+        "font-display text-center text-4xl font-bold leading-[5rem] drop-shadow-sm heading-primary",
         className
       )}
     >

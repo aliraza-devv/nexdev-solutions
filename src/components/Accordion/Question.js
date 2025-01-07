@@ -10,7 +10,7 @@ const Question = ({ title, info }) => {
       <header>
         <p
           onClick={() => setExpanded(!expanded)}
-          className=" sm-20:font-thin font-semibold"
+          className=" sm-20:font-extralight sm-991:font-extralight font-semibold"
         >
           {title}
         </p>

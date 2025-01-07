@@ -78,11 +78,11 @@
   transition: all 0.8s ease;
 }
 
-.btnPrimary:hover {
+/* .btnPrimary:hover {
   background: transparent;
   color: var(--color-primary);
   box-shadow: 0 0 25px var(--color-primary) 8c;
-}
+} */
 
 .btnPrimary:hover .star1 {
   position: absolute;

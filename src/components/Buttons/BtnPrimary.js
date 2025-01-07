@@ -9,7 +9,7 @@ const BtnPrimary = ({ title, url }) => {
     <Link href={`${url}`} target="_blank">
       <button className={`${styles.btnPrimary} heading-primary`}>
         {title}
-        <div className={styles.star1}>
+        {/* <div className={styles.star1}>
           <Image src={star} />
         </div>
         <div className={styles.star2}>
@@ -26,7 +26,7 @@ const BtnPrimary = ({ title, url }) => {
         </div>
         <div className={styles.star6}>
           <Image src={star} />
-        </div>
+        </div> */}
       </button>
     </Link>
   );

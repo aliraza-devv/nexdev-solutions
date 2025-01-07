@@ -42,17 +42,17 @@ const slugs = [
 const Technologies = () => {
   return (
     <div className="h-full w-full pt-20 ">
-    <div className="relative w-[100%]">
-      <h1 className="text-center">
+    <div className="relative  w-[100%]">
+      <h1 className="text-center base-sm:p-[10px] base-sm:text-left">
         <SparklesText text="Technologies" />
       </h1>
       <div className="flex flex-col lg:flex-row relative items-center md:items-start justify-center w-full gap-10">
         <div className="mt-10 p-10 flex flex-col lg-5:mt-[0] sm-555:p-[15px] justify-start items-start w-full lg:w-[40%]">
           <WordPullUp
-            className="text-3xl lg-5:text-[35px] lg-5:text-center lg-5:w-[100%] lg-1091:text-[35px] sm:text-4xl font-bold tracking-[-0.02em] text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
+            className="text-3xl lg-5:text-[35px] lg-5:text-center base-sm:text-left lg-5:w-[100%] lg-1091:text-[35px] sm:text-4xl font-bold tracking-[-0.02em] text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
             words="One Step Ahead"
           />
-          <p className="text-lg sub-font sm:text-xl text-[#f5f5f5] mt-6 sm:mt-10">
+          <p className="text-lg sm-991:font-extralight sm:text-xl text-[#f5f5f5] mt-6 sm:mt-10">
             <span className="gradient-text font-semibold">
               NeXDev Solutions
             </span>{" "}

@@ -6,7 +6,7 @@ const questions = [
   },
   {
     id: 2,
-    title: "Why I need to take an action now?",
+    title: "Why do I need to take action now?",
     info: "If you want to scale and grow without hassle of working in the business and just overseeing the Profits without any risk, It’s time to Take Action!",
   },
   {

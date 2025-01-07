@@ -17,7 +17,9 @@ module.exports = {
 			 // 2X large screens
 			// Custom breakpoints
 			xs: "480px", // Extra small screens
-		   
+			"sm-min-961": {min: '961px'},
+			'big-max': { max: '2563px'},
+			'min-2xl': {min: '1537px'},
 			'max-2xl': { max: '1537px' },
 			  "2xl": "1536px",
 			"3xl": {max: "1471px"},
@@ -30,20 +32,25 @@ module.exports = {
 			"8xl": {max: "1204px"},
 			"lg-1189": {max: '1189px'},
 			"lg-1178": {max: "1178px"},
+			"lg-1168": {max: "1168px"},
 			"lg-1163": {max: "1163px"},
 			"lg-2": {max: '1144px'},
-			
+			"lg-1109": {max: '1109px'},
+			"lg-1103": {max: '1103px'},
 			"lg-1": {max: '1097px'},
 			"lg-1093": {max: "1093px"},
 			"lg-1091": {max: "1091px"},
 			"lg-1074": {max: "1074px"},
+			
 			"9xl": {max: "1049px"},
 			"lg-1043": {max: "1043px"},
+			
+			"lg-1025": {max: '1025px'},
 			"max-lg": {max: '1024px'},
 			"lg-5": {max: '1024px'},
-			"lg-1025": {max: '1025px'},
 			"lg-1023": {max: '1023px'},
 			"lg-4": {max: '1020px'},
+			"sm-994": {max: '994px'},
 			"sm-991": {max: '991px'},
 			"sm-2": {max: '986px'},
 			"sm-961": {max: '961px'},
@@ -52,13 +59,18 @@ module.exports = {
 			"sm-945": {max: '945px'},
 			"sm-12": {max: '944px'},
 			"sm-3": {max: '944px'},
+			"sm-892": {max: '892px'},
 			"sm-4": {max: '871px'},
 			"sm-5": {max: '866px'},
+			"sm-844": {max: '844px'},
+			"sm-842": {max: '842px'},
 			"sm-817": {max: '817px'},
 			"sm-805": {max: "805px"},
 			"sm-786": {max: '786px'},
 			"sm-20": {max: "768px"},
+			"sm-767": {max: '767px'},
 			"sm-742": {max: '742px'},
+			"sm-732": {max: '732px'},
 			"sm-700": {max: "700px"},
 			"sm-694": {max: '694px'},
 			"sm-15": {max: '677px'},
@@ -78,6 +90,7 @@ module.exports = {
 			"sm-588": {max: '588px'},
 			"sm-583": {max: '583px'},
 			"sm-575": {max: "575px"},
+			"sm-559": {max: '559px'},
 			"sm-555": {max: '555px'},
 			"sm-547": {max: '547px'},
 			"sm-542": {max: '542px'},
@@ -86,11 +99,15 @@ module.exports = {
 			"sm-516": {max: '516px'},
 			"sm-14": {max: '499px'},
 			"sm-493": {max: "493px"},
+			"sm-489": {max: '489px'},
+			"sm-483": {max: '483px'},
 			"sm-13": {max: '479px'},
 			"sm-465": {max: '465px'},
 			"sm-448px": {max: "448px"},
 			"sm-441": {max: '441px'},
+			"sm-438": {max: '438px'},
 			"sm-17": {max: '436px'},
+			"sm-428": {max: '428px'},
 			"base-sm": {max: '427px'},
 			"sm-420": {max: '420px'},
 			"sm-417": {max: '417px'},
@@ -101,7 +118,9 @@ module.exports = {
 			"min-sm": {max: '377px'},
 			"sm-373": {max: '373px'},
 			"sm-370": {max: '370px'},
-			"max-sm": {max: '320px'} // Ultra large screens
+			"sm-364": {max: '364px'},
+			"sm-328": {max: '328px'},
+			"max-sm": {max: '320px'} 
 		  },
   
   
@@ -119,6 +138,7 @@ module.exports = {
 		  gradient: "gradient 8s linear infinite",
 		  shine: "shine var(--duration) infinite linear",
 		  pulse: "pulse var(--duration) ease-out infinite",
+		  spotlight: "spotlight 2s ease .75s 1 forwards",
 		},
 		keyframes: {
 		  gradient: {
@@ -191,6 +211,16 @@ module.exports = {
 			},
 			"50%": {
 			  boxShadow: "0 0 0 8px var(--pulse-color)",
+			},
+		  },
+		  spotlight: {
+			"0%": {
+			  opacity: 0,
+			  transform: "translate(-72%, -62%) scale(0.5)",
+			},
+			"100%": {
+			  opacity: 1,
+			  transform: "translate(-50%,-40%) scale(1)",
 			},
 		  },
 		},

@@ -81,7 +81,7 @@ const PainPoint = () => {
                 key={text.id}
                 className="w-3 h-3 mt-2 bg-[#5c45fd] rounded-full shrink-0 blur-sm"
               ></div>
-              <p className="text-base 3xl:text-[22px] 6xl:text-[21px] 8xl:text-[20px] sm-949:text-[21px] sm-659:text-[18px] sm-493:text-[17px] sm-694:text-[19px] sm-20:text-[20px] sub-font" id={text.id}>
+              <p className="text-base sm-20:font-extralight sm-991:font-extralight 3xl:text-[22px] 6xl:text-[21px] 8xl:text-[20px] sm-949:text-[21px] sm-659:text-[18px] sm-493:text-[17px] sm-694:text-[19px] sm-20:text-[20px] bricolage-font-family" id={text.id}>
                 {text.text}
               </p>
             </div>

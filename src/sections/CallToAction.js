@@ -2,14 +2,14 @@
 import React from "react";
 import One from "../../public/Assets/parallax/seller.PNG";
 // import Ten from "../../public/Assets/parallax/aceternityui.png";
-import Three from "../../public/Assets/parallax/algochurn.png";
-import Four from "../../public/Assets/parallax/cremedigital.png";
-import Five from "../../public/Assets/parallax/cursor.png";
-import Six from "../../public/Assets/parallax/goldenbellsacademy.png";
-import Seven from "../../public/Assets/parallax/moonbeam.png";
-import Eight from "../../public/Assets/parallax/pixelperfect.png";
-import Nine from "../../public/Assets/parallax/renderwork.png";
-import Ten from "../../public/Assets/parallax/rogue.png";
+import Three from "../../public/Assets/images/website-11.png";
+import Four from "../../public/Assets/images/website-12.png";
+import Five from "../../public/Assets/images/website-13.png";
+import Six from "../../public/Assets/images/website-14.png";
+import Seven from "../../public/Assets/images/website-1.png";
+import Eight from "../../public/Assets/images/website-2.png";
+import Nine from "../../public/Assets/images/website-3.png";
+import Ten from "../../public/Assets/images/website-4.png";
 import { CTAParallax } from "@/components/CTAParallax/CTAParallax";
 
 export function CallToAction() {
@@ -22,75 +22,75 @@ export const products = [
     thumbnail: One,
   },
   {
-    title: "Cursor",
+    title: "Hello Boba",
     // link: "https://cursor.so",
     thumbnail: Ten,
   },
   {
-    title: "Rogue",
+    title: "Nathan Lauren",
     // link: "https://userogue.com",
     thumbnail: Three,
   },
 
   {
-    title: "Editorially",
+    title: "Logo",
     // link: "https://editorially.org",
     thumbnail: Four,
   },
   {
-    title: "Editrix AI",
+    title: "Raquel",
     // link: "https://editrix.ai",
     thumbnail: Five,
   },
   {
-    title: "Pixel Perfect",
+    title: "Richard Moore",
     // link: "https://app.pixelperfect.quest",
     thumbnail: Six,
   },
 
   {
-    title: "Algochurn",
+    title: "Dentist",
     // link: "https://algochurn.com",
     thumbnail: Seven,
   },
   {
-    title: "Aceternity UI",
+    title: "Green Leaf",
     // link: "https://ui.aceternity.com",
     thumbnail: Eight,
   },
   {
-    title: "Tailwind Master Kit",
+    title: "Nisa",
     // link: "https://tailwindmasterkit.com",
     thumbnail: Nine,
   },
   {
-    title: "SmartBridge",
+    title: "Hello Boba",
     // link: "https://smartbridgetech.com",
     thumbnail: Ten,
   },
   {
-    title: "Renderwork Studio",
+    title: "Nthan Lauren",
     // link: "https://renderwork.studio",
     thumbnail: Three,
   },
 
   {
-    title: "Creme Digital",
+    title: "Raquel",
     // link: "https://cremedigital.com",
     thumbnail: Five,
   },
   {
-    title: "Golden Bells Academy",
+    title: "Hello Boba",
     // link: "https://goldenbellsacademy.com",
     thumbnail: Ten,
   },
   {
-    title: "Invoker Labs",
+    title: "Richard Moore",
     // link: "https://invoker.lol",
     thumbnail: Six,
   },
   {
-    title: "E Free Invoice",
+    title: "Hello Boba",
     // link: "https://efreeinvoice.com",
     thumbnail: Ten,
   },

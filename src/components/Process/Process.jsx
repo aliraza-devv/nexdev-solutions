@@ -59,7 +59,7 @@ export const Timeline = ({ data }) => {
         <h1 className="text-center">
           <SparklesText text="Our Process" />
         </h1>
-        <h3 className="mb-24 text-xl text-center sub-font text-[#f5f5f5]">
+        <h3 className="mb-24 text-xl text-center bricolage-font-family text-[#f5f5f5]">
           How you can get started?
         </h3>
       </div>

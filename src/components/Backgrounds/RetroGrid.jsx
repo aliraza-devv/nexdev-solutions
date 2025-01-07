@@ -4,7 +4,7 @@ export default function RetroGrid({ className }) {
   return (
     <div
       className={cn(
-        "pointer-events-none absolute h-full lg-1043:h-[147vh] lg-3:h-[141vh] max-2xl:h-[125vh] w-full overflow-hidden opacity-100 ",
+        "pointer-events-none absolute h-[1000px] w-full overflow-hidden opacity-70 -top-[30vh]",
         className
       )}
     >
@@ -12,9 +12,9 @@ export default function RetroGrid({ className }) {
       <div className="absolute  [transform:rotateX(35deg)]">
         <div
           className={cn(
-            "animate-grid",
+            // "animate-grid",
 
-            "[background-repeat:repeat] [background-size:60px_60px] [height:300vh]  [margin-left:-50%] [transform-origin:100%_0_0] [width:600vw]",
+            "[background-repeat:repeat] [background-size:40px_40px] [height:300vh]  [margin-left:-50%] [transform-origin:100%_0_0] [width:600vw]",
 
             // Light Styles
             "[background-image:linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_0),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_0)]",

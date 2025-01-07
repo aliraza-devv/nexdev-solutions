@@ -60,13 +60,13 @@
 
 .card {
   z-index: 1;
-  width: 100%;
-  height: 360px;
+  /* width: 100%; */
+  /* height: 460px; */
   border-radius: 1rem;
-  border: solid 1px #202222;
+  /* border: solid 1px #202222; */
   /* background-size: 20px 20px; */
   /* background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d); */
-  background: rgba(255, 255, 255, 0.2);
+  /* background: #2D2D2E; */
   display: flex;
   /* justify-content: center; */
   position: relative;

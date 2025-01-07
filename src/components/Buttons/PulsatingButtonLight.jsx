@@ -16,7 +16,7 @@ export function PulsatingButtonLight({
     <Link href={`${url}`} target="_blank">
       <button
         className={cn(
-          "relative text-center text-xl heading-primary cursor-pointer flex justify-center items-center rounded-lg text-[#5c45fd] bg-[#f5f5f5] px-7 py-4",
+          "relative text-center text-xl hover:scale-110 transition duration-[200] heading-primary cursor-pointer flex justify-center items-center rounded-[1rem] text-[#5c45fd] bg-[#f5f5f5] px-7 py-4",
           className
         )}
         style={{
@@ -26,7 +26,7 @@ export function PulsatingButtonLight({
         {...props}
       >
         <div className="relative z-10">{children}</div>
-        <div className="absolute top-1/2 left-1/2 size-full rounded-lg bg-inherit animate-pulse -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-1/2 left-1/2 size-full rounded-[1rem] bg-inherit animate-pulse -translate-x-1/2 -translate-y-1/2" />
       </button>
     </Link>
   );

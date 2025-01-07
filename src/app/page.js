@@ -33,6 +33,20 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, []);
 
+  const [width, setWidth] = useState(window.innerWidth);
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+
   return (
     <>
       {loading ? (
@@ -40,9 +54,9 @@ export default function Home() {
           <Loader />
         </div>
       ) : (
-        <main className="w-[100%]">
+        <main className="w-[100vw]">
           {/* <Cursor /> */}
-          {/* <CustomCursor /> */}
+          {width > 425 && (<CustomCursor />)}
           <div className="w-full flex items-center justify-center">
             <Navbar />
           </div>
@@ -60,8 +74,8 @@ export default function Home() {
           <Comparison />
           <CallToAction />
           <AboutFounder />
-          <div className="pt-[40px] mt-[10px] lg-1023:mt-[220px]">
-            <h1 className="text-[#f5f5f5] heading-primary sm-20:text-3xl sm-420:text-2xl min-sm:text-xl lg-5:heading-secondary flex justify-center items-center font-bold md:mt-5">
+          <div className="pt-[90px]">
+            <h1 className="text-[#f5f5f5] heading-primary sm-20:text-3xl sm-420:text-2xl min-sm:text-xl lg-5:bricolage-font-family flex justify-center items-center font-bold">
               Trusted by 200+ Businesses
             </h1>
           </div>
