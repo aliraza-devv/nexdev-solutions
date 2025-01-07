@@ -109,7 +109,7 @@ export const Header = () => {
         d
       </div>
       <div className="max-w-7xl px-6 z-50 relative mx-auto w-full left-0 top-[-2.5rem] md:top-[-10rem]">
-        <div className="w-[300px] max-sm:ml-[-10px] flex flex-col items-center justify-center">
+        <div className="w-[330px] max-sm:w-[300px] max-sm:ml-[-10px] flex flex-col items-center justify-center">
           <PulsatingButton url="https://form.jotform.com/242006777431454">
             Get Your Free Website Audit
           </PulsatingButton>
