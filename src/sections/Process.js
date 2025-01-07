@@ -80,7 +80,7 @@
 // }
 
 // export default Process;
-
+"use client"
 import Image from "next/image";
 import React from "react";
 import { Timeline } from "../components/Process/Process";
