@@ -48,7 +48,7 @@
 //     number: "03",
 //     title: "Revise & Relaunch",
 //     description:
-//       "We'll revise the design until you are 100% satisfied, and then watch your business grow.",
+//       "We&apos;ll revise the design until you are 100% satisfied, and then watch your business grow.",
 //     content: (
 //       <div className="h-full w-full  flex items-center justify-center text-white">
 //         <Image
