@@ -54,7 +54,7 @@ const data = [
   },
   {
     id: 3,
-    text: "You hold your brand to high standards, but you are unsure who can meet your expectations and deliver the results you're looking for.",
+    text: "You hold your brand to high standards, but you are unsure who can meet your expectations and deliver the results you&apos;re looking for.",
   },
   {
     id: 4,
