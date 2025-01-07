@@ -9,53 +9,72 @@ import BtnPrimary from "@/components/Buttons/BtnPrimary";
 import SparklesText from "@/components/Text/SparklesText";
 import TertiaryButton from "@/components/Buttons/TertiaryButton";
 import { VelocityScroll } from "@/components/Text/VelocityScroll";
-
-import LandA from "../../public/Assets/mockups/LandA.png";
+import { useState, useEffect } from "react";
+import LandA from "../../public/Assets/mockups/Mockup-2.png";
 import Smartform from "../../public/Assets/mockups/Smarterform.png";
-import SellerGoals from "../../public/Assets/mockups/sellergoals.png";
+import SellerGoals from "../../public/Assets/mockups/Mockup-3.png";
+import Careerify from "../../public/Assets/images/website-15.png";
+import Alphagon from "../../public/Assets/mockups/Mockup-7.png";
 import lighthouse from "../../public/Assets/mockups/lighthouse-reality.png";
+import { IconCode, IconDatabase, IconSettings } from "@tabler/icons-react";
+
+
 
 export function Projects() {
+  const [width, setWidth] = useState(window.innerWidth);
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+ 
   const projectData = [
     {
-      title: "Smarter Form",
-      imageUrl: Smartform,
-      url: "https://smarterform.online/",
-      subtitle: "SaaS CRM with complex multi-step forms and Dashboards",
+      title: "The Alphagon ",
+      imageUrl: Alphagon,
+      url: "https://thealphagon.com/",
+      subtitle: "WordPress website for digital markeing agency",
       description:
-        "NeXDev Solutions and their team created this SaaS CRM web app for multiple business owners to create their own flow of forms. All three users have their own dashboards where they can create, submit, and review the forms.",
+        "NeXDev Solutions and their team created designed and developed a wordpress website for The Alphagon which helped them attract more leads and convert them into loyal clients.",
       stats: [
-        { label: "Increased Leads", value: "100%" },
-        { label: "Increased Investment", value: "67%" },
-        { label: "Increased Perfomance", value: "120%" },
+        { label: "Increased Conversion", value: "59%" },
+        { label: "Increased Sales", value: "62%" },
+        { label: "Increased Response", value: "100%" },
       ],
-      tags: ["Development", "Database", "DevOps"],
+      tags: ["Development", "Design"],
     },
     {
       title: "L&A Outsource",
       imageUrl: LandA,
       url: "https://laoutsourced.com/",
-      subtitle: "WordPress Website",
+      subtitle: "WordPress Website for and outsource company",
       description:
         "NeXDev Solutions and their team created this WordPress website to showcase an outsource company and their services of outsourcing administration, compliance, and software.",
       stats: [
-        { label: "Increased Leads", value: "100%" },
-        { label: "Increased Traffic", value: "87%" },
-        { label: "Increased Revenue", value: "100%" },
+        { label: "Increased Conversion", value: "57%" },
+        // { label: "Booking Leads/month", value: "20-25" },
+        { label: "Increased Sales", value: "76%" },
       ],
       tags: ["Development", "UI/UX", "SEO"],
     },
     {
-      title: "Seller Goals",
-      imageUrl: SellerGoals,
+      title: "Careerify",
+      imageUrl: Careerify,
       url: "https://sellergoals.com/",
-      subtitle: "WordPress Website",
+      subtitle: "Fully Coded Website",
       description:
-        "NeXDev Solutions created and designed this website to showcase an Amazon Agency and their services of outsourcing administration compliance, and software. Users can view all the details about the agency and their services. NeXDev Solutions integrated multi-step forms with complex logic.",
+        "NeXDev Solutions created this website to help job-seekers find suitale jobs via reverse-recruitung. NexDev used complex logic to design separate portals for job-seekers and recruiters, giving each user a seamless and personalized experience.",
       stats: [
-        { label: "Increased Leads", value: "80%" },
-        { label: "Increased Revenue", value: "140%" },
-        { label: "Boost Sales", value: "90%" },
+        { label: "Increased Growth", value: "80%" },
+        // { label: "Booking Leads", value: "20-30" },
+        { label: "Increased Conversion", value: "73%" },
       ],
       tags: ["Development", "UI/UX", "SEO"],
     },
@@ -75,15 +94,17 @@ export function Projects() {
     },
   ];
 
+  
+  
   return (
     <div
       id="projects"
       className="w-full h-full mt-36 relative flex flex-col items-center"
     >
       <h1 className="text-center mb-2">
-        <SparklesText text="Our Work" />
+        <SparklesText text="More Work" />
       </h1>
-      <h3 className="mb-20 text-xl text-[#f5f5f5] sub-font text-center">
+      <h3 className="mb-20 min-sm:p-[6px] text-xl text-[#f5f5f5] bricolage-font-family text-center">
         We create websites that Inspire & Boost Sales.
       </h3>
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
@@ -100,45 +121,46 @@ export function Projects() {
             duration: 0.5,
             ease: "easeInOut",
           }}
-          className="fade-in-bottom w-[90%] flex gap-6 justify-center flex-col mb-20 rounded-[1rem] bg-gray-50/[.10] p-10"
+          className="fade-in-bottom glassmorphism w-[90%] flex gap-6 justify-center flex-col mb-20 rounded-[1rem]  p-10"
         >
-          <div className="flex flex-col md:flex-row justify-between gap-5 items-center">
+          <div className="flex flex-col  md:flex-row justify-between gap-5 items-center">
             <WordPullUp
-              className="text-4xl font-bold tracking-[-0.02em]  text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
+              className="text-4xl font-bold tracking-[-0.02em] sm-20:text-3xl  text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
               words={project.title}
             />
-            <TertiaryButton
+            {width > 427 &&  
+            (<TertiaryButton
               title="Learn More"
               url={project.url}
               className="mt-4 md:mt-0"
-            />
+            />)}
           </div>
-          <hr className="w-full border-[#f5f5f5] mt-6 md:mt-0" />
-          <div className="flex flex-col lg:flex-row justify-around items-start gap-10 mt-6">
-            <div className="w-full lg:w-[30%]">
+          <hr className="w-full border-[#f5f5f5] mt-6 base-sm:mt-[0px] md:mt-0" />
+          <div className="flex flex-col lg:flex-row lg-5:flex-col justify-around items-start gap-10 mt-6">
+            <div className="w-full lg-5:w-[100%] lg:w-[30%]">
               <Image
                 src={project.imageUrl}
                 width={400}
                 height={400}
                 alt={`${project.title} Project Mockup`}
-                className="rounded-[1rem]"
+                className="rounded-[1rem] sm-7:w-[100%]"
               />
-              <div className="flex mt-6 gap-4 flex-wrap">
-                {project.tags.map((tag, i) => (
+              <div className={"flex  min-w-max mt-6 gap-4 flex-wrap"}>
+                 {project.tags.map((tag, i) => (
                   <div
                     key={i}
-                    className="flex sub-font justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
+                    className="flex min-w-max bricolage-font-family justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
                   >
-                    {tag}
+                    { tag}
                   </div>
                 ))}
               </div>
             </div>
-            <div className="w-full lg:w-[43%]">
-              <h3 className="text-[#f5f5f5] sub-font mb-10 font-medium text-2xl md:text-3xl heading-sub-responsive">
+            <div className="w-full lg-5:w-[100%] lg:w-[43%]">
+              <h3 className="text-[#f5f5f5] bricolage-font-family mb-10 font-medium text-2xl md:text-3xl heading-sub-responsive">
                 {project.subtitle}
               </h3>
-              <p className="text-[#f5f5f5] sub-font mb-10 font-sm text-xl heading-sub-responsive">
+              <p className="text-[#f5f5f5] sm-991:font-extralight lg-5:w-[100%] mb-10 font-sm text-xl heading-sub-responsive sm-11:hidden">
                 {project.description}
               </p>
               <FadeText
@@ -147,19 +169,21 @@ export function Projects() {
                 framerProps={{ show: { transition: { delay: 0.2 } } }}
               />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 gap-4 w-full lg:w-[40%]">
+            <div  className="grid sm-660:grid-cols-2 sm-660:w-[100%]   sm-11:mt-[-35px] lg-3:grid-cols-1 sm-521:grid-cols-1  sm-521:flex sm-521:flex-col sm-521:items-center sm-9:grid-cols-1 lg:grid-cols-2  sm-8:w-[100%]  sm-7:grid-cols-2 lg-5:grid-cols-3 gap-4 max-xl:gap-x-[0] w-full lg-5:w-[100%] sm-11:w-[100%] lg-3:w-[20%]  lg:w-[40%]">
+              {/* <div className="sm-521:w-[50%] sm-521:flex sm-521:flex-col  items-center"> */}
               {project.stats.map((stat, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <div>
-                    <h4 className="w-[9rem] sub-font h-[10vh] mb-6 flex justify-center items-center text-[#f5f5f5] rounded-[1rem] bg-[#5c45fd] path-clip">
+                <div  key={i} className="flex flex-col  w-[100%]  items-center lg-3:items-start base-sm:items-center sm-9:ml-[27%] sm-10:ml-[0] sm-11:w-[100%]">
+                  <div className={"sm-11:w-[100%] flex justify-center flex-col  w-[100%] items-center"}>
+                    <h4 className="w-[9rem] bricolage-font-family h-[10vh] mb-6 flex justify-center items-center text-[#f5f5f5] rounded-[1rem] bg-[#5c45fd] path-clip">
                       {stat.value}
                     </h4>
-                    <p className="text-[#f5f5f5] sub-font text-md text-center">
+                    <p className={"text-[#f5f5f5] bricolage-font-family text-md"}>
                       {stat.label}
                     </p>
                   </div>
                 </div>
               ))}
+              {/* </div> */}
             </div>
           </div>
         </motion.div>

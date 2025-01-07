@@ -9,6 +9,7 @@ import Abrar from "../../public/Assets/images/Abrar.jpg";
 import Uzair from "../../public/Assets/images/Uzair.jpeg";
 import Najam from "../../public/Assets/images/Najam.jpg";
 import Image from "next/image";
+// import Testimonial1 from "../../public/Assets/Videos/Testionominal-1.mp4";
 
 const reviews = [
   {
@@ -105,21 +106,28 @@ export function Reviews() {
   return (
     <div
       id="reviews"
-      className="relative bg-[#161616] flex h-[70vh] w-full flex-col items-center mt-10 justify-center overflow-hidden md:shadow-xl"
+      className="relative bg-[#161616] flex w-full flex-col items-center mt-10 justify-center overflow-hidden "
     >
       <h1 className="text-center">
         <SparklesText text="Words from Our Clients" />
       </h1>
-      <Marquee pauseOnHover className="[--duration:20s] mt-10 sub-font">
+      <Marquee pauseOnHover className="[--duration:20s] mt-10 bricolage-font-family">
         {firstRow.map((review) => (
           <ReviewCard key={review.name} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s] sub-font">
+      <Marquee reverse pauseOnHover className="[--duration:20s] bricolage-font-family">
         {secondRow.map((review) => (
           <ReviewCard key={review.name} {...review} />
         ))}
       </Marquee>
+      {/* <div>
+        <video width="600" controls>
+          <source src={Testimonial1} type="video/mp4" />
+          <source src="/myvideo.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+      </div> */}
       {/* <div className="pointer-events-none absolute inset-y-0 left-0 w-1/5 bg-gradient-to-r from-black dark:from-background"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/5 bg-gradient-to-l from-black dark:from-background"></div> */}
     </div>

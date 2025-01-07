@@ -8,12 +8,12 @@ const Question = ({ title, info }) => {
   return (
     <article className={`question ${expanded ? "expanded" : ""}`}>
       <header>
-        <h4
+        <p
           onClick={() => setExpanded(!expanded)}
-          className="question-title font-semibold"
+          className=" sm-20:font-extralight sm-991:font-extralight font-semibold"
         >
           {title}
-        </h4>
+        </p>
         <button className="btn" onClick={() => setExpanded(!expanded)}>
           {expanded ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </button>

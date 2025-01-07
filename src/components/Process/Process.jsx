@@ -59,7 +59,7 @@ export const Timeline = ({ data }) => {
         <h1 className="text-center">
           <SparklesText text="Our Process" />
         </h1>
-        <h3 className="mb-24 text-xl text-center sub-font text-[#f5f5f5]">
+        <h3 className="mb-24 text-xl text-center bricolage-font-family text-[#f5f5f5]">
           How you can get started?
         </h3>
       </div>
@@ -68,7 +68,7 @@ export const Timeline = ({ data }) => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-between w-full pt-10 md:pt-40 md:gap-10"
+            className="flex  justify-between w-full pt-10 md:pt-40 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-black flex items-center justify-center">

@@ -20,7 +20,7 @@
   font-family: "Bricolage Grotesque";
   src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf")
     format("woff2");
-  font-weight: 400;
+  /* font-weight: 400; */
   font-style: normal;
 }
 
@@ -28,7 +28,7 @@
   font-family: "Bricolage Grotesque";
   src: url("/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf")
     format("woff2");
-  font-weight: 700;
+  /* font-weight: 700; */
   font-style: normal;
 }
 
@@ -54,14 +54,24 @@
   visibility: hidden;
 }
 
+.no-scroll {
+  overflow: hidden; /* Prevent scrolling */
+  position: fixed; /* Prevent scroll reset when disabling */
+  width: 100%; /* Ensure width is maintained */
+}
+
 html {
   scroll-behavior: smooth;
+  
 }
 
 body {
   background-color: var(--color-black);
   cursor: url("/Assets/cursor-svgrepo-com.png") auto;
   font-family: "Bricolage Grotesque";
+  overflow-x: hidden;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 /* Scrolbar */
@@ -84,21 +94,17 @@ body {
 
 .heading-primary {
   font-family: "Bricolage Grotesque";
-  font-weight: 500;
+  font-weight: 600;
+  
 }
 .heading-bold {
   font-family: "Bricolage Grotesque";
   font-weight: 600;
 }
-.heading-secondary {
+.bricolage-font-family {
   font-family: "Bricolage Grotesque";
-  font-weight: 400;
 }
 
-.sub-font {
-  font-family: "Bricolage Grotesque";
-  /* font-weight: 400; */
-}
 
 .signature-font {
   font-family: "MrsSaint Delafield";
@@ -125,7 +131,13 @@ body {
   z-index: 101;
 }
 
+.purple-gradient {
+  background-color: rgba(20, 15, 40, 0.4);
+}
+
 .side-gradient {
+  /* background-color: rgba(20, 15, 40, 0.4); */
+
   background: -webkit-linear-gradient(
       to left,
       transparent,
@@ -162,14 +174,20 @@ body {
 }
 
 /* Glass Effect */
+.word-spacing {
+  word-spacing: normal;
+}
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  border: 1px solid rgba(92, 69, 253, 0.4);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(15px); /* Strong blur for a frosted glass effect */
+  -webkit-backdrop-filter: blur(15px); /* Safari compatibility */
+  border-radius: 1rem; /* Smooth, rounded corners */
+  /* border: 1px solid red; */
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Depth with a dark shadow */
+  color: rgba(255, 255, 255, 0.8); /* Bright text color for contrast */
+ /* Prevent content spillover */
 }
 
 .bg-object {
@@ -192,6 +210,20 @@ body {
     transform: scale(1);
     opacity: 0.7;
   }
+}
+
+.btnPrimary {
+  position: relative;
+  padding: 12px 35px;
+  /* background: var(--color-white); */
+  font-size: 17px;
+  color: var(--color-white);
+  border: 3px solid var(--color-white);
+  border-radius: 1rem;
+  box-shadow: 0 0 0 var(--color-white) 8c;
+  /* transition: all 0.3s ease-in-out; */
+  cursor: pointer;
+  /* word-spacing: 1px; */
 }
 
 
@@ -501,6 +533,10 @@ a {
     var(--color-darkBlue) 0%,
     var(--color-primary) 100%
   );
+}
+
+.image-exception {
+  max-width: 150%;
 }
 .question h4 {
   text-transform: none;

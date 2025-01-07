@@ -54,7 +54,7 @@ const data = [
   },
   {
     id: 3,
-    text: "You care about your brand and hold yourself to high standards, but you are unsure who can meet your expectations and deliver the results you're looking for.",
+    text: "You hold your brand to high standards, but you are unsure who can meet your expectations and deliver the results you're looking for.",
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ const data = [
 const PainPoint = () => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col 3xl:w-[100%] justify-center items-center">
         <h1 className="text-center mb-2 mt-20">
           <SparklesText text="If You Are Here..." />
         </h1>
@@ -75,13 +75,13 @@ const PainPoint = () => {
           {data.map((text) => (
             <div
               key={text.id}
-              className="p-7 w-full md:w-[42%] bg-gray-50/[.10]  flex gap-4 rounded-[1rem] items-start"
+              className="p-7 w-full md:w-[42%] 3xl:w-[50%] 7xl:w-[60%] 8xl:w-[70%] 9xl:w-[80%] sm-949:w-[90%] sm-659:w-[95%] sm-575:w-[100%]  bg-gray-50/[.10]  flex gap-4 rounded-[1rem] items-start"
             >
               <div
                 key={text.id}
                 className="w-3 h-3 mt-2 bg-[#5c45fd] rounded-full shrink-0 blur-sm"
               ></div>
-              <p className="text-base md:text-lg sub-font" id={text.id}>
+              <p className="text-base sm-20:font-extralight sm-991:font-extralight 3xl:text-[22px] 6xl:text-[21px] 8xl:text-[20px] sm-949:text-[21px] sm-659:text-[18px] sm-493:text-[17px] sm-694:text-[19px] sm-20:text-[20px] bricolage-font-family" id={text.id}>
                 {text.text}
               </p>
             </div>

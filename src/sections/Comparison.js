@@ -41,22 +41,22 @@ const Comparison = () => {
         </div>
       </div>
 
-      <h2 className="relative z-10 text-[#f5f5f5] mt-6 font-semibold sub-font text-lg text-center">
+      <h2 className="relative z-10 text-[#f5f5f5] mt-6 font-semibold bricolage-font-family text-lg text-center">
         &quot;Excellence is not a skill, it&apos;s an attitude.&quot; - Ralph
         Marston
       </h2>
-      <h2 className="relative z-10 text-[#b5b5b5] sub-font text-lg text-center">
+      <h2 className="relative z-10 text-[#b5b5b5] bricolage-font-family text-lg text-center">
         We treat your business as if it were our own
       </h2>
 
       <div className="relative z-10 flex flex-col items-center gap-10 lg:gap-20 mt-6 lg:mt-10 w-full">
         <div className="flex flex-col md:flex-row lg:flex-row justify-center items-center gap-10 w-full max-w-screen-lg">
           <div className="w-full lg:w-1/2 lg:text-left">
-            <h2 className="text-[#f5f5f5] mt-6 font-semibold sub-font z-10 text-lg">
+            <h2 className="text-[#f5f5f5] mt-6 font-semibold bricolage-font-family z-10 text-lg">
               Other Agencies / Freelancers
             </h2>
             <div className="mt-4">
-              <div className="flex flex-col gap-4 sub-font items-start">
+              <div className="flex flex-col gap-4 sm-991:font-extralight items-start">
                 {[
                   "Inexperienced Juniors",
                   "No focus on conversion, growth, & Sales",
@@ -79,11 +79,11 @@ const Comparison = () => {
           </div>
 
           <div className="w-full lg:w-1/2 lg:text-left">
-            <h2 className="text-[#f5f5f5] mt-6 z-10 sub-font font-semibold text-lg">
+            <h2 className="text-[#f5f5f5] mt-6 z-10 bricolage-font-family font-semibold text-lg">
               NeXDev Solutions
             </h2>
             <div className="mt-4">
-              <div className="flex flex-col gap-4 sub-font items-start">
+              <div className="flex flex-col gap-4 sm-991:font-extralight items-start">
                 {[
                   { text: "Top Experienced Team", icon: Person },
                   {
