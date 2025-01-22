@@ -56,7 +56,7 @@ const Pricing = () => {
           point4="Free Consultation"
           point5="A full plan to follow"
           point6="Research and analysis"
-          statement="Perfect for you if you need funnels, web app, custom development, or you’re confused/unsure or have different requirements or need other services.
+          statement="Perfect for you if you need funnels, web app, custom development, or you're confused/unsure or have different requirements or need other services.
 "
           url="https://cal.com/nexdevsolutions/discovery-call"
         />
