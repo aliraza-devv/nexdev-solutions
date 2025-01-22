@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Faq from "@/sections/Faq";
 import Hero from "@/sections/Hero";
@@ -33,19 +34,26 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, []);
 
-  const [width, setWidth] = useState(window.innerWidth);
-  
-    useEffect(() => {
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0 // Avoids SSR errors
+  );
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
       const handleResize = () => {
         setWidth(window.innerWidth);
       };
-  
-      window.addEventListener('resize', handleResize);
-  
+
+      // Set initial width
+      handleResize();
+
+      window.addEventListener("resize", handleResize);
+
       return () => {
-        window.removeEventListener('resize', handleResize);
+        window.removeEventListener("resize", handleResize);
       };
-    }, []);
+    }
+  }, []);
 
   return (
     <>
@@ -56,7 +64,7 @@ export default function Home() {
       ) : (
         <main className="w-[100vw]">
           {/* <Cursor /> */}
-          {width > 425 && (<CustomCursor />)}
+          {width > 425 && <CustomCursor />}
           <div className="w-full flex items-center justify-center">
             <Navbar />
           </div>

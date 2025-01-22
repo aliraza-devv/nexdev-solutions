@@ -12,13 +12,8 @@ const PricingCard = ({
   point4,
   point5,
   point6,
-  point7,
-  point8,
-  point9,
-  point10,
   url,
   miniTitle,
-  priceCut,
   statement
 }) => {
   return (
@@ -151,7 +146,6 @@ const PricingCard = ({
       <div className="text-white sm-20:font-extralight sm-991:font-extralight font-normal mt-[20px]">{statement}</div>
       <button className={`${styles.button} bricolage-font-family font-bold mt-4`}>
         <Link className="font-[600]" href={`${url}`}>Book Your Call Now</Link>
-        {/* <div>Only few spots left!</div> */}
       </button>
       <div className="font-semibold text-center mt-[8px] max-2xl:text-sm text-sm text-[#f5f5f5]">
           Hurry! Only a few spots left.
