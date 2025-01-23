@@ -52,7 +52,7 @@ const Technologies = () => {
             className="text-3xl lg-5:text-[35px] lg-5:text-center base-sm:text-left lg-5:w-[100%] lg-1091:text-[35px] sm:text-4xl font-bold tracking-[-0.02em] text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
             words="One Step Ahead"
           />
-          <p className="text-lg sm-991:font-extralight sm:text-xl text-[#f5f5f5] mt-6 sm:mt-10">
+          <p className="text-lg sm-991:font-extralight sm:text-xl text-[#f5f5f5] mt-6 sm:mt-10 bricolage-font-family">
             <span className="gradient-text font-semibold">
               NeXDev Solutions
             </span>{" "}

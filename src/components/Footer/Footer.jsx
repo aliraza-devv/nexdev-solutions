@@ -35,7 +35,7 @@ const Footer = () => {
             </div>
             <div className=" lg-5:justify-self-end lg-5:w-[50%] sm-20:w-[100%] sm-20:justify-self-start base-sm:ml-[0]">
               <WordPullUp
-                className="tracking-[-0.02em] text-[#f5f5f5] text-3xl md:text-4xl text-start mb-10 w-full md:w-[17rem]"
+                className="tracking-[-0.02em] text-[#f5f5f5] text-3xl md:text-4xl text-start mb-10 w-full md:w-[17rem] heading-primary"
                 words="Services"
               />
               <ul className="text-[#f5f5f5] bricolage-font-family flex flex-col gap-3">
@@ -47,7 +47,7 @@ const Footer = () => {
             </div>
             <div>
               <WordPullUp
-                className="tracking-[-0.02em] text-[#f5f5f5] text-3xl md:text-4xl text-start sm-20:mb-[8px] mb-10 w-full md:w-[17rem]"
+                className="tracking-[-0.02em] text-[#f5f5f5] text-3xl md:text-4xl text-start sm-20:mb-[8px] mb-10 w-full md:w-[17rem] heading-primary"
                 words="Get in Touch"
               />
               <h4 className="text-[#f5f5f5] mb-5 sm-20:mb-[5px] bricolage-font-family">
@@ -62,7 +62,7 @@ const Footer = () => {
               className="word-spacing tracking-[-0.01em] sm-13:text-start sm-13:p-[0px] heading-primary text-white text-[3rem] min-sm:w-[100%] max-sm:ml-[-10px] sm-542:text-[4rem] min-sm:text-[3rem] sm-20:text-[5rem] sm:text-[4rem] md:text-[3rem] sm-603:text-[5rem] sm-742:text-[6rem] big-max:text-[9rem] max-2xl:text-[9rem] p-10 leading-[5rem] sm-20:leading-[5rem] sm-603:leading-[5rem] min-sm:leading-[3rem] 4xl:leading-[8rem]"
               words="Crafting Since 2016"
             />
-            <p className="text-[#f5f5f5] sm-583:w-[100%] text-lg sm-547:text-[14px] text-center mt-6">
+            <p className="text-[#f5f5f5] sm-583:w-[100%] text-lg sm-547:text-[14px] text-center mt-6 bricolage-font-family">
               © nexdevsolutions.com 2024. All rights reserved.
             </p>
           </div>

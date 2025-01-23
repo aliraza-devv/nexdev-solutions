@@ -39,8 +39,8 @@ const Success = () => {
               <br /> in 3 days of launch
             </span>
           </div>
-          <div className="glassmorphism bricolage-font-family  p-7 w-30% absolute bottom-[-2rem] right-0 lg-1:hidden">
-            <span className="text-[#f5f5f5] heading-bold text-xl">
+          <div className="glassmorphism bricolage-font-family p-7 w-30% absolute bottom-[-2rem] right-0 lg-1:hidden">
+            <span className="text-[#f5f5f5] heading-primary text-xl">
               $120k/month
             </span>
           </div>
@@ -53,11 +53,11 @@ const Success = () => {
           />
         </div>
         <div className="flex flex-col w-[60%] sm-5:w-[100%] sm-5:ml-[0] big-max:ml-6 max-2xl:ml-6">
-          <h3 className="font-bold bricolage-font-family  xs-1:font-normal xs-2:font-light mb-5 xs-2:text-md text-3xl xs-1:text-2xl w-full text-[#f5f5f5]">
+          <h3 className="font-semibold bricolage-font-family xs-1:font-normal xs-2:font-light mb-5 xs-2:text-md text-3xl xs-1:text-2xl w-full text-[#f5f5f5]">
             Closed 15+ leads from website in 3 days of launch and
             makes $120k/month
           </h3>
-          <p className="text-xl  sm-991:font-extralight xs-2:font-thin xs-1:text-lg xs-2:text-sm text-[#f5f5f5] w-[100%]">
+          <p className="text-xl sm-991:font-extralight xs-2:font-thin xs-1:text-lg xs-2:text-sm text-[#f5f5f5] w-[100%] bricolage-font-family">
             We built a service base website funnel which helps EXAMANAGEMENT
             close 35+ leads per month an making $120k/month
           </p>
@@ -71,7 +71,7 @@ const Success = () => {
             Increased 62% conversion and booked 10 high-ticket clients in first
             2 weeks
           </h3>
-          <p className="text-xl  sm-991:font-extralight text-[#f5f5f5] xs-2:font-thin xs-1:text-lg xs-2:text-sm w-[100%] ">
+          <p className="text-xl  sm-991:font-extralight text-[#f5f5f5] xs-2:font-thin xs-1:text-lg xs-2:text-sm w-[100%] bricolage-font-family">
             We built a service base website funnel for Seller Goals which
             converts 62% of their traffic and helped them close 10 high-ticket
             clients. Every month they are booking 10-15 high-ticket leads
@@ -80,12 +80,12 @@ const Success = () => {
         </div>)}
         <div className="w-[40%] sm-5:w-[100%] relative max-2xl:ml-6 max-xl:ml-6 lg-2:ml-10 sm-5:ml-[0]" >
           <div className="glassmorphism p-7 w-30% absolute top-[-4.5rem] max-xl-left-[0] text-center left-[-8rem] lg-1:hidden">
-            <span className="text-[#f5f5f5] bricolage-font-family  heading-bold text-xl">
+            <span className="text-[#f5f5f5] bricolage-font-family  heading-semibold text-xl">
               Increased <br /> 62% Conversion
             </span>
           </div>
           <div className="glassmorphism p-7 w-30% sm-3:w-[80%] lg-1:hidden absolute text-center bottom-[-4rem] right-[-5rem]  sm-3:left-[0]">
-            <span className="text-[#f5f5f5] bricolage-font-family  heading-bold text-xl">
+            <span className="text-[#f5f5f5] bricolage-font-family  heading-semibold text-xl">
               closed 10 <br />
               high-ticket clients
             </span>
@@ -102,7 +102,7 @@ const Success = () => {
             Increased 62% conversion and booked 10 high-ticket clients in first
             2 weeks
           </h3>
-          <p className="text-xl  sm-991:font-extralight text-[#f5f5f5] xs-2:font-thin xs-1:text-lg xs-2:text-sm w-[100%] ">
+          <p className="text-xl  sm-991:font-extralight text-[#f5f5f5] xs-2:font-thin xs-1:text-lg xs-2:text-sm w-[100%] bricolage-font-family">
             We built a service base website funnel for Seller Goals which
             converts 62% of their traffic and helped them close 10 high-ticket
             clients. Every month they are booking 10-15 high-ticket leads
@@ -117,12 +117,12 @@ const Success = () => {
       <div className="flex flex-row justify-evenly sm-3:w-[85vw] sm-5:gap-[30px]  items-center sm-5:items-start sm-5:flex-col w-[60%] max-lg:w-[78vw] mt-36 max-xl:w-[75vw]">
         <div className="w-[40%] sm-5:w-[100%] relative">
           <div className="glassmorphism lg-1:hidden p-7 w-30% absolute top-[-2rem] left-[-4rem]">
-            <span className="text-[#f5f5f5] bricolage-font-family  heading-bold text-xl">
+            <span className="text-[#f5f5f5] bricolage-font-family  heading-semibold text-xl">
               100% Investors
             </span>
           </div>
           <div className="glassmorphism lg-1:hidden p-7 w-30% absolute bottom-[-2rem] right-0">
-            <span className="text-[#f5f5f5] bricolage-font-family  heading-bold text-xl">
+            <span className="text-[#f5f5f5] bricolage-font-family  heading-semibold text-xl">
               Within 1 month
             </span>
           </div>
@@ -138,7 +138,7 @@ const Success = () => {
           <h3 className="heading-bold bricolage-font-family  mb-5 text-3xl xs-1:font-normal xs-2:text-md xs-1:text-2xl xs-2:font-light w-full text-[#f5f5f5]">
             Increased 100% investors within 1 month
           </h3>
-          <p className="text-xl sm-991:font-extralight text-[#f5f5f5] w-[80%] xs-2:font-thin xs-1:text-lg xs-2:text-sm">
+          <p className="text-xl sm-991:font-extralight text-[#f5f5f5] w-[80%] xs-2:font-thin xs-1:text-lg xs-2:text-sm bricolage-font-family">
             Smarterform completed their goal of getting 100% investors in first
             month by working with us.
           </p>

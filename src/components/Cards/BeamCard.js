@@ -35,7 +35,7 @@ const BeamCard = ({ title, image, description, icon, subHeading, number, shortDe
         /> */}
         {/* <Image src={icon} width={100} height={100} className="mb-[15px]" alt="NexDev Solutions Services" /> */}
         <div className={"w-[100%] h-[90px] border-b items-center flex justify-between"}>
-          <div className={`heading-bold text-4xl font-bold tracking-[-0.02em] sm-20:text-3xl  text-[#f5f5f5] md:text-5xl md:leading-[5rem]`}>{title}</div>
+          <div className={`heading-primary text-4xl font-bold tracking-[-0.02em] sm-20:text-3xl  text-[#f5f5f5] md:text-5xl md:leading-[5rem]`}>{title}</div>
           {width > 399 && (<h2 className="bricolage-font-family">{number}</h2>)}
         </div>
         {/* <h1 className={`${styles.text} text-[2rem] lg-1178:text-[28px] sm-700:text-[25px] lg-4:text-[28px] mb-[20px] font-bold  lg-1178:font-semibold  text-white  `}>
@@ -49,7 +49,7 @@ const BeamCard = ({ title, image, description, icon, subHeading, number, shortDe
             {/* <h2 className="bricolage-font-family">{number}</h2> */}
             {/* <div className="text-4xl font-bold cursor-pointer text-[#5C45FD]"></div> */}
             </div>
-            <p className=" sm-991:font-extralight lg-1074:w-[90%] sm-20:w-[100%] text-lg w-[72%] lg-3:w-[85%] sm-892:mt-[7px] mt-[25px]">{width > 991 ? description : shortDesc}</p>
+            <p className=" sm-991:font-extralight lg-1074:w-[90%] sm-20:w-[100%] text-lg w-[72%] lg-3:w-[85%] sm-892:mt-[7px] mt-[25px] bricolage-font-family">{width > 991 ? description : shortDesc}</p>
           </div> 
         </div>
        

@@ -95,7 +95,7 @@ const ReviewCard = ({ img, name, username, body }) => {
           <p className="text-xs font-medium text-white/40">{username}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-white text-sm">
+      <blockquote className="mt-2 text-white text-sm bricolage-font-family">
         {insertLineBreaks(body, 8)}
       </blockquote>
     </figure>

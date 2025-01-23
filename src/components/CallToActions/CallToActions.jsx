@@ -54,8 +54,8 @@ const CallToActions = () => {
             </div>
           </Link>
           <div className="flex flex-col sm-15:flex-row sm-15:gap-[5px] text-start bricolage-font-family text-[#f5f5f5] mt-4 md:mt-0 md:ml-[-2rem] z-10">
-            <span className="font-light text-sm md:text-base sm-15:mt-[4.6px]">Loved by</span>
-            <span className="font-bold text-lg md:text-lg">
+            <span className="font-light text-sm md:text-base sm-15:mt-[4.6px] bricolage-font-family">Loved by</span>
+            <span className="font-bold text-lg md:text-lg bricolage-font-family">
               200+ businesses
             </span>
           </div>
@@ -63,7 +63,7 @@ const CallToActions = () => {
         <h2 className="text-[#f5f5f5] base-sm:flex sm-15:text-center base-sm:justify-center sm-525:text-[30px] sm-617:text-[32px] sm-465:text-[28px] sm-441:text-[26px] sm-417:text-[22px] sm-370:text-[19px] heading-primary sm-805:text-[35px] mt-9 max-2xl:w-[100%] sm-15:w-[100%] w-[70%]">
           Your Business Deserves Great Designs
         </h2>
-        <p className="text-[#f5f5f5] sm-991:font-extralight sm-13:text-lg max-2xl:text-xl sm-15:text-center mt-7 mb-7 4xl:w-[100%] w-[70%] sm-15:w-[100%] base-sm:w-[100%] base-sm:flex base-sm:justify-center">
+        <p className="text-[#f5f5f5] sm-991:font-extralight sm-13:text-lg max-2xl:text-xl sm-15:text-center mt-7 mb-7 4xl:w-[100%] w-[70%] sm-15:w-[100%] base-sm:w-[100%] base-sm:flex base-sm:justify-center bricolage-font-family">
           After working with 200+ businesses since 2016, we know how to combine
           design, psychology, and marketing to create pages that don&apos;t just look
           good, but sell.
@@ -75,7 +75,7 @@ const CallToActions = () => {
           >
             Book Your Call Now
           </PulsatingButtonLight>
-          <span className="font-semibold mt-[-4px] max-2xl:text-md text-md text-[#f5f5f5]">
+          <span className="font-medium mt-[-4px] max-2xl:text-md text-md text-[#f5f5f5] bricolage-font-family">
             Hurry! Only a few spots left.
           </span>
         </div>

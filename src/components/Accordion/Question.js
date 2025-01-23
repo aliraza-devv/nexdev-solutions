@@ -10,7 +10,7 @@ const Question = ({ title, info }) => {
       <header>
         <p
           onClick={() => setExpanded(!expanded)}
-          className=" sm-20:font-extralight sm-991:font-extralight font-semibold"
+          className=" sm-20:font-extralight sm-991:font-extralight font-semibold bricolage-font-family"
         >
           {title}
         </p>
@@ -18,7 +18,7 @@ const Question = ({ title, info }) => {
           {expanded ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </button>
       </header>
-      {expanded && <p>{info}</p>}
+      {expanded && <p className="bricolage-font-family">{info}</p>}
     </article>
   );
 };

@@ -75,8 +75,8 @@ const ImageCard = ({ img, caption, percentage, description, dimension }) => {
     <figure>
       <div className="h-[250px] overflow-hidden w-[200px] rounded-xl border border-[#5c45fd]">
         <div className="w-[100%] h-[160px] p-[20px] pt-[27px]" >
-          <div className="text-white text-4xl font-bricolage-grotesque">{percentage}</div>
-          <div className="text-white font-light text-xl mt-[20px] font-bricolage-grotesque">{description}</div>
+          <div className="text-white text-4xl bricolage-font-family ">{percentage}</div>
+          <div className="text-white font-light text-xl mt-[20px] bricolage-font-family">{description}</div>
         </div>
         <div className="mt-[10px] flex items-center justify-center h-[80px] border-t border-[#5c45fd] w-[100%]">
           <Image className=" flex items-center" src={img} height={dimension} width={dimension} alt={caption} />
