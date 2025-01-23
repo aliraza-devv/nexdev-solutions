@@ -95,15 +95,18 @@ body {
 .heading-primary {
   font-family: "Clash Display";
   font-weight: 500;
-  
 }
 .heading-bold {
   font-family: "Clash Display";
   font-weight: 600;
 }
-.bricolage-font-family {
+.clash-font-family {
   font-family: "Clash Display";
 }
+.bricolage-font-family {
+  font-family: "Bricolage Grotesque";
+}
+
 
 
 .signature-font {

@@ -225,10 +225,10 @@ export function Process() {
         <div className="sm-16:w-[90%] lg-5:w-[60%] sm-20:w-[70%] 5xl:w-[60%] base-sm:w-[95%]">
           <CardSpotlight className="glassmorphism max-sm:h-[320px] sm-2:h-[370px] sm-961:h-[300px] lg-1025:h-[350px] lg-1109:h-[330px] h-[300px] lg-5:w-[100%] overflow-hidden  5xl:w-[100%] base-sm:w-[100%] w-80 sm-16:w-[100%]  ">
             <Image src={Meeting} width={75} height={75} alt="Icon" />
-            <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
+            <h3 className="heading-primary text-xl flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Book Your Call
             </h3>
-            <p className="text-neutral-200 sm-991:font-extralight mt-4 relative z-20 text-md">
+            <p className="text-neutral-200 sm-991:font-extralight mt-4 relative z-20 text-md bricolage-font-family">
               We discuss your goals and needs in details and get to the
               solutionand create a custom planfor you, and then we onboard you.
             </p>
@@ -238,11 +238,11 @@ export function Process() {
         <div className="sm-16:w-[90%] lg-5:w-[60%] sm-20:w-[70%] 5xl:w-[60%] base-sm:w-[95%]">
           <CardSpotlight className="glassmorphism max-sm:h-[330px] sm-961:h-[300px] sm-2:h-[370px] lg-1025:h-[350px] lg-1109:h-[330px] h-[300px] lg-5:w-[100%] overflow-hidden base-sm:w-[100%] 5xl:w-[100%] sm-16:w-[100%]  w-80 ">
             <Image src={Dev} width={75} height={75} alt="Icon" />
-            <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
+            <h3 className="heading-primary text-xl flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Design,
               Development, Test
             </h3>
-            <p className="text-neutral-200 sm-991:font-extralight mt-4 relative z-20 text-md">
+            <p className="text-neutral-200 sm-991:font-extralight mt-4 relative z-20 text-md bricolage-font-family">
               We start working on the project, providing you updates to stay
               up-to-date. Giving you the freedom to focus on what truly matters:
               profitability.
@@ -252,11 +252,11 @@ export function Process() {
         <div className="sm-16:w-[90%] lg-5:w-[60%] sm-20:w-[70%] 5xl:w-[60%] base-sm:w-[95%]" >
           <CardSpotlight className="glassmorphism sm-961:h-[300px] max-sm:h-[330px] sm-2:h-[370px] lg-1025:h-[350px] lg-1109:h-[330px] h-[300px] lg-5:w-[100%] 5xl:w-[100%] base-sm:w-[100%] overflow-hidden sm-16:w-[100%] w-80">
             <Image src={launch} width={75} height={75} alt="Icon" />
-            <h3 className="heading-primary text-xl heading-bold flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
+            <h3 className="heading-primary text-xl flex gap-3 font-bold relative z-20 mt-2 text-[#f5f5f5]">
               Launch and
               deliever
             </h3>
-            <p className="text-neutral-200 sm-991:font-extralight mt-4 relative z-20 text-md">
+            <p className="text-neutral-200 sm-991:font-extralight mt-4 relative z-20 text-md bricolage-font-family">
             After ensuring your 100% satisfaction, we proceed to launch it and transfer full ownership to you. We also make certain that everything functions flawlessly.
             </p>
           </CardSpotlight>

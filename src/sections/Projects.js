@@ -128,7 +128,7 @@ export function Projects() {
               <TertiaryButton
                 title="Learn More"
                 url={project.url}
-                className="mt-4 md:mt-0"
+                className="mt-4 md:mt-0 bricolage-font-family"
               />
             )}
           </div>
@@ -157,7 +157,7 @@ export function Projects() {
               <h3 className="text-[#f5f5f5] bricolage-font-family mb-10 font-medium text-2xl md:text-3xl heading-sub-responsive">
                 {project.subtitle}
               </h3>
-              <p className="text-[#f5f5f5] sm-991:font-extralight lg-5:w-[100%] mb-10 font-sm text-xl heading-sub-responsive sm-11:hidden">
+              <p className="text-[#f5f5f5] sm-991:font-extralight lg-5:w-[100%] mb-10 font-sm text-xl heading-sub-responsive sm-11:hidden bricolage-font-family">
                 {project.description}
               </p>
               <FadeText

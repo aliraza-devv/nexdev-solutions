@@ -15,7 +15,7 @@ const Accordion = () => {
       <h1 className="text-center mb-10 mt-20">
         <SparklesText text="You got Questions?" />
       </h1>
-      <h2 className="text-[#f5f5f5] font-semibold bricolage-font-family text-lg">
+      <h2 className="text-[#f5f5f5] font-semibold text-lg bricolage-font-family">
         We have got the Answers
       </h2>
       <div className="pt-[2rem] pb-[2rem] pl-[2.5rem] pr-[2.5rem] sm-595:pl-[0px] sm-595:pr-[0px] w-[100%] xl:w-[60%]">

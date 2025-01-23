@@ -55,7 +55,7 @@ const PricingCard = ({
               ></path>
             </svg>
           </span>
-          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight`}>{point1}</span>
+          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight bricolage-font-family`}>{point1}</span>
         </li>
         <li className={styles.card__list_item}>
           <span className={styles.check}>
@@ -72,7 +72,7 @@ const PricingCard = ({
               ></path>
             </svg>
           </span>
-          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight`}>{point2}</span>
+          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight bricolage-font-family`}>{point2}</span>
         </li>
         <li className={styles.card__list_item}>
           <span className={styles.check}>
@@ -89,7 +89,7 @@ const PricingCard = ({
               ></path>
             </svg>
           </span>
-          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight`}>{point3}</span>
+          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight bricolage-font-family`}>{point3}</span>
         </li>
         <li className={styles.card__list_item}>
           <span className={styles.check}>
@@ -106,7 +106,7 @@ const PricingCard = ({
               ></path>
             </svg>
           </span>
-          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight`}>{point4}</span>
+          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight bricolage-font-family`}>{point4}</span>
         </li>
         <li className={styles.card__list_item}>
           <span className={styles.check}>
@@ -123,7 +123,7 @@ const PricingCard = ({
               ></path>
             </svg>
           </span>
-          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight`}>{point5}</span>
+          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight bricolage-font-family`}>{point5}</span>
         </li>
         <li className={styles.card__list_item}>
           <span className={styles.check}>
@@ -140,14 +140,14 @@ const PricingCard = ({
               ></path>
             </svg>
           </span>
-          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight`}>{point6}</span>
+          <span className={`${styles.list_text} font-[500] sm-20:font-extralight sm-991:font-extralight bricolage-font-family`}>{point6}</span>
         </li>
       </ul>
       <div className="text-white sm-20:font-extralight sm-991:font-extralight font-normal mt-[20px]">{statement}</div>
       <button className={`${styles.button} bricolage-font-family font-bold mt-4`}>
         <Link className="font-[600]" href={`${url}`}>Book Your Call Now</Link>
       </button>
-      <div className="font-semibold text-center mt-[8px] max-2xl:text-sm text-sm text-[#f5f5f5]">
+      <div className="font-semibold text-center mt-[8px] max-2xl:text-sm text-sm text-[#f5f5f5]bricolage-font-family">
           Hurry! Only a few spots left.
       </div>
     </div>

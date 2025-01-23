@@ -17,7 +17,7 @@ const Pricing = () => {
       <h1 className="absolute left-4 md:left-10 top-0 font-black heading-primary text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] z-[-1] text-[#242424]">
         Pricing
       </h1>
-      <div className="grid min-sm:w-[95%] lg-1168:grid-cols-1 grid-cols-3 p-[10px] min-sm:flex min-sm:flex-col xl:grid-cols-3 gap-[20px] lg-1168:gap-[25px]  min-sm:justify-items-start justify-items-center">
+      <div className="grid min-sm:w-[95%] lg-1168:grid-cols-1 grid-cols-3 p-[10px] min-sm:flex min-sm:flex-col xl:grid-cols-3 gap-[20px] lg-1168:gap-[25px]  min-sm:justify-items-start justify-items-center ">
         <PricingCard
           miniTitle="One-time"
           title="Design + Develop + Copywriting"

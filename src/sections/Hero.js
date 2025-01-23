@@ -137,7 +137,7 @@ const Hero = () => {
               >
                 <div className="absolute w-[0px] bg-[white] h-[200px] top-[0] left-[0] transition-all duration-300 group-hover:w-[300px]">
                 </div>
-                <div className=" relative z-[3]">Get Your Free Audit</div>
+                <div className=" relative z-[3] bricolage-font-family">Get Your Free Audit</div>
               </button>
             </div>
             <div className="flex sm-842:flex-col sm-842:gap-[22px] sm-842:mt-[40px] items-center justify-between gap-[50px] z-50 mt-[30px]">

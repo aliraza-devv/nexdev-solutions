@@ -38,10 +38,10 @@ export function Lamp() {
             }}
             className="w-full mt-[-60px]  md:w-[60%] sm-20:w-[100%] lg:w-[70%]"
           >
-            <motion.h1 className="bg-gradient-to-br w-full sm-20:text-center from-slate-300 lg-1189:text-5xl to-slate-500 py-4 bg-clip-text text-start text-4xl font-medium tracking-tight text-transparent md:text-7xl">
+            <motion.h1 className="bg-gradient-to-br w-full sm-20:text-center from-slate-300 lg-1189:text-5xl to-slate-500 py-4 bg-clip-text text-start text-4xl font-medium tracking-tight text-transparent md:text-7xl heading-primary">
               Meet the Founder
             </motion.h1>
-            <p className="mt-1 bg-gradient-to-br sm-20:text-center text-[#f5f5f5] py-4 bg-clip-text text-start text-xl font-medium tracking-tight md:text-2xl">
+            <p className="mt-1 bg-gradient-to-br sm-20:text-center text-[#f5f5f5] py-4 bg-clip-text text-start text-xl font-medium tracking-tight md:text-2xl bricolage-font-family">
               Hey, I am{" "}
               <span className="gradient-text font-bold">Ali Raza</span>. I have
               always been a tech enthusiast. With more than 8 years of

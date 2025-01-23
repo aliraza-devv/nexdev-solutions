@@ -56,7 +56,7 @@ const Comparison = () => {
               Other Agencies / Freelancers
             </h2>
             <div className="mt-4">
-              <div className="flex flex-col gap-4 sm-991:font-extralight items-start">
+              <div className="flex flex-col gap-4 sm-991:font-extralight items-start bricolage-font-family">
                 {[
                   "Inexperienced Juniors",
                   "No focus on conversion, growth, & Sales",
@@ -83,7 +83,7 @@ const Comparison = () => {
               NeXDev Solutions
             </h2>
             <div className="mt-4">
-              <div className="flex flex-col gap-4 sm-991:font-extralight items-start">
+              <div className="flex flex-col gap-4 sm-991:font-extralight items-start bricolage-font-family">
                 {[
                   { text: "Top Experienced Team", icon: Person },
                   {
