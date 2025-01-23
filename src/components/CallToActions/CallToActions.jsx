@@ -65,7 +65,7 @@ const CallToActions = () => {
         </h2>
         <p className="text-[#f5f5f5] sm-991:font-extralight sm-13:text-lg max-2xl:text-xl sm-15:text-center mt-7 mb-7 4xl:w-[100%] w-[70%] sm-15:w-[100%] base-sm:w-[100%] base-sm:flex base-sm:justify-center">
           After working with 200+ businesses since 2016, we know how to combine
-          design, psychology, and marketing to create pages that don't just look
+          design, psychology, and marketing to create pages that don&apos;t just look
           good, but sell.
         </p>
         <div className="flex w-[250px] flex-col items-center">
