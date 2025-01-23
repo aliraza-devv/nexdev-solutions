@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import WordPullUp from "@/components/Text/WordPullUp";
 import RetroGrid from "@/components/Backgrounds/RetroGrid";

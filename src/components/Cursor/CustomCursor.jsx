@@ -14,8 +14,8 @@ const App = () => {
 
       gsap.to(targets, {
         duration: 0.5,
-        x: x, // Update ball's x position based on mouse
-        y: y, // Update ball's y position based on mouse
+        x: x, 
+        y: y, 
         ease: "power1.out",
         overwrite: "auto",
         stagger: 0.02,

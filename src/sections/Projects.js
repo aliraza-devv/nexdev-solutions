@@ -197,7 +197,7 @@ export function Projects() {
 
       <div className="h-full w-full flex items-center justify-center"></div>
       <VelocityScroll
-        text="Let's Work Together."
+        text="Let&apos;s Work Together."
         default_velocity={2}
         className="
           font-display 

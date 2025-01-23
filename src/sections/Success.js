@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { RevealText } from "@/components/RevealText/RevealText";
 import Image from "next/image";
