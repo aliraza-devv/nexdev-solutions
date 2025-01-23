@@ -18,23 +18,21 @@ import Alphagon from "../../public/Assets/mockups/Mockup-7.png";
 import lighthouse from "../../public/Assets/mockups/lighthouse-reality.png";
 import { IconCode, IconDatabase, IconSettings } from "@tabler/icons-react";
 
-
-
 export function Projects() {
   const [width, setWidth] = useState(window.innerWidth);
-  
-    useEffect(() => {
-      const handleResize = () => {
-        setWidth(window.innerWidth);
-      };
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
- 
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const projectData = [
     {
       title: "The Alphagon ",
@@ -94,8 +92,6 @@ export function Projects() {
     },
   ];
 
-  
-  
   return (
     <div
       id="projects"
@@ -128,12 +124,13 @@ export function Projects() {
               className="text-4xl font-bold tracking-[-0.02em] sm-20:text-3xl  text-[#f5f5f5] md:text-5xl md:leading-[5rem]"
               words={project.title}
             />
-            {width > 427 &&  
-            (<TertiaryButton
-              title="Learn More"
-              url={project.url}
-              className="mt-4 md:mt-0"
-            />)}
+            {width > 427 && (
+              <TertiaryButton
+                title="Learn More"
+                url={project.url}
+                className="mt-4 md:mt-0"
+              />
+            )}
           </div>
           <hr className="w-full border-[#f5f5f5] mt-6 base-sm:mt-[0px] md:mt-0" />
           <div className="flex flex-col lg:flex-row lg-5:flex-col justify-around items-start gap-10 mt-6">
@@ -146,12 +143,12 @@ export function Projects() {
                 className="rounded-[1rem] sm-7:w-[100%]"
               />
               <div className={"flex  min-w-max mt-6 gap-4 flex-wrap"}>
-                 {project.tags.map((tag, i) => (
+                {project.tags.map((tag, i) => (
                   <div
                     key={i}
                     className="flex min-w-max bricolage-font-family justify-center items-center w-[40%] lg:w-[42%] hover:bg-[#5c45fd] hover:border-none hover:text-[#f5f5f5] p-2 border rounded-[1rem] border-[#a89bff] text-[#f5f5f5]"
                   >
-                    { tag}
+                    {tag}
                   </div>
                 ))}
               </div>
@@ -169,15 +166,24 @@ export function Projects() {
                 framerProps={{ show: { transition: { delay: 0.2 } } }}
               />
             </div>
-            <div  className="grid sm-660:grid-cols-2 sm-660:w-[100%]   sm-11:mt-[-35px] lg-3:grid-cols-1 sm-521:grid-cols-1  sm-521:flex sm-521:flex-col sm-521:items-center sm-9:grid-cols-1 lg:grid-cols-2  sm-8:w-[100%]  sm-7:grid-cols-2 lg-5:grid-cols-3 gap-4 max-xl:gap-x-[0] w-full lg-5:w-[100%] sm-11:w-[100%] lg-3:w-[20%]  lg:w-[40%]">
+            <div className="grid sm-660:grid-cols-2 sm-660:w-[100%]   sm-11:mt-[-35px] lg-3:grid-cols-1 sm-521:grid-cols-1  sm-521:flex sm-521:flex-col sm-521:items-center sm-9:grid-cols-1 lg:grid-cols-2  sm-8:w-[100%]  sm-7:grid-cols-2 lg-5:grid-cols-3 gap-4 max-xl:gap-x-[0] w-full lg-5:w-[100%] sm-11:w-[100%] lg-3:w-[20%]  lg:w-[40%]">
               {/* <div className="sm-521:w-[50%] sm-521:flex sm-521:flex-col  items-center"> */}
               {project.stats.map((stat, i) => (
-                <div  key={i} className="flex flex-col  w-[100%]  items-center lg-3:items-start base-sm:items-center sm-9:ml-[27%] sm-10:ml-[0] sm-11:w-[100%]">
-                  <div className={"sm-11:w-[100%] flex justify-center flex-col  w-[100%] items-center"}>
+                <div
+                  key={i}
+                  className="flex flex-col  w-[100%]  items-center lg-3:items-start base-sm:items-center sm-9:ml-[27%] sm-10:ml-[0] sm-11:w-[100%]"
+                >
+                  <div
+                    className={
+                      "sm-11:w-[100%] flex justify-center flex-col  w-[100%] items-center"
+                    }
+                  >
                     <h4 className="w-[9rem] bricolage-font-family h-[10vh] mb-6 flex justify-center items-center text-[#f5f5f5] rounded-[1rem] bg-[#5c45fd] path-clip">
                       {stat.value}
                     </h4>
-                    <p className={"text-[#f5f5f5] bricolage-font-family text-md"}>
+                    <p
+                      className={"text-[#f5f5f5] bricolage-font-family text-md"}
+                    >
                       {stat.label}
                     </p>
                   </div>

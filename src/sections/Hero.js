@@ -107,26 +107,11 @@ const Hero = () => {
           <div className="w-full md:w-4/5 min-sm:w-5/5 flex flex-col justify-center items-center text-center px-4 md:px-0">
             <div className="w-32 h-32 bg-blue absolute right-48 border-[#5c45fd]"></div>
             <div className="flex min-sm:mt-[-33px] max-sm:mt-[-100px] w-full justify-center items-center">
-              {/* <Image
-                src={arrow}
-                height={150}
-                width={100}
-                alt="NexDev Solutions Arrow"
-                className="hidden lg:block z-40 mr-[-1rem] mt-6"
-              /> */}
+           
               <h1 className="z-10 text-white text-[2rem] lg-1025:mt-[0px] max-sm:mt-[25px] sm-6:mt-[-15px] sm:text-5xl heading-primary md:text-6xl lg:text-6xl xl:text-7xl font-bold mt-[20px]">
-                {/* <span className="flex max-sm:mt-[40px] justify-center items-center m-[-1rem] md:m-0"> */}
+                
                   <span style={{marginTop: "1rem"}}  className="gradient-text max-sm:mt-[20px]">Grow Your</span> <br />
-                  {/* {" "}
-                  <Image
-                    src={Star}
-                    height={50}
-                    width={50}
-                    className="mb-10 min-sm:hidden"
-                    alt="Star Icon"
-                  />{" "} */}
-                  
-                {/* </span> */}
+               
                 Business & Conversion<br />
                 <span className="gradient-text">With Web/App Design</span><br />
                 & Development <br />

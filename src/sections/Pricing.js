@@ -18,33 +18,23 @@ const Pricing = () => {
         Pricing
       </h1>
       <div className="grid min-sm:w-[95%] lg-1168:grid-cols-1 grid-cols-3 p-[10px] min-sm:flex min-sm:flex-col xl:grid-cols-3 gap-[20px] lg-1168:gap-[25px]  min-sm:justify-items-start justify-items-center">
-        {/* <div className="w-[100%]"> */}
         <PricingCard
           miniTitle="One-time"
           title="Design + Develop + Copywriting"
-          price="$1099"
-          priceCut="$3500"
-          subTitle=""
+          price="$1599"
           point1="Branding (Colors, fonts, brand guidelines)"
           point2="Compelling & SEO-focused copywriting"
           point3="High-converting landing page design"
           point4="Landing page development"
           point5="Updates delivery every 2-3 days"
           point6="Unlimited revisions"
-          // point7="FREE Premium Theme (Worth: $299)"
-          // point8="FREE Elementor Pro (Worth: $99)"
-          // point10="FREE 6 Months Hosting"
-          // point9="FREE 2 Months Technical Support"
           statement="Perfect for coaches, creators, and service-based businesses that need a high-converting landing page."
           url="https://cal.com/nexdevsolutions/discovery-call"
-         
         />
-        {/* </div>
-        <div className="min-sm:w-[80%] min-sm:p-[5px]"> */}
         <PricingCard
           miniTitle="One-time"
           title="Design + Development + Copywriting"
-          price="Starting from $1599"
+          price="Get a Quote"
           subTitle=""
           point1="Branding (Colors, fonts, brand guidelines)"
           point2="Compelling & SEO-focused copywriting"
@@ -55,23 +45,22 @@ const Pricing = () => {
           statement="Perfect for coaches, creators, and service-based businesses who need a high-converting 4-6 pages website."
           url="https://cal.com/nexdevsolutions/discovery-call"
         />
-        {/* </div>
-        <div className="min-sm:w-[80%] min-sm:p-[5px]"> */}
         <PricingCard
           miniTitle="One-time"
           title="Custom Poject"
           price="Get a Quote"
           subTitle=""
-          point1= "Do you want to discuss your project with us?"
-          point2= "Consult with us to find out a solution for you."
-          point3= "Share your requirements with us."
-          point4= "Free Consultation"
-          point5= "A full plan to follow"
-          statement="Perfect for you if you need funnels, web app, custom development, or you’re confused/unsure or have different requirements or need other services.
+          point1="Do you want to discuss your project with us?"
+          point2="Consult with us to find out a solution for you."
+          point3="Share your requirements with us."
+          point4="Free Consultation"
+          point5="A full plan to follow"
+          point6="Research and analysis"
+          statement="Perfect for you if you need funnels, web app, custom development, or you're confused/unsure or have different requirements or need other services.
 "
           url="https://cal.com/nexdevsolutions/discovery-call"
         />
-      {/* </div> */}
+        {/* </div> */}
       </div>
     </div>
   );

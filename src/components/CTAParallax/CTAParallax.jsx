@@ -111,7 +111,7 @@ export const Header = () => {
       <div className="max-w-7xl px-6 z-50 relative mx-auto w-full left-0 top-[-2.5rem] md:top-[-10rem]">
         <div className="w-[330px] max-sm:w-[300px] max-sm:ml-[-10px] flex flex-col items-center justify-center">
           <PulsatingButton url="https://form.jotform.com/242006777431454">
-            Get Your Free Website Audit
+            Get a Free Website Audit
           </PulsatingButton>
           <div className="font-semibold mt-[8px] max-2xl:text-md text-md text-[#f5f5f5]">
             Hurry! Only a few spots left.
