@@ -147,7 +147,7 @@ const PricingCard = ({
       <button className={`${styles.button} bricolage-font-family font-bold mt-4`}>
         <Link className="font-[600]" href={`${url}`}>Book Your Call Now</Link>
       </button>
-      <div className="font-semibold text-center mt-[8px] max-2xl:text-sm text-sm text-[#f5f5f5]bricolage-font-family">
+      <div className="font-semibold text-center mt-[8px] max-2xl:text-sm text-sm text-[#f5f5f5] bricolage-font-family">
           Hurry! Only a few spots left.
       </div>
     </div>
