@@ -44,7 +44,6 @@ export function Projects() {
       stats: [
         { label: "Increased Conversion", value: "59%" },
         { label: "Increased Sales", value: "62%" },
-        { label: "Increased Response", value: "100%" },
       ],
       tags: ["Development", "Design"],
     },
@@ -84,7 +83,7 @@ export function Projects() {
       description:
         "NeXDev Solutions created and designed this real estate website to showcase real estate properties, realtors, and much more functionalities. The website has ability to sell or rnt the proprty with complete management system. Realtors can list the properties and also can manage their profile.",
       stats: [
-        { label: "Increased Conversion", value: "60%" },
+        { label: "Increased Conversion", value: "43%" },
         { label: "Increased Revenue", value: "130%" },
         { label: "Boost Sales", value: "85%" },
       ],
@@ -197,7 +196,7 @@ export function Projects() {
 
       <div className="h-full w-full flex items-center justify-center"></div>
       <VelocityScroll
-        text="Let&apos;s Work Together."
+        text="Let's Work Together."
         default_velocity={2}
         className="
           font-display 

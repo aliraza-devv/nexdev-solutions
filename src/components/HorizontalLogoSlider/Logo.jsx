@@ -28,14 +28,6 @@ const slideImages = [
     name: Two,
     caption: "Slide 2",
   },
-  // {
-  //   name: Three,
-  //   caption: "Slide 3",
-  // },
-  // {
-  //   name: Four,
-  //   caption: "Slide 3",
-  // },
   {
     percentage: "42%",
     description: "Increase in Conversion Rate",
