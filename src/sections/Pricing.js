@@ -21,7 +21,7 @@ const Pricing = () => {
         <PricingCard
           miniTitle="One-time"
           title="Design + Develop + Copywriting"
-          price="$1599"
+          price="Get a Quote"
           point1="Branding (Colors, fonts, brand guidelines)"
           point2="Compelling & SEO-focused copywriting"
           point3="High-converting landing page design"
