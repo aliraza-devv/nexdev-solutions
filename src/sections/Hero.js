@@ -124,7 +124,7 @@ const Hero = () => {
               traffic into
               <br className="hidden md:block" /> paying customers with our
               proven{" "}
-              <span className="gradient-text font-bold">K-SHIGT mechanism</span>
+              <span className="gradient-text font-bold">K-SIGHT mechanism</span>
               .
             </p>
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-16 w-[100%]">
