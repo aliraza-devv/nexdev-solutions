@@ -81,7 +81,7 @@ export function Projects() {
       url: "https://www.behance.net/gallery/181830587/Lighthouse-Reality",
       subtitle: "Real Esate Website",
       description:
-        "NeXDev Solutions created and designed this real estate website to showcase real estate properties, realtors, and much more functionalities. The website has ability to sell or rnt the proprty with complete management system. Realtors can list the properties and also can manage their profile.",
+        "NeXDev Solutions created and designed this real estate website to showcase real estate properties, realtors, and much more functionalities. The website has ability to sell or rent the proprty with complete management system. Realtors can list the properties and also can manage their profile.",
       stats: [
         { label: "Increased Conversion", value: "43%" },
         { label: "Increased Revenue", value: "130%" },

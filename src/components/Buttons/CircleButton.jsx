@@ -3,112 +3,21 @@ import styles from "../../styles/CircleButton.module.css";
 import Link from "next/link";
 
 const CircleButton = () => {
+  const text = "DISCUSS PROJECT";
+  const charArray = text.split("");
   return (
     <Link target="_blank" href="https://cal.com/nexdevsolutions/discovery-call">
       <button class={styles.button}>
-        <p class={styles.button__text}>
-          <span
-            style={{ "--index": 11 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*11)]"
-          >
-            {" "}
-          </span>
-          <span
-            style={{ "--index": 0 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*0)]"
-          >
-            D
-          </span>
-          <span
-            style={{ "--index": 1 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*1)]"
-          >
-            I
-          </span>
-          <span
-            style={{ "--index": 2 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*2)]"
-          >
-            S
-          </span>
-          <span
-            style={{ "--index": 3 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*3)]"
-          >
-            C
-          </span>
-          <span
-            style={{ "--index": 4 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*4)]"
-          >
-            O
-          </span>
-          <span
-            style={{ "--index": 5 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*5)]"
-          >
-            S
-          </span>
-          <span
-            style={{ "--index": 6 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*6)]"
-          >
-            S
-          </span>
-          <span
-            style={{ "--index": 7 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*7)]"
-          >
-            {" "}
-          </span>
-          <span
-            style={{ "--index": 8 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*7)]"
-          >
-            {" "}
-          </span>
-          <span
-            style={{ "--index": 9 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*12)]"
-          >
-            P
-          </span>
-          <span
-            style={{ "--index": 10 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*13)]"
-          >
-            R
-          </span>
-          <span
-            style={{ "--index": 11 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*14)]"
-          >
-            O
-          </span>
-          <span
-            style={{ "--index": 12 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*15)]"
-          >
-            J
-          </span>
-          <span
-            style={{ "--index": 13 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*16)]"
-          >
-            E
-          </span>
-          <span
-            style={{ "--index": 14 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*17)]"
-          >
-            C
-          </span>
-          <span
-            style={{ "--index": 15 }}
-            className="absolute inset-2 transform rotate-[calc(19deg*17)]"
-          >
-            T
-          </span>
+        <p className={styles.button__text}>
+          {charArray.map((char, index) => (
+            <span
+              key={index}
+              style={{ "--index": index }}
+              className="absolute inset-2 transform rotate-[calc(var(--angle)*var(--index))]"
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
         </p>
 
         <div class={styles.button__circle}>

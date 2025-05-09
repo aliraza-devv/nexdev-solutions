@@ -28,18 +28,18 @@ const questions = [
     id: 6,
     title:
       "What is the procedure of getting a quote/custom requirement project?",
-    info: 'Please click on the "Book Your Call" or "Get a Quote" button and you will be redirected to a call booking page, From there please select time and date whic is uitable for you and fill the form. We will have a call at that time to dicover your needs and requirements and then based on that we will give you a quote/price for that project.',
+    info: 'Please click on the "Book Your Call" or "Get a Quote" button and you will be redirected to a call booking page, From there please select time and date which is suitable for you and fill the form. We will have a call at that time to dicover your needs and requirements and then based on that we will give you a quote/price for that project.',
   },
   {
     id: 7,
     title:
       "What is the procedure of getting a quote/custom requirement project?",
-    info: 'Please click on the "Book Your Call" or "Get a Quote" button and you will be redirected to a call booking page, From there please select time and date whic is uitable for you and fill the form. We will have a call at that time to dicover your needs and requirements and then based on that we will give you a quote/price for that project.',
+    info: 'Please click on the "Book Your Call" or "Get a Quote" button and you will be redirected to a call booking page, From there please select time and date which is suitable for you and fill the form. We will have a call at that time to dicover your needs and requirements and then based on that we will give you a quote/price for that project.',
   },
   {
     id: 8,
     title: "How do I get started?",
-    info: 'Please click on the "Book Your Call" or "Get a Quote" button and you will be redirected to a call booking page, From there please select time and date whic is uitable for you and fill the form. We will have a call at that time to dicover your needs and requirements and then based on that we will give you a quote/price for that project.',
+    info: 'Please click on the "Book Your Call" or "Get a Quote" button and you will be redirected to a call booking page, From there please select time and date which is suitable for you and fill the form. We will have a call at that time to dicover your needs and requirements and then based on that we will give you a quote/price for that project.',
   },
 ];
 export default questions;

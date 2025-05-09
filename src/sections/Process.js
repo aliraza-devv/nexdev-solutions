@@ -230,7 +230,7 @@ export function Process() {
             </h3>
             <p className="text-neutral-200 sm-991:font-extralight mt-4 relative z-20 text-md bricolage-font-family">
               We discuss your goals and needs in details and get to the
-              solutionand create a custom planfor you, and then we onboard you.
+              solution and create a custom plan for you, and then we onboard you.
             </p>
           </CardSpotlight>
         </div>

@@ -47,7 +47,7 @@ const Pricing = () => {
         />
         <PricingCard
           miniTitle="One-time"
-          title="Custom Poject"
+          title="Custom Project"
           price="Get a Quote"
           subTitle=""
           point1="Do you want to discuss your project with us?"
