@@ -156,7 +156,7 @@ const Success = () => {
             Your browser does not support the video tag.
           </video>
           <video width="300" className="rounded-xl" controls>
-            <source src="/Testimonial-2.mp4" type="video/mp4" />
+            <source src="/Testimonial-2.MP4" type="video/mp4" />
             {/* <source src="/myvideo.webm" type="video/webm" /> */}
             Your browser does not support the video tag.
           </video>
