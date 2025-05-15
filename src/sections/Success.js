@@ -149,9 +149,14 @@ const Success = () => {
             </p>
           </div>
         </div>
-        <div className="mt-20">
+        <div className="mt-20 flex gap-10 flex-col md:flex-row">
           <video width="300" className="rounded-xl" controls>
             <source src="/myvideo.mp4" type="video/mp4" />
+            {/* <source src="/myvideo.webm" type="video/webm" /> */}
+            Your browser does not support the video tag.
+          </video>
+          <video width="300" className="rounded-xl" controls>
+            <source src="/Testimonial-2.mp4" type="video/mp4" />
             {/* <source src="/myvideo.webm" type="video/webm" /> */}
             Your browser does not support the video tag.
           </video>

@@ -2,7 +2,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import nexdev from "../../../public/Assets/Logos/nexdev-logo.png";
+import nexdev from "../../../public/Assets/Logos/nexdevNew.png";
 import BtnPrimary from "../Buttons/BtnPrimary";
 import BtnLight from "../Buttons/BtnLight";
 import Link from "next/link";
@@ -28,6 +28,7 @@ const Navbar = () => {
     <div style={{zIndex: '999999'}} className="fixed glassmorphism sm-20:mt-[100px] rounded-[1rem] min-w-[90%] max-w-[80%] h-[80px] mt-[5rem]  md:mt-[7rem] flex justify-between items-center px-4 lg:px-8">
       <Link href={"#home"}>
         <div>
+
           <Image
             src={nexdev}
             height={75}
