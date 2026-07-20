@@ -16,7 +16,7 @@ export function PulsatingButtonLight({
     <Link href={`${url}`} target="_blank">
       <button
         className={cn(
-          "relative text-center text-xl hover:scale-110 transition duration-[200] heading-primary cursor-pointer flex justify-center items-center rounded-[1rem] text-[#5c45fd] bg-[#f5f5f5] px-7 py-4",
+          "relative text-center text-xl hover:scale-110 transition duration-200 heading-primary cursor-pointer flex justify-center items-center rounded-[1rem] text-[#5c45fd] bg-[#f5f5f5] px-7 py-4",
           className
         )}
         style={{

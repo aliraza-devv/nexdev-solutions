@@ -74,23 +74,6 @@ body {
   min-width: 100%;
 }
 
-/* Scrolbar */
-::-webkit-scrollbar {
-  width: 1rem;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-black);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(360deg, var(--color-primary), var(--color-black));
-  border-radius: 1rem;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(360deg, var(--color-primary), var(--color-black));
-}
 
 .heading-primary {
   font-family: "Clash Display";
