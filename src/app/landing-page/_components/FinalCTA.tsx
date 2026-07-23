@@ -176,11 +176,11 @@ export default function FinalCTA() {
               </p>
               
               {/* Social Links Side-by-Side (Icons only) */}
-              <div className="flex gap-6 mt-4">
-                <Link href="#" className="text-zinc-400 hover:text-white transition-colors" aria-label="Linkedin">
+              <div className="flex gap-2 -ml-2.5 mt-4">
+                <Link href="#" className="text-zinc-400 hover:text-white transition-colors p-2.5" aria-label="Linkedin">
                   <Linkedin className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-zinc-400 hover:text-white transition-colors" aria-label="Instagram">
+                <Link href="#" className="text-zinc-400 hover:text-white transition-colors p-2.5" aria-label="Instagram">
                   <Instagram className="w-5 h-5" />
                 </Link>
               </div>
@@ -191,11 +191,11 @@ export default function FinalCTA() {
               <div className="text-[11px] font-bold text-[#5C45FD] uppercase tracking-[0.2em] mb-2" style={{ fontFamily: secondaryFont }}>
                 Quick Links
               </div>
-              <div className="flex flex-col gap-3 text-sm font-medium text-zinc-300" style={{ fontFamily: secondaryFont }}>
-                <Link href="/#problem" className="hover:text-white transition-colors">Problem</Link>
-                <Link href="/#how-it-works" className="hover:text-white transition-colors">Solution</Link>
-                <Link href="/#results" className="hover:text-white transition-colors">Results</Link>
-                <Link href="/#deliverables" className="hover:text-white transition-colors">Pricing</Link>
+              <div className="flex flex-col gap-1 -ml-1 text-sm font-medium text-zinc-300" style={{ fontFamily: secondaryFont }}>
+                <Link href="/#problem" className="hover:text-white transition-colors py-1.5 px-1">Problem</Link>
+                <Link href="/#how-it-works" className="hover:text-white transition-colors py-1.5 px-1">Solution</Link>
+                <Link href="/#results" className="hover:text-white transition-colors py-1.5 px-1">Results</Link>
+                <Link href="/#deliverables" className="hover:text-white transition-colors py-1.5 px-1">Pricing</Link>
               </div>
             </div>
 
@@ -204,9 +204,9 @@ export default function FinalCTA() {
               <div className="text-[11px] font-bold text-[#5C45FD] uppercase tracking-[0.2em] mb-2" style={{ fontFamily: secondaryFont }}>
                 Contact
               </div>
-              <div className="flex flex-col gap-3 text-sm font-medium text-zinc-300" style={{ fontFamily: secondaryFont }}>
-                <Link href="mailto:info@nexdevsolutions.net" className="hover:text-white transition-colors">info@nexdevsolutions.net</Link>
-                <Link href="tel:+923081992088" className="hover:text-white transition-colors">+92 308 199 2088</Link>
+              <div className="flex flex-col gap-1 -ml-1 text-sm font-medium text-zinc-300" style={{ fontFamily: secondaryFont }}>
+                <Link href="mailto:info@nexdevsolutions.net" className="hover:text-white transition-colors py-1.5 px-1">info@nexdevsolutions.net</Link>
+                <Link href="tel:+923081992088" className="hover:text-white transition-colors py-1.5 px-1">+92 308 199 2088</Link>
               </div>
             </div>
 
@@ -220,9 +220,9 @@ export default function FinalCTA() {
             <div>
               © 2026 NEXDEV SOLUTIONS. ALL RIGHTS RESERVED.
             </div>
-            <div className="flex gap-8">
-              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <div className="flex gap-6">
+              <Link href="#" className="hover:text-white transition-colors py-2 px-1">Privacy Policy</Link>
+              <Link href="#" className="hover:text-white transition-colors py-2 px-1">Terms of Service</Link>
             </div>
           </div>
 

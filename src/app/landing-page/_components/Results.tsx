@@ -77,7 +77,7 @@ function CaseCard({ c, i, progress, total }: { c: any, i: number, progress: any,
           <p className="text-lg text-white/60 leading-relaxed font-light mb-10 max-w-md">
             {c.desc}
           </p>
-          <Link href="#" className="inline-flex items-center gap-2 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
+          <Link href="#" className="inline-flex items-center gap-2 py-3 -ml-0.5 px-0.5 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
             READ THE STORY <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -116,7 +116,7 @@ function MobileCaseCard({ c, i }: { c: any; i: number }) {
         <p className="text-base text-white/60 leading-relaxed font-light mb-8">
           {c.desc}
         </p>
-        <Link href="#" className="inline-flex items-center gap-2 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
+        <Link href="#" className="inline-flex items-center gap-2 py-3 -ml-0.5 px-0.5 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300">
           READ THE STORY <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
