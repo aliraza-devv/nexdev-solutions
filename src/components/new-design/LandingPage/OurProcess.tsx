@@ -696,7 +696,7 @@ function DiscoveryGraphics() {
                 {card.id === 3 && (
                   <div className="text-[11px] font-medium leading-tight py-1 space-y-2">
                     <div className="relative inline-block">
-                      <span className="text-zinc-400">"We sell high quality websites."</span>
+                      <span className="text-zinc-400">&quot;We sell high quality websites.&quot;</span>
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: isActive ? '100%' : 0 }}
@@ -711,7 +711,7 @@ function DiscoveryGraphics() {
                         transition={{ delay: 1.5, duration: 0.5 }}
                         className="text-[#5C45FD] font-bold"
                       >
-                        "Engineered to convert visitors into clients."
+                        &quot;Engineered to convert visitors into clients.&quot;
                       </motion.div>
                     )}
                   </div>

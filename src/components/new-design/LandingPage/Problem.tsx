@@ -287,7 +287,7 @@ export default function Problem() {
                   }
                 }}
               >
-                Traffic without conversions isn't growth.
+                Traffic without conversions isn&apos;t growth.
               </motion.span>
             </span>
             <span className="block overflow-hidden pb-1">
@@ -301,7 +301,7 @@ export default function Problem() {
                   }
                 }}
               >
-                It's an expensive leak.
+                It&apos;s an expensive leak.
               </motion.span>
             </span>
           </motion.h2>
