@@ -117,7 +117,7 @@ export default function Hero() {
                   transition: { type: "spring", stiffness: 60, damping: 20 }
                 }
               }}
-              className="mb-4 text-left text-xs sm:text-sm font-sans text-gray-500"
+              className="mb-4 text-left text-xs sm:text-sm font-medium text-gray-600"
             >
               Visitors lost today on low conversion: <span className="font-semibold text-black">1,204,101</span>
             </motion.div>
@@ -179,7 +179,7 @@ export default function Hero() {
                   transition: { type: "spring", stiffness: 50, damping: 18 }
                 }
               }}
-              className="mt-5 max-w-lg text-sm text-[#6b7280] md:text-base mx-auto lg:mx-0 font-medium"
+              className="mt-5 max-w-lg text-sm text-[#4B5563] md:text-base mx-auto lg:mx-0 font-medium"
             >
               We build websites that increase 2-5x conversions in 3 weeks using our <span className="font-bold text-gray-900">SYNC Method™</span> - or we work for free until it does.
             </motion.p>
@@ -254,7 +254,7 @@ export default function Hero() {
                   transition: { type: "spring", stiffness: 55, damping: 20 }
                 }
               }}
-              className="mt-5 text-[11px] font-medium text-[#9CA3AF] text-center lg:text-left"
+              className="mt-5 text-[11px] font-medium text-[#6B7280] text-center lg:text-left"
             >
               Free 30-min call. No pitch, just clarity
             </motion.p>

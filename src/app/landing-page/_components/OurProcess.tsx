@@ -324,7 +324,7 @@ export default function OurProcess({
               </div>
 
               {/* Bottom Visual Card Block */}
-              <div className="relative w-full aspect-[4/4.5] rounded-[24px] bg-white border border-black/[0.05] shadow-[0_20px_40px_-10px_rgba(92,69,253,0.08)] overflow-hidden">
+              <div className="relative w-full max-w-[420px] mx-auto aspect-[4/4.5] rounded-[24px] bg-white border border-black/[0.05] shadow-[0_20px_40px_-10px_rgba(92,69,253,0.08)] overflow-hidden">
                 {/* Dots Indicator */}
                 <div className="absolute top-0 left-0 w-full p-6 flex items-center justify-between z-20 pointer-events-none">
                   <div className="h-1.5 w-12 bg-zinc-100 rounded-full" />
