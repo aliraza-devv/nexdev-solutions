@@ -123,7 +123,7 @@ export default function Hero() {
             </motion.div>
 
             <h1
-              className="text-[26px] sm:text-[38px] md:text-[48px] lg:text-[56px] leading-[1.15] font-semibold tracking-tight text-[#0A0A0E]"
+              className="text-[30px] sm:text-[38px] md:text-[48px] lg:text-[56px] leading-[1.15] font-medium tracking-tight text-[#0A0A0E]"
               style={{ fontFamily: 'Arial, sans-serif' }}
             >
               <span className="block overflow-hidden pb-1">
@@ -165,7 +165,7 @@ export default function Hero() {
                     }
                   }}
                 >
-                  <span className="italic text-[#5C45FD] font-normal">2-5x Conversion.</span>
+                  <span className="italic text-[#5C45FD]">2-5x Conversion.</span>
                 </motion.span>
               </span>
             </h1>
