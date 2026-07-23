@@ -1,15 +1,15 @@
-import Navbar from '@/components/new-design/Common/Navbar';
-import Hero from '@/components/new-design/LandingPage/Hero';
-import LogosStrip from '@/components/new-design/LandingPage/Logos';
-import Problem from '@/components/new-design/LandingPage/Problem';
-import Solution from '@/components/new-design/LandingPage/Solution';
-import OurProcess from '@/components/new-design/LandingPage/OurProcess';
-import Results from '@/components/new-design/LandingPage/Results';
-import Testimonials from '@/components/new-design/LandingPage/Testimonials';
-import Deliverables from '@/components/new-design/LandingPage/Deliverables';
-import WhyUs from '@/components/new-design/LandingPage/WhyUs';
-import FAQ from '@/components/new-design/LandingPage/FAQ';
-import FinalCTA from '@/components/new-design/Common/FinalCTA';
+import Navbar from './_components/Navbar';
+import Hero from './_components/Hero';
+import LogosStrip from './_components/Logos';
+import Problem from './_components/Problem';
+import Solution from './_components/Solution';
+import OurProcess from './_components/OurProcess';
+import Results from './_components/Results';
+import Testimonials from './_components/Testimonials';
+import Deliverables from './_components/Deliverables';
+import WhyUs from './_components/WhyUs';
+import FAQ from './_components/FAQ';
+import FinalCTA from './_components/FinalCTA';
 
 export default function Home() {
   return (

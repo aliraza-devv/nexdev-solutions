@@ -1,7 +1,7 @@
 'use client';
 
-import Navbar from '@/components/new-design/Common/Navbar';
-import FinalCTA from '@/components/new-design/Common/FinalCTA';
+import Navbar from '../_components/Navbar';
+import FinalCTA from '../_components/FinalCTA';
 import { motion } from 'framer-motion';
 
 export default function CaseStudiesPage() {

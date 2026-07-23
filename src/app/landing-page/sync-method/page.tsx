@@ -1,8 +1,8 @@
 'use client';
 
-import Navbar from '@/components/new-design/Common/Navbar';
-import SyncMethod from '@/components/new-design/SyncMethod/SyncMethod';
-import FinalCTA from '@/components/new-design/Common/FinalCTA';
+import Navbar from '../_components/Navbar';
+import SyncMethod from '../_components/SyncMethod';
+import FinalCTA from '../_components/FinalCTA';
 
 export default function SyncMethodPage() {
   return (
