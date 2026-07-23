@@ -123,7 +123,7 @@ export default function Hero() {
             </motion.div>
 
             <h1
-              className="text-[22px] sm:text-[38px] md:text-[48px] lg:text-[56px] leading-[1.15] font-normal tracking-tight text-[#0A0A0E]"
+              className="text-[26px] sm:text-[38px] md:text-[48px] lg:text-[56px] leading-[1.15] font-semibold tracking-tight text-[#0A0A0E]"
               style={{ fontFamily: 'Arial, sans-serif' }}
             >
               <span className="block overflow-hidden pb-1">
@@ -198,7 +198,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-4 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25"
               >
                 Book Your Free Strategy Call
                 <ArrowRight className="h-4 w-4" />
@@ -235,7 +235,7 @@ export default function Hero() {
                   onClick={() => setIsVslOpen(true)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto group flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-5 py-4 sm:py-2.5 text-sm font-medium text-[#0A0A0E] transition-all hover:bg-gray-50"
+                  className="w-full sm:w-auto group flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 sm:py-2.5 text-sm font-medium text-[#0A0A0E] transition-all hover:bg-gray-50"
                 >
                   <div className="flex h-4 w-4 items-center justify-center rounded-full bg-black/5 transition-colors group-hover:bg-black/10">
                     <Play className="h-2 w-2 fill-current" />
