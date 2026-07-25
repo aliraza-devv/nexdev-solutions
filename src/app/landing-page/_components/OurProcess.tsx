@@ -2,8 +2,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 
 const defaultLayers = [
   {
@@ -307,7 +305,7 @@ export default function OurProcess({
       </div>
 
       {/* 3. Mobile Vertically-Stacked Section (Mobile Only) */}
-      <div className="block lg:hidden bg-white pt-10 pb-12">
+      <div className="block lg:hidden bg-white pt-10 pb-24">
         <div className="mx-auto w-full max-w-[1280px] px-6 space-y-16">
           {layers.map((l, i) => (
             <div key={i} className="flex flex-col gap-6 border-b border-zinc-100 pb-12 last:border-0 last:pb-0">
@@ -358,29 +356,6 @@ export default function OurProcess({
               </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Bridge to Action */}
-      <div className="pt-8 lg:pt-16 pb-20 lg:pb-32 bg-white">
-        <div className="mx-auto w-full max-w-[1280px] px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col sm:flex-row items-center justify-between gap-6 rounded-2xl border border-[#5C45FD]/15 bg-[#5C45FD]/[0.04] px-8 py-6"
-          >
-            <p className="text-lg font-medium text-[#0A0A0E] text-center sm:text-left">
-              Want this process applied to your website?
-            </p>
-            <Link
-              href="#cta"
-              className="group inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#5C45FD] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0]"
-            >
-              Book Your Free Strategy Call
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </motion.div>
         </div>
       </div>
     </section>

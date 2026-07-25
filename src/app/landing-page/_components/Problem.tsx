@@ -241,7 +241,7 @@ export default function Problem() {
   };
 
   return (
-    <section id="problem" className="relative bg-[#0A0A0E] py-24 lg:py-40 overflow-hidden">
+    <section id="problem" className="relative bg-[#0A0A0E] pt-16 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
       <div className="bg-grain absolute inset-0 opacity-10 pointer-events-none" />
 
       <div className="mx-auto max-w-[1280px] px-6 md:px-12 relative z-10">
