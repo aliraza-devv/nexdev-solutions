@@ -15,6 +15,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion, animate } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Image as ImageIcon } from "lucide-react";
 import { CASE_STUDY, type ApproachModule } from "./data";
+// Reused as-is from the main landing page so this case study shares the same
+// site-wide navigation and footer instead of a one-off custom header/footer.
+import Navbar from "../landing-page/_components/Navbar";
+import SiteFooter from "../landing-page/_components/FinalCTA";
 
 const ACCENT = "#5C45FD";
 
@@ -156,60 +160,6 @@ function MetricCard({
         <span className="text-xs text-zinc-400">{metric.window}</span>
       </div>
     </div>
-  );
-}
-
-// ----------------------------------------------------------------------------
-// Sticky header — condenses (less vertical padding, opaque background) once
-// the page has scrolled past the hero, and shows overall scroll progress as a
-// thin bar so a reader always has a sense of how much case study is left.
-// ----------------------------------------------------------------------------
-function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
-      setScrolled(scrollTop > 48);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 border-b border-black/5 backdrop-blur-md transition-[padding,background-color] duration-300 ${
-        scrolled ? "py-3 bg-white/95" : "py-5 bg-white/70"
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 md:px-10">
-        <span
-          className="min-w-0 truncate text-[15px] font-semibold tracking-tight text-[#0A0A0E]"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          {CASE_STUDY.agencyName}
-        </span>
-        <a
-          href="#final-cta"
-          className="flex-shrink-0 whitespace-nowrap rounded-full bg-[var(--accent)] px-4 py-2 text-xs font-bold text-white shadow-lg shadow-[var(--accent)]/20 transition-transform hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] sm:px-5 sm:py-2.5 sm:text-sm"
-        >
-          {CASE_STUDY.cta.primary}
-        </a>
-      </div>
-      <div
-        className="absolute bottom-0 left-0 h-[3px] bg-[var(--accent)]"
-        style={{ width: `${progress}%` }}
-        role="progressbar"
-        aria-label="Reading progress"
-        aria-valuenow={Math.round(progress)}
-        aria-valuemin={0}
-        aria-valuemax={100}
-      />
-    </header>
   );
 }
 
@@ -469,7 +419,7 @@ function Results() {
   );
 }
 
-function FinalCTA() {
+function ClosingCTA() {
   return (
     <section
       id="final-cta"
@@ -502,27 +452,12 @@ function FinalCTA() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="border-t border-black/[0.06] bg-white px-6 py-8 md:px-10">
-      <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-3 text-xs text-zinc-400 sm:flex-row">
-        <span>
-          © {CASE_STUDY.meta.year} {CASE_STUDY.agencyName}
-        </span>
-        <a href="/landing-page" className="hover:text-zinc-600">
-          ← Back to home
-        </a>
-      </div>
-    </footer>
-  );
-}
-
 export default function CaseStudyClient() {
   return (
     // --accent is the single line to change for a full rebrand — every
     // color reference in this file reads from this CSS variable.
     <div style={{ "--accent": ACCENT } as React.CSSProperties} className="bg-white">
-      <Header />
+      <Navbar />
       <main>
         <Hero />
         <MetaBar />
@@ -531,9 +466,9 @@ export default function CaseStudyClient() {
         <Quote />
         <MidCTA />
         <Results />
-        <FinalCTA />
+        <ClosingCTA />
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
