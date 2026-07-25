@@ -55,7 +55,7 @@ export default function Solution() {
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative bg-[#0A0A0E] pt-24 pb-12 lg:pt-40 lg:pb-16 overflow-hidden select-none"
+      className="relative bg-[#0A0A0E] pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden select-none"
     >
       {/* Top divider line */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
@@ -66,7 +66,7 @@ export default function Solution() {
       <div className="mx-auto max-w-[1280px] px-6 md:px-12 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16 lg:mb-24">
+        <div className="flex flex-col items-center text-center mb-10 lg:mb-14">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ export default function Solution() {
         </div>
 
         {/* Letters Area */}
-        <div className="relative flex justify-between items-center w-full max-w-5xl mx-auto py-12 md:py-20">
+        <div className="relative flex justify-between items-center w-full max-w-5xl mx-auto py-6 md:py-10">
           
           {letters.map((item, idx) => {
             // Determine initial animation offset to make them slide apart from center
@@ -122,7 +122,7 @@ export default function Solution() {
                 className="relative cursor-pointer select-none group flex-1 flex justify-center items-center"
               >
                 <span 
-                  className={`text-[80px] xs:text-[120px] sm:text-[180px] md:text-[220px] lg:text-[280px] font-bold tracking-tighter leading-none transition-all duration-300 ${
+                  className={`text-[70px] xs:text-[100px] sm:text-[150px] md:text-[190px] lg:text-[230px] font-bold tracking-tighter leading-none transition-all duration-300 ${
                     hoveredIndex === idx 
                       ? 'text-[#5C45FD] drop-shadow-[0_0_30px_rgba(92,69,253,0.3)]' 
                       : 'text-[#16161E] group-hover:text-white/[0.08]'
