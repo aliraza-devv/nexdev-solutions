@@ -7,30 +7,30 @@ import Link from "next/link";
 
 const cases = [
   {
-    stat: "Built website & LP",
+    stat: "Built Coaching website",
     brand: "Reality Cheque",
-    desc: "Rebuilt as a conversion funnel. 5 qualified leads in 2 weeks. $50k/month recurring from their website alone.",
+    desc: "Reality cheque is a Pakistan's biggest coaching platform. We rebuilt the coaching site focusing on increasing the conversion rate and brand's authority.",
     results: [
-      { value: "5", label: "Leads in 2 weeks" },
-      { value: "$50k/mo", label: "Recurring revenue" },
+      { value: "51.12%", label: "Increase conversion rate" },
+      { value: "407", label: "members in 24 hrs" },
     ],
   },
   {
-    stat: "48% CVR",
-    brand: "Seller Goals",
-    desc: "Full SYNC rebuild. 6 high-ticket clients in 3 weeks. Now closing 7–10 clients/month on autopilot.",
+    stat: "Built a funnel for service business",
+    brand: "Reality Cheque",
+    desc: "Reality Cheque is also a service business. We built a funnel for their service business to book high-qualified leads. And results were:",
     results: [
-      { value: "6", label: "Clients in 3 weeks" },
-      { value: "7–10", label: "Clients closed / month" },
+      { value: "70+", label: "leads in 2 weeks" },
+      { value: "26X", label: "ROAS" },
     ],
   },
   {
-    stat: "100% funded",
-    brand: "Smarterform",
-    desc: "Investor-facing site built on Yield Narrative + Neuro Persuasion. Full investor target hit within the first month.",
+    stat: "Shopify store built for a brand",
+    brand: "Bamper",
+    desc: "An e-commerce bamboo toilet paper brand. We built their store focusing on conversion rate and brand authority. Goal was to sell products fast. Results were:",
     results: [
-      { value: "30 Days", label: "To hit investor target" },
-      { value: "100%", label: "Funding goal reached" },
+      { value: "60 Days", label: "Sold-out inventory" },
+      { value: "4.2%", label: "Conversion rate" },
     ],
   },
 ];
@@ -107,22 +107,24 @@ function CaseCard({
             {c.desc}
           </p>
           <div className="flex items-start gap-8 pt-6 mb-10 max-w-md border-t border-white/10">
-            {c.results.map((r: { value: string; label: string }, ri: number) => (
-              <div
-                key={ri}
-                className={ri > 0 ? "pl-8 border-l border-white/10" : ""}
-              >
+            {c.results.map(
+              (r: { value: string; label: string }, ri: number) => (
                 <div
-                  className="text-2xl lg:text-3xl font-bold text-[#5C45FD]"
-                  style={{ fontFamily: "Arial, sans-serif" }}
+                  key={ri}
+                  className={ri > 0 ? "pl-8 border-l border-white/10" : ""}
                 >
-                  {r.value}
+                  <div
+                    className="text-2xl lg:text-3xl font-bold text-[#5C45FD]"
+                    style={{ fontFamily: "Arial, sans-serif" }}
+                  >
+                    {r.value}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-1">
+                    {r.label}
+                  </div>
                 </div>
-                <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-1">
-                  {r.label}
-                </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
           <Link
             href="#"
