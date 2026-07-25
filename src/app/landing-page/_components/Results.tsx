@@ -9,20 +9,29 @@ const cases = [
   {
     stat: "Built website & LP",
     brand: "Reality Cheque",
-    context: "coaching platform and DFY service agency.",
     desc: "Rebuilt as a conversion funnel. 5 qualified leads in 2 weeks. $50k/month recurring from their website alone.",
+    results: [
+      { value: "5", label: "Leads in 2 weeks" },
+      { value: "$50k/mo", label: "Recurring revenue" },
+    ],
   },
   {
     stat: "48% CVR",
     brand: "Seller Goals",
-    context: "was under 3%",
     desc: "Full SYNC rebuild. 6 high-ticket clients in 3 weeks. Now closing 7–10 clients/month on autopilot.",
+    results: [
+      { value: "6", label: "Clients in 3 weeks" },
+      { value: "7–10", label: "Clients closed / month" },
+    ],
   },
   {
     stat: "100% funded",
     brand: "Smarterform",
-    context: "in 30 days",
     desc: "Investor-facing site built on Yield Narrative + Neuro Persuasion. Full investor target hit within the first month.",
+    results: [
+      { value: "30 Days", label: "To hit investor target" },
+      { value: "100%", label: "Funding goal reached" },
+    ],
   },
 ];
 
@@ -85,19 +94,36 @@ function CaseCard({
         <div
           className={i % 2 === 1 ? "lg:order-2 p-10 lg:p-16" : "p-10 lg:p-16"}
         >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white text-[#0A0A0E] text-xs font-bold uppercase tracking-wide mb-5">
+            {c.brand}
+          </span>
           <div
             className="text-4xl lg:text-5xl font-bold text-[#5C45FD] mb-6"
             style={{ fontFamily: "Arial, sans-serif" }}
           >
             {c.stat}
           </div>
-          <div className="text-2xl font-bold text-white mb-2">{c.brand}</div>
-          <div className="text-sm font-medium text-white/40 mb-8 italic">
-            {c.context}
-          </div>
-          <p className="text-lg text-white/60 leading-relaxed font-light mb-10 max-w-md">
+          <p className="text-lg text-white/60 leading-relaxed font-light mb-8 max-w-md">
             {c.desc}
           </p>
+          <div className="flex items-start gap-8 pt-6 mb-10 max-w-md border-t border-white/10">
+            {c.results.map((r: { value: string; label: string }, ri: number) => (
+              <div
+                key={ri}
+                className={ri > 0 ? "pl-8 border-l border-white/10" : ""}
+              >
+                <div
+                  className="text-2xl lg:text-3xl font-bold text-[#5C45FD]"
+                  style={{ fontFamily: "Arial, sans-serif" }}
+                >
+                  {r.value}
+                </div>
+                <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-1">
+                  {r.label}
+                </div>
+              </div>
+            ))}
+          </div>
           <Link
             href="#"
             className="inline-flex items-center gap-2 py-3 -ml-0.5 px-0.5 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300"
@@ -136,19 +162,36 @@ function MobileCaseCard({ c, i }: { c: any; i: number }) {
     >
       {/* Content Side */}
       <div className="flex flex-col">
+        <span className="inline-block px-3.5 py-1.5 rounded-full bg-white text-[#0A0A0E] text-[11px] font-bold uppercase tracking-wide mb-4 self-start">
+          {c.brand}
+        </span>
         <div
           className="text-4xl font-bold text-[#5C45FD] mb-4"
           style={{ fontFamily: "Arial, sans-serif" }}
         >
           {c.stat}
         </div>
-        <div className="text-2xl font-bold text-white mb-1">{c.brand}</div>
-        <div className="text-xs font-medium text-white/40 mb-6 italic">
-          {c.context}
-        </div>
-        <p className="text-base text-white/60 leading-relaxed font-light mb-8">
+        <p className="text-base text-white/60 leading-relaxed font-light mb-6">
           {c.desc}
         </p>
+        <div className="flex items-start gap-6 pt-5 mb-8 border-t border-white/10">
+          {c.results.map((r: { value: string; label: string }, ri: number) => (
+            <div
+              key={ri}
+              className={ri > 0 ? "pl-6 border-l border-white/10" : ""}
+            >
+              <div
+                className="text-xl font-bold text-[#5C45FD]"
+                style={{ fontFamily: "Arial, sans-serif" }}
+              >
+                {r.value}
+              </div>
+              <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-1">
+                {r.label}
+              </div>
+            </div>
+          ))}
+        </div>
         <Link
           href="#"
           className="inline-flex items-center gap-2 py-3 -ml-0.5 px-0.5 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300"
