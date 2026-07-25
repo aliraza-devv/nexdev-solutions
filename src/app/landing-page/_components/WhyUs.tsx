@@ -1,36 +1,38 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Target, Users, Zap, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import React from "react";
+import { motion } from "framer-motion";
+import { Target, TrendingUp, Zap, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const stats = [
   {
     icon: Target,
     num: "8 Years",
-    label: "Strategy first. Always.",
-    desc: "Every layout, headline, and CTA is backed by conversion data and buyer psychology — never a guess, never a trend chasing your budget."
+    label: "We've fixed what other agencies broke.",
+    desc: "Most of our 200+ projects are rebuilds — founders who paid another agency for a 'beautiful' site that never sold a thing. Our SYNC Method™ audits exactly why visitors leave before we touch a single pixel.",
   },
   {
-    icon: Users,
-    num: "200+ Projects",
-    label: "Senior team. No handoffs.",
-    desc: "Ali Raza and a senior team run your strategy, design, and QA personally — so your project never slips into junior hands or gets passed down."
+    icon: TrendingUp,
+    num: "Sales > Style",
+    label: "Built to sell. Not just to look good.",
+    desc: "We're not a design studio chasing awards. Every layout, headline, and button exists to move a visitor toward a sale — good looks are a side effect, never the goal.",
   },
   {
     icon: Zap,
     num: "2–4 Weeks",
     label: "Fast. Transparent. No surprises.",
-    desc: "A progress update every 2–3 days and a live site in weeks, not months — you always know exactly where things stand."
-  }
+    desc: "A progress update every 2–3 days and a live site in weeks, not months — you always know exactly where things stand.",
+  },
 ];
 
 export default function WhyUs() {
   return (
     <section className="relative bg-white pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
-        <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#5C45FD]/25 bg-[#5C45FD]/8 text-[#5C45FD] text-[11px] font-bold uppercase tracking-[0.2em] mb-6">WHY US</div>
+        <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#5C45FD]/25 bg-[#5C45FD]/8 text-[#5C45FD] text-[11px] font-bold uppercase tracking-[0.2em] mb-6">
+          WHY US
+        </div>
         <motion.h2
           initial="hidden"
           whileInView="visible"
@@ -39,16 +41,16 @@ export default function WhyUs() {
             hidden: {},
             visible: {
               transition: {
-                staggerChildren: 0.08
-              }
-            }
+                staggerChildren: 0.08,
+              },
+            },
           }}
           className="tracking-tighter text-[#0A0A0E] mb-16 lg:mb-20 font-normal"
           style={{
-            fontFamily: 'Arial, sans-serif',
-            fontSize: 'clamp(28px, 5vw, 46px)',
-            lineHeight: '1.1',
-            letterSpacing: '-0.02em'
+            fontFamily: "Arial, sans-serif",
+            fontSize: "clamp(28px, 5vw, 46px)",
+            lineHeight: "1.1",
+            letterSpacing: "-0.02em",
           }}
         >
           <span className="block overflow-hidden pb-1">
@@ -58,8 +60,8 @@ export default function WhyUs() {
                 hidden: { y: "100%" },
                 visible: {
                   y: 0,
-                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-                }
+                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                },
               }}
             >
               You&apos;ve seen agencies.
@@ -72,8 +74,8 @@ export default function WhyUs() {
                 hidden: { y: "100%" },
                 visible: {
                   y: 0,
-                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-                }
+                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                },
               }}
             >
               You haven&apos;t seen this.
@@ -98,13 +100,13 @@ export default function WhyUs() {
                 </div>
                 <div
                   className="text-3xl md:text-4xl font-black text-[#5C45FD] tracking-tighter"
-                  style={{ fontFamily: 'Arial, sans-serif' }}
+                  style={{ fontFamily: "Arial, sans-serif" }}
                 >
                   {s.num}
                 </div>
                 <h3
                   className="text-lg md:text-xl text-[#0A0A0E] font-bold tracking-tight"
-                  style={{ fontFamily: 'Arial, sans-serif' }}
+                  style={{ fontFamily: "Arial, sans-serif" }}
                 >
                   {s.label}
                 </h3>
