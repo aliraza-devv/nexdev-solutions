@@ -143,7 +143,7 @@ export default function Hero() {
             </motion.div>
 
             <h1
-              className="text-[30px] sm:text-[38px] md:text-[48px] lg:text-[56px] leading-[1.15] font-medium tracking-tight text-[#0A0A0E]"
+              className="text-[30px] sm:text-[44px] md:text-[60px] lg:text-[64px] leading-[1.15] font-medium tracking-tight text-[#0A0A0E]"
               style={{ fontFamily: "Arial, sans-serif" }}
             >
               <span className="block overflow-hidden pb-1">
@@ -175,7 +175,7 @@ export default function Hero() {
                     },
                   }}
                 >
-                  That Sells and Increase
+                  That Sells and
                 </motion.span>
               </span>
               <span className="block overflow-hidden pb-1">
@@ -193,7 +193,9 @@ export default function Hero() {
                     },
                   }}
                 >
-                  <span className="italic text-[#5C45FD]">2x Conversion.</span>
+                  <span className="italic text-[#5C45FD]">
+                    Double Conversion.
+                  </span>
                 </motion.span>
               </span>
             </h1>

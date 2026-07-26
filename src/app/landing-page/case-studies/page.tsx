@@ -115,7 +115,12 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
         <span className="mb-4 inline-block self-start rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#0A0A0E]">
           {cs.client}
         </span>
-        <h3 className="mb-2 text-lg font-bold leading-snug text-white">{cs.title}</h3>
+        <h3
+          className="mb-2 text-lg font-bold leading-snug text-white"
+          style={{ fontFamily: 'Arial, sans-serif' }}
+        >
+          {cs.title}
+        </h3>
         <p className="mb-6 text-sm leading-relaxed text-white/50">{cs.desc}</p>
 
         <div className="mt-auto flex items-center gap-6 border-t border-white/10 pt-5">
