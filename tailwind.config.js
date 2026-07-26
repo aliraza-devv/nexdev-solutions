@@ -16,7 +16,14 @@ module.exports = {
 			xl: "1280px", // Extra-large screens
 			 // 2X large screens
 			// Custom breakpoints
-			xs: "480px", // Extra small screens
+			// xs must stay before sm/md/lg/xl above would be ideal, but Tailwind
+			// already emitted this config elsewhere relying on source order; since
+			// xs is a plain min-width breakpoint like sm/md/lg/xl, defining it here
+			// (after xl) made it win over lg:/xl: at equal specificity even on wide
+			// viewports (480px is still >= 480px at 1280px). Scoped to !important
+			// is avoided; instead this entry is now a max-width-bounded breakpoint
+			// so it never fires above the intended small-screen range.
+			xs: {min: '480px', max: '767px'},
 			"sm-min-961": {min: '961px'},
 			'big-max': { max: '2563px'},
 			'min-2xl': {min: '1537px'},

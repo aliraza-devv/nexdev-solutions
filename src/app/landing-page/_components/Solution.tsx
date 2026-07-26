@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const letters = [
   {
@@ -28,33 +28,9 @@ const letters = [
 
 export default function Solution() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Mouse position inside the container
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Smooth springs for mouse tracking
-  const springConfig = { damping: 25, stiffness: 220, mass: 0.6 };
-  const tooltipX = useSpring(mouseX, springConfig);
-  const tooltipY = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    
-    // Center the tooltip horizontally (w-[320px] is 320px, so offset by 160px)
-    // Place it just above the cursor (offset by 135px vertically to avoid overlap)
-    mouseX.set(e.clientX - rect.left - 160);
-    mouseY.set(e.clientY - rect.top - 135);
-  };
-
-
 
   return (
-    <section 
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
+    <section
       className="relative bg-[#0A0A0E] pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden select-none"
     >
       {/* Top divider line */}
@@ -64,10 +40,10 @@ export default function Solution() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#5C45FD]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="mx-auto max-w-[1280px] px-6 md:px-12 relative z-10">
-        
+
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-10 lg:mb-14">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -76,14 +52,14 @@ export default function Solution() {
           >
             The Solution
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-white font-normal leading-tight tracking-tight max-w-4xl mx-auto text-center"
-            style={{ 
+            style={{
               fontFamily: 'Arial, sans-serif',
               fontSize: 'clamp(28px, 5vw, 46px)',
               letterSpacing: '-0.02em'
@@ -93,9 +69,11 @@ export default function Solution() {
           </motion.h2>
         </div>
 
-        {/* Letters Area */}
-        <div className="relative flex justify-between items-center w-full max-w-5xl mx-auto py-6 md:py-10">
-          
+        {/* Letters Area — extra top padding reserves room for each letter's
+            hover card, which is absolutely positioned above its own letter
+            rather than following the cursor. */}
+        <div className="relative flex justify-between items-center w-full max-w-5xl mx-auto pt-40 pb-6 md:pt-52 md:pb-10">
+
           {letters.map((item, idx) => {
             // Determine initial animation offset to make them slide apart from center
             let initialX = 0;
@@ -103,6 +81,8 @@ export default function Solution() {
             else if (idx === 1) initialX = 25; // Y slides left slightly
             else if (idx === 2) initialX = -25;// N slides right slightly
             else if (idx === 3) initialX = -70;// C slides right from center-right
+
+            const isHovered = hoveredIndex === idx;
 
             return (
               <motion.div
@@ -121,16 +101,39 @@ export default function Solution() {
                 }}
                 className="relative cursor-pointer select-none group flex-1 flex justify-center items-center"
               >
-                <span 
-                  className={`text-[70px] xs:text-[100px] sm:text-[150px] md:text-[190px] lg:text-[230px] font-bold tracking-tighter leading-none transition-all duration-300 ${
-                    hoveredIndex === idx 
-                      ? 'text-[#5C45FD] drop-shadow-[0_0_30px_rgba(92,69,253,0.3)]' 
+                {/* Hover card — anchored above this letter, never follows the cursor */}
+                <AnimatePresence>
+                  {isHovered && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 12, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 12, scale: 0.95 }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      className="hidden md:block absolute bottom-full mb-8 z-20 w-[240px] p-5 rounded-xl bg-[#0F0F16]/95 border border-[#5C45FD]/40 shadow-[0_8px_32px_rgba(92,69,253,0.25)] backdrop-blur-md pointer-events-none"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/10 to-transparent rounded-xl pointer-events-none" />
+                      <h4 className="text-white text-[13px] font-bold uppercase tracking-wider mb-2 relative z-10">
+                        {item.title}
+                      </h4>
+                      <p className="text-[#9CA3AF] text-[13px] leading-relaxed relative z-10">
+                        {item.desc}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <motion.span
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className={`text-[76px] xs:text-[110px] sm:text-[165px] md:text-[210px] lg:text-[250px] font-bold tracking-tighter leading-none transition-colors duration-300 ${
+                    isHovered
+                      ? 'text-[#5C45FD] drop-shadow-[0_0_30px_rgba(92,69,253,0.3)]'
                       : 'text-[#16161E] group-hover:text-white/[0.08]'
                   }`}
                   style={{ fontFamily: 'Arial, sans-serif' }}
                 >
                   {item.char}
-                </span>
+                </motion.span>
               </motion.div>
             );
           })}
@@ -164,33 +167,6 @@ export default function Solution() {
         </div>
 
       </div>
-
-      {/* Floating Microsoft-style modal following mouse (Desktop only) */}
-      <AnimatePresence>
-        {hoveredIndex !== null && (
-          <motion.div
-            style={{
-              position: 'absolute',
-              left: tooltipX,
-              top: tooltipY,
-              pointerEvents: 'none',
-            }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="hidden md:block z-50 w-[320px] p-5 rounded-xl bg-[#0F0F16]/95 border border-[#5C45FD]/40 shadow-[0_8px_32px_rgba(92,69,253,0.25)] backdrop-blur-md"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/10 to-transparent rounded-xl pointer-events-none" />
-            <h4 className="text-white text-[15px] font-bold uppercase tracking-wider mb-2 relative z-10 whitespace-nowrap">
-              {letters[hoveredIndex].title}
-            </h4>
-            <p className="text-[#9CA3AF] text-[13px] leading-relaxed relative z-10">
-              {letters[hoveredIndex].desc}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
