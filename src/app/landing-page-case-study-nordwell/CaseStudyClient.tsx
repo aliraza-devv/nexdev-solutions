@@ -4,21 +4,21 @@
 // Case study page — all interactive UI lives here as a Client Component so
 // the parent page.tsx can stay a Server Component and own SEO metadata.
 //
-// THEME: the one line to edit for a full rebrand is the --accent value in the
-// inline style on the root <div> below. Every accent usage in this file reads
-// from that CSS variable via Tailwind's arbitrary-value syntax (e.g.
-// `text-[var(--accent)]`) instead of a hardcoded hex, so changing it once
-// reskins the whole page.
+// Styling deliberately mirrors the main /landing-page components (Arial
+// headings via inline style, the site's pill-tag/button classes, the shared
+// #5C45FD accent) rather than a standalone design system, so this page reads
+// as part of the same site. Testimonials and FAQ are the real site-wide
+// components, not case-study-specific reimplementations.
 // ============================================================================
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion, animate } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Image as ImageIcon } from "lucide-react";
 import { CASE_STUDY, type ApproachModule } from "./data";
-// Reused as-is from the main landing page so this case study shares the same
-// site-wide navigation and footer instead of a one-off custom header/footer.
 import Navbar from "../landing-page/_components/Navbar";
 import SiteFooter from "../landing-page/_components/FinalCTA";
+import Testimonials from "../landing-page/_components/Testimonials";
+import FAQ from "../landing-page/_components/FAQ";
 
 const ACCENT = "#5C45FD";
 
@@ -47,6 +47,16 @@ function Reveal({
     >
       {children}
     </motion.div>
+  );
+}
+
+// Matches the pill-tag pattern used on every /landing-page section
+// (Results, WhyUs, Deliverables, Solution, etc.) instead of a plain label.
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#5C45FD]/25 bg-[#5C45FD]/8 text-[#5C45FD] text-[11px] font-bold uppercase tracking-[0.2em] mb-6">
+      {children}
+    </div>
   );
 }
 
@@ -118,9 +128,6 @@ function MetricCard({
       setDisplay(metric.to);
       return;
     }
-    // Count up from 0 (not from the "from" value) — the animation is meant to
-    // draw the eye to the achieved number, while the "from" figure stays put
-    // as static before/after context next to it.
     const controls = animate(0, target.number, {
       duration: 1.4,
       delay: index * 0.15,
@@ -148,13 +155,13 @@ function MetricCard({
         <ArrowRight className="h-3.5 w-3.5 text-zinc-300" />
         <span
           className="text-3xl md:text-4xl font-bold tracking-tight text-[#0A0A0E]"
-          style={{ fontFamily: "var(--font-display)" }}
+          style={{ fontFamily: "Arial, sans-serif" }}
         >
           {display}
         </span>
       </div>
       <div className="flex items-center gap-2">
-        <span className="rounded-full bg-[var(--accent)]/10 px-2.5 py-1 text-xs font-bold text-[var(--accent)]">
+        <span className="rounded-full bg-[#5C45FD]/10 px-2.5 py-1 text-xs font-bold text-[#5C45FD]">
           {metric.change}
         </span>
         <span className="text-xs text-zinc-400">{metric.window}</span>
@@ -172,17 +179,17 @@ function Hero() {
             label={CASE_STUDY.clientLogo}
             aspect="aspect-[3/1]"
             rounded="rounded-lg"
-            className="w-16 flex-shrink-0"
+            className="w-[100px] flex-shrink-0"
           />
-          <span className="min-w-0 text-sm font-semibold uppercase tracking-[0.1em] text-zinc-400">
+          <span className="min-w-0 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-400">
             {CASE_STUDY.client} — Case Study
           </span>
         </Reveal>
 
         <Reveal delay={0.1}>
           <h1
-            className="max-w-4xl text-[34px] leading-[1.1] tracking-tight text-[#0A0A0E] md:text-[52px] lg:text-[64px]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            className="max-w-4xl text-[32px] leading-[1.1] tracking-tight text-[#0A0A0E] md:text-[48px] lg:text-[56px]"
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
             {CASE_STUDY.headline}
           </h1>
@@ -191,7 +198,7 @@ function Hero() {
         <Reveal delay={0.2} className="mt-8 flex flex-wrap items-center gap-4">
           <a
             href="#final-cta"
-            className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[var(--accent)]/25 transition-transform hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+            className="inline-flex items-center gap-2 rounded-full bg-[#5C45FD] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0] hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5C45FD]"
           >
             {CASE_STUDY.cta.primary}
             <ArrowRight className="h-4 w-4" />
@@ -200,7 +207,7 @@ function Hero() {
             href={CASE_STUDY.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 px-7 py-3.5 text-sm font-semibold text-[#0A0A0E] transition-colors hover:bg-black/[0.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+            className="inline-flex items-center gap-2 rounded-full border border-black/10 px-7 py-3.5 text-sm font-semibold text-[#0A0A0E] transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5C45FD]"
           >
             View live site
             <ArrowUpRight className="h-4 w-4" />
@@ -253,12 +260,10 @@ function Challenge() {
     <section id="challenge" className="bg-white px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[900px]">
         <Reveal>
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
-            The Challenge
-          </span>
+          <Eyebrow>The Challenge</Eyebrow>
           <p
-            className="mt-4 text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
             {CASE_STUDY.challenge.intro}
           </p>
@@ -268,7 +273,7 @@ function Challenge() {
           {CASE_STUDY.challenge.problems.map((problem, i) => (
             <Reveal key={problem} delay={i * 0.08}>
               <div className="flex items-start gap-3 rounded-xl border border-black/[0.06] bg-white p-5">
-                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--accent)]" />
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#5C45FD]" />
                 <p className="text-[15px] leading-relaxed text-zinc-600">{problem}</p>
               </div>
             </Reveal>
@@ -292,12 +297,12 @@ function ApproachRow({ item, index }: { item: ApproachModule; index: number }) {
         </span>
         <h3
           className="mt-3 text-2xl text-[#0A0A0E] md:text-[28px]"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+          style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
         >
           {item.title}
         </h3>
         <p className="mt-4 text-[15px] leading-relaxed text-zinc-600">{item.body}</p>
-        <span className="mt-5 inline-flex items-center rounded-full bg-[var(--accent)]/10 px-3.5 py-1.5 text-xs font-bold text-[var(--accent)]">
+        <span className="mt-5 inline-flex items-center rounded-full bg-[#5C45FD]/10 px-3.5 py-1.5 text-xs font-bold text-[#5C45FD]">
           {item.microResult}
         </span>
       </div>
@@ -310,12 +315,10 @@ function Approach() {
     <section id="approach" className="bg-white px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1400px]">
         <Reveal className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
-            The Approach
-          </span>
+          <Eyebrow>The Approach</Eyebrow>
           <p
-            className="mt-4 text-2xl text-[#0A0A0E] md:text-3xl"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            className="text-2xl text-[#0A0A0E] md:text-3xl"
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
             Four fixes, each proven on its own before it added up to the whole.
           </p>
@@ -331,41 +334,16 @@ function Approach() {
   );
 }
 
-function Quote() {
-  return (
-    <section className="bg-[#0A0A0E] px-6 py-24 md:px-10 md:py-32">
-      <Reveal className="mx-auto flex max-w-[900px] flex-col items-center text-center">
-        <ImagePlaceholder
-          label={CASE_STUDY.quote.photo}
-          aspect="aspect-square"
-          rounded="rounded-full"
-          className="w-20 md:w-24"
-        />
-        <p
-          className="mt-8 text-2xl leading-snug text-white md:text-[34px]"
-          style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontWeight: 400 }}
-        >
-          &ldquo;{CASE_STUDY.quote.text}&rdquo;
-        </p>
-        <div className="mt-6">
-          <div className="text-[15px] font-semibold text-white">{CASE_STUDY.quote.name}</div>
-          <div className="text-sm text-white/40">{CASE_STUDY.quote.role}</div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
 function MidCTA() {
   return (
-    <section className="bg-[#0A0A0E] px-6 pb-24 md:px-10 md:pb-32">
-      <Reveal className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-6 rounded-2xl border border-white/10 bg-white/[0.03] px-8 py-8 sm:flex-row">
-        <p className="text-center text-lg font-medium text-white sm:text-left">
+    <section className="bg-white px-6 pb-20 md:px-10 md:pb-28">
+      <Reveal className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-6 rounded-2xl border border-[#5C45FD]/15 bg-[#5C45FD]/[0.04] px-8 py-8 sm:flex-row">
+        <p className="text-center text-lg font-medium text-[#0A0A0E] sm:text-left">
           Curious what a CRO pass would find on your site?
         </p>
         <a
           href="#final-cta"
-          className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[var(--accent)]/25 transition-transform hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#5C45FD] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0] hover:scale-[1.02]"
         >
           {CASE_STUDY.cta.secondary}
           <ArrowRight className="h-4 w-4" />
@@ -380,12 +358,10 @@ function Results() {
     <section id="results" className="bg-white px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1000px]">
         <Reveal>
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
-            Where Things Stand Now
-          </span>
+          <Eyebrow>Where Things Stand Now</Eyebrow>
           <p
-            className="mt-4 text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
             {CASE_STUDY.results.intro}
           </p>
@@ -397,7 +373,7 @@ function Results() {
               <div className="rounded-2xl border border-black/[0.06] bg-zinc-50/60 p-6 text-center">
                 <div
                   className="text-3xl font-bold text-[#0A0A0E]"
-                  style={{ fontFamily: "var(--font-display)" }}
+                  style={{ fontFamily: "Arial, sans-serif" }}
                 >
                   {stat.value}
                 </div>
@@ -419,54 +395,23 @@ function Results() {
   );
 }
 
-function ClosingCTA() {
-  return (
-    <section
-      id="final-cta"
-      className="bg-[var(--accent)] px-6 py-20 text-center md:px-10 md:py-28"
-    >
-      <Reveal className="mx-auto max-w-2xl">
-        <h2
-          className="text-3xl text-white md:text-4xl"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-        >
-          Ready for a website that works as hard as {CASE_STUDY.client} does?
-        </h2>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="mailto:hello@nexdevsolutions.net"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[var(--accent)] shadow-lg transition-transform hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            {CASE_STUDY.cta.primary}
-            <ArrowRight className="h-4 w-4" />
-          </a>
-          <a
-            href="mailto:hello@nexdevsolutions.net"
-            className="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            {CASE_STUDY.cta.secondary}
-          </a>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
 export default function CaseStudyClient() {
   return (
     // --accent is the single line to change for a full rebrand — every
     // color reference in this file reads from this CSS variable.
     <div style={{ "--accent": ACCENT } as React.CSSProperties} className="bg-white">
       <Navbar />
-      <main>
+      <main className="relative min-h-screen">
         <Hero />
         <MetaBar />
         <Challenge />
         <Approach />
-        <Quote />
+        {/* Real site testimonials, not a case-study-specific reimplementation */}
+        <Testimonials />
         <MidCTA />
         <Results />
-        <ClosingCTA />
+        {/* Real site FAQ in place of a duplicate closing CTA band */}
+        <FAQ />
       </main>
       <SiteFooter />
     </div>
