@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const partners = [
-  { logo: '/assets/partner-1.png', metric: '+42%', label: 'Conversion' },
-  { logo: '/assets/partner-2.png', metric: '+156%', label: 'Revenue' },
-  { logo: '/assets/partner-3.png', metric: '+80%', label: 'Growth' },
-  { logo: '/assets/partner-4.png', metric: '+67%', label: 'Sales' },
-  { logo: '/assets/partner-5.png', metric: '+47%', label: 'Conversion' },
-  { logo: '/assets/partner-6.png', metric: '+70%', label: 'Growth' },
-  { logo: '/assets/partner-7.png', metric: '+57%', label: 'Conversion' },
-  { logo: '/assets/partner-8.png', metric: '+80%', label: 'Leads' },
+  { logo: "/assets/partner-1.png", metric: "+52%", label: "Conversion" },
+  { logo: "/assets/partner-2.png", metric: "+156%", label: "Revenue" },
+  { logo: "/assets/partner-3.png", metric: "+80%", label: "Growth" },
+  { logo: "/assets/partner-4.png", metric: "+67%", label: "Sales" },
+  { logo: "/assets/partner-5.png", metric: "+47%", label: "Conversion" },
+  { logo: "/assets/partner-6.png", metric: "+70%", label: "Growth" },
+  { logo: "/assets/partner-7.png", metric: "+57%", label: "Conversion" },
+  { logo: "/assets/partner-8.png", metric: "+80%", label: "Leads" },
 ];
 
 export default function LogosStrip() {
@@ -25,8 +25,8 @@ export default function LogosStrip() {
           className="flex items-center gap-6 whitespace-nowrap px-6"
         >
           {[...partners, ...partners].map((partner, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="group flex h-20 items-stretch overflow-hidden rounded-xl border border-white/[0.08] bg-[#121216] transition-all hover:border-white/[0.18] hover:bg-[#16161e] shadow-lg shadow-black/35"
             >
               {/* Left Panel: Logo (Square & Full-Bleed) */}
@@ -38,7 +38,7 @@ export default function LogosStrip() {
                   className="object-cover opacity-60 grayscale transition-all group-hover:opacity-100 group-hover:grayscale-0"
                 />
               </div>
-              
+
               {/* Right Panel: Metrics (20% Larger) */}
               <div className="flex flex-col justify-center bg-white/[0.01] px-8 py-3">
                 <span className="text-2xl font-bold tracking-tight text-white leading-tight">
@@ -50,9 +50,6 @@ export default function LogosStrip() {
               </div>
             </div>
           ))}
-
-
-
         </motion.div>
       </div>
 

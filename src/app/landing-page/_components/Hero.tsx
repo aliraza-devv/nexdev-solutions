@@ -175,7 +175,8 @@ export default function Hero() {
                     },
                   }}
                 >
-                  That Sells and
+                  That Sell and
+                  <span className="italic text-[#5C45FD]"> 2X</span>
                 </motion.span>
               </span>
               <span className="block overflow-hidden pb-1">
@@ -194,7 +195,8 @@ export default function Hero() {
                   }}
                 >
                   <span className="italic text-[#5C45FD]">
-                    Double Conversion.
+                    {" "}
+                    the Conversion.
                   </span>
                 </motion.span>
               </span>
