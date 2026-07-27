@@ -1,24 +1,26 @@
 "use client";
 
 // ============================================================================
-// Case study page — all interactive UI lives here as a Client Component so
-// the parent page.tsx can stay a Server Component and own SEO metadata.
+// Shared case study page template — every case-study-[brand] route renders
+// this same component with its own CaseStudyData. Edit a brand's data.ts to
+// change that page's content; edit this file to change the structure/design
+// of every case study page at once.
 //
 // Styling deliberately mirrors the main /landing-page components (Arial
 // headings via inline style, the site's pill-tag/button classes, the shared
-// #5C45FD accent) rather than a standalone design system, so this page reads
-// as part of the same site. Testimonials and FAQ are the real site-wide
+// #5C45FD accent) rather than a standalone design system, so these pages
+// read as part of the same site. Testimonials and FAQ are the real site-wide
 // components, not case-study-specific reimplementations.
 // ============================================================================
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion, animate } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Image as ImageIcon } from "lucide-react";
-import { CASE_STUDY, type ApproachModule } from "./data";
-import Navbar from "../landing-page/_components/Navbar";
-import SiteFooter from "../landing-page/_components/FinalCTA";
-import Testimonials from "../landing-page/_components/Testimonials";
-import FAQ from "../landing-page/_components/FAQ";
+import type { CaseStudyData, ApproachModule } from "./types";
+import Navbar from "../../_components/Navbar";
+import SiteFooter from "../../_components/FinalCTA";
+import Testimonials from "../../_components/Testimonials";
+import FAQ from "../../_components/FAQ";
 
 const ACCENT = "#5C45FD";
 
@@ -113,7 +115,7 @@ function MetricCard({
   metric,
   index,
 }: {
-  metric: (typeof CASE_STUDY.metrics)[number];
+  metric: CaseStudyData["metrics"][number];
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -170,19 +172,19 @@ function MetricCard({
   );
 }
 
-function Hero() {
+function Hero({ data }: { data: CaseStudyData }) {
   return (
     <section className="relative bg-white px-6 pb-16 pt-32 md:px-10 md:pt-40">
       <div className="mx-auto max-w-[1400px]">
         <Reveal className="mb-6 flex flex-wrap items-center gap-3">
           <ImagePlaceholder
-            label={CASE_STUDY.clientLogo}
+            label={data.clientLogo}
             aspect="aspect-[3/1]"
             rounded="rounded-lg"
             className="w-[100px] flex-shrink-0"
           />
           <span className="min-w-0 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-400">
-            {CASE_STUDY.client} — Case Study
+            {data.client} — Case Study
           </span>
         </Reveal>
 
@@ -191,7 +193,7 @@ function Hero() {
             className="max-w-4xl text-[32px] leading-[1.1] tracking-tight text-[#0A0A0E] md:text-[48px] lg:text-[56px]"
             style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
-            {CASE_STUDY.headline}
+            {data.headline}
           </h1>
         </Reveal>
 
@@ -200,11 +202,11 @@ function Hero() {
             href="#final-cta"
             className="inline-flex items-center gap-2 rounded-full bg-[#5C45FD] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0] hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5C45FD]"
           >
-            {CASE_STUDY.cta.primary}
+            {data.cta.primary}
             <ArrowRight className="h-4 w-4" />
           </a>
           <a
-            href={CASE_STUDY.liveUrl}
+            href={data.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-black/10 px-7 py-3.5 text-sm font-semibold text-[#0A0A0E] transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5C45FD]"
@@ -216,14 +218,14 @@ function Hero() {
 
         <Reveal delay={0.3} className="mt-12">
           <ImagePlaceholder
-            label={CASE_STUDY.heroImage}
+            label={data.heroImage}
             aspect="aspect-[16/10]"
             rounded="rounded-[28px]"
           />
         </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {CASE_STUDY.metrics.map((metric, i) => (
+          {data.metrics.map((metric, i) => (
             <MetricCard key={metric.label} metric={metric} index={i} />
           ))}
         </div>
@@ -232,12 +234,12 @@ function Hero() {
   );
 }
 
-function MetaBar() {
+function MetaBar({ data }: { data: CaseStudyData }) {
   const items = [
-    CASE_STUDY.meta.year,
-    CASE_STUDY.meta.timeline,
-    CASE_STUDY.meta.industry,
-    CASE_STUDY.meta.services.join(", "),
+    data.meta.year,
+    data.meta.timeline,
+    data.meta.industry,
+    data.meta.services.join(", "),
   ];
   return (
     <section className="border-y border-black/[0.06] bg-zinc-50/60 px-6 py-6 md:px-10">
@@ -255,7 +257,7 @@ function MetaBar() {
   );
 }
 
-function Challenge() {
+function Challenge({ data }: { data: CaseStudyData }) {
   return (
     <section id="challenge" className="bg-white px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[900px]">
@@ -265,12 +267,12 @@ function Challenge() {
             className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
             style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
-            {CASE_STUDY.challenge.intro}
+            {data.challenge.intro}
           </p>
         </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
-          {CASE_STUDY.challenge.problems.map((problem, i) => (
+          {data.challenge.problems.map((problem, i) => (
             <Reveal key={problem} delay={i * 0.08}>
               <div className="flex items-start gap-3 rounded-xl border border-black/[0.06] bg-white p-5">
                 <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#5C45FD]" />
@@ -310,7 +312,7 @@ function ApproachRow({ item, index }: { item: ApproachModule; index: number }) {
   );
 }
 
-function Approach() {
+function Approach({ data }: { data: CaseStudyData }) {
   return (
     <section id="approach" className="bg-white px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1400px]">
@@ -325,7 +327,7 @@ function Approach() {
         </Reveal>
 
         <div className="flex flex-col gap-20 md:gap-28">
-          {CASE_STUDY.approach.map((item, i) => (
+          {data.approach.map((item, i) => (
             <ApproachRow key={item.title} item={item} index={i} />
           ))}
         </div>
@@ -334,7 +336,7 @@ function Approach() {
   );
 }
 
-function MidCTA() {
+function MidCTA({ data }: { data: CaseStudyData }) {
   return (
     <section className="bg-white px-6 pb-20 md:px-10 md:pb-28">
       <Reveal className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-6 rounded-2xl border border-[#5C45FD]/15 bg-[#5C45FD]/[0.04] px-8 py-8 sm:flex-row">
@@ -345,7 +347,7 @@ function MidCTA() {
           href="#final-cta"
           className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#5C45FD] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0] hover:scale-[1.02]"
         >
-          {CASE_STUDY.cta.secondary}
+          {data.cta.secondary}
           <ArrowRight className="h-4 w-4" />
         </a>
       </Reveal>
@@ -353,7 +355,7 @@ function MidCTA() {
   );
 }
 
-function Results() {
+function Results({ data }: { data: CaseStudyData }) {
   return (
     <section id="results" className="bg-white px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1000px]">
@@ -363,12 +365,12 @@ function Results() {
             className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
             style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
-            {CASE_STUDY.results.intro}
+            {data.results.intro}
           </p>
         </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {CASE_STUDY.results.stats.map((stat, i) => (
+          {data.results.stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.1}>
               <div className="rounded-2xl border border-black/[0.06] bg-zinc-50/60 p-6 text-center">
                 <div
@@ -386,30 +388,28 @@ function Results() {
         </div>
 
         <Reveal delay={0.2}>
-          <p className="mt-10 text-[15px] leading-relaxed text-zinc-500">
-            {CASE_STUDY.results.note}
-          </p>
+          <p className="mt-10 text-[15px] leading-relaxed text-zinc-500">{data.results.note}</p>
         </Reveal>
       </div>
     </section>
   );
 }
 
-export default function CaseStudyClient() {
+export default function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
   return (
     // --accent is the single line to change for a full rebrand — every
     // color reference in this file reads from this CSS variable.
     <div style={{ "--accent": ACCENT } as React.CSSProperties} className="bg-white">
       <Navbar />
       <main className="relative min-h-screen">
-        <Hero />
-        <MetaBar />
-        <Challenge />
-        <Approach />
+        <Hero data={data} />
+        <MetaBar data={data} />
+        <Challenge data={data} />
+        <Approach data={data} />
         {/* Real site testimonials, not a case-study-specific reimplementation */}
         <Testimonials />
-        <MidCTA />
-        <Results />
+        <MidCTA data={data} />
+        <Results data={data} />
         {/* Real site FAQ in place of a duplicate closing CTA band */}
         <FAQ />
       </main>

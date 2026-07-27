@@ -31,7 +31,7 @@ const caseStudies: CaseStudy[] = [
       { value: '+34%', label: 'Conversion Rate' },
       { value: '2.6×', label: 'Subscription Rev.' },
     ],
-    href: '/landing-page-case-study-nordwell',
+    href: '/landing-page/case-studies/case-study-nordwell',
   },
   {
     client: 'Bamper',
@@ -42,7 +42,7 @@ const caseStudies: CaseStudy[] = [
       { value: '60 Days', label: 'Sold-Out Stock' },
       { value: '4.2%', label: 'Conversion Rate' },
     ],
-    href: '#',
+    href: '/landing-page/case-studies/case-study-bamper',
   },
   {
     client: 'Reality Cheque',
@@ -53,7 +53,7 @@ const caseStudies: CaseStudy[] = [
       { value: '51.12%', label: 'Conversion Lift' },
       { value: '407', label: 'Members in 24 Hrs' },
     ],
-    href: '#',
+    href: '/landing-page/case-studies/case-study-reality-cheque-coaching',
   },
   {
     client: 'Reality Cheque',
@@ -64,7 +64,7 @@ const caseStudies: CaseStudy[] = [
       { value: '70+', label: 'Leads in 2 Weeks' },
       { value: '26×', label: 'ROAS' },
     ],
-    href: '#',
+    href: '/landing-page/case-studies/case-study-reality-cheque-funnel',
   },
   {
     client: 'Vantage Metrics',

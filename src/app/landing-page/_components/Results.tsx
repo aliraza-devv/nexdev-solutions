@@ -14,6 +14,7 @@ const cases = [
       { value: "51.12%", label: "Increase conversion rate" },
       { value: "407", label: "members in 24 hrs" },
     ],
+    href: "/landing-page/case-studies/case-study-reality-cheque-coaching",
   },
   {
     stat: "Built a funnel for service business",
@@ -23,6 +24,7 @@ const cases = [
       { value: "70+", label: "leads in 2 weeks" },
       { value: "26X", label: "ROAS" },
     ],
+    href: "/landing-page/case-studies/case-study-reality-cheque-funnel",
   },
   {
     stat: "Shopify store built for a brand",
@@ -32,6 +34,7 @@ const cases = [
       { value: "60 Days", label: "Sold-out inventory" },
       { value: "4.2%", label: "Conversion rate" },
     ],
+    href: "/landing-page/case-studies/case-study-bamper",
   },
 ];
 
@@ -127,7 +130,7 @@ function CaseCard({
             )}
           </div>
           <Link
-            href="#"
+            href={c.href}
             className="inline-flex items-center gap-2 py-3 -ml-0.5 px-0.5 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300"
           >
             READ THE STORY <ArrowRight className="h-4 w-4" />
@@ -195,7 +198,7 @@ function MobileCaseCard({ c, i }: { c: any; i: number }) {
           ))}
         </div>
         <Link
-          href="#"
+          href={c.href}
           className="inline-flex items-center gap-2 py-3 -ml-0.5 px-0.5 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300"
         >
           READ THE STORY <ArrowRight className="h-4 w-4" />

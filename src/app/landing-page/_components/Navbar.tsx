@@ -32,9 +32,9 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navLinks = [
-    { name: "How It Works", href: "/landing-page/sync-method" },
-    { name: "Results", href: "/landing-page/case-studies" },
-    { name: "FAQs", href: "/landing-page/faqs" },
+    { name: "How It Works", href: "/landing-page#how-it-works" },
+    { name: "Results", href: "/landing-page#results" },
+    { name: "FAQs", href: "/landing-page#faq" },
   ];
 
   return (
