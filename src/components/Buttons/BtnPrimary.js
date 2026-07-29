@@ -1,6 +1,6 @@
 "use client";
 import styles from "../../styles/BtnPrimary.module.css";
-import star from "../../../public/Assets/icons/14.svg";
+import star from "../../../public/assets/icons/14.svg";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -10,12 +10,12 @@ import SparklesText from "@/components/Text/SparklesText";
 import TertiaryButton from "@/components/Buttons/TertiaryButton";
 import { VelocityScroll } from "@/components/Text/VelocityScroll";
 import { useState, useEffect } from "react";
-import LandA from "../../public/Assets/mockups/Mockup-2.png";
-import Smartform from "../../public/Assets/mockups/Smarterform.png";
-import SellerGoals from "../../public/Assets/mockups/Mockup-3.png";
-import Careerify from "../../public/Assets/images/website-15.png";
-import Alphagon from "../../public/Assets/mockups/Mockup-7.png";
-import lighthouse from "../../public/Assets/mockups/lighthouse-reality.png";
+import LandA from "../../public/assets/mockups/Mockup-2.png";
+import Smartform from "../../public/assets/mockups/Smarterform.png";
+import SellerGoals from "../../public/assets/mockups/Mockup-3.png";
+import Careerify from "../../public/assets/images/website-15.png";
+import Alphagon from "../../public/assets/mockups/Mockup-7.png";
+import lighthouse from "../../public/assets/mockups/lighthouse-reality.png";
 import { IconCode, IconDatabase, IconSettings } from "@tabler/icons-react";
 
 export function Projects() {

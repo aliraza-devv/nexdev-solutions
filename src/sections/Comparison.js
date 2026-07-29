@@ -2,16 +2,16 @@
 import RetroThreeD from "@/components/Backgrounds/RetroThreeD";
 import WordPullUp from "@/components/Text/WordPullUp";
 import Image from "next/image";
-import Cross from "../../public/Assets/icons/cross.svg";
-import Person from "../../public/Assets/icons/person.svg";
-import Speed from "../../public/Assets/icons/rocket.svg";
-import deliver from "../../public/Assets/icons/deliver-svgrepo-com.svg";
-import Team from "../../public/Assets/icons/team-3-svgrepo-com.svg";
-import Top from "../../public/Assets/icons/top-right-svgrepo-com.svg";
-import Extra from "../../public/Assets/icons/bulb-on-svgrepo-com.svg";
-import Plan from "../../public/Assets/icons/plan-svgrepo-com.svg";
-import Boost from "../../public/Assets/icons/boost-for-reddit-svgrepo-coma.svg";
-import Secure from "../../public/Assets/icons/secure-shield-password-protect-safe-svgrepo-com.svg";
+import Cross from "../../public/assets/icons/cross.svg";
+import Person from "../../public/assets/icons/person.svg";
+import Speed from "../../public/assets/icons/rocket.svg";
+import deliver from "../../public/assets/icons/deliver-svgrepo-com.svg";
+import Team from "../../public/assets/icons/team-3-svgrepo-com.svg";
+import Top from "../../public/assets/icons/top-right-svgrepo-com.svg";
+import Extra from "../../public/assets/icons/bulb-on-svgrepo-com.svg";
+import Plan from "../../public/assets/icons/plan-svgrepo-com.svg";
+import Boost from "../../public/assets/icons/boost-for-reddit-svgrepo-coma.svg";
+import Secure from "../../public/assets/icons/secure-shield-password-protect-safe-svgrepo-com.svg";
 
 const Comparison = () => {
   return (

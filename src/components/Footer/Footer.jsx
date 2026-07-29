@@ -21,7 +21,7 @@ const Footer = () => {
                 words="Do you like what you see?"
               />
               {/* <div className="flex flex-col items-center justify-center w-[70%]">
-                <Image className="mb-[16px]" style={{marginBotom: "50px"}} height={300} width={400} src="/Assets/images/Founder.png" />
+                <Image className="mb-[16px]" style={{marginBotom: "50px"}} height={300} width={400} src="/assets/images/Founder.png" />
                 <div className="text-white">CEO and Founder</div>
                 <div className="text-white mt-[10px]">Ali Raza</div>
                 <div  className="mt-[16px]"> */}

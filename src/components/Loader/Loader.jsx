@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Load from "../../../public/Assets/Animation/Cube Loading Animated 3D Icon.gif";
+import Load from "../../../public/assets/Animation/Cube Loading Animated 3D Icon.gif";
 import React from 'react';
 import styled from 'styled-components';
 

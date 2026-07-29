@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import img1 from "../../../public/Assets/images/Trish.jpeg";
-import img2 from "../../../public/Assets/images/Uzair.jpeg";
-import img3 from "../../../public/Assets/images/Sheraz.jpeg";
-import img4 from "../../../public/Assets/images/Naveed.jpg";
-import img5 from "../../../public/Assets/images//Najam.jpg";
+import img1 from "../../../public/assets/images/Trish.jpeg";
+import img2 from "../../../public/assets/images/Uzair.jpeg";
+import img3 from "../../../public/assets/images/Sheraz.jpeg";
+import img4 from "../../../public/assets/images/Naveed.jpg";
+import img5 from "../../../public/assets/images//Najam.jpg";
 
 import { AnimatedTooltip } from "../AnimatedTooltip/AnimatedTooltip";
 import { PulsatingButton } from "../Buttons/PulsatingButton";

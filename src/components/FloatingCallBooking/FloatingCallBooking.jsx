@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Ali from "../../../public/Assets/images/Picsart_23-03-11_15-34-32-841.jpg";
+import Ali from "../../../public/assets/images/Picsart_23-03-11_15-34-32-841.jpg";
 import BtnLight from "../Buttons/BtnLight";
 
 const FloatingCallBooking = () => {

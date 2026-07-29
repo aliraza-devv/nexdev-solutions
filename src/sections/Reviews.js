@@ -2,14 +2,14 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/Cards/Marquee";
 import SparklesText from "@/components/Text/SparklesText";
-import Trish from "../../public/Assets/images/Trish.jpeg";
-import Sheraz from "../../public/Assets/images/Sheraz.jpeg";
-import Naveed from "../../public/Assets/images/Naveed.jpg";
-import Abrar from "../../public/Assets/images/Abrar.jpg";
-import Uzair from "../../public/Assets/images/Uzair.jpeg";
-import Najam from "../../public/Assets/images/Najam.jpg";
+import Trish from "../../public/assets/images/Trish.jpeg";
+import Sheraz from "../../public/assets/images/Sheraz.jpeg";
+import Naveed from "../../public/assets/images/Naveed.jpg";
+import Abrar from "../../public/assets/images/Abrar.jpg";
+import Uzair from "../../public/assets/images/Uzair.jpeg";
+import Najam from "../../public/assets/images/Najam.jpg";
 import Image from "next/image";
-// import Testimonial1 from "../../public/Assets/Videos/Testionominal-1.mp4";
+// import Testimonial1 from "../../public/assets/Videos/Testionominal-1.mp4";
 
 const reviews = [
   {

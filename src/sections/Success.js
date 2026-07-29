@@ -3,9 +3,9 @@ import React from "react";
 import { RevealText } from "@/components/RevealText/RevealText";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Examangement from "../../public/Assets/mockups/Mockup-1.png";
-import Sellergoals from "../../public/Assets/mockups/Mockup-3.png";
-import Smarterform from "../../public/Assets/mockups/Smarterform.png";
+import Examangement from "../../public/assets/mockups/Mockup-1.png";
+import Sellergoals from "../../public/assets/mockups/Mockup-3.png";
+import Smarterform from "../../public/assets/mockups/Smarterform.png";
 
 const Success = () => {
   const [width, setWidth] = useState(window.innerWidth);

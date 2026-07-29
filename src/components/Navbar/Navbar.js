@@ -2,7 +2,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import nexdev from "../../../public/Assets/Logos/nexdevNew.png";
+import nexdev from "../../../public/assets/Logos/nexdevNew.png";
 import BtnPrimary from "../Buttons/BtnPrimary";
 import BtnLight from "../Buttons/BtnLight";
 import Link from "next/link";

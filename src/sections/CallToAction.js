@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
-import One from "../../public/Assets/parallax/seller.PNG";
-// import Ten from "../../public/Assets/parallax/aceternityui.png";
-import Three from "../../public/Assets/images/website-11.png";
-import Four from "../../public/Assets/images/website-12.png";
-import Five from "../../public/Assets/images/website-13.png";
-import Six from "../../public/Assets/images/website-14.png";
-import Seven from "../../public/Assets/images/website-1.png";
-import Eight from "../../public/Assets/images/website-2.png";
-import Nine from "../../public/Assets/images/website-3.png";
-import Ten from "../../public/Assets/images/website-4.png";
+import One from "../../public/assets/parallax/seller.PNG";
+// import Ten from "../../public/assets/parallax/aceternityui.png";
+import Three from "../../public/assets/images/website-11.png";
+import Four from "../../public/assets/images/website-12.png";
+import Five from "../../public/assets/images/website-13.png";
+import Six from "../../public/assets/images/website-14.png";
+import Seven from "../../public/assets/images/website-1.png";
+import Eight from "../../public/assets/images/website-2.png";
+import Nine from "../../public/assets/images/website-3.png";
+import Ten from "../../public/assets/images/website-4.png";
 import { CTAParallax } from "@/components/CTAParallax/CTAParallax";
 
 export function CallToAction() {

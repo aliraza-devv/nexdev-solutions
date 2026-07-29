@@ -4,18 +4,18 @@ import BeamCard from "@/components/Cards/BeamCard";
 import FloatingCallBooking from "@/components/FloatingCallBooking/FloatingCallBooking";
 import SparklesText from "@/components/Text/SparklesText";
 import { useState, useEffect } from "react";
-import web from "../../public/Assets/icons/Web.png";
-import web3d from "../../public/Assets/icons/3dweb.png";
-// import seo from "../../public/Assets/icons/seo.png";
-import content from "../../public/Assets/icons/content writing.png";
-import uiux from "../../public/Assets/icons/ui-ux.png";
+import web from "../../public/assets/icons/Web.png";
+import web3d from "../../public/assets/icons/3dweb.png";
+// import seo from "../../public/assets/icons/seo.png";
+import content from "../../public/assets/icons/content writing.png";
+import uiux from "../../public/assets/icons/ui-ux.png";
 import CircleButton from "@/components/Buttons/CircleButton";
 import { CardSpotlight } from "@/components/CardSpotlight/CardSpotlight";
-import webDesign from "/public/Assets/icons/web-design.gif";
-import webDevelopment from "/public/Assets/icons/web-development.gif";
-import d3Dev from "/public/Assets/icons/3D-Dev.gif";
-import seo from "/public/Assets/icons/seo.gif";
-import contentWriting from "/public/Assets/icons/content-writing.gif";
+import webDesign from "/public/assets/icons/web-design.gif";
+import webDevelopment from "/public/assets/icons/web-development.gif";
+import d3Dev from "/public/assets/icons/3D-Dev.gif";
+import seo from "/public/assets/icons/seo.gif";
+import contentWriting from "/public/assets/icons/content-writing.gif";
 
 
 const cardDetails = [
@@ -28,7 +28,7 @@ const cardDetails = [
       "We are specialized in creating good looking and high conversion UI and UX designs of mobile apps and web application/website.",
     icon: webDesign,
     number: "01",
-    image: "/Assets/images/website-13.png"
+    image: "/assets/images/website-13.png"
   },
   {
     // icon: web,
@@ -39,7 +39,7 @@ const cardDetails = [
     subHeading: "From Vision To Virtual Reality",
     description:
       "We are specialized in custom web development, frontend, backend CRM, CMS, LMS, WordPress, Shopify, and no-code web/app development.",
-    image: "/Assets/images/website-15.png"
+    image: "/assets/images/website-15.png"
   },
   {
     icon: d3Dev,
@@ -49,7 +49,7 @@ const cardDetails = [
     subHeading: "Websites That Feel Alive",
     description:
       "We are specialized in 3D web development using Threejs, Babylon.js, Blender with other tech stacks and creating complex 3D environments.",
-    image: "/Assets/images/website-17.png"
+    image: "/assets/images/website-17.png"
   },
   // {
   //   icon: web,
@@ -65,7 +65,7 @@ const cardDetails = [
     subHeading: "Crafted For Top-Ranking Every Time",
     description:
       "We are specialized in ranking your website to high ranking on search engine with on-page SEO, off-page SEO, technical SEO, and semantic SEO.",
-    image: "/Assets/images/website-18.png",
+    image: "/assets/images/website-18.png",
   },
   {
     icon: contentWriting,
@@ -75,7 +75,7 @@ const cardDetails = [
     shortDesc: "SEO based content writing for to high conversion rate and magnified sales.",
     description:
       "We are specialized in SEO based content writing to for the website aiming to high conversion rate and boost sales.",
-    image: "/Assets/images/website-19.png"
+    image: "/assets/images/website-19.png"
   },
 ];
 

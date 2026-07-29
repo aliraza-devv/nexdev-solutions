@@ -4,10 +4,10 @@ import WordPullUp from "@/components/Text/WordPullUp";
 import RetroGrid from "@/components/Backgrounds/RetroGrid";
 import { CardSpotlight } from "@/components/CardSpotlight/CardSpotlight";
 import { RevealText } from "@/components/RevealText/RevealText";
-import Announce from "../../public/Assets/icons/announce.gif";
+import Announce from "../../public/assets/icons/announce.gif";
 import Image from "next/image";
 import { PulsatingButton } from "@/components/Buttons/PulsatingButton";
-import Process from "../../public/Assets/images/Process.png";
+import Process from "../../public/assets/images/Process.png";
 import { useState, useEffect } from "react";
 
 const Solution = () => {

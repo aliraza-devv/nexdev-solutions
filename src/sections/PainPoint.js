@@ -1,10 +1,10 @@
 import React from "react";
 import SparklesText from "@/components/Text/SparklesText";
-import Graph from "../../public/Assets/icons/graph-up-svgrepo-com.svg";
-import Happy from "../../public/Assets/icons/happy-face-2-svgrepo-com.svg";
-import Boost from "../../public/Assets/icons/boost-for-reddit-svgrepo-com.svg";
-import Solution from "../../public/Assets/icons/solution-bulb-concept-svgrepo-com.svg";
-import Rocket from "../../public/Assets/icons/rocket-startup-svgrepo-com.svg";
+import Graph from "../../public/assets/icons/graph-up-svgrepo-com.svg";
+import Happy from "../../public/assets/icons/happy-face-2-svgrepo-com.svg";
+import Boost from "../../public/assets/icons/boost-for-reddit-svgrepo-com.svg";
+import Solution from "../../public/assets/icons/solution-bulb-concept-svgrepo-com.svg";
+import Rocket from "../../public/assets/icons/rocket-startup-svgrepo-com.svg";
 import BtnPrimary from "@/components/Buttons/BtnPrimary";
 
 const helpCardsData = [
