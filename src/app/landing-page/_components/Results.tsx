@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const cases = [
   {
@@ -15,6 +16,7 @@ const cases = [
       { value: "407", label: "members in 24 hrs" },
     ],
     href: "/landing-page/case-studies/case-study-reality-cheque-coaching",
+    image: "/assets/case-studies/Reality-cheque-case-study.png",
   },
   {
     stat: "Built a funnel for service business",
@@ -35,6 +37,7 @@ const cases = [
       { value: "4.2%", label: "Conversion rate" },
     ],
     href: "/landing-page/case-studies/case-study-bamper",
+    image: "/assets/case-studies/Bamper-case-study.png",
   },
 ];
 
@@ -97,11 +100,11 @@ function CaseCard({
         <div
           className={i % 2 === 1 ? "lg:order-2 p-10 lg:p-16" : "p-10 lg:p-16"}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white text-[#0A0A0E] text-xs font-bold uppercase tracking-wide mb-5">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#5C45FD] text-white text-xs font-bold uppercase tracking-wide mb-5">
             {c.brand}
           </span>
           <div
-            className="text-4xl lg:text-5xl font-bold text-[#5C45FD] mb-6"
+            className="text-4xl lg:text-5xl font-bold text-white mb-6"
             style={{ fontFamily: "Arial, sans-serif" }}
           >
             {c.stat}
@@ -144,11 +147,22 @@ function CaseCard({
           }
         >
           <div className="h-full w-full min-h-[300px] flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />
-            <div className="w-2/3 aspect-video bg-[#222235] border border-white/5 rounded-2xl relative">
-              <div className="absolute top-4 left-4 h-2 w-12 bg-white/5 rounded-full" />
-              <div className="absolute bottom-4 right-4 h-8 w-8 rounded-full border border-white/10" />
-            </div>
+            {c.image ? (
+              <Image
+                src={c.image}
+                alt={c.brand}
+                fill
+                className="object-cover"
+              />
+            ) : (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />
+                <div className="w-2/3 aspect-video bg-[#222235] border border-white/5 rounded-2xl relative">
+                  <div className="absolute top-4 left-4 h-2 w-12 bg-white/5 rounded-full" />
+                  <div className="absolute bottom-4 right-4 h-8 w-8 rounded-full border border-white/10" />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </motion.div>
@@ -167,11 +181,11 @@ function MobileCaseCard({ c, i }: { c: any; i: number }) {
     >
       {/* Content Side */}
       <div className="flex flex-col">
-        <span className="inline-block px-3.5 py-1.5 rounded-full bg-white text-[#0A0A0E] text-[11px] font-bold uppercase tracking-wide mb-4 self-start">
+        <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#5C45FD] text-white text-[11px] font-bold uppercase tracking-wide mb-4 self-start">
           {c.brand}
         </span>
         <div
-          className="text-4xl font-bold text-[#5C45FD] mb-4"
+          className="text-4xl font-bold text-white mb-4"
           style={{ fontFamily: "Arial, sans-serif" }}
         >
           {c.stat}
@@ -208,11 +222,22 @@ function MobileCaseCard({ c, i }: { c: any; i: number }) {
       {/* Image / Graphic Side (Bleeds full width and bottom of the card) */}
       <div className="mt-8 bg-white/[0.02] -mx-8 -mb-8 overflow-hidden">
         <div className="h-[200px] w-full flex items-center justify-center relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />
-          <div className="w-4/5 aspect-video bg-[#222235] border border-white/5 rounded-2xl relative">
-            <div className="absolute top-3 left-3 h-1.5 w-10 bg-white/5 rounded-full" />
-            <div className="absolute bottom-3 right-3 h-6 w-6 rounded-full border border-white/10" />
-          </div>
+          {c.image ? (
+            <Image
+              src={c.image}
+              alt={c.brand}
+              fill
+              className="object-cover"
+            />
+          ) : (
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />
+              <div className="w-4/5 aspect-video bg-[#222235] border border-white/5 rounded-2xl relative">
+                <div className="absolute top-3 left-3 h-1.5 w-10 bg-white/5 rounded-full" />
+                <div className="absolute bottom-3 right-3 h-6 w-6 rounded-full border border-white/10" />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </motion.div>
@@ -292,7 +317,7 @@ export default function Results() {
             </motion.h2>
           </div>
 
-          <Link href="/case-studies">
+          <Link href="landing-page/case-studies">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

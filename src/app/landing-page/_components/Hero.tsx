@@ -108,7 +108,7 @@ export default function Hero() {
   const [isVslOpen, setIsVslOpen] = useState(false);
 
   return (
-    <section className="relative min-h-[70vh] lg:h-[100dvh] lg:max-h-[900px] w-full overflow-hidden bg-white flex items-center">
+    <section className="relative min-h-[70vh] lg:flex-1 w-full overflow-hidden bg-white flex items-center">
       <div className="mx-auto max-w-[1280px] w-full px-6 md:px-12">
         <div className="grid grid-cols-1 items-center gap-12 pt-28 pb-6 lg:pt-24 lg:pb-8 lg:grid-cols-[1.15fr_0.85fr] xl:grid-cols-2 lg:gap-8 xl:gap-20">
           {/* Left Content */}
@@ -143,7 +143,7 @@ export default function Hero() {
             </motion.div>
 
             <h1
-              className="text-[30px] sm:text-[44px] md:text-[50px] lg:text-[44px] xl:text-[54px] 2xl:text-[64px] leading-[1.15] font-medium tracking-tight text-[#0A0A0E]"
+              className="text-[30px] sm:text-[44px] md:text-[50px] lg:text-[50px] xl:text-[56px] 2xl:text-[64px] leading-[1.15] font-medium tracking-tight text-[#0A0A0E]"
               style={{ fontFamily: "Arial, sans-serif" }}
             >
               <span className="block overflow-hidden pb-1">
@@ -305,7 +305,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative hidden lg:h-[480px] xl:h-[560px] 2xl:h-[620px] lg:block"
+            className="relative hidden lg:h-[min(480px,44vh)] xl:h-[min(560px,48vh)] 2xl:h-[min(620px,52vh)] lg:block"
           >
             <div
               className="absolute inset-0 top-[-15%] z-0 h-[130%] w-full"

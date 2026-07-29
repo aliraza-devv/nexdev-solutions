@@ -15,8 +15,10 @@ export default function Home() {
   return (
     <main className="relative min-h-screen">
       <Navbar />
-      <Hero />
-      <LogosStrip />
+      <div className="lg:flex lg:h-[100dvh] lg:flex-col">
+        <Hero />
+        <LogosStrip />
+      </div>
       <Problem />
       <Solution />
       <OurProcess
