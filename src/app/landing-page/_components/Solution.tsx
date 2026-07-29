@@ -110,18 +110,14 @@ export default function Solution() {
                 <div
                   className={`hidden md:block w-full max-w-[220px] p-5 rounded-xl bg-[#0F0F16]/90 border backdrop-blur-md transition-all duration-300 ${
                     isHovered
-                      ? "opacity-100 scale-[1.04] border-[#5C45FD]/50"
-                      : "opacity-55 scale-100 border-[#5C45FD]/15"
+                      ? "opacity-100 scale-[1.04] border-[#5C45FD]/60 shadow-[0_0_15px_rgba(92,69,253,0.15)]"
+                      : "opacity-85 scale-100 border-[#5C45FD]/30"
                   }`}
                 >
-                  <h4
-                    className={`text-[13px] font-bold uppercase tracking-wider mb-2 transition-colors duration-300 ${
-                      isHovered ? "text-white" : "text-white/60"
-                    }`}
-                  >
+                  <h4 className="text-[13px] font-bold uppercase tracking-wider mb-2 text-white">
                     {item.title}
                   </h4>
-                  <p className="text-[#9CA3AF] text-[13px] leading-relaxed">
+                  <p className="text-[#E5E7EB] text-[13px] leading-relaxed">
                     {item.desc}
                   </p>
                 </div>

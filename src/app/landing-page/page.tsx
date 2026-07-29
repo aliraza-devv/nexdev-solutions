@@ -15,13 +15,8 @@ export default function Home() {
   return (
     <main className="relative min-h-screen">
       <Navbar />
-      {/* Locks Hero + the logos ticker to exactly one viewport on desktop,
-          so the ticker is the last thing visible before the user scrolls -
-          mobile keeps its natural (taller) stacked height. */}
-      <div className="lg:flex lg:h-[100dvh] lg:flex-col">
-        <Hero />
-        <LogosStrip />
-      </div>
+      <Hero />
+      <LogosStrip />
       <Problem />
       <Solution />
       <OurProcess

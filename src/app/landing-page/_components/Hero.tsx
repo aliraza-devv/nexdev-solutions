@@ -108,9 +108,9 @@ export default function Hero() {
   const [isVslOpen, setIsVslOpen] = useState(false);
 
   return (
-    <section className="relative min-h-[70vh] lg:min-h-0 lg:flex-1 w-full overflow-hidden bg-white flex items-center">
+    <section className="relative min-h-[70vh] lg:h-[100dvh] lg:max-h-[900px] w-full overflow-hidden bg-white flex items-center">
       <div className="mx-auto max-w-[1280px] w-full px-6 md:px-12">
-        <div className="grid grid-cols-1 items-center gap-12 pt-28 pb-6 lg:py-20 lg:grid-cols-2 lg:gap-20">
+        <div className="grid grid-cols-1 items-center gap-12 pt-28 pb-6 lg:pt-24 lg:pb-8 lg:grid-cols-[1.15fr_0.85fr] xl:grid-cols-2 lg:gap-8 xl:gap-20">
           {/* Left Content */}
           <motion.div
             initial="hidden"
@@ -136,14 +136,14 @@ export default function Hero() {
                   transition: { type: "spring", stiffness: 60, damping: 20 },
                 },
               }}
-              className="mb-4 text-left text-xs sm:text-sm font-medium text-gray-600"
+              className="mb-4 lg:mb-2 text-left text-xs sm:text-sm font-medium text-gray-600"
             >
               For Founders who needs a website that can
               <span className="font-semibold text-black"> sell</span>.
             </motion.div>
 
             <h1
-              className="text-[30px] sm:text-[44px] md:text-[60px] lg:text-[64px] leading-[1.15] font-medium tracking-tight text-[#0A0A0E]"
+              className="text-[30px] sm:text-[44px] md:text-[50px] lg:text-[44px] xl:text-[54px] 2xl:text-[64px] leading-[1.15] font-medium tracking-tight text-[#0A0A0E]"
               style={{ fontFamily: "Arial, sans-serif" }}
             >
               <span className="block overflow-hidden pb-1">
@@ -211,7 +211,7 @@ export default function Hero() {
                   transition: { type: "spring", stiffness: 50, damping: 18 },
                 },
               }}
-              className="mt-5 max-w-lg text-sm text-[#4B5563] md:text-base mx-auto lg:mx-0 font-medium"
+              className="mt-5 lg:mt-3 max-w-lg text-sm text-[#4B5563] md:text-base mx-auto lg:mx-0 font-medium"
             >
               We build websites that increase 2x conversions in 60 days using
               our <span className="font-bold text-gray-900">SYNC Method™</span>{" "}
@@ -227,7 +227,7 @@ export default function Hero() {
                   transition: { type: "spring", stiffness: 50, damping: 18 },
                 },
               }}
-              className="w-full mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3"
+              className="w-full mt-8 lg:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -288,7 +288,7 @@ export default function Hero() {
                   transition: { type: "spring", stiffness: 55, damping: 20 },
                 },
               }}
-              className="mt-5 text-[11px] font-medium text-[#6B7280] text-center lg:text-left"
+              className="mt-5 lg:mt-3 text-[11px] font-medium text-[#6B7280] text-center lg:text-left"
             >
               Free 30-min call. No pitch, just clarity
             </motion.p>
@@ -305,7 +305,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative hidden h-[500px] lg:block"
+            className="relative hidden lg:h-[480px] xl:h-[560px] 2xl:h-[620px] lg:block"
           >
             <div
               className="absolute inset-0 top-[-15%] z-0 h-[130%] w-full"
