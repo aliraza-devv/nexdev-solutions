@@ -48,6 +48,9 @@ export interface CaseStudyData {
   // Single standout stat shown directly under the H1, e.g. "+210% subscription
   // revenue in 8 weeks" - separate from the metrics/stats blocks further down.
   heroStat: string;
+  // Optional override for the small line under the hero CTA button. Omit to
+  // keep the default ("Free 30-min call. No pitch, just clarity.").
+  heroCtaMicrocopy?: string;
   heroImages: [string, string];
   meta: {
     // Leave timeline (or year) as "" to render an obvious "add this later"
@@ -95,7 +98,10 @@ export interface CaseStudyData {
     // omit if the copy doesn't have one.
     intro?: string;
     chartImage: string;
-    stats: { label: string; value: string }[];
+    // `value` is optional so a stat can be a qualitative statement with no
+    // number (e.g. "Now the biggest agency-owner community in Pakistan") -
+    // renders as a bold statement in place of the number when omitted.
+    stats: { label: string; value?: string }[];
     // Optional heading sentence above the stat strip - omit if the copy
     // doesn't have one for this tier.
     note?: string;

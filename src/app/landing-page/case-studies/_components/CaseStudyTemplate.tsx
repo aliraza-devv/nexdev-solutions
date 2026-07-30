@@ -281,7 +281,7 @@ function Hero({ data }: { data: CaseStudyData }) {
             <ArrowRight className="h-4 w-4" />
           </a>
           <p className="text-xs text-zinc-400">
-            Free 30-min call. No pitch, just clarity.
+            {data.heroCtaMicrocopy ?? "Free 30-min call. No pitch, just clarity."}
           </p>
         </Reveal>
 
@@ -293,7 +293,13 @@ function Hero({ data }: { data: CaseStudyData }) {
           <MetaItem label="Services" value={data.meta.services.join(", ")} />
           <MetaItem
             label="Timeline"
-            value={data.meta.timeline ? `${data.meta.timeline} · ${data.meta.year}` : ""}
+            value={
+              data.meta.timeline
+                ? data.meta.year
+                  ? `${data.meta.timeline} · ${data.meta.year}`
+                  : data.meta.timeline
+                : ""
+            }
           />
         </Reveal>
       </div>
@@ -550,15 +556,26 @@ function ResultsSustained({ data }: { data: CaseStudyData }) {
         <div className="mt-10 grid grid-cols-1 gap-8 border-t border-black/[0.06] pt-8 sm:grid-cols-3 sm:divide-x sm:divide-black/[0.06]">
           {data.results.stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.1}>
-              <div
-                className="text-2xl font-bold text-[#0A0A0E]"
-                style={{ fontFamily: "Arial, sans-serif" }}
-              >
-                {stat.value}
-              </div>
-              <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-400">
-                {stat.label}
-              </div>
+              {stat.value ? (
+                <>
+                  <div
+                    className="text-2xl font-bold text-[#0A0A0E]"
+                    style={{ fontFamily: "Arial, sans-serif" }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                    {stat.label}
+                  </div>
+                </>
+              ) : (
+                <div
+                  className="text-lg font-bold leading-snug text-[#0A0A0E]"
+                  style={{ fontFamily: "Arial, sans-serif" }}
+                >
+                  {stat.label}
+                </div>
+              )}
             </Reveal>
           ))}
         </div>

@@ -7,21 +7,20 @@ export const CASE_STUDY: CaseStudyData = {
   heroEyebrow: "Case Study — Reality Cheque · The Community for Agency Owners",
   headline:
     "How a website they'd almost given up on drove 407 paid signups in 24 hours.",
-  heroStat: "407 paid signups — first 24 hours",
+  heroStat: "407 paid signups in the first 24 hours",
+  heroCtaMicrocopy:
+    "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
     "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
     "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
   ],
   meta: {
-    // Both left empty on purpose - Timeline was marked [FILL IN] in the
-    // source copy, so this renders as a visible "add this later" placeholder
-    // instead of a guessed value.
     year: "",
-    timeline: "",
+    timeline: "4 Weeks",
     industry: "Online Education & Community",
     services: ["SYNC Audit", "UX/UI Design", "Web Development", "CRO", "VSL"],
   },
-  resultsAtLaunchEyebrow: "AT LAUNCH · FIRST 24 HOURS",
+  resultsAtLaunchEyebrow: "FIRST 24 HOURS",
   resultsSustainedEyebrow: "AND IT KEPT GROWING",
   metrics: [
     {
@@ -40,8 +39,9 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   context: [
-    "Reality Cheque is the biggest paid community for agency owners who want to scale — courses, private WhatsApp and Skool groups, live coaching calls, and quarterly in-person meetups, all in one ecosystem. It's run by Saddam Hasan, an agency owner who's scaled three businesses past $1M in revenue.",
-    "When your entire brand is built on authority, your website can't look like an afterthought. Theirs did.",
+    "Reality Cheque is the biggest paid community for agency owners in Pakistan. Members get courses, private WhatsApp and Skool groups, live coaching calls, and quarterly in-person meetups, all in one place.",
+    "It's run by Saddam Hasan, who has scaled three businesses past $1M, and has since done the same with Reality Cheque itself.",
+    "When your whole brand runs on authority, the website can't look like an afterthought. Theirs did.",
   ],
   challenge: {
     intro: "A website that undersold everything the community was worth.",
@@ -50,31 +50,31 @@ export const CASE_STUDY: CaseStudyData = {
         tag: "Critical",
         severity: "critical",
         title: "Outdated Design",
-        desc: "For a brand built on credibility, the site looked dated. It quietly undercut the exact authority Saddam had spent years earning.",
+        desc: "The brand ran on credibility. The site looked dated, and quietly chipped away at the authority Saddam had spent years building.",
       },
       {
         tag: "Functional",
         severity: "warning",
         title: 'No Path to "Yes"',
-        desc: "Visitors couldn't grasp what they'd actually get. There was no journey from curious stranger to convinced member — just a page that described the community instead of selling it.",
+        desc: "Visitors couldn't tell what they'd actually get. The page described the community instead of selling it, so nobody moved from curious to convinced.",
       },
       {
         tag: "Conversion",
         severity: "info",
         title: "Confusing Checkout",
-        desc: "At the one moment that mattered most — payment — the flow got murky. Friction at checkout is revenue walking out the door.",
+        desc: "At the one moment that mattered most, paying, the flow got murky. Friction at checkout is just revenue walking out the door.",
       },
     ],
   },
   approachHeader: "We didn't redesign the site. We rebuilt the path to a sale.",
   approachIntro:
-    "It started with discovery — a deep dive into their business, competitors, and goals — followed by a full SYNC Method™ audit to pinpoint exactly where visitors dropped off. Then three fixes, each solving one problem above.",
+    "First came discovery: a close look at their business, their competitors, and their goals. Then a SYNC Method audit to find exactly where visitors were dropping off. After that, three fixes, one for each problem above.",
   approachPlusLine:
     "Plus a dedicated RSVP page for the quarterly meetups, giving the in-person side of the community a proper home.",
   approach: [
     {
       title: "SYNC Landing Page Redesign",
-      body: "We rebuilt the landing page around trust and authority: clean, credible, unmistakably premium. Then we backed it with proof — real video and screenshot testimonials from members. The first design variation got approved on the spot. We didn't stop there.",
+      body: "We rebuilt the landing page around trust and authority. Clean, credible, clearly premium. Then we backed it with proof: real video and screenshot testimonials from members. The first design got approved on the spot, and we kept going.",
       solves: 0,
       images: [
         "PLACEHOLDER: sync-landing-redesign 1200×900",
@@ -82,8 +82,8 @@ export const CASE_STUDY: CaseStudyData = {
       ],
     },
     {
-      title: 'Dedicated Course Page + High-Converting VSL',
-      body: "The centerpiece. We built a page that actually sells the courses — what they are, what they change for you — and anchored it with a VSL that lets Saddam pitch the community at scale, the way he would one-on-one.",
+      title: "Dedicated Course Page + VSL",
+      body: "This was the centerpiece. A page that actually sells the courses and what they change for you, anchored by a VSL that lets Saddam pitch the community at scale, the way he would one on one.",
       solves: 1,
       images: [
         "PLACEHOLDER: course-page 1200×900",
@@ -91,8 +91,8 @@ export const CASE_STUDY: CaseStudyData = {
       ],
     },
     {
-      title: "Clean Subscription & Checkout Flow",
-      body: "We rebuilt checkout so choosing a plan and paying takes seconds, not second-guessing.",
+      title: "Clean Checkout Flow",
+      body: "We rebuilt checkout so picking a plan and paying takes seconds instead of second-guessing.",
       solves: 2,
       images: [
         "PLACEHOLDER: subscription-plans 1200×900",
@@ -103,12 +103,14 @@ export const CASE_STUDY: CaseStudyData = {
   turningPoint: {
     header: "The real problem was never the design.",
     body: [
-      "The site described the community. It didn't sell it. No stranger could go from \"who are these guys?\" to \"take my money\" in a single visit — and for a paid community, that journey is the entire business.",
-      "So we stopped thinking \"redesign\" and started building a conversion path: a VSL to pitch at scale, a course page that sells the transformation, and a checkout that gets out of the way. The design was the surface. The path to a sale was the fix.",
+      "The old site described the community. It didn't sell it.",
+      'No stranger could go from "who are these guys?" to "take my money" in one visit. And for a paid community, that journey is the whole business.',
+      "So we stopped thinking about a redesign and built a path to purchase instead. The VSL does the pitching at scale. The course page sells the outcome people actually want. Checkout just gets out of the way.",
+      "The design was only the surface. The real fix was the path to a sale.",
     ],
   },
   quote: {
-    text: "We started using Ali and NeXDev Solutions for our website, and the results were so good we now use them as a white-label partner for our own clients. What impressed us most is the speed they work at and the results they deliver. We're still working with them — and it's going really well, for us and for our clients.",
+    text: "We started using Ali and NeXDev Solutions for our website, and the results were good enough that we now use them as a white-label partner for our own clients. What stood out most was the speed they work at and the results they get. We're still working with them, and it's going well for us and for our clients.",
     name: "Saddam Hasan",
     role: "Founder, Reality Cheque",
     photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
@@ -117,8 +119,14 @@ export const CASE_STUDY: CaseStudyData = {
     chartImage: "PLACEHOLDER: results-chart — signups over first 24 hours 1400×600",
     stats: [
       {
-        label: "members and counting, a thriving, sustainable community",
         value: "7.1K+",
+        label: "members and growing",
+      },
+      {
+        label: "Now the biggest agency-owner community in Pakistan",
+      },
+      {
+        label: "Scaled past $1M in revenue",
       },
     ],
   },
@@ -127,8 +135,8 @@ export const CASE_STUDY: CaseStudyData = {
     secondary: "Get a free CRO audit",
   },
   finalCta: {
-    headline: "Your website should sell as hard as you do. Let's make it.",
+    headline: "Your website should sell as hard as you do. Let's build it that way.",
     subline:
-      "30 minutes. No pitch. Just a clear look at what's holding your site back — and exactly what to do about it.",
+      "30 minutes. No pitch. Just a clear look at what's holding your site back, and what to do about it.",
   },
 };
