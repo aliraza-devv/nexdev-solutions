@@ -82,7 +82,7 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
   return (
     <Link
       href={cs.href}
-      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/[0.05] bg-[#14141A]/90 shadow-xl transition-all hover:border-[#5C45FD]/30 hover:shadow-[0_20px_50px_-15px_rgba(92,69,253,0.25)]"
+      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/[0.05] bg-[#0A0A0E] shadow-xl transition-all hover:border-[#5C45FD]/30 hover:shadow-[0_20px_50px_-15px_rgba(92,69,253,0.25)]"
     >
       {/* Mockup placeholder */}
       <div className="relative aspect-[4/3] overflow-hidden bg-white/[0.02]">
@@ -93,23 +93,19 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
             <div className="absolute bottom-3 right-3 h-6 w-6 rounded-full border border-white/10" />
           </div>
         </div>
-        <span className="absolute left-4 top-4 rounded-full border border-white/10 bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white/80 backdrop-blur-sm">
+        <span className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#0A0A0E]">
           {cs.industry}
         </span>
       </div>
 
       {/* Content */}
       <div className="flex flex-1 flex-col p-6">
-        <span className="mb-4 inline-block self-start rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#0A0A0E]">
-          {cs.client}
-        </span>
         <h3
-          className="mb-2 text-lg font-bold leading-snug text-white"
+          className="mb-5 text-lg font-bold leading-snug text-white"
           style={{ fontFamily: 'Arial, sans-serif' }}
         >
           {cs.title}
         </h3>
-        <p className="mb-6 text-sm leading-relaxed text-white/50">{cs.desc}</p>
 
         <div className="mt-auto flex items-center gap-6 border-t border-white/10 pt-5">
           {cs.results.map((r) => (
@@ -127,8 +123,8 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
           ))}
         </div>
 
-        <div className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[#5C45FD] transition-all group-hover:gap-3">
-          Read the Story <ArrowRight className="h-3.5 w-3.5" />
+        <div className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-white transition-all group-hover:gap-3">
+          Read the Story <ArrowRight className="h-3.5 w-3.5 text-[#5C45FD]" />
         </div>
       </div>
     </Link>
