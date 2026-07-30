@@ -6,6 +6,7 @@ import Solution from "./_components/Solution";
 import OurProcess from "./_components/OurProcess";
 import Results from "./_components/Results";
 import Testimonials from "./_components/Testimonials";
+import ReviewsMarquee from "./_components/ReviewsMarquee";
 import Deliverables from "./_components/Deliverables";
 import WhyUs from "./_components/WhyUs";
 import FAQ from "./_components/FAQ";
@@ -55,6 +56,7 @@ export default function Home() {
       />
       <Results />
       <Testimonials />
+      <ReviewsMarquee />
       <Deliverables />
       <WhyUs />
       <FAQ />
