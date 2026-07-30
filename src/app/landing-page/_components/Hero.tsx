@@ -227,16 +227,22 @@ export default function Hero() {
                   transition: { type: "spring", stiffness: 50, damping: 18 },
                 },
               }}
-              className="w-full mt-8 lg:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3"
+              className="w-full mt-8 lg:mt-5 flex flex-col sm:flex-row items-stretch sm:items-start justify-center lg:justify-start gap-3"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25"
-              >
-                Book Your Free Strategy Call
-                <ArrowRight className="h-4 w-4" />
-              </motion.button>
+              <div className="flex flex-col items-center lg:items-start w-full sm:w-auto gap-2">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25"
+                >
+                  Book Your Free Strategy Call
+                  <ArrowRight className="h-4 w-4" />
+                </motion.button>
+
+                <p className="text-[11px] font-medium text-[#6B7280] text-center lg:text-left">
+                  Free 30-min call. No pitch, just clarity
+                </p>
+              </div>
 
               <div className="relative w-full sm:w-auto">
                 {/* Clipping Container for Peeking Card (Desktop Only) */}
@@ -278,20 +284,6 @@ export default function Hero() {
                 </motion.button>
               </div>
             </motion.div>
-
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 10 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { type: "spring", stiffness: 55, damping: 20 },
-                },
-              }}
-              className="mt-5 lg:mt-3 text-[11px] font-medium text-[#6B7280] text-center lg:text-left"
-            >
-              Free 30-min call. No pitch, just clarity
-            </motion.p>
 
             {/* Mobile Visuals - 2 horizontal scrolling rows */}
             <div className="-mx-6 w-[calc(100%+3rem)] md:-mx-12 md:w-[calc(100%+6rem)] flex flex-col gap-3 lg:hidden mt-8 overflow-hidden">
