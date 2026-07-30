@@ -68,8 +68,8 @@ export default function FinalCTA() {
             lineHeight: "1.1",
           }}
         >
-          Your next <span className="italic text-[#5C45FD]">customer</span> is
-          already on your website. Let&apos;s make sure they{" "}
+          The right <span className="italic text-[#5C45FD]">website</span>{" "}
+          turns visitors into customers. Let&apos;s build yours.{" "}
           <span className="italic text-white/30">don&apos;t leave.</span>
         </motion.h2>
 
@@ -104,8 +104,8 @@ export default function FinalCTA() {
                 },
               }}
             >
-              Your next <span className="italic text-[#5C45FD]">customer</span>{" "}
-              is already
+              The right <span className="italic text-[#5C45FD]">website</span>{" "}
+              turns visitors
             </motion.span>
           </span>
           <span className="block overflow-hidden pb-1">
@@ -119,7 +119,7 @@ export default function FinalCTA() {
                 },
               }}
             >
-              on your website. Let&apos;s make
+              into customers. Let&apos;s build
             </motion.span>
           </span>
           <span className="block overflow-hidden pb-1">
@@ -133,7 +133,7 @@ export default function FinalCTA() {
                 },
               }}
             >
-              sure they{" "}
+              yours{" "}
               <span className="italic text-white/30">don&apos;t leave.</span>
             </motion.span>
           </span>

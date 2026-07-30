@@ -19,7 +19,7 @@ const stats = [
   },
   {
     icon: Zap,
-    num: "2–4 Weeks",
+    num: "Speed & transparency",
     label: "Fast. Transparent. No surprises.",
     desc: "A progress update every 2–3 days and a live site in weeks, not months — you always know exactly where things stand.",
   },

@@ -8,9 +8,9 @@ import Image from "next/image";
 
 const cases = [
   {
-    stat: "Built Coaching website",
+    stat: "Rebuilt a Coaching website",
     brand: "Reality Cheque",
-    desc: "Reality cheque is a Pakistan's biggest coaching platform. We rebuilt the coaching site focusing on increasing the conversion rate and brand's authority.",
+    desc: "We rebuilt Pakistan's biggest coaching platform for conversions. Reality Cheque had the audience but a site that wasn't turning attention into signups. We rebuilt it around conversion and brand authority.",
     results: [
       { value: "51.12%", label: "Increase conversion rate" },
       { value: "407", label: "members in 24 hrs" },
@@ -21,7 +21,7 @@ const cases = [
   {
     stat: "Built a funnel for service business",
     brand: "Reality Cheque",
-    desc: "Reality Cheque is also a service business. We built a funnel for their service business to book high-qualified leads. And results were:",
+    desc: "We built a lead-gen funnel from scratch for their DFY service. Same brand, different goal: book high-quality leads for their service business. So we built a dedicated funnel from the ground up.",
     results: [
       { value: "70+", label: "leads in 2 weeks" },
       { value: "26X", label: "ROAS" },
@@ -31,7 +31,7 @@ const cases = [
   {
     stat: "Shopify store built for a brand",
     brand: "Bamper",
-    desc: "An e-commerce bamboo toilet paper brand. We built their store focusing on conversion rate and brand authority. Goal was to sell products fast. Results were:",
+    desc: "We built a Shopify store from scratch for a bamboo-goods brand. A new e-commerce brand that needed to sell fast. We built the store around conversion and brand trust from day one.",
     results: [
       { value: "60 Days", label: "Sold-out inventory" },
       { value: "4.2%", label: "Conversion rate" },
@@ -223,12 +223,7 @@ function MobileCaseCard({ c, i }: { c: any; i: number }) {
       <div className="mt-8 bg-white/[0.02] -mx-8 -mb-8 overflow-hidden">
         <div className="h-[200px] w-full flex items-center justify-center relative">
           {c.image ? (
-            <Image
-              src={c.image}
-              alt={c.brand}
-              fill
-              className="object-cover"
-            />
+            <Image src={c.image} alt={c.brand} fill className="object-cover" />
           ) : (
             <>
               <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />

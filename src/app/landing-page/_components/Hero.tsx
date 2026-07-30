@@ -138,7 +138,7 @@ export default function Hero() {
               }}
               className="mb-4 lg:mb-2 text-left text-xs sm:text-sm font-medium text-gray-600"
             >
-              For Founders who needs a website that can
+              For founders who need a website that actually
               <span className="font-semibold text-black"> sell</span>.
             </motion.div>
 
@@ -213,9 +213,9 @@ export default function Hero() {
               }}
               className="mt-5 lg:mt-3 max-w-lg text-sm text-[#4B5563] md:text-base mx-auto lg:mx-0 font-medium"
             >
-              We build websites that increase 2x conversions in 60 days using
-              our <span className="font-bold text-gray-900">SYNC Method™</span>{" "}
-              - or we work for free until it does.
+              We build websites that 2x conversions in 60 days using our{" "}
+              <span className="font-bold text-gray-900">SYNC Method™</span> - or
+              we work for free until it does. Whether you're starting fresh or fixing a site that isn't selling.
             </motion.p>
 
             <motion.div

@@ -89,7 +89,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.98 }}
                 className="rounded-full bg-[#5C45FD] px-5 py-2 text-[14px] font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0] md:px-6 md:py-2.5"
               >
-                Get Your Free Audit
+                Book Your Free Call
               </motion.button>
             </Link>
           </div>
