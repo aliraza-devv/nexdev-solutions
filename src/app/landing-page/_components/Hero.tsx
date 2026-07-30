@@ -215,7 +215,7 @@ export default function Hero() {
             >
               We build websites that 2x conversions in 60 days using our{" "}
               <span className="font-bold text-gray-900">SYNC Method™</span> - or
-              we work for free until it does. Whether you're starting fresh or fixing a site that isn't selling.
+              we work for free until it does. Whether you&apos;re starting fresh or fixing a site that isn&apos;t selling.
             </motion.p>
 
             <motion.div
