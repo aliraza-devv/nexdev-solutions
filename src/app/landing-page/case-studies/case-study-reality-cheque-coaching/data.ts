@@ -3,10 +3,12 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Reality Cheque",
-  clientLogo: "PLACEHOLDER: client-logo.svg (120×40)",
   liveUrl: "https://example.com",
   headline: "How Pakistan's biggest coaching platform enrolled 407 members in 24 hours",
-  heroImage: "PLACEHOLDER: hero-device-mockup 1600×1000",
+  heroImages: [
+    "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
+    "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
+  ],
   meta: {
     year: "2025",
     timeline: "4 weeks",
@@ -39,10 +41,30 @@ export const CASE_STUDY: CaseStudyData = {
   challenge: {
     intro: "A trusted coaching brand with a signup page that undersold the offer.",
     problems: [
-      "The course's value wasn't clear until minute eight of a long sales video",
-      "No urgency mechanism, so most visitors said 'I'll join later'",
-      "Payment plans were buried instead of shown upfront",
-      "The mobile signup form had 9 fields before payment even started",
+      {
+        tag: "Critical",
+        severity: "critical",
+        title: "Value buried in the video",
+        desc: "The course's value wasn't clear until minute eight of a long sales video.",
+      },
+      {
+        tag: "Drop-Off",
+        severity: "warning",
+        title: "No urgency mechanism",
+        desc: "With nothing pushing a decision, most visitors said 'I'll join later' — and didn't.",
+      },
+      {
+        tag: "Friction",
+        severity: "warning",
+        title: "Pricing buried",
+        desc: "Payment plans were buried instead of being shown upfront where they'd build confidence.",
+      },
+      {
+        tag: "Mobile Friction",
+        severity: "info",
+        title: "9-field signup form",
+        desc: "The mobile signup form had 9 fields before payment even started.",
+      },
     ],
   },
   approach: [
@@ -50,25 +72,37 @@ export const CASE_STUDY: CaseStudyData = {
       title: "Sales page rebuilt around the offer, not the founder bio",
       body: "PLACEHOLDER: expand on how the page was restructured to lead with outcomes and social proof instead of a long personal introduction.",
       microResult: "Time on page +64%",
-      image: "PLACEHOLDER: sales-page 1200×900",
+      images: [
+        "PLACEHOLDER: sales-page 1200×900",
+        "PLACEHOLDER: outcomes + social proof section 1200×900",
+      ],
     },
     {
       title: "Cohort-based urgency and cart-close messaging",
       body: "PLACEHOLDER: expand on the enrollment window mechanics that gave visitors a real reason to act on this specific cohort.",
       microResult: "Enrollment page CTR +38%",
-      image: "PLACEHOLDER: urgency-banner 1200×900",
+      images: [
+        "PLACEHOLDER: urgency-banner 1200×900",
+        "PLACEHOLDER: cart-close countdown 1200×900",
+      ],
     },
     {
       title: "Payment plans shown above the fold",
       body: "PLACEHOLDER: expand on surfacing pricing and installment options immediately instead of hiding them behind a click.",
       microResult: "Checkout starts +47%",
-      image: "PLACEHOLDER: pricing-section 1200×900",
+      images: [
+        "PLACEHOLDER: pricing-section 1200×900",
+        "PLACEHOLDER: installment options detail 1200×900",
+      ],
     },
     {
       title: "A 5-field mobile signup flow",
       body: "PLACEHOLDER: expand on cutting the enrollment form down to only what's needed to start checkout, deferring the rest to after payment.",
       microResult: "Form completion +71%",
-      image: "PLACEHOLDER: mobile-signup 1200×900",
+      images: [
+        "PLACEHOLDER: mobile-signup 1200×900",
+        "PLACEHOLDER: post-payment details step 1200×900",
+      ],
     },
   ],
   quote: {
@@ -79,6 +113,7 @@ export const CASE_STUDY: CaseStudyData = {
   },
   results: {
     intro: "Every cohort launch since has beaten the one before it.",
+    chartImage: "PLACEHOLDER: results-chart — signups per cohort 1400×600",
     stats: [
       { label: "Payback period", value: "3 days" },
       { label: "Next-cohort waitlist", value: "1,900+" },

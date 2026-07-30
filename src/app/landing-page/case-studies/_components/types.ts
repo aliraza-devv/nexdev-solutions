@@ -6,16 +6,22 @@ export interface ApproachModule {
   title: string;
   body: string;
   microResult: string;
-  image: string;
+  images: [string, string];
+}
+
+export interface ChallengeCard {
+  tag: string;
+  severity: "critical" | "warning" | "info";
+  title: string;
+  desc: string;
 }
 
 export interface CaseStudyData {
   agencyName: string;
   client: string;
-  clientLogo: string;
   liveUrl: string;
   headline: string;
-  heroImage: string;
+  heroImages: [string, string];
   meta: {
     year: string;
     timeline: string;
@@ -31,7 +37,7 @@ export interface CaseStudyData {
   }[];
   challenge: {
     intro: string;
-    problems: string[];
+    problems: ChallengeCard[];
   };
   approach: ApproachModule[];
   quote: {
@@ -42,6 +48,7 @@ export interface CaseStudyData {
   };
   results: {
     intro: string;
+    chartImage: string;
     stats: { label: string; value: string }[];
     note: string;
   };

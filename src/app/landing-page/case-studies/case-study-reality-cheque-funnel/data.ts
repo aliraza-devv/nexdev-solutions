@@ -3,10 +3,12 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Reality Cheque",
-  clientLogo: "PLACEHOLDER: client-logo.svg (120×40)",
   liveUrl: "https://example.com",
   headline: "A lead-gen funnel that returned 26× on ad spend in two weeks",
-  heroImage: "PLACEHOLDER: hero-device-mockup 1600×1000",
+  heroImages: [
+    "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
+    "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
+  ],
   meta: {
     year: "2025",
     timeline: "3 weeks",
@@ -40,10 +42,30 @@ export const CASE_STUDY: CaseStudyData = {
     intro:
       "Paid traffic was arriving, and almost none of it was converting into booked calls.",
     problems: [
-      "A generic contact form gave leads no reason to book right now",
-      "No qualification step, so the sales team wasted calls on bad-fit leads",
-      "Ad creative promised one thing, and the landing page said another",
-      "Zero retargeting or follow-up sequence for the 95% who didn't convert instantly",
+      {
+        tag: "Critical",
+        severity: "critical",
+        title: "No reason to act now",
+        desc: "A generic contact form gave leads no reason to book right now instead of 'later.'",
+      },
+      {
+        tag: "Sales Waste",
+        severity: "warning",
+        title: "No qualification step",
+        desc: "With no way to filter leads first, the sales team wasted calls on bad-fit prospects.",
+      },
+      {
+        tag: "Mismatch",
+        severity: "warning",
+        title: "Ad-to-page mismatch",
+        desc: "Ad creative promised one thing, and the landing page said another.",
+      },
+      {
+        tag: "Lost Leads",
+        severity: "info",
+        title: "No follow-up sequence",
+        desc: "Zero retargeting or follow-up for the 95% who didn't convert instantly.",
+      },
     ],
   },
   approach: [
@@ -51,25 +73,37 @@ export const CASE_STUDY: CaseStudyData = {
       title: "Message-matched landing pages for every ad angle",
       body: "PLACEHOLDER: expand on building a dedicated landing page per ad creative so the promise on the ad matches the promise on the page.",
       microResult: "Bounce rate -33%",
-      image: "PLACEHOLDER: landing-page-variants 1200×900",
+      images: [
+        "PLACEHOLDER: landing-page-variants 1200×900",
+        "PLACEHOLDER: ad-to-page match detail 1200×900",
+      ],
     },
     {
       title: "A built-in lead qualification quiz",
       body: "PLACEHOLDER: expand on the short quiz used to filter and route leads before they ever reach the sales team.",
       microResult: "Sales-qualified rate +58%",
-      image: "PLACEHOLDER: qualification-quiz 1200×900",
+      images: [
+        "PLACEHOLDER: qualification-quiz 1200×900",
+        "PLACEHOLDER: lead routing logic 1200×900",
+      ],
     },
     {
       title: "One-click call booking, no back-and-forth",
       body: "PLACEHOLDER: expand on embedding a real-time booking calendar directly in the funnel instead of a 'we'll email you' form.",
       microResult: "Booking rate +44%",
-      image: "PLACEHOLDER: booking-calendar 1200×900",
+      images: [
+        "PLACEHOLDER: booking-calendar 1200×900",
+        "PLACEHOLDER: instant confirmation step 1200×900",
+      ],
     },
     {
       title: "Retargeting and an email sequence for non-converters",
       body: "PLACEHOLDER: expand on the follow-up sequence built to recover the majority of visitors who didn't book on their first visit.",
       microResult: "Recovered leads: 22",
-      image: "PLACEHOLDER: retargeting-sequence 1200×900",
+      images: [
+        "PLACEHOLDER: retargeting-sequence 1200×900",
+        "PLACEHOLDER: email nurture flow 1200×900",
+      ],
     },
   ],
   quote: {
@@ -80,6 +114,7 @@ export const CASE_STUDY: CaseStudyData = {
   },
   results: {
     intro: "Two weeks in, the funnel is still the highest-performing channel in the account.",
+    chartImage: "PLACEHOLDER: results-chart — cost per lead over time 1400×600",
     stats: [
       { label: "Payback period", value: "2 days" },
       { label: "Avg. deal size", value: "+18%" },
