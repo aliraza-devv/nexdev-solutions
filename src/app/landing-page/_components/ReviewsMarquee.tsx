@@ -45,31 +45,34 @@ export default function ReviewsMarquee() {
             letterSpacing: "-0.02em",
           }}
         >
-          More receipts, <span className="text-[#5C45FD] italic">if you needed them.</span>
+          More receipts,{" "}
+          <span className="text-[#5C45FD] italic">if you needed them.</span>
         </motion.h2>
       </div>
 
-      <div className="relative flex w-fit overflow-hidden">
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 70, ease: "linear" }}
-          className="flex items-center gap-6 px-6"
-        >
-          {[...reviews, ...reviews].map((r, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 h-40 sm:h-48 lg:h-56 rounded-2xl overflow-hidden border border-white/[0.08] shadow-lg shadow-black/35"
-            >
-              <Image
-                src={r.src}
-                alt="Client review"
-                width={r.width}
-                height={r.height}
-                className="h-full w-auto object-cover"
-              />
-            </div>
-          ))}
-        </motion.div>
+      <div className="group relative flex w-fit overflow-hidden [--duration:35s] [--gap:1.5rem]">
+        {[0, 1].map((groupIdx) => (
+          <div
+            key={groupIdx}
+            aria-hidden={groupIdx === 1}
+            className="flex shrink-0 items-center [gap:var(--gap)] px-6 animate-marquee group-hover:[animation-play-state:paused]"
+          >
+            {reviews.map((r, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 h-40 sm:h-48 lg:h-56 rounded-2xl overflow-hidden border border-white/[0.08] shadow-lg shadow-black/35"
+              >
+                <Image
+                  src={r.src}
+                  alt="Client review"
+                  width={r.width}
+                  height={r.height}
+                  className="h-full w-auto object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
 
       {/* Edge Fades */}
