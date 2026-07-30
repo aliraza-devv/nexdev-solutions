@@ -283,6 +283,55 @@ const CostsGraphic = ({ isActive }: { isActive: boolean }) => {
   );
 };
 
+const OneShotGraphic = ({ isActive }: { isActive: boolean }) => {
+  return (
+    <div className="flex flex-col justify-center w-full h-full p-6 gap-5">
+      <div className="flex flex-col gap-2">
+        <div className="flex justify-between items-center text-[12px]">
+          <span className="text-white/60">Done Right, Once</span>
+          <span className="text-[#5C45FD] font-bold">
+            <AnimatedNumber
+              value={1}
+              isActive={isActive}
+              suffix="x Cost"
+              decimals={0}
+            />
+          </span>
+        </div>
+        <div className="w-full h-2.5 bg-white/5 rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: isActive ? "42%" : "0%" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full bg-[#5C45FD] rounded-full"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <div className="flex justify-between items-center text-[12px]">
+          <span className="text-white/40">Redo It Later</span>
+          <span className="text-red-400 font-bold">
+            <AnimatedNumber
+              value={2.4}
+              isActive={isActive}
+              suffix="x Cost"
+              decimals={1}
+            />
+          </span>
+        </div>
+        <div className="w-full h-2.5 bg-white/5 rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: isActive ? "100%" : "0%" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+            className="h-full bg-red-500 rounded-full"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Problem() {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
@@ -296,6 +345,8 @@ export default function Problem() {
         return <CycleGraphic isActive={isActive} />;
       case 3:
         return <CostsGraphic isActive={isActive} />;
+      case 4:
+        return <OneShotGraphic isActive={isActive} />;
       default:
         return null;
     }
