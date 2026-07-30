@@ -41,7 +41,7 @@ const caseStudies: CaseStudy[] = [
       { value: '51.12%', label: 'Conversion Lift' },
       { value: '407', label: 'Members in 24 Hrs' },
     ],
-    href: '/landing-page/case-studies/case-study-reality-cheque-coaching',
+    href: '/landing-page/case-studies/case-study-reality-cheque',
   },
   {
     client: 'Reality Cheque',

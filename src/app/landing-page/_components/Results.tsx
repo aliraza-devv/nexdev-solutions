@@ -15,7 +15,7 @@ const cases = [
       { value: "51.12%", label: "Increase conversion rate" },
       { value: "407", label: "members in 24 hrs" },
     ],
-    href: "/landing-page/case-studies/case-study-reality-cheque-coaching",
+    href: "/landing-page/case-studies/case-study-reality-cheque",
     image: "/assets/case-studies/Reality-cheque-case-study.png",
   },
   {
