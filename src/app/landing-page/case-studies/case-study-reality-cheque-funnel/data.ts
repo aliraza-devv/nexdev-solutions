@@ -39,8 +39,11 @@ export const CASE_STUDY: CaseStudyData = {
       window: "in 2 weeks",
     },
   ],
-  context:
+  resultsAtLaunchEyebrow: "At Launch · First 8 Weeks",
+  resultsSustainedEyebrow: "6 Months Post-Launch",
+  context: [
     "PLACEHOLDER: 2-3 sentence introduction to Reality Cheque's service business and the scope of this funnel engagement before diving into what wasn't working.",
+  ],
   challenge: {
     intro:
       "Paid traffic was arriving, and almost none of it was converting into booked calls.",
@@ -65,6 +68,7 @@ export const CASE_STUDY: CaseStudyData = {
       },
     ],
   },
+  approachHeader: "Three fixes, each mapped directly to the challenge it solves.",
   approach: [
     {
       title: "Message-matched landing pages for every ad angle",

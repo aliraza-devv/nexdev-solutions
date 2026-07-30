@@ -13,7 +13,13 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-export default function FinalCTA() {
+export default function FinalCTA({
+  headline,
+  subline,
+}: {
+  headline?: string;
+  subline?: string;
+} = {}) {
   const primaryFont = "Arial, sans-serif";
   const secondaryFont = '"Inter", sans-serif';
 
@@ -55,89 +61,108 @@ export default function FinalCTA() {
         </motion.div>
 
         {/* Main Headline */}
-        {/* Mobile Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="tracking-tighter text-white max-w-5xl font-medium text-center block md:hidden"
-          style={{
-            fontFamily: primaryFont,
-            fontSize: "clamp(36px, 6.2vw, 64px)",
-            lineHeight: "1.1",
-          }}
-        >
-          The right <span className="italic text-[#5C45FD]">website</span>{" "}
-          turns visitors into customers. Let&apos;s build yours.{" "}
-          <span className="italic text-white/30">don&apos;t leave.</span>
-        </motion.h2>
-
-        {/* Desktop Heading */}
-        <motion.h2
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.08,
-              },
-            },
-          }}
-          className="tracking-tighter text-white max-w-5xl font-medium text-center hidden md:block"
-          style={{
-            fontFamily: primaryFont,
-            fontSize: "clamp(36px, 6.2vw, 64px)",
-            lineHeight: "1.1",
-          }}
-        >
-          <span className="block overflow-hidden pb-1">
-            <motion.span
-              className="block"
-              variants={{
-                hidden: { y: "100%" },
-                visible: {
-                  y: 0,
-                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                },
+        {headline ? (
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="tracking-tighter text-white max-w-5xl font-medium text-center"
+            style={{
+              fontFamily: primaryFont,
+              fontSize: "clamp(36px, 6.2vw, 64px)",
+              lineHeight: "1.1",
+            }}
+          >
+            {headline}
+          </motion.h2>
+        ) : (
+          <>
+            {/* Mobile Heading */}
+            <motion.h2
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="tracking-tighter text-white max-w-5xl font-medium text-center block md:hidden"
+              style={{
+                fontFamily: primaryFont,
+                fontSize: "clamp(36px, 6.2vw, 64px)",
+                lineHeight: "1.1",
               }}
             >
               The right <span className="italic text-[#5C45FD]">website</span>{" "}
-              turns visitors
-            </motion.span>
-          </span>
-          <span className="block overflow-hidden pb-1">
-            <motion.span
-              className="block"
-              variants={{
-                hidden: { y: "100%" },
-                visible: {
-                  y: 0,
-                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                },
-              }}
-            >
-              into customers. Let&apos;s build
-            </motion.span>
-          </span>
-          <span className="block overflow-hidden pb-1">
-            <motion.span
-              className="block"
-              variants={{
-                hidden: { y: "100%" },
-                visible: {
-                  y: 0,
-                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                },
-              }}
-            >
-              yours{" "}
+              turns visitors into customers. Let&apos;s build yours.{" "}
               <span className="italic text-white/30">don&apos;t leave.</span>
-            </motion.span>
-          </span>
-        </motion.h2>
+            </motion.h2>
+
+            {/* Desktop Heading */}
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.08,
+                  },
+                },
+              }}
+              className="tracking-tighter text-white max-w-5xl font-medium text-center hidden md:block"
+              style={{
+                fontFamily: primaryFont,
+                fontSize: "clamp(36px, 6.2vw, 64px)",
+                lineHeight: "1.1",
+              }}
+            >
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  className="block"
+                  variants={{
+                    hidden: { y: "100%" },
+                    visible: {
+                      y: 0,
+                      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                    },
+                  }}
+                >
+                  The right <span className="italic text-[#5C45FD]">website</span>{" "}
+                  turns visitors
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  className="block"
+                  variants={{
+                    hidden: { y: "100%" },
+                    visible: {
+                      y: 0,
+                      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                    },
+                  }}
+                >
+                  into customers. Let&apos;s build
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  className="block"
+                  variants={{
+                    hidden: { y: "100%" },
+                    visible: {
+                      y: 0,
+                      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                    },
+                  }}
+                >
+                  yours{" "}
+                  <span className="italic text-white/30">don&apos;t leave.</span>
+                </motion.span>
+              </span>
+            </motion.h2>
+          </>
+        )}
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -147,9 +172,13 @@ export default function FinalCTA() {
           className="mt-6 text-lg lg:text-xl font-normal text-white/60 max-w-2xl text-center leading-relaxed"
           style={{ fontFamily: secondaryFont }}
         >
-          30 minutes. No pitch. Just a clear look at what&apos;s holding{" "}
-          <br className="hidden lg:block" />
-          your site back — and what to do about it.
+          {subline ?? (
+            <>
+              30 minutes. No pitch. Just a clear look at what&apos;s holding{" "}
+              <br className="hidden lg:block" />
+              your site back — and what to do about it.
+            </>
+          )}
         </motion.p>
 
         {/* CTA Button */}

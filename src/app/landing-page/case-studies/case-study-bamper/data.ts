@@ -40,8 +40,11 @@ export const CASE_STUDY: CaseStudyData = {
       window: "in 60 days",
     },
   ],
-  context:
+  resultsAtLaunchEyebrow: "At Launch · First 8 Weeks",
+  resultsSustainedEyebrow: "6 Months Post-Launch",
+  context: [
     "PLACEHOLDER: 2-3 sentence introduction to Bamper's business, what they sell, and the scope of this engagement before diving into what wasn't working.",
+  ],
   challenge: {
     intro:
       "A clever, sustainable product with zero brand recognition and a hard launch deadline.",
@@ -66,6 +69,7 @@ export const CASE_STUDY: CaseStudyData = {
       },
     ],
   },
+  approachHeader: "Three fixes, each mapped directly to the challenge it solves.",
   approach: [
     {
       title: "Brand-first product photography and storytelling",

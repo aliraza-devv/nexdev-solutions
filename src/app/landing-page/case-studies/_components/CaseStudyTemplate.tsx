@@ -17,6 +17,11 @@
 // FinalCTA section below) via the same href, and the Navbar's CTA is
 // overridden (via its ctaLabel/ctaHref props) to match, so there is exactly
 // one conversion action repeated in different words, not several destinations.
+//
+// Several fields are optional (heroEyebrow, approachIntro/PlusLine,
+// turningPoint, results.note, finalCta, microResult per fix) precisely so
+// earlier case studies that don't set them keep rendering byte-identical to
+// before - every addition here is additive, not a redesign.
 // ============================================================================
 
 import React, { useEffect, useRef, useState } from "react";
@@ -27,7 +32,12 @@ import {
   MousePointerClick,
   BarChart3,
 } from "lucide-react";
-import type { CaseStudyData, ApproachModule, ChallengeCard } from "./types";
+import type {
+  CaseStudyData,
+  ApproachModule,
+  ChallengeCard,
+  MetricItem,
+} from "./types";
 import Navbar from "../../_components/Navbar";
 import SiteFooter from "../../_components/FinalCTA";
 
@@ -153,22 +163,19 @@ function parseMetric(value: string) {
   return { prefix, number: parseFloat(numStr), suffix, decimals };
 }
 
-function MetricCard({
-  metric,
-  index,
-}: {
-  metric: CaseStudyData["metrics"][number];
-  index: number;
-}) {
+function MetricCard({ metric, index }: { metric: MetricItem; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10%" });
   const reduceMotion = useReducedMotion();
-  const target = parseMetric(metric.to);
-  const [display, setDisplay] = useState(reduceMotion ? metric.to : metric.from);
+  const target = "to" in metric ? parseMetric(metric.to) : null;
+  const [display, setDisplay] = useState(() => {
+    if (!("to" in metric)) return "";
+    return reduceMotion ? metric.to : metric.from;
+  });
   const Icon = METRIC_ICONS[index % METRIC_ICONS.length];
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || !target || !("to" in metric)) return;
     if (reduceMotion) {
       setDisplay(metric.to);
       return;
@@ -194,19 +201,30 @@ function MetricCard({
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#5C45FD]/10 text-[#5C45FD]">
           <Icon className="h-4 w-4" strokeWidth={2} />
         </span>
-        <span className="rounded-full bg-[#5C45FD]/10 px-2.5 py-1 text-xs font-bold text-[#5C45FD]">
-          {metric.change}
-        </span>
+        {"change" in metric && metric.change && (
+          <span className="rounded-full bg-[#5C45FD]/10 px-2.5 py-1 text-xs font-bold text-[#5C45FD]">
+            {metric.change}
+          </span>
+        )}
       </div>
-      <div>
+      {!("to" in metric) ? (
         <div
-          className="text-3xl md:text-4xl font-bold tracking-tight text-[#0A0A0E]"
+          className="text-lg font-bold leading-snug text-[#0A0A0E]"
           style={{ fontFamily: "Arial, sans-serif" }}
         >
-          {display}
+          {metric.label}
         </div>
-        <div className="mt-1 text-sm text-zinc-500">{metric.label}</div>
-      </div>
+      ) : (
+        <div>
+          <div
+            className="text-3xl md:text-4xl font-bold tracking-tight text-[#0A0A0E]"
+            style={{ fontFamily: "Arial, sans-serif" }}
+          >
+            {display}
+          </div>
+          <div className="mt-1 text-sm text-zinc-500">{metric.label}</div>
+        </div>
+      )}
     </div>
   );
 }
@@ -217,7 +235,13 @@ function MetaItem({ label, value }: { label: string; value: string }) {
       <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-400">
         {label}
       </div>
-      <div className="mt-1.5 text-sm font-medium text-zinc-700">{value}</div>
+      {value ? (
+        <div className="mt-1.5 text-sm font-medium text-zinc-700">{value}</div>
+      ) : (
+        <div className="mt-1.5 text-sm font-medium italic text-zinc-300">
+          — Add {label.toLowerCase()} —
+        </div>
+      )}
     </div>
   );
 }
@@ -227,7 +251,7 @@ function Hero({ data }: { data: CaseStudyData }) {
     <section className="relative bg-white px-6 pb-16 pt-32 md:px-10 md:pt-40">
       <div className="mx-auto max-w-[900px] text-center">
         <Reveal>
-          <Eyebrow>{data.client}</Eyebrow>
+          <Eyebrow>{data.heroEyebrow ?? data.client}</Eyebrow>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -267,7 +291,10 @@ function Hero({ data }: { data: CaseStudyData }) {
         >
           <MetaItem label="Industry" value={data.meta.industry} />
           <MetaItem label="Services" value={data.meta.services.join(", ")} />
-          <MetaItem label="Timeline" value={`${data.meta.timeline} · ${data.meta.year}`} />
+          <MetaItem
+            label="Timeline"
+            value={data.meta.timeline ? `${data.meta.timeline} · ${data.meta.year}` : ""}
+          />
         </Reveal>
       </div>
 
@@ -281,8 +308,12 @@ function Hero({ data }: { data: CaseStudyData }) {
 function Context({ data }: { data: CaseStudyData }) {
   return (
     <section className="bg-white px-6 pb-16 md:px-10 md:pb-20">
-      <Reveal className="mx-auto max-w-[800px] text-center">
-        <p className="text-lg leading-relaxed text-zinc-600">{data.context}</p>
+      <Reveal className="mx-auto flex max-w-[800px] flex-col gap-4 text-center">
+        {data.context.map((paragraph, i) => (
+          <p key={i} className="text-lg leading-relaxed text-zinc-600">
+            {paragraph}
+          </p>
+        ))}
       </Reveal>
     </section>
   );
@@ -348,9 +379,11 @@ function ApproachRow({
           {String(index + 1).padStart(2, "0")}
         </span>
         <div className="mt-4 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-[#5C45FD]/10 px-3.5 py-1.5 text-xs font-bold text-[#5C45FD]">
-            {item.microResult}
-          </span>
+          {item.microResult && (
+            <span className="inline-flex items-center rounded-full bg-[#5C45FD]/10 px-3.5 py-1.5 text-xs font-bold text-[#5C45FD]">
+              {item.microResult}
+            </span>
+          )}
           <span
             className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${SEVERITY_STYLES[challenge.severity]}`}
           >
@@ -382,8 +415,13 @@ function Approach({ data }: { data: CaseStudyData }) {
             className="text-2xl text-[#0A0A0E] md:text-3xl"
             style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
-            Three fixes, each mapped directly to the challenge it solves.
+            {data.approachHeader}
           </p>
+          {data.approachIntro && (
+            <p className="mt-4 text-[15px] leading-relaxed text-zinc-500">
+              {data.approachIntro}
+            </p>
+          )}
         </Reveal>
 
         <div className="flex flex-col gap-16 md:gap-24">
@@ -396,7 +434,40 @@ function Approach({ data }: { data: CaseStudyData }) {
             />
           ))}
         </div>
+
+        {data.approachPlusLine && (
+          <Reveal delay={0.1} className="mx-auto mt-16 max-w-2xl text-center md:mt-24">
+            <p className="text-[15px] leading-relaxed text-zinc-500">
+              {data.approachPlusLine}
+            </p>
+          </Reveal>
+        )}
       </div>
+    </section>
+  );
+}
+
+// Optional narrative beat between Approach and Results - only renders when a
+// case study's data sets `turningPoint`.
+function TurningPoint({ data }: { data: CaseStudyData }) {
+  if (!data.turningPoint) return null;
+  return (
+    <section className="bg-zinc-50/60 px-6 py-20 md:px-10 md:py-28">
+      <Reveal className="mx-auto max-w-[800px] text-center">
+        <p
+          className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
+          style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
+        >
+          {data.turningPoint.header}
+        </p>
+        <div className="mt-6 flex flex-col gap-4">
+          {data.turningPoint.body.map((paragraph, i) => (
+            <p key={i} className="text-lg leading-relaxed text-zinc-600">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }
@@ -407,7 +478,7 @@ function ResultsAtLaunch({ data }: { data: CaseStudyData }) {
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
-            <Eyebrow>At Launch · First 8 Weeks</Eyebrow>
+            <Eyebrow>{data.resultsAtLaunchEyebrow}</Eyebrow>
             <p
               className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
               style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
@@ -415,9 +486,11 @@ function ResultsAtLaunch({ data }: { data: CaseStudyData }) {
               Impact by the Numbers
             </p>
           </Reveal>
-          <Reveal delay={0.1} className="max-w-sm">
-            <p className="text-sm leading-relaxed text-zinc-500">{data.results.intro}</p>
-          </Reveal>
+          {data.results.intro && (
+            <Reveal delay={0.1} className="max-w-sm">
+              <p className="text-sm leading-relaxed text-zinc-500">{data.results.intro}</p>
+            </Reveal>
+          )}
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -458,18 +531,20 @@ function ResultsTimelineConnector() {
   );
 }
 
-function ResultsSixMonths({ data }: { data: CaseStudyData }) {
+function ResultsSustained({ data }: { data: CaseStudyData }) {
   return (
     <section className="bg-zinc-50/60 px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[900px] text-center">
         <Reveal>
-          <Eyebrow>6 Months Post-Launch</Eyebrow>
-          <p
-            className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
-            style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
-          >
-            {data.results.note}
-          </p>
+          <Eyebrow>{data.resultsSustainedEyebrow}</Eyebrow>
+          {data.results.note && (
+            <p
+              className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
+              style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
+            >
+              {data.results.note}
+            </p>
+          )}
         </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-8 border-t border-black/[0.06] pt-8 sm:grid-cols-3 sm:divide-x sm:divide-black/[0.06]">
@@ -531,12 +606,13 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
         <Context data={data} />
         <Challenge data={data} />
         <Approach data={data} />
+        <TurningPoint data={data} />
         <ResultsAtLaunch data={data} />
         <ResultsTimelineConnector />
-        <ResultsSixMonths data={data} />
+        <ResultsSustained data={data} />
         <Testimonial data={data} />
       </main>
-      <SiteFooter />
+      <SiteFooter headline={data.finalCta?.headline} subline={data.finalCta?.subline} />
     </div>
   );
 }
