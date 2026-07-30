@@ -554,7 +554,7 @@ function ResultsSustained({ data }: { data: CaseStudyData }) {
         </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-8 border-t border-black/[0.06] pt-8 sm:grid-cols-3 sm:divide-x sm:divide-black/[0.06]">
-          {data.results.stats.map((stat, i) => (
+          {(data.results.stats ?? []).map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.1}>
               {stat.value ? (
                 <>
@@ -603,7 +603,11 @@ function Testimonial({ data }: { data: CaseStudyData }) {
             />
           </div>
           <div className="text-left">
-            <div className="text-sm font-bold text-[#0A0A0E]">{data.quote.name}</div>
+            {data.quote.name ? (
+              <div className="text-sm font-bold text-[#0A0A0E]">{data.quote.name}</div>
+            ) : (
+              <div className="text-sm font-bold italic text-zinc-300">— Add client name —</div>
+            )}
             <div className="text-xs text-zinc-500">{data.quote.role}</div>
           </div>
         </div>
@@ -625,8 +629,12 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
         <Approach data={data} />
         <TurningPoint data={data} />
         <ResultsAtLaunch data={data} />
-        <ResultsTimelineConnector />
-        <ResultsSustained data={data} />
+        {data.resultsSustainedEyebrow && data.results.stats && data.results.stats.length > 0 && (
+          <>
+            <ResultsTimelineConnector />
+            <ResultsSustained data={data} />
+          </>
+        )}
         <Testimonial data={data} />
       </main>
       <SiteFooter headline={data.finalCta?.headline} subline={data.finalCta?.subline} />

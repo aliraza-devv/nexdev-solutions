@@ -64,7 +64,10 @@ export interface CaseStudyData {
   // stat - see MetricItem).
   metrics: MetricItem[];
   resultsAtLaunchEyebrow: string;
-  resultsSustainedEyebrow: string;
+  // Omit entirely (along with results.stats) for a case study that only has
+  // one results moment instead of an at-launch/sustained pair - the second
+  // tier and the timeline connector between them just don't render.
+  resultsSustainedEyebrow?: string;
   // Short intro to the client/project, one paragraph per array item, shown
   // between the meta bar and the Challenge section.
   context: string[];
@@ -100,8 +103,10 @@ export interface CaseStudyData {
     chartImage: string;
     // `value` is optional so a stat can be a qualitative statement with no
     // number (e.g. "Now the biggest agency-owner community in Pakistan") -
-    // renders as a bold statement in place of the number when omitted.
-    stats: { label: string; value?: string }[];
+    // renders as a bold statement in place of the number when omitted. Omit
+    // the whole array (along with resultsSustainedEyebrow) for a
+    // single-results-block case study.
+    stats?: { label: string; value?: string }[];
     // Optional heading sentence above the stat strip - omit if the copy
     // doesn't have one for this tier.
     note?: string;
