@@ -25,6 +25,7 @@ module.exports = {
 			// so it never fires above the intended small-screen range.
 			xs: {min: '480px', max: '767px'},
 			"sm-min-961": {min: '961px'},
+			"min-1281": {min: '1281px'},
 			'big-max': { max: '2563px'},
 			'min-2xl': {min: '1537px'},
 			'max-2xl': { max: '1537px' },

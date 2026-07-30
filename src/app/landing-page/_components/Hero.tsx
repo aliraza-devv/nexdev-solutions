@@ -108,7 +108,7 @@ export default function Hero() {
   const [isVslOpen, setIsVslOpen] = useState(false);
 
   return (
-    <section className="relative min-h-[70vh] lg:flex-1 w-full overflow-hidden bg-white flex items-center">
+    <section className="relative min-h-[70vh] min-1281:flex-1 w-full overflow-hidden bg-white flex items-center">
       <div className="mx-auto max-w-[1280px] w-full px-6 md:px-12">
         <div className="grid grid-cols-1 items-center gap-12 pt-28 pb-6 lg:pt-24 lg:pb-8 lg:grid-cols-[1.15fr_0.85fr] xl:grid-cols-2 lg:gap-8 xl:gap-20">
           {/* Left Content */}

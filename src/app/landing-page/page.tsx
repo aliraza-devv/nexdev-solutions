@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen">
       <Navbar />
-      <div className="lg:flex lg:h-[100dvh] lg:flex-col">
+      <div className="min-1281:flex min-1281:h-[100dvh] min-1281:flex-col">
         <Hero />
         <LogosStrip />
       </div>
