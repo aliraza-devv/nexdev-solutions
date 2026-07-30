@@ -19,20 +19,8 @@ interface CaseStudy {
 }
 
 // Same clients/numbers already established in the homepage Results section
-// (and the full Nordwell case study page) - kept in sync rather than
-// reinvented here.
+// - kept in sync rather than reinvented here.
 const caseStudies: CaseStudy[] = [
-  {
-    client: 'Nordwell',
-    industry: 'E-commerce',
-    title: "Rebuilt a DTC wellness brand's store into a revenue machine",
-    desc: 'Mobile-first rebuild, a 2-step checkout, and clear subscription pricing for a fast-growing wellness brand.',
-    results: [
-      { value: '+34%', label: 'Conversion Rate' },
-      { value: '2.6×', label: 'Subscription Rev.' },
-    ],
-    href: '/landing-page/case-studies/case-study-nordwell',
-  },
   {
     client: 'Bamper',
     industry: 'E-commerce',
