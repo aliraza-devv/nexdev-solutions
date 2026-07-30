@@ -7,7 +7,13 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
+export default function Navbar({
+  ctaLabel = "Book Your Free Call",
+  ctaHref = "/landing-page#cta",
+}: {
+  ctaLabel?: string;
+  ctaHref?: string;
+} = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -83,13 +89,13 @@ export default function Navbar() {
 
           {/* Desktop CTA Button */}
           <div className="hidden items-center gap-4 lg:flex">
-            <Link href="/landing-page#cta">
+            <Link href={ctaHref}>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="rounded-full bg-[#5C45FD] px-5 py-2 text-[14px] font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0] md:px-6 md:py-2.5"
               >
-                Book Your Free Call
+                {ctaLabel}
               </motion.button>
             </Link>
           </div>
@@ -177,13 +183,13 @@ export default function Navbar() {
 
               {/* Bottom Drawer CTA Button */}
               <div className="pt-6 border-t border-black/5">
-                <Link href="/landing-page#cta" onClick={() => setIsOpen(false)}>
+                <Link href={ctaHref} onClick={() => setIsOpen(false)}>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full rounded-full bg-[#5C45FD] py-3 text-[14px] font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0]"
                   >
-                    Get Your Free Audit
+                    {ctaLabel}
                   </motion.button>
                 </Link>
               </div>

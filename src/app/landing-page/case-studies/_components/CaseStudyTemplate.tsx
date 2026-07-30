@@ -9,16 +9,20 @@
 // Styling deliberately mirrors the main /landing-page components (Arial
 // headings via inline style, the site's pill-tag/button classes, the shared
 // #5C45FD accent) rather than a standalone design system, so these pages
-// read as part of the same site. Navbar, FinalCTA (which includes the
-// footer), Testimonials and FAQ are the real site-wide components, not
-// case-study-specific reimplementations.
+// read as part of the same site. Navbar and FinalCTA (which includes the
+// footer) are the real site-wide components, not case-study-specific
+// reimplementations.
+//
+// Single-CTA rule: every button on this page points at #final-cta (the
+// FinalCTA section below) via the same href, and the Navbar's CTA is
+// overridden (via its ctaLabel/ctaHref props) to match, so there is exactly
+// one conversion action repeated in different words, not several destinations.
 // ============================================================================
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion, animate } from "framer-motion";
 import {
   ArrowRight,
-  ArrowUpRight,
   TrendingUp,
   MousePointerClick,
   BarChart3,
@@ -26,11 +30,10 @@ import {
 import type { CaseStudyData, ApproachModule, ChallengeCard } from "./types";
 import Navbar from "../../_components/Navbar";
 import SiteFooter from "../../_components/FinalCTA";
-import Testimonials from "../../_components/Testimonials";
-import FAQ from "../../_components/FAQ";
 
 const ACCENT = "#5C45FD";
 const METRIC_ICONS = [TrendingUp, MousePointerClick, BarChart3];
+const CTA_HREF = "#final-cta";
 
 // ----------------------------------------------------------------------------
 // Reveal wrapper — fade/slide-up on scroll, shared by every section so the
@@ -74,7 +77,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 // Blank placeholder box — stands in for every real image/screenshot. Keeps
 // the exact aspect ratio the final asset will use so the layout never shifts
 // once real photography/screens are dropped in; the label is aria-only so
-// the block itself reads clean, matching the reference layout.
+// the block itself reads clean.
 // ----------------------------------------------------------------------------
 function ImagePlaceholder({
   label,
@@ -94,6 +97,46 @@ function ImagePlaceholder({
       aria-label={`Placeholder image — ${clean}`}
       className={`w-full ${aspect} ${rounded} bg-zinc-100 ${className}`}
     />
+  );
+}
+
+// ----------------------------------------------------------------------------
+// Below tablet width (lg), the second image in a pair is not mounted at all -
+// not just visually hidden - so it's never requested on phones/tablets once
+// these placeholders become real next/image assets. Starts false on both
+// server and client so hydration matches; the real check runs after mount.
+// ----------------------------------------------------------------------------
+function useShowSecondImage() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setShow(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return show;
+}
+
+// Index 0 is always the more meaningful ("after"/result) image and is the
+// only one shown below desktop width.
+function ImagePair({
+  images,
+  aspect = "aspect-[4/3]",
+  rounded = "rounded-2xl",
+}: {
+  images: [string, string];
+  aspect?: string;
+  rounded?: string;
+}) {
+  const showSecond = useShowSecondImage();
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <ImagePlaceholder label={images[0]} aspect={aspect} rounded={rounded} />
+      {showSecond && (
+        <ImagePlaceholder label={images[1]} aspect={aspect} rounded={rounded} />
+      )}
+    </div>
   );
 }
 
@@ -180,22 +223,11 @@ function MetaItem({ label, value }: { label: string; value: string }) {
 }
 
 function Hero({ data }: { data: CaseStudyData }) {
-  const domain = data.liveUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
-
   return (
     <section className="relative bg-white px-6 pb-16 pt-32 md:px-10 md:pt-40">
       <div className="mx-auto max-w-[900px] text-center">
-        <Reveal className="mb-6 flex items-center justify-center gap-2 text-sm">
-          <span className="font-semibold text-zinc-700">{data.client}</span>
-          <span className="text-zinc-300">·</span>
-          <a
-            href={data.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-400 transition-colors hover:text-[#5C45FD]"
-          >
-            {domain}
-          </a>
+        <Reveal>
+          <Eyebrow>{data.client}</Eyebrow>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -207,23 +239,26 @@ function Hero({ data }: { data: CaseStudyData }) {
           </h1>
         </Reveal>
 
-        <Reveal delay={0.2} className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <Reveal delay={0.16}>
+          <p
+            className="mt-5 text-lg font-bold text-[#5C45FD] md:text-xl"
+            style={{ fontFamily: "Arial, sans-serif" }}
+          >
+            {data.heroStat}
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.2} className="mt-8 flex flex-col items-center gap-3">
           <a
-            href="#final-cta"
+            href={CTA_HREF}
             className="inline-flex items-center gap-2 rounded-full bg-[#5C45FD] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0] hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5C45FD]"
           >
             {data.cta.primary}
             <ArrowRight className="h-4 w-4" />
           </a>
-          <a
-            href={data.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 px-7 py-3.5 text-sm font-semibold text-[#0A0A0E] transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5C45FD]"
-          >
-            View live site
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
+          <p className="text-xs text-zinc-400">
+            Free 30-min call. No pitch, just clarity.
+          </p>
         </Reveal>
 
         <Reveal
@@ -236,10 +271,18 @@ function Hero({ data }: { data: CaseStudyData }) {
         </Reveal>
       </div>
 
-      <Reveal delay={0.3} className="mx-auto mt-12 grid max-w-[1400px] grid-cols-1 gap-4 sm:grid-cols-2">
-        {data.heroImages.map((img, i) => (
-          <ImagePlaceholder key={i} label={img} aspect="aspect-[4/3]" rounded="rounded-[24px]" />
-        ))}
+      <Reveal delay={0.3} className="mx-auto mt-12 max-w-[1400px]">
+        <ImagePair images={data.heroImages} aspect="aspect-[4/3]" rounded="rounded-[24px]" />
+      </Reveal>
+    </section>
+  );
+}
+
+function Context({ data }: { data: CaseStudyData }) {
+  return (
+    <section className="bg-white px-6 pb-16 md:px-10 md:pb-20">
+      <Reveal className="mx-auto max-w-[800px] text-center">
+        <p className="text-lg leading-relaxed text-zinc-600">{data.context}</p>
       </Reveal>
     </section>
   );
@@ -265,7 +308,7 @@ function Challenge({ data }: { data: CaseStudyData }) {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {data.challenge.problems.map((problem, i) => (
             <Reveal key={problem.title} delay={i * 0.08}>
               <div className="flex h-full flex-col gap-3 rounded-2xl border border-black/[0.06] bg-white p-6">
@@ -285,29 +328,45 @@ function Challenge({ data }: { data: CaseStudyData }) {
   );
 }
 
-function ApproachRow({ item, index }: { item: ApproachModule; index: number }) {
+function ApproachRow({
+  item,
+  index,
+  challenge,
+}: {
+  item: ApproachModule;
+  index: number;
+  challenge: ChallengeCard;
+}) {
+  const reversed = index % 2 === 1;
   return (
-    <Reveal>
-      <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div className="mt-3">
-        <span className="inline-flex items-center rounded-full bg-[#5C45FD]/10 px-3.5 py-1.5 text-xs font-bold text-[#5C45FD]">
-          {item.microResult}
+    <Reveal className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className={reversed ? "lg:order-2" : ""}>
+        <span
+          className="text-3xl font-bold text-zinc-300 md:text-4xl"
+          style={{ fontFamily: "Arial, sans-serif" }}
+        >
+          {String(index + 1).padStart(2, "0")}
         </span>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center rounded-full bg-[#5C45FD]/10 px-3.5 py-1.5 text-xs font-bold text-[#5C45FD]">
+            {item.microResult}
+          </span>
+          <span
+            className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${SEVERITY_STYLES[challenge.severity]}`}
+          >
+            Solves: {challenge.tag}
+          </span>
+        </div>
+        <h3
+          className="mt-3 text-2xl text-[#0A0A0E] md:text-[28px]"
+          style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
+        >
+          {item.title}
+        </h3>
+        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-zinc-600">{item.body}</p>
       </div>
-      <h3
-        className="mt-3 text-2xl text-[#0A0A0E] md:text-[28px]"
-        style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
-      >
-        {item.title}
-      </h3>
-      <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-zinc-600">{item.body}</p>
-
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {item.images.map((img, i) => (
-          <ImagePlaceholder key={i} label={img} aspect="aspect-[4/3]" />
-        ))}
+      <div className={reversed ? "lg:order-1" : ""}>
+        <ImagePair images={item.images} aspect="aspect-[4/3]" />
       </div>
     </Reveal>
   );
@@ -323,13 +382,18 @@ function Approach({ data }: { data: CaseStudyData }) {
             className="text-2xl text-[#0A0A0E] md:text-3xl"
             style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
           >
-            Four fixes, each proven on its own before it added up to the whole.
+            Three fixes, each mapped directly to the challenge it solves.
           </p>
         </Reveal>
 
         <div className="flex flex-col gap-16 md:gap-24">
           {data.approach.map((item, i) => (
-            <ApproachRow key={item.title} item={item} index={i} />
+            <ApproachRow
+              key={item.title}
+              item={item}
+              index={i}
+              challenge={data.challenge.problems[item.solves]}
+            />
           ))}
         </div>
       </div>
@@ -337,32 +401,13 @@ function Approach({ data }: { data: CaseStudyData }) {
   );
 }
 
-function MidCTA({ data }: { data: CaseStudyData }) {
+function ResultsAtLaunch({ data }: { data: CaseStudyData }) {
   return (
-    <section className="bg-white px-6 pb-20 md:px-10 md:pb-28">
-      <Reveal className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-6 rounded-2xl border border-[#5C45FD]/15 bg-[#5C45FD]/[0.04] px-8 py-8 sm:flex-row">
-        <p className="text-center text-lg font-medium text-[#0A0A0E] sm:text-left">
-          Curious what a CRO pass would find on your site?
-        </p>
-        <a
-          href="#final-cta"
-          className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#5C45FD] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0] hover:scale-[1.02]"
-        >
-          {data.cta.secondary}
-          <ArrowRight className="h-4 w-4" />
-        </a>
-      </Reveal>
-    </section>
-  );
-}
-
-function ResultsPrimary({ data }: { data: CaseStudyData }) {
-  return (
-    <section id="results" className="bg-white px-6 py-20 md:px-10 md:py-28">
+    <section id="results" className="bg-white px-6 pt-20 md:px-10 md:pt-28">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
-            <Eyebrow>The Result</Eyebrow>
+            <Eyebrow>At Launch · First 8 Weeks</Eyebrow>
             <p
               className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
               style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
@@ -393,12 +438,32 @@ function ResultsPrimary({ data }: { data: CaseStudyData }) {
   );
 }
 
-function ResultsSecondary({ data }: { data: CaseStudyData }) {
+// Thin visual link between the two results tiers so they read as two points
+// on one timeline (Day 1 -> Month 6) rather than two unrelated stat grids.
+function ResultsTimelineConnector() {
+  return (
+    <div className="bg-white px-6 py-10 md:px-10">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-3">
+        <span className="h-2 w-2 flex-shrink-0 rounded-full bg-[#5C45FD]" />
+        <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+          Day 1
+        </span>
+        <span className="h-px w-full max-w-[240px] bg-zinc-200" />
+        <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+          Month 6
+        </span>
+        <span className="h-2 w-2 flex-shrink-0 rounded-full bg-[#5C45FD]" />
+      </div>
+    </div>
+  );
+}
+
+function ResultsSixMonths({ data }: { data: CaseStudyData }) {
   return (
     <section className="bg-zinc-50/60 px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[900px] text-center">
         <Reveal>
-          <Eyebrow>Measurable Impact</Eyebrow>
+          <Eyebrow>6 Months Post-Launch</Eyebrow>
           <p
             className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
             style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
@@ -427,23 +492,49 @@ function ResultsSecondary({ data }: { data: CaseStudyData }) {
   );
 }
 
+function Testimonial({ data }: { data: CaseStudyData }) {
+  return (
+    <section className="bg-white px-6 py-20 md:px-10 md:py-28">
+      <Reveal className="mx-auto max-w-[800px] text-center">
+        <p
+          className="text-2xl italic leading-snug text-[#0A0A0E] md:text-3xl"
+          style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
+        >
+          &quot;{data.quote.text}&quot;
+        </p>
+        <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="h-14 w-14 flex-shrink-0">
+            <ImagePlaceholder
+              label={data.quote.photo}
+              aspect="aspect-square"
+              rounded="rounded-full"
+            />
+          </div>
+          <div className="text-left">
+            <div className="text-sm font-bold text-[#0A0A0E]">{data.quote.name}</div>
+            <div className="text-xs text-zinc-500">{data.quote.role}</div>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
 export default function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
   return (
     // --accent is the single line to change for a full rebrand — every
     // color reference in this file reads from this CSS variable.
     <div style={{ "--accent": ACCENT } as React.CSSProperties} className="bg-white">
-      <Navbar />
+      <Navbar ctaLabel="Book a Free Call" ctaHref={CTA_HREF} />
       <main className="relative min-h-screen">
         <Hero data={data} />
+        <Context data={data} />
         <Challenge data={data} />
         <Approach data={data} />
-        {/* Real site testimonials, not a case-study-specific reimplementation */}
-        <Testimonials />
-        <MidCTA data={data} />
-        <ResultsPrimary data={data} />
-        <ResultsSecondary data={data} />
-        {/* Real site FAQ in place of a duplicate closing CTA band */}
-        <FAQ />
+        <ResultsAtLaunch data={data} />
+        <ResultsTimelineConnector />
+        <ResultsSixMonths data={data} />
+        <Testimonial data={data} />
       </main>
       <SiteFooter />
     </div>

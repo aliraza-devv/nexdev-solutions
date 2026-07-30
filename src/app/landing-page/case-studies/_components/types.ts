@@ -7,6 +7,8 @@ export interface ApproachModule {
   body: string;
   microResult: string;
   images: [string, string];
+  // Index into challenge.problems - which challenge card this fix solves.
+  solves: number;
 }
 
 export interface ChallengeCard {
@@ -21,6 +23,9 @@ export interface CaseStudyData {
   client: string;
   liveUrl: string;
   headline: string;
+  // Single standout stat shown directly under the H1, e.g. "+210% subscription
+  // revenue in 8 weeks" - separate from the metrics/stats blocks further down.
+  heroStat: string;
   heroImages: [string, string];
   meta: {
     year: string;
@@ -28,6 +33,7 @@ export interface CaseStudyData {
     industry: string;
     services: string[];
   };
+  // "At Launch" results tier - animated from/to counters.
   metrics: {
     label: string;
     from: string;
@@ -35,6 +41,9 @@ export interface CaseStudyData {
     change: string;
     window: string;
   }[];
+  // Short intro to the client/project, shown between the meta bar and
+  // the Challenge section.
+  context: string;
   challenge: {
     intro: string;
     problems: ChallengeCard[];
@@ -46,6 +55,7 @@ export interface CaseStudyData {
     role: string;
     photo: string;
   };
+  // "6 Months" results tier - plain stat strip.
   results: {
     intro: string;
     chartImage: string;

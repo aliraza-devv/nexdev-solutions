@@ -5,6 +5,7 @@ export const CASE_STUDY: CaseStudyData = {
   client: "Reality Cheque",
   liveUrl: "https://example.com",
   headline: "A lead-gen funnel that returned 26× on ad spend in two weeks",
+  heroStat: "+210% subscription revenue in 8 weeks",
   heroImages: [
     "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
     "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
@@ -38,16 +39,12 @@ export const CASE_STUDY: CaseStudyData = {
       window: "in 2 weeks",
     },
   ],
+  context:
+    "PLACEHOLDER: 2-3 sentence introduction to Reality Cheque's service business and the scope of this funnel engagement before diving into what wasn't working.",
   challenge: {
     intro:
       "Paid traffic was arriving, and almost none of it was converting into booked calls.",
     problems: [
-      {
-        tag: "Critical",
-        severity: "critical",
-        title: "No reason to act now",
-        desc: "A generic contact form gave leads no reason to book right now instead of 'later.'",
-      },
       {
         tag: "Sales Waste",
         severity: "warning",
@@ -73,6 +70,7 @@ export const CASE_STUDY: CaseStudyData = {
       title: "Message-matched landing pages for every ad angle",
       body: "PLACEHOLDER: expand on building a dedicated landing page per ad creative so the promise on the ad matches the promise on the page.",
       microResult: "Bounce rate -33%",
+      solves: 1,
       images: [
         "PLACEHOLDER: landing-page-variants 1200×900",
         "PLACEHOLDER: ad-to-page match detail 1200×900",
@@ -82,24 +80,17 @@ export const CASE_STUDY: CaseStudyData = {
       title: "A built-in lead qualification quiz",
       body: "PLACEHOLDER: expand on the short quiz used to filter and route leads before they ever reach the sales team.",
       microResult: "Sales-qualified rate +58%",
+      solves: 0,
       images: [
         "PLACEHOLDER: qualification-quiz 1200×900",
         "PLACEHOLDER: lead routing logic 1200×900",
       ],
     },
     {
-      title: "One-click call booking, no back-and-forth",
-      body: "PLACEHOLDER: expand on embedding a real-time booking calendar directly in the funnel instead of a 'we'll email you' form.",
-      microResult: "Booking rate +44%",
-      images: [
-        "PLACEHOLDER: booking-calendar 1200×900",
-        "PLACEHOLDER: instant confirmation step 1200×900",
-      ],
-    },
-    {
       title: "Retargeting and an email sequence for non-converters",
       body: "PLACEHOLDER: expand on the follow-up sequence built to recover the majority of visitors who didn't book on their first visit.",
       microResult: "Recovered leads: 22",
+      solves: 2,
       images: [
         "PLACEHOLDER: retargeting-sequence 1200×900",
         "PLACEHOLDER: email nurture flow 1200×900",

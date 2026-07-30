@@ -6,6 +6,7 @@ export const CASE_STUDY: CaseStudyData = {
   liveUrl: "https://example.com",
   headline:
     "How a bamboo toilet paper brand sold out its first inventory in 60 days",
+  heroStat: "+210% subscription revenue in 8 weeks",
   heroImages: [
     "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
     "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
@@ -39,6 +40,8 @@ export const CASE_STUDY: CaseStudyData = {
       window: "in 60 days",
     },
   ],
+  context:
+    "PLACEHOLDER: 2-3 sentence introduction to Bamper's business, what they sell, and the scope of this engagement before diving into what wasn't working.",
   challenge: {
     intro:
       "A clever, sustainable product with zero brand recognition and a hard launch deadline.",
@@ -61,12 +64,6 @@ export const CASE_STUDY: CaseStudyData = {
         title: "Subscribe & save missing",
         desc: "The recurring-revenue option wasn't presented anywhere, leaving repeat revenue on the table.",
       },
-      {
-        tag: "Weak Copy",
-        severity: "warning",
-        title: "No price justification",
-        desc: "The product page never explained why bamboo justified a premium price.",
-      },
     ],
   },
   approach: [
@@ -74,6 +71,7 @@ export const CASE_STUDY: CaseStudyData = {
       title: "Brand-first product photography and storytelling",
       body: "PLACEHOLDER: expand on how the store's visual identity was rebuilt around sustainability and premium positioning instead of a generic Shopify theme.",
       microResult: "Add-to-cart +38%",
+      solves: 1,
       images: [
         "PLACEHOLDER: brand-photography 1200×900",
         "PLACEHOLDER: brand-storytelling section 1200×900",
@@ -83,6 +81,7 @@ export const CASE_STUDY: CaseStudyData = {
       title: "A launch-day landing page built for urgency",
       body: "PLACEHOLDER: expand on the limited-run messaging, countdown, and pre-launch waitlist mechanics used to build demand before stock even shipped.",
       microResult: "Pre-launch signups: 1,200",
+      solves: 0,
       images: [
         "PLACEHOLDER: launch-page 1200×900",
         "PLACEHOLDER: countdown + waitlist module 1200×900",
@@ -92,18 +91,10 @@ export const CASE_STUDY: CaseStudyData = {
       title: "Subscribe & save built into the buy box",
       body: "PLACEHOLDER: expand on how the subscription option was surfaced at the moment of decision instead of being buried in a separate page.",
       microResult: "Subscribe opt-in 24%",
+      solves: 2,
       images: [
         "PLACEHOLDER: subscribe-buybox 1200×900",
         "PLACEHOLDER: subscription pricing detail 1200×900",
-      ],
-    },
-    {
-      title: "Checkout trust signals for a brand-new store",
-      body: "PLACEHOLDER: expand on the reviews, guarantees, and secure-checkout badges added to reassure first-time buyers with no purchase history to lean on.",
-      microResult: "Checkout abandonment -19%",
-      images: [
-        "PLACEHOLDER: checkout-trust 1200×900",
-        "PLACEHOLDER: reviews + guarantee badges 1200×900",
       ],
     },
   ],
