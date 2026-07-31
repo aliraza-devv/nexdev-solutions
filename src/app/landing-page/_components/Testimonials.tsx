@@ -8,17 +8,17 @@ const videoTestimonials = [
   {
     id: 1,
     name: "Jane",
-    role: "CEO, Safeguard",
+    role: "CEO, Outsouth Tech",
     quote:
-      "They didn't build us a website. They built us a lead generation machine. Our pipeline has never been this full.",
+      "We chose NeXDev because of their modern sophisticated approach to design and conversion. And we couldn't be happier. We highly recommend NeXDev for all your website & software development needs.",
     videoUrl: "/assets/TESTIMONIALS/Testimonial-1.mp4",
   },
   {
     id: 2,
     name: "Trishelle",
-    role: "CEO, Outsouth tech & Smarterform",
+    role: "CEO, Smarterform",
     quote:
-      "The SYNC method actually works. The strategy behind the design is what sets them apart from every other agency.",
+      "I have been working with Ali & NeXDev and they go beyond for the clients needs and also very responsive. I definately recommend them for design & development.",
     videoUrl: "/assets/TESTIMONIALS/Testimonial-2.MP4",
   },
   {
@@ -26,7 +26,7 @@ const videoTestimonials = [
     name: "Saddam Hasan",
     role: "Co-Founder, Reality Cheque & AMZ ONE Step",
     quote:
-      "Hit every deadline. Exceeded expectations on every level. The conversion results have been incredible.",
+      "It has been amazing experience working with NeXDev. What's great is the at speed they work and results. In first month we spent $1K on ads and generated $26K in revenue with 26X ROAS, the results I have never seen before. And we've using their services as a white-label service. So far it's working well for us & our clients.",
     videoUrl: "/assets/TESTIMONIALS/Saddam.mp4",
   },
   {
@@ -34,7 +34,7 @@ const videoTestimonials = [
     name: "Hamna",
     role: "CEO, Alphagon",
     quote:
-      "Professional, creative, and data-driven. They understood our brand immediately and delivered a world-class site.",
+      "Best part was they were super responsive and the efforts to make sure the client is always satisfied. He made sure out of the ways for us to get the best results.",
     videoUrl: "/assets/TESTIMONIALS/Hamna.mp4",
   },
 ];

@@ -19,16 +19,6 @@ const cases = [
     image: "/assets/case-studies/Reality-cheque-case-study.png",
   },
   {
-    stat: "Built a funnel for service business",
-    brand: "Reality Cheque",
-    desc: "We built a lead-gen funnel from scratch for their DFY service. Same brand, different goal: book high-quality leads for their service business. So we built a dedicated funnel from the ground up.",
-    results: [
-      { value: "70+", label: "leads in 2 weeks" },
-      { value: "26X", label: "ROAS" },
-    ],
-    href: "/landing-page/case-studies/case-study-reality-cheque-funnel",
-  },
-  {
     stat: "Shopify store built for a brand",
     brand: "Bamper",
     desc: "We built a Shopify store from scratch for a bamboo-goods brand. A new e-commerce brand that needed to sell fast. We built the store around conversion and brand trust from day one.",
@@ -48,6 +38,16 @@ const cases = [
       { value: "30 Days", label: "MVP shipped" },
     ],
     href: "/landing-page/case-studies/case-study-smarterform",
+  },
+  {
+    stat: "Built a funnel for service business",
+    brand: "Reality Cheque",
+    desc: "We built a lead-gen funnel from scratch for their DFY service. Same brand, different goal: book high-quality leads for their service business. So we built a dedicated funnel from the ground up.",
+    results: [
+      { value: "70+", label: "leads in 2 weeks" },
+      { value: "26X", label: "ROAS" },
+    ],
+    href: "/landing-page/case-studies/case-study-reality-cheque-funnel",
   },
 ];
 

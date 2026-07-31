@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const partners = [
-  { logo: "/assets/partner-1.png", metric: "+52%", label: "Conversion" },
-  { logo: "/assets/partner-2.png", metric: "+156%", label: "Revenue" },
-  { logo: "/assets/partner-3.png", metric: "+80%", label: "Growth" },
-  { logo: "/assets/partner-4.png", metric: "+67%", label: "Sales" },
-  { logo: "/assets/partner-5.png", metric: "+47%", label: "Conversion" },
-  { logo: "/assets/partner-6.png", metric: "+70%", label: "Growth" },
-  { logo: "/assets/partner-7.png", metric: "+57%", label: "Conversion" },
-  { logo: "/assets/partner-8.png", metric: "+80%", label: "Leads" },
+  { logo: "/assets/partner-1.png", metric: "26X%", label: "ROAS" },
+  { logo: "/assets/partner-2.png", metric: "3.2%", label: "Conversion" },
+  { logo: "/assets/partner-3.png", metric: "+180%", label: "Growth" },
+  { logo: "/assets/partner-4.png", metric: "60 days", label: "Sold-out" },
+  { logo: "/assets/partner-5.png", metric: "+147%", label: "Leads" },
+  { logo: "/assets/partner-6.png", metric: "+83%", label: "Growth" },
+  { logo: "/assets/partner-7.svg", metric: "+57%", label: "Conversion" },
+  { logo: "/assets/partner-8.png", metric: "+51.3%", label: "Conversion" },
 ];
 
 export default function LogosStrip() {

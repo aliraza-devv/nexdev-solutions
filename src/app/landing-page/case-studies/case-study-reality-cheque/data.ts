@@ -18,7 +18,7 @@ export const CASE_STUDY: CaseStudyData = {
     year: "",
     timeline: "4 Weeks",
     industry: "Online Education & Community",
-    services: ["SYNC Audit", "UX/UI Design", "Web Development", "CRO", "VSL"],
+    services: ["SYNC Audit", "UX/UI", "Development", "CRO"],
   },
   resultsAtLaunchEyebrow: "FIRST 24 HOURS",
   resultsSustainedEyebrow: "AND IT KEPT GROWING",
@@ -116,7 +116,8 @@ export const CASE_STUDY: CaseStudyData = {
     photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
   },
   results: {
-    chartImage: "PLACEHOLDER: results-chart — signups over first 24 hours 1400×600",
+    chartImage:
+      "PLACEHOLDER: results-chart — signups over first 24 hours 1400×600",
     stats: [
       {
         value: "7.1K+",
@@ -135,7 +136,8 @@ export const CASE_STUDY: CaseStudyData = {
     secondary: "Get a free CRO audit",
   },
   finalCta: {
-    headline: "Your website should sell as hard as you do. Let's build it that way.",
+    headline:
+      "Your website should sell as hard as you do. Let's build it that way.",
     subline:
       "30 minutes. No pitch. Just a clear look at what's holding your site back, and what to do about it.",
   },

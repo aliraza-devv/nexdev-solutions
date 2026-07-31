@@ -4,9 +4,11 @@ export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Reality Cheque DFY",
   liveUrl: "https://example.com",
-  heroEyebrow: "Case Study — Reality Cheque DFY · Done-For-You Systems for Agency Owners",
-  headline: "How a brand-new website turned $1K in ad spend into 26X ROAS.",
-  heroStat: "26X ROAS from $1,000 in ad spend",
+  heroEyebrow:
+    "Case Study — Reality Cheque DFY · Done-For-You Systems for Agency Owners",
+  headline:
+    "How a brand-new website turned $1K in ad spend into 26X ROAS and doing $1M.",
+  heroStat: "26X ROAS from $1,000 in ad spend and doing $1M",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
@@ -17,14 +19,7 @@ export const CASE_STUDY: CaseStudyData = {
     year: "",
     timeline: "3 Weeks",
     industry: "Agency Growth / Done-For-You Services",
-    services: [
-      "SYNC Audit",
-      "UX/UI Design",
-      "Web Development",
-      "Funnel Build",
-      "CRO",
-      "Tracking Setup",
-    ],
+    services: ["SYNC Audit", "UX/UI", "Development", "CRO", "Tracking Setup"],
   },
   resultsAtLaunchEyebrow: "FIRST 2 WEEKS",
   resultsSustainedEyebrow: "AND IT SCALED",
@@ -72,7 +67,8 @@ export const CASE_STUDY: CaseStudyData = {
       },
     ],
   },
-  approachHeader: "We didn't build a website. We built a funnel that qualifies.",
+  approachHeader:
+    "We didn't build a website. We built a funnel that qualifies.",
   approachIntro:
     "We started with discovery to understand their offer, their buyers, and their competitors. A SYNC Method audit mapped how a stranger should move from first click to booked call. Then we built it, one step at a time.",
   approach: [
