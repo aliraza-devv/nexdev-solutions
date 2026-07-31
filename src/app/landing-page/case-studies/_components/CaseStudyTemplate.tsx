@@ -45,6 +45,15 @@ const ACCENT = "#5C45FD";
 const METRIC_ICONS = [TrendingUp, MousePointerClick, BarChart3];
 const CTA_HREF = "#final-cta";
 
+// A results tier usually has 3 stats, but not always (e.g. a two-stat MVP
+// phase) - size the grid to what's actually there instead of leaving an
+// empty third column.
+function statsGridCols(count: number) {
+  if (count <= 1) return "sm:grid-cols-1";
+  if (count === 2) return "sm:grid-cols-2";
+  return "sm:grid-cols-3";
+}
+
 // ----------------------------------------------------------------------------
 // Reveal wrapper — fade/slide-up on scroll, shared by every section so the
 // motion feels consistent instead of each section rolling its own timing.
@@ -499,7 +508,7 @@ function ResultsAtLaunch({ data }: { data: CaseStudyData }) {
           )}
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className={`mt-10 grid grid-cols-1 gap-4 ${statsGridCols(data.metrics.length)}`}>
           {data.metrics.map((metric, i) => (
             <MetricCard key={metric.label} metric={metric} index={i} />
           ))}
@@ -553,7 +562,9 @@ function ResultsSustained({ data }: { data: CaseStudyData }) {
           )}
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 border-t border-black/[0.06] pt-8 sm:grid-cols-3 sm:divide-x sm:divide-black/[0.06]">
+        <div
+          className={`mt-10 grid grid-cols-1 gap-8 border-t border-black/[0.06] pt-8 sm:divide-x sm:divide-black/[0.06] ${statsGridCols((data.results.stats ?? []).length)}`}
+        >
           {(data.results.stats ?? []).map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.1}>
               {stat.value ? (
@@ -608,7 +619,11 @@ function Testimonial({ data }: { data: CaseStudyData }) {
             ) : (
               <div className="text-sm font-bold italic text-zinc-300">— Add client name —</div>
             )}
-            <div className="text-xs text-zinc-500">{data.quote.role}</div>
+            {data.quote.role ? (
+              <div className="text-xs text-zinc-500">{data.quote.role}</div>
+            ) : (
+              <div className="text-xs italic text-zinc-300">— Add role/company —</div>
+            )}
           </div>
         </div>
       </Reveal>

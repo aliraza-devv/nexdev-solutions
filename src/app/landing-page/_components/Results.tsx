@@ -39,6 +39,16 @@ const cases = [
     href: "/landing-page/case-studies/case-study-bamper",
     image: "/assets/case-studies/Bamper-case-study.png",
   },
+  {
+    stat: "Built a secure form-building SaaS platform",
+    brand: "Smarterform",
+    desc: "We built a drag-and-drop, multi-step form builder from scratch for law firms and compliance teams handling sensitive data. An MVP fast enough to raise on, then a full secure build.",
+    results: [
+      { value: "2 Weeks", label: "To secure investor" },
+      { value: "30 Days", label: "MVP shipped" },
+    ],
+    href: "/landing-page/case-studies/case-study-smarterform",
+  },
 ];
 
 function CaseCard({
