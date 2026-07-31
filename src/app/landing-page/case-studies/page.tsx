@@ -55,6 +55,28 @@ const caseStudies: CaseStudy[] = [
     href: '/landing-page/case-studies/case-study-reality-cheque-funnel',
   },
   {
+    client: 'Smarterform',
+    industry: 'SaaS',
+    title: 'Built a secure form-building SaaS platform',
+    desc: 'A drag-and-drop, multi-step form builder for law firms and compliance teams. MVP fast enough to raise on, then a full secure build.',
+    results: [
+      { value: '2 Weeks', label: 'To Secure Investor' },
+      { value: '30 Days', label: 'MVP Shipped' },
+    ],
+    href: '/landing-page/case-studies/case-study-smarterform',
+  },
+  {
+    client: 'The HDDs',
+    industry: 'E-commerce',
+    title: 'A brand-new store that got orders before it even launched',
+    desc: 'A refurbished storage e-commerce brand built from zero, competing with household names on trust, not just price.',
+    results: [
+      { value: 'Pre-Launch', label: 'Organic Orders' },
+      { value: '5 Weeks', label: 'Store Built' },
+    ],
+    href: '/landing-page/case-studies/case-study-thehdds',
+  },
+  {
     client: 'Vantage Metrics',
     industry: 'SaaS',
     title: 'Turned a confusing trial flow into a paid-conversion engine',
