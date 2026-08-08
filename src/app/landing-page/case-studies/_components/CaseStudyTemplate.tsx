@@ -13,10 +13,10 @@
 // footer) are the real site-wide components, not case-study-specific
 // reimplementations.
 //
-// Single-CTA rule: every button on this page points at #final-cta (the
-// FinalCTA section below) via the same href, and the Navbar's CTA is
-// overridden (via its ctaLabel/ctaHref props) to match, so there is exactly
-// one conversion action repeated in different words, not several destinations.
+// Single-CTA rule: every button on this page points at the /book-call page
+// via the same href, and the Navbar's CTA is overridden (via its
+// ctaLabel/ctaHref props) to match, so there is exactly one conversion
+// action repeated in different words, not several destinations.
 //
 // Several fields are optional (heroEyebrow, approachIntro/PlusLine,
 // turningPoint, results.note, finalCta, microResult per fix) precisely so
@@ -25,6 +25,7 @@
 // ============================================================================
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useInView, useReducedMotion, animate } from "framer-motion";
 import {
   ArrowRight,
@@ -43,7 +44,7 @@ import SiteFooter from "../../_components/FinalCTA";
 
 const ACCENT = "#5C45FD";
 const METRIC_ICONS = [TrendingUp, MousePointerClick, BarChart3];
-const CTA_HREF = "#final-cta";
+const CTA_HREF = "/landing-page/book-call";
 
 // A results tier usually has 3 stats, but not always (e.g. a two-stat MVP
 // phase) - size the grid to what's actually there instead of leaving an
@@ -135,6 +136,27 @@ function useShowSecondImage() {
     return () => mq.removeEventListener("change", update);
   }, []);
   return show;
+}
+
+// One real photo/screenshot per Approach fix card - falls back to the same
+// blank placeholder box until a brand's data.ts sets a real asset path.
+function ApproachImage({
+  image,
+  aspect = "aspect-[4/3]",
+  rounded = "rounded-2xl",
+}: {
+  image: string;
+  aspect?: string;
+  rounded?: string;
+}) {
+  if (image.startsWith("PLACEHOLDER:")) {
+    return <ImagePlaceholder label={image} aspect={aspect} rounded={rounded} />;
+  }
+  return (
+    <div className={`relative w-full ${aspect} ${rounded} overflow-hidden bg-zinc-100`}>
+      <Image src={image} alt="" fill className="object-cover" />
+    </div>
+  );
 }
 
 // Index 0 is always the more meaningful ("after"/result) image and is the
@@ -414,7 +436,7 @@ function ApproachRow({
         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-zinc-600">{item.body}</p>
       </div>
       <div className={reversed ? "lg:order-1" : ""}>
-        <ImagePair images={item.images} aspect="aspect-[4/3]" />
+        <ApproachImage image={item.image} aspect="aspect-[4/3]" />
       </div>
     </Reveal>
   );

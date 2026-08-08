@@ -76,28 +76,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "SYNC Landing Page with a High-Converting VSL",
       body: "The landing page was built on the SYNC Method. A VSL does the heavy selling, the copy makes the service clear, and real case studies and testimonials carry the trust. CTAs were placed around how people actually read the page.",
       solves: 1,
-      images: [
-        "PLACEHOLDER: sync-landing-vsl 1200×900",
-        "PLACEHOLDER: proof + testimonials section 1200×900",
-      ],
+      image: "PLACEHOLDER: sync-landing-vsl 1200×900",
     },
     {
       title: "A Distraction-Free Qualifying Funnel",
       body: "After the landing page, the flow does the filtering. A stripped-back form page qualifies each lead, then sends them to book a call. A confirmation page follows, stacked with more proof to protect the show-up rate.",
       solves: 2,
-      images: [
-        "PLACEHOLDER: qualifying-form-page 1200×900",
-        "PLACEHOLDER: confirmation-page 1200×900",
-      ],
+      image: "PLACEHOLDER: qualifying-form-page 1200×900",
     },
     {
       title: "Tracking Wired In From Day One",
       body: "We set up Microsoft Clarity and the Meta pixel across the site and connected every page to GoHighLevel. No guessing. They could see where leads came from and where to tighten the funnel.",
       solves: 0,
-      images: [
-        "PLACEHOLDER: tracking-setup 1200×900",
-        "PLACEHOLDER: gohighlevel-integration 1200×900",
-      ],
+      image: "PLACEHOLDER: tracking-setup 1200×900",
     },
   ],
   turningPoint: {

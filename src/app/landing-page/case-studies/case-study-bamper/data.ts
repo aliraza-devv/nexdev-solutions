@@ -77,28 +77,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "An About Page That Earns Belief",
       body: 'We gave Bamper a real story, not a generic "who we are" block. It\'s the page a skeptical first-time visitor reads before they trust anything else on the site.',
       solves: 0,
-      images: [
-        "PLACEHOLDER: about-page 1200×900",
-        "PLACEHOLDER: brand-story section 1200×900",
-      ],
+      image: "/assets/case-studies/Bamper-approach-1.png",
     },
     {
       title: "A High-Converting, Objection-Killing Product Page",
       body: "Every likely doubt got answered before the visitor could ask it. Real video reviews from actual customers sat right where the hesitation would happen, so trust showed up exactly when it was needed.",
       solves: 1,
-      images: [
-        "PLACEHOLDER: product-page 1200×900",
-        "PLACEHOLDER: video-reviews section 1200×900",
-      ],
+      image: "/assets/case-studies/Bamper-approach-2.png",
     },
     {
       title: "A Seamless, Branded Checkout",
       body: "We built checkout to remove friction and reinforce trust at the exact moment people talk themselves out of buying. Every screen matched the brand, so nothing felt like a generic Shopify template bolted on at the end.",
       solves: 2,
-      images: [
-        "PLACEHOLDER: checkout-flow 1200×900",
-        "PLACEHOLDER: branded-checkout-detail 1200×900",
-      ],
+      image: "/assets/case-studies/Bamper-approach-3.png",
     },
   ],
   turningPoint: {

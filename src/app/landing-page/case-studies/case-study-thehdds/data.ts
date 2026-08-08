@@ -77,28 +77,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "A Brand-Aligned Store That Looks the Part",
       body: "We designed the whole store around the brand so it felt established from day one, not like a new arrival. Conversion-focused copy, written to rank in search too, carried the message across every page.",
       solves: 0,
-      images: [
-        "PLACEHOLDER: brand-aligned-store 1200×900",
-        "PLACEHOLDER: homepage-detail 1200×900",
-      ],
+      image: "PLACEHOLDER: brand-aligned-store 1200×900",
     },
     {
       title: "A Product Page That Kills the Doubt",
       body: "The product pages were built to answer the reliability question head on, state the real value clearly, and remove the hesitation that comes with buying refurbished. Trust where the buyer needs it, right when they need it.",
       solves: 1,
-      images: [
-        "PLACEHOLDER: product-page 1200×900",
-        "PLACEHOLDER: trust-signals-detail 1200×900",
-      ],
+      image: "PLACEHOLDER: product-page 1200×900",
     },
     {
       title: "Seamless Checkout Plus a Wholesale Path",
       body: "We built a checkout that removes friction and makes buying the obvious choice, and added a clean wholesale purchase form so bulk buyers get their own smooth path without complicating the main store.",
       solves: 2,
-      images: [
-        "PLACEHOLDER: checkout-flow 1200×900",
-        "PLACEHOLDER: wholesale-form 1200×900",
-      ],
+      image: "PLACEHOLDER: checkout-flow 1200×900",
     },
   ],
   turningPoint: {

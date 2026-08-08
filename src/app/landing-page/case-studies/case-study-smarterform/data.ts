@@ -75,28 +75,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "An MVP Built to Raise On (30 Days)",
       body: "In 30 days we shipped an MVP that made the value impossible to miss: the problem it solves, who it's for, and how big it could get. Clear enough to walk an investor through, and it worked.",
       solves: 0,
-      images: [
-        "PLACEHOLDER: mvp-overview 1200×900",
-        "PLACEHOLDER: investor-pitch-view 1200×900",
-      ],
+      image: "PLACEHOLDER: mvp-overview 1200×900",
     },
     {
       title: "Complex Form-Building, Made Effortless",
       body: "The core is a drag-and-drop builder where an admin creates multi-step forms with complicated logic, no code required. We set up roles for admin reviewers, reviewers, and submitters so each person only sees what they need, plus a dashboard for stats and settings. Hard on the inside, simple on the surface.",
       solves: 1,
-      images: [
-        "PLACEHOLDER: form-builder 1200×900",
-        "PLACEHOLDER: roles-dashboard 1200×900",
-      ],
+      image: "PLACEHOLDER: form-builder 1200×900",
     },
     {
       title: "Security Built Into the Foundation",
       body: "We built secure authentication and an encryption layer so sensitive data stays protected from end to end. Then it was put through penetration testing, and it held.",
       solves: 2,
-      images: [
-        "PLACEHOLDER: auth-security 1200×900",
-        "PLACEHOLDER: encryption-layer-diagram 1200×900",
-      ],
+      image: "PLACEHOLDER: auth-security 1200×900",
     },
   ],
   turningPoint: {

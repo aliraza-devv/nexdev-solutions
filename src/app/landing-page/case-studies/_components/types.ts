@@ -8,7 +8,7 @@ export interface ApproachModule {
   // Small result pill shown above the title (e.g. "Add-to-cart +38%").
   // Optional - omit it and the pill just doesn't render.
   microResult?: string;
-  images: [string, string];
+  image: string;
   // Index into challenge.problems - which challenge card this fix solves.
   solves: number;
 }

@@ -76,28 +76,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "SYNC Landing Page Redesign",
       body: "We rebuilt the landing page around trust and authority. Clean, credible, clearly premium. Then we backed it with proof: real video and screenshot testimonials from members. The first design got approved on the spot, and we kept going.",
       solves: 0,
-      images: [
-        "PLACEHOLDER: sync-landing-redesign 1200×900",
-        "PLACEHOLDER: testimonial proof section 1200×900",
-      ],
+      image: "/assets/case-studies/Reality-cheque-approach-1.png",
     },
     {
       title: "Dedicated Course Page + VSL",
       body: "This was the centerpiece. A page that actually sells the courses and what they change for you, anchored by a VSL that lets Saddam pitch the community at scale, the way he would one on one.",
       solves: 1,
-      images: [
-        "PLACEHOLDER: course-page 1200×900",
-        "PLACEHOLDER: VSL player section 1200×900",
-      ],
+      image: "/assets/case-studies/Reality-cheque-approach-2.png",
     },
     {
       title: "Clean Checkout Flow",
       body: "We rebuilt checkout so picking a plan and paying takes seconds instead of second-guessing.",
       solves: 2,
-      images: [
-        "PLACEHOLDER: subscription-plans 1200×900",
-        "PLACEHOLDER: checkout-flow 1200×900",
-      ],
+      image: "/assets/case-studies/Reality-cheque-approach-3.png",
     },
   ],
   turningPoint: {
