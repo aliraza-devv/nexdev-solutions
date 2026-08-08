@@ -93,7 +93,7 @@ export default function FinalCTA({
             >
               The right <span className="italic text-[#5C45FD]">website</span>{" "}
               turns visitors into customers. Let&apos;s build yours.{" "}
-              <span className="italic text-white/30">don&apos;t leave.</span>
+              {/* <span className="italic text-white/30">don&apos;t leave.</span> */}
             </motion.h2>
 
             {/* Desktop Heading */}
@@ -157,7 +157,7 @@ export default function FinalCTA({
                   }}
                 >
                   yours{" "}
-                  <span className="italic text-white/30">don&apos;t leave.</span>
+                  {/* <span className="italic text-white/30">don&apos;t leave.</span> */}
                 </motion.span>
               </span>
             </motion.h2>
@@ -189,13 +189,14 @@ export default function FinalCTA({
           transition={{ delay: 0.4 }}
           className="mt-8 flex flex-col items-center gap-8 w-full max-w-md sm:max-w-none"
         >
-          <button
+          <Link
+            href="/landing-page/book-call"
             className="group relative flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-[#5C45FD] px-7 py-4 text-base font-bold text-white transition-all hover:bg-[#4a36e0] hover:scale-105 shadow-xl shadow-[#5C45FD]/20"
             style={{ fontFamily: primaryFont }}
           >
             Book Your Free Strategy Call
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </button>
+          </Link>
 
           <div className="flex items-center justify-center gap-2.5 px-4 text-center max-w-[290px] sm:max-w-none">
             <div className="h-1.5 w-1.5 rounded-full bg-[#22C55E] shrink-0 shadow-[0_0_8px_#22C55E]" />
@@ -231,14 +232,18 @@ export default function FinalCTA({
               {/* Social Links Side-by-Side (Icons only) */}
               <div className="flex gap-2 -ml-2.5 mt-4">
                 <Link
-                  href="#"
+                  href="https://www.linkedin.com/company/nexdev-solutions"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-zinc-400 hover:text-white transition-colors p-2.5"
                   aria-label="Linkedin"
                 >
                   <Linkedin className="w-5 h-5" />
                 </Link>
                 <Link
-                  href="#"
+                  href="https://www.instagram.com/nexdevsolutions/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-zinc-400 hover:text-white transition-colors p-2.5"
                   aria-label="Instagram"
                 >
@@ -325,13 +330,13 @@ export default function FinalCTA({
             <div>© 2026 NEXDEV SOLUTIONS. ALL RIGHTS RESERVED.</div>
             <div className="flex gap-6">
               <Link
-                href="#"
+                href="/landing-page/privacy-policy"
                 className="hover:text-white transition-colors py-2 px-1"
               >
                 Privacy Policy
               </Link>
               <Link
-                href="#"
+                href="/landing-page/terms-and-conditions"
                 className="hover:text-white transition-colors py-2 px-1"
               >
                 Terms of Service

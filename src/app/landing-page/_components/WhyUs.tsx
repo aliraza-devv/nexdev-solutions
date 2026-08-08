@@ -82,7 +82,7 @@ export default function WhyUs() {
             Curious how we&apos;d approach your website?
           </p>
           <Link
-            href="#cta"
+            href="/landing-page/book-call"
             className="group inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#5C45FD] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0]"
           >
             Book Your Free Strategy Call

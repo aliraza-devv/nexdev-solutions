@@ -38,6 +38,7 @@ const cases = [
       { value: "30 Days", label: "MVP shipped" },
     ],
     href: "/landing-page/case-studies/case-study-smarterform",
+    image: "/assets/case-studies/Smarterform-case-study.png",
   },
   {
     stat: "Built a funnel for service business",
@@ -364,7 +365,7 @@ export default function Results() {
           <p className="text-xl md:text-2xl text-white font-medium leading-relaxed md:leading-normal">
             Want results like these? <br className="md:hidden" />
             <Link
-              href="#cta"
+              href="/landing-page/book-call"
               className="text-[#5C45FD] underline underline-offset-8 decoration-white/20 hover:decoration-[#5C45FD] transition-all mt-2 md:mt-0 inline-block md:inline"
             >
               Let&apos;s build yours.

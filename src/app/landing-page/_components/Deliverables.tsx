@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const deliverables = [
   "Deep-dive strategy session",
@@ -163,14 +164,16 @@ export default function Deliverables() {
 
               {/* CTA Button */}
               <div className="mt-2">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full flex items-center justify-center gap-3 bg-[#5C45FD] text-white py-3.5 px-8 rounded-full font-bold text-[13px] hover:bg-[#4a36e0] transition-colors shadow-lg shadow-[#5C45FD]/25"
-                >
-                  Book Your Free Strategy Call
-                  <ArrowRight className="w-4 h-4" />
-                </motion.button>
+                <Link href="/landing-page/book-call">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-center gap-3 bg-[#5C45FD] text-white py-3.5 px-8 rounded-full font-bold text-[13px] hover:bg-[#4a36e0] transition-colors shadow-lg shadow-[#5C45FD]/25"
+                  >
+                    Book Your Free Strategy Call
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.button>
+                </Link>
               </div>
             </div>
           </motion.div>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const partners = [
-  { logo: "/assets/partner-1.png", metric: "26X%", label: "ROAS" },
+  { logo: "/assets/partner-1.png", metric: "26X", label: "ROAS" },
   { logo: "/assets/partner-2.png", metric: "3.2%", label: "Conversion" },
   { logo: "/assets/partner-3.png", metric: "+180%", label: "Growth" },
   { logo: "/assets/partner-4.png", metric: "60 days", label: "Sold-out" },

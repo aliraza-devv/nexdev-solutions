@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, useAnimationControls, AnimatePresence } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const column1Images = [
   "/mockups/01.png",
@@ -230,14 +231,16 @@ export default function Hero() {
               className="w-full mt-8 lg:mt-5 flex flex-col sm:flex-row items-stretch sm:items-start justify-center lg:justify-start gap-3"
             >
               <div className="flex flex-col items-center lg:items-start w-full sm:w-auto gap-2">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25"
-                >
-                  Book Your Free Strategy Call
-                  <ArrowRight className="h-4 w-4" />
-                </motion.button>
+                <Link href="/landing-page/book-call" className="w-full sm:w-auto">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25"
+                  >
+                    Book Your Free Strategy Call
+                    <ArrowRight className="h-4 w-4" />
+                  </motion.button>
+                </Link>
 
                 <p className="text-[11px] font-medium text-[#6B7280] text-center lg:text-left">
                   Free 30-min call. No pitch, just clarity

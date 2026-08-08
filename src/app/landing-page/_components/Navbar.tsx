@@ -9,7 +9,7 @@ import { Menu, X } from "lucide-react";
 
 export default function Navbar({
   ctaLabel = "Book Your Free Call",
-  ctaHref = "/landing-page#cta",
+  ctaHref = "/landing-page/book-call",
 }: {
   ctaLabel?: string;
   ctaHref?: string;
