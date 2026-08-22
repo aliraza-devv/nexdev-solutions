@@ -391,7 +391,12 @@ export default function Problem() {
               letterSpacing: "-0.02em",
             }}
           >
-            <span className="block overflow-hidden pb-1">
+            <span
+              className="block overflow-hidden pb-1"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="Traffic without conversions isn't growth."
+            >
               <motion.span
                 className="block"
                 variants={{
@@ -405,7 +410,12 @@ export default function Problem() {
                 Traffic without conversions isn&apos;t growth.
               </motion.span>
             </span>
-            <span className="block overflow-hidden pb-1">
+            <span
+              className="block overflow-hidden pb-1"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="It's an expensive leak."
+            >
               <motion.span
                 className="block text-white/40"
                 variants={{
@@ -437,6 +447,7 @@ export default function Problem() {
               onClick={() => {
                 setActiveIndex(activeIndex === i ? null : i);
               }}
+              data-cursor="button"
               className={`py-8 flex gap-8 items-center justify-between w-full cursor-pointer group ${
                 i !== problems.length - 1 ? "border-b border-white/10" : ""
               }`}

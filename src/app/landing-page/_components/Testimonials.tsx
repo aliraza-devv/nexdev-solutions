@@ -157,7 +157,12 @@ export default function Testimonials() {
                 letterSpacing: "-0.02em",
               }}
             >
-              <span className="block overflow-hidden pb-1">
+              <span
+                className="block overflow-hidden pb-1"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="From business owners."
+              >
                 <motion.span
                   className="block"
                   variants={{
@@ -171,7 +176,12 @@ export default function Testimonials() {
                   From business owners.
                 </motion.span>
               </span>
-              <span className="block overflow-hidden pb-1">
+              <span
+                className="block overflow-hidden pb-1"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="Not us."
+              >
                 <motion.span
                   className="block text-white/30"
                   variants={{
@@ -283,6 +293,7 @@ export default function Testimonials() {
                       opacity: isSelected ? (isActive ? 1 : 0.6) : 1,
                     }}
                     style={{ width: `${cardWidth}px` }}
+                    data-cursor="video"
                     className={`
                       group relative aspect-[9/16] cursor-pointer overflow-hidden border border-white/5 shadow-2xl rounded-[14px] flex-shrink-0 transition-all duration-500
                     `}
@@ -450,6 +461,7 @@ export default function Testimonials() {
               >
                 <button
                   onClick={() => setMobileVideoId(null)}
+                  data-cursor="button"
                   className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white z-50 transition-colors cursor-pointer"
                 >
                   <X className="w-6 h-6" />

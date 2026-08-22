@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NeXDev · Why Us cards, motion graphics v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   Each graphic is a RECOGNISABLE OBJECT, not an abstraction:
+     1 · a before/after comparison slider
+     2 · an A/B test with live counters
+     3 · a project dashboard sending you updates
+   Every one runs on an endless loop, pauses off-screen, and
+   holds a meaningful frame with JS off or reduced motion on.
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --purple:#5c45fd;
+  --purple-lo:#a89bff;
+  --ink:#161616;
+  --body:#5a5a70;
+  --label:#1c1c26;
+  --panel:#f7f6ff;
+  --panel-hi:#f0edff;
+  --line:rgba(22,22,22,.08);
+  --out:cubic-bezier(.23,1,.32,1);
+
+  /* graphic material system */
+  --cold-surface:#f4f4f8;
+  --cold-stroke:#dcdce6;
+  --cold-ink:#cbcbd8;
+  --cold-ink-2:#dcdce4;
+  --warm-surface:#ffffff;
+  --warm-stroke:#d8d0ff;
+  --track:#eceaf6;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+body{
+  margin:0; background:#fbfbfd; color:var(--ink);
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased; padding:76px 0 110px;
+}
+.hold{ width:min(1240px,calc(100% - 56px)); margin-inline:auto; }
+.sec-head{ margin:0 0 46px; max-width:22ch; }
+.sec-head h2{ margin:0; font-size:clamp(30px,3.4vw,44px); line-height:1.08; letter-spacing:-.03em; font-weight:800; }
+
+.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
+.card{ display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:18px; padding:32px 30px 30px; }
+.card h3{ margin:0; font-size:clamp(24px,2.1vw,29px); line-height:1.1; letter-spacing:-.025em; font-weight:800; color:var(--purple); min-height:2.2em; }
+.card .label{ margin:10px 0 0; font-size:15px; line-height:1.35; font-weight:700; letter-spacing:-.01em; color:var(--label); }
+.card p{ margin:20px 0 0; font-size:14.5px; line-height:1.62; color:var(--body); }
+.divider{ margin:24px 0 0; height:1px; background:var(--line); }
+
+.gfx-wrap{
+  margin:24px 0 0; height:196px; border-radius:14px;
+  background:var(--panel); display:grid; place-items:center; overflow:hidden;
+  transition:background 220ms var(--out);
+}
+.card:hover .gfx-wrap{ background:var(--panel-hi); }
+.gfx{ width:100%; height:100%; display:block; }
+.gfx.paused *{ animation-play-state:paused !important; }
+
+/* shared graphic type */
+.gfx text{ font-family:"Plus Jakarta Sans",sans-serif; }
+.tag{ font-size:8px; font-weight:800; letter-spacing:.13em; }
+.tag.cold{ fill:#a5a5b6; }
+.tag.hot{ fill:var(--purple); }
+.mini{ font-size:8px; font-weight:700; letter-spacing:-.01em; }
+
+/* soft shadow, faked with an offset shape so no SVG filter re-renders per frame */
+.shade{ fill:rgba(92,69,253,.09); }
+
+/* ═══════════════════════════════════════════════════════════
+   1 · COMPARISON SLIDER
+   The handle sweeps across and back, forever. Left of it, the
+   site another agency built. Right of it, the rebuild.
+   ═══════════════════════════════════════════════════════════ */
+.g1 .before-surface{ fill:var(--cold-surface); stroke:var(--cold-stroke); stroke-width:1.5; }
+.g1 .before-ink{ fill:var(--cold-ink); }
+.g1 .before-ink-2{ fill:var(--cold-ink-2); }
+.g1 .dead{ fill:none; stroke:var(--cold-ink); stroke-width:1.5; stroke-dasharray:4 4; }
+.g1 .crack{ fill:none; stroke:#cfcfdb; stroke-width:1.5; }
+
+.g1 .after-surface{ fill:var(--warm-surface); stroke:var(--warm-stroke); stroke-width:1.5; }
+.g1 .after-ink{ fill:rgba(92,69,253,.22); }
+.g1 .after-ink-2{ fill:rgba(92,69,253,.12); }
+.g1 .after-cta{ fill:var(--purple); }
+
+.g1 .after{ clip-path:inset(0 0 0 0); }        /* resting: rebuilt */
+.g1 .handle{ transform:translateX(180px); }    /* resting: parked right */
+
+.g1.run .after{ animation:reveal 6.6s ease-in-out infinite; }
+.g1.run .handle{ animation:handle 6.6s ease-in-out infinite; }
+.g1.run .tilt-a{ animation:tiltA 3.7s ease-in-out infinite alternate; }
+.g1.run .tilt-b{ animation:tiltB 4.3s ease-in-out infinite alternate; }
+
+@keyframes reveal{
+  0%,10%   { clip-path:inset(0 100% 0 0); }
+  44%,58%  { clip-path:inset(0 0 0 0); }
+  92%,100% { clip-path:inset(0 100% 0 0); }
+}
+@keyframes handle{
+  0%,10%   { transform:translateX(0); }
+  44%,58%  { transform:translateX(180px); }
+  92%,100% { transform:translateX(0); }
+}
+@keyframes tiltA{ from{ transform:rotate(-1.6deg) translate(0,0); } to{ transform:rotate(-2.6deg) translate(1.5px,-1px); } }
+@keyframes tiltB{ from{ transform:rotate(1.8deg) translate(0,0); } to{ transform:rotate(2.8deg) translate(-1.5px,1px); } }
+
+/* ═══════════════════════════════════════════════════════════
+   2 · A/B TEST
+   Visitors rain onto both variants. The beautiful one repels
+   them. The one built to sell absorbs them and its bar climbs.
+   ═══════════════════════════════════════════════════════════ */
+.g2 .cold-surface{ fill:#fafafd; stroke:var(--cold-stroke); stroke-width:1.5; }
+.g2 .cold-ink{ fill:var(--cold-ink-2); }
+.g2 .ornament{ fill:#f0f0f6; stroke:var(--cold-stroke); stroke-width:1.5; }
+.g2 .flourish{ fill:none; stroke:var(--cold-stroke); stroke-width:1.5; stroke-linecap:round; }
+
+.g2 .warm-surface{ fill:var(--warm-surface); stroke:var(--warm-stroke); stroke-width:1.5; }
+.g2 .warm-ink{ fill:rgba(92,69,253,.24); }
+.g2 .warm-ink-2{ fill:rgba(92,69,253,.14); }
+.g2 .cta{ fill:var(--purple); transform-box:fill-box; transform-origin:center; }
+.g2 .cta-arrow{ fill:none; stroke:#fff; stroke-width:1.6; stroke-linecap:round; }
+
+.g2 .meter{ fill:var(--track); }
+.g2 .bar{ transform-box:fill-box; transform-origin:left center; }
+.g2 .bar.cold{ fill:#c8c8d6; transform:scaleX(.08); }
+.g2 .bar.hot{ fill:var(--purple); transform:scaleX(.84); }
+.g2 .v{ transform-box:fill-box; transform-origin:center; opacity:0; }
+
+.g2.run .v.l1{ animation:repel 5.0s linear infinite; }
+.g2.run .v.l2{ animation:repel 5.0s linear infinite; animation-delay:-1.7s; }
+.g2.run .v.l3{ animation:repel 5.0s linear infinite; animation-delay:-3.4s; }
+.g2.run .v.r1{ animation:absorb 5.0s linear infinite; }
+.g2.run .v.r2{ animation:absorb 5.0s linear infinite; animation-delay:-1.7s; }
+.g2.run .v.r3{ animation:absorb 5.0s linear infinite; animation-delay:-3.4s; }
+.g2.run .bar.hot{ animation:climb 5.0s linear infinite; }
+.g2.run .bar.cold{ animation:flat 5.0s ease-in-out infinite; }
+.g2.run .cta{ animation:thump 5.0s ease-in-out infinite; }
+
+@keyframes repel{
+  0%   { opacity:0; transform:translate(0,0) scale(1); }
+  9%   { opacity:1; }
+  32%  { opacity:1; transform:translate(0,30px) scale(1); }
+  38%  { transform:translate(-5px,27px) scale(1.25,.72); }
+  74%  { opacity:0; transform:translate(-38px,86px) scale(.6); }
+  100% { opacity:0; transform:translate(-38px,86px) scale(.6); }
+}
+@keyframes absorb{
+  0%   { opacity:0; transform:translate(0,0) scale(1); }
+  9%   { opacity:1; }
+  48%  { opacity:1; transform:translate(0,86px) scale(1); }
+  56%  { opacity:1; transform:translate(0,94px) scale(1.6); }
+  64%  { opacity:0; transform:translate(0,94px) scale(.15); }
+  100% { opacity:0; transform:translate(0,94px) scale(.15); }
+}
+@keyframes climb{
+  0%,12%   { transform:scaleX(.22); }
+  13%,34%  { transform:scaleX(.40); }
+  35%,56%  { transform:scaleX(.57); }
+  57%,78%  { transform:scaleX(.73); }
+  79%,95%  { transform:scaleX(.88); }
+  96%,100% { transform:scaleX(.22); }
+}
+@keyframes flat{ 0%,100%{ transform:scaleX(.08); } 50%{ transform:scaleX(.095); } }
+@keyframes thump{ 0%,52%,100%{ transform:scale(1); } 60%{ transform:scale(1.07); } 70%{ transform:scale(1); } }
+
+/* ═══════════════════════════════════════════════════════════
+   3 · PROJECT DASHBOARD
+   The bar advances, tasks tick themselves off, and an update
+   notification slides in three times per cycle.
+   ═══════════════════════════════════════════════════════════ */
+.g3 .board{ fill:var(--warm-surface); stroke:var(--warm-stroke); stroke-width:1.5; }
+.g3 .board-title{ font-size:9px; font-weight:800; fill:var(--ink); letter-spacing:-.01em; }
+.g3 .live-txt{ font-size:7px; font-weight:800; letter-spacing:.14em; fill:var(--purple); }
+.g3 .live-dot{ fill:var(--purple); transform-box:fill-box; transform-origin:center; }
+.g3 .track-bg{ fill:var(--track); }
+.g3 .track-fill{ fill:var(--purple); transform-box:fill-box; transform-origin:left center; transform:scaleX(1); }
+
+.g3 .step-ring{ fill:#f1f1f7; stroke:#e2e2ec; stroke-width:1.5; }
+.g3 .step-fill{ fill:var(--purple); transform-box:fill-box; transform-origin:center; transform:scale(1); }
+.g3 .step-check{ fill:none; stroke:#fff; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:11; stroke-dashoffset:0; }
+.g3 .step-txt{ font-size:8px; font-weight:600; fill:var(--ink); }
+
+.g3 .toast{ transform-box:fill-box; transform-origin:center; opacity:0; }
+.g3 .toast rect{ fill:var(--ink); }
+.g3 .toast text{ font-size:7.5px; font-weight:700; fill:#fff; letter-spacing:.01em; }
+.g3 .toast circle{ fill:var(--purple-lo); }
+
+.g3.run .board-group{ animation:boardLoop 6.4s linear infinite; }
+.g3.run .track-fill{ animation:advance 6.4s linear infinite; }
+.g3.run .live-dot{ animation:blip 1.7s ease-in-out infinite; }
+.g3.run .toast{ animation:notify 6.4s ease-in-out infinite; }
+.g3.run .step-fill{ animation:tick .5s var(--out) infinite; animation-duration:6.4s; }
+.g3.run .step-check{ animation:drawCheck 6.4s linear infinite; }
+.g3.run .step-txt{ animation:txtOn 6.4s linear infinite; }
+
+.g3.run .step-fill:nth-of-type(1),.g3.run .step-check:nth-of-type(1),.g3.run .step-txt:nth-of-type(1){ animation-delay:0s; }
+.g3.run .g-step:nth-of-type(1) .step-fill,.g3.run .g-step:nth-of-type(1) .step-check,.g3.run .g-step:nth-of-type(1) .step-txt{ animation-delay:.5s; }
+.g3.run .g-step:nth-of-type(2) .step-fill,.g3.run .g-step:nth-of-type(2) .step-check,.g3.run .g-step:nth-of-type(2) .step-txt{ animation-delay:1.6s; }
+.g3.run .g-step:nth-of-type(3) .step-fill,.g3.run .g-step:nth-of-type(3) .step-check,.g3.run .g-step:nth-of-type(3) .step-txt{ animation-delay:2.7s; }
+.g3.run .g-step:nth-of-type(4) .step-fill,.g3.run .g-step:nth-of-type(4) .step-check,.g3.run .g-step:nth-of-type(4) .step-txt{ animation-delay:3.8s; }
+
+@keyframes boardLoop{ 0%,88%{ opacity:1; } 97%,100%{ opacity:0; } }
+@keyframes advance{ 0%{ transform:scaleX(.02); } 72%,100%{ transform:scaleX(1); } }
+@keyframes blip{ 0%,100%{ transform:scale(1); opacity:1; } 50%{ transform:scale(1.5); opacity:.45; } }
+@keyframes tick{
+  0%   { transform:scale(0); }
+  3%   { transform:scale(1.3); }
+  6%,100% { transform:scale(1); }
+}
+@keyframes drawCheck{ 0%{ stroke-dashoffset:11; } 3%{ stroke-dashoffset:11; } 8%,100%{ stroke-dashoffset:0; } }
+@keyframes txtOn{ 0%,4%{ opacity:.34; } 9%,100%{ opacity:1; } }
+@keyframes notify{
+  0%,14%   { opacity:0; transform:translate(26px,0) scale(.94); }
+  18%      { opacity:1; transform:translate(0,0) scale(1); }
+  28%      { opacity:1; transform:translate(0,0) scale(1); }
+  33%      { opacity:0; transform:translate(14px,0) scale(.97); }
+  40%      { opacity:0; transform:translate(26px,0) scale(.94); }
+  44%      { opacity:1; transform:translate(0,0) scale(1); }
+  54%      { opacity:1; transform:translate(0,0) scale(1); }
+  59%      { opacity:0; transform:translate(14px,0) scale(.97); }
+  66%      { opacity:0; transform:translate(26px,0) scale(.94); }
+  70%      { opacity:1; transform:translate(0,0) scale(1); }
+  80%      { opacity:1; transform:translate(0,0) scale(1); }
+  85%,100% { opacity:0; transform:translate(14px,0) scale(.97); }
+}
+
+@media (max-width:940px){
+  .cards{ grid-template-columns:1fr; gap:16px; }
+  .card h3{ min-height:0; }
+  .gfx-wrap{ height:170px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .gfx *{ animation:none !important; }
+  .g1 .after{ clip-path:inset(0 0 0 0) !important; }
+  .g1 .handle{ transform:translateX(180px) !important; }
+  .g2 .v{ opacity:0 !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="hold">
+  <div class="sec-head"><h2>Why founders pick us over a cheaper option</h2></div>
+
+  <div class="cards">
+
+    <!-- ═══════════ 1 · COMPARISON SLIDER ═══════════ -->
+    <article class="card" data-card>
+      <h3>Since 2016</h3>
+      <p class="label">We've fixed what other agencies broke.</p>
+      <div class="gfx-wrap">
+        <svg class="gfx g1" viewBox="0 0 260 190" aria-hidden="true">
+          <text class="tag cold" x="40"  y="22">THEIR BUILD</text>
+          <text class="tag hot"  x="220" y="22" text-anchor="end">OUR REBUILD</text>
+
+          <rect class="shade" x="40" y="36" width="180" height="130" rx="12"/>
+
+          <!-- what the last agency shipped -->
+          <g class="before">
+            <rect class="before-surface" x="40" y="32" width="180" height="130" rx="12"/>
+            <g class="tilt-a" style="transform-box:fill-box;transform-origin:center">
+              <rect class="before-ink" x="54" y="46" width="96" height="11" rx="5.5"/>
+            </g>
+            <g class="tilt-b" style="transform-box:fill-box;transform-origin:center">
+              <rect class="before-ink-2" x="54" y="66" width="70" height="34" rx="7"/>
+            </g>
+            <rect class="before-ink-2" x="134" y="70" width="66" height="30" rx="7"/>
+            <rect class="before-ink" x="54" y="110" width="112" height="7" rx="3.5"/>
+            <rect class="before-ink" x="54" y="123" width="74"  height="7" rx="3.5"/>
+            <rect class="dead"      x="54" y="138" width="58" height="16" rx="8"/>
+            <path class="crack" d="M172 32 l-8 30 l10 16 l-9 32 l7 22 l-5 30"/>
+          </g>
+
+          <!-- what we rebuilt -->
+          <g class="after">
+            <rect class="after-surface" x="40" y="32" width="180" height="130" rx="12"/>
+            <rect class="after-ink"   x="54" y="46"  width="104" height="11" rx="5.5"/>
+            <rect class="after-ink-2" x="54" y="66"  width="70"  height="34" rx="7"/>
+            <rect class="after-ink-2" x="134" y="66" width="66"  height="34" rx="7"/>
+            <rect class="after-ink"   x="54" y="110" width="132" height="7" rx="3.5"/>
+            <rect class="after-ink"   x="54" y="123" width="88"  height="7" rx="3.5"/>
+            <rect class="after-cta"   x="54" y="136" width="66"  height="19" rx="9.5"/>
+            <path d="M64 145.5 h14 M74 141.5 l4.5 4 l-4.5 4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+
+          <!-- the drag handle -->
+          <g class="handle">
+            <rect x="39" y="32" width="2.5" height="130" rx="1.25" fill="#5c45fd"/>
+            <circle cx="40" cy="97" r="12" fill="#fff" stroke="#5c45fd" stroke-width="2.2"/>
+            <path d="M36.5 93 l-3.2 4 l3.2 4 M43.5 93 l3.2 4 l-3.2 4" fill="none" stroke="#5c45fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="divider"></div>
+      <p>Most of the 200+ projects behind NeXDev are rebuilds, from founders who paid another agency for a "beautiful" site that never sold a thing. Our SYNC Method™ audits exactly why visitors leave before we touch a single pixel.</p>
+    </article>
+
+    <!-- ═══════════ 2 · A/B TEST ═══════════ -->
+    <article class="card" data-card>
+      <h3>Sales &gt; Style</h3>
+      <p class="label">Built to sell. Not just to look good.</p>
+      <div class="gfx-wrap">
+        <svg class="gfx g2" viewBox="0 0 260 190" aria-hidden="true">
+          <text class="tag cold" x="18"  y="36">A · STYLE</text>
+          <text class="tag hot"  x="142" y="36">B · SELLS</text>
+
+          <!-- variant A: beautiful, no way in -->
+          <rect class="shade" x="18" y="48" width="100" height="94" rx="11"/>
+          <rect class="cold-surface" x="18" y="44" width="100" height="94" rx="11"/>
+          <circle class="ornament" cx="68" cy="76" r="19"/>
+          <path class="flourish" d="M34 106 q10 -7 20 0 q10 7 20 0 q10 -7 20 0"/>
+          <rect class="cold-ink" x="34" y="118" width="68" height="6" rx="3"/>
+          <rect class="meter" x="18" y="152" width="100" height="7" rx="3.5"/>
+          <rect class="bar cold" x="18" y="152" width="100" height="7" rx="3.5"/>
+
+          <!-- variant B: plain, one obvious way in -->
+          <rect class="shade" x="142" y="48" width="100" height="94" rx="11"/>
+          <rect class="warm-surface" x="142" y="44" width="100" height="94" rx="11"/>
+          <rect class="warm-ink"   x="156" y="58" width="66" height="10" rx="5"/>
+          <rect class="warm-ink-2" x="156" y="74" width="46" height="6"  rx="3"/>
+          <rect class="cta" x="156" y="96" width="68" height="22" rx="11"/>
+          <path class="cta-arrow" d="M168 107 h16 M180 102.5 l4.5 4.5 l-4.5 4.5"/>
+          <rect class="meter" x="142" y="152" width="100" height="7" rx="3.5"/>
+          <rect class="bar hot" x="142" y="152" width="100" height="7" rx="3.5"/>
+
+          <!-- the visitors -->
+          <circle class="v l1" cx="42"  cy="12" r="3.6" fill="#c2c2d0"/>
+          <circle class="v l2" cx="68"  cy="12" r="3.6" fill="#c2c2d0"/>
+          <circle class="v l3" cx="94"  cy="12" r="3.6" fill="#c2c2d0"/>
+          <circle class="v r1" cx="166" cy="12" r="3.6" fill="#5c45fd"/>
+          <circle class="v r2" cx="190" cy="12" r="3.6" fill="#5c45fd"/>
+          <circle class="v r3" cx="214" cy="12" r="3.6" fill="#5c45fd"/>
+        </svg>
+      </div>
+      <div class="divider"></div>
+      <p>We're not a design studio chasing awards. Every layout, headline, and button exists to move a visitor toward a sale. Good looks are a side effect, never the goal.</p>
+    </article>
+
+    <!-- ═══════════ 3 · PROJECT DASHBOARD ═══════════ -->
+    <article class="card" data-card>
+      <h3>Speed &amp; transparency</h3>
+      <p class="label">Fast. Transparent. No surprises.</p>
+      <div class="gfx-wrap">
+        <svg class="gfx g3" viewBox="0 0 260 190" aria-hidden="true">
+          <g class="board-group">
+            <rect class="shade" x="26" y="34" width="208" height="140" rx="13"/>
+            <rect class="board" x="26" y="30" width="208" height="140" rx="13"/>
+
+            <text class="board-title" x="42" y="52">Your build</text>
+            <circle class="live-dot" cx="196" cy="49" r="3.5"/>
+            <text class="live-txt" x="204" y="52">LIVE</text>
+
+            <rect class="track-bg"   x="42" y="62" width="176" height="8" rx="4"/>
+            <rect class="track-fill" x="42" y="62" width="176" height="8" rx="4"/>
+
+            <g class="g-step">
+              <circle class="step-ring" cx="50" cy="92" r="8"/>
+              <circle class="step-fill" cx="50" cy="92" r="8"/>
+              <path class="step-check" d="M46.4 92 l2.6 2.8 l4.6 -5.6"/>
+              <text class="step-txt" x="66" y="95">Strategy locked</text>
+            </g>
+            <g class="g-step">
+              <circle class="step-ring" cx="50" cy="114" r="8"/>
+              <circle class="step-fill" cx="50" cy="114" r="8"/>
+              <path class="step-check" d="M46.4 114 l2.6 2.8 l4.6 -5.6"/>
+              <text class="step-txt" x="66" y="117">Copy and design</text>
+            </g>
+            <g class="g-step">
+              <circle class="step-ring" cx="50" cy="136" r="8"/>
+              <circle class="step-fill" cx="50" cy="136" r="8"/>
+              <path class="step-check" d="M46.4 136 l2.6 2.8 l4.6 -5.6"/>
+              <text class="step-txt" x="66" y="139">Build and test</text>
+            </g>
+            <g class="g-step">
+              <circle class="step-ring" cx="50" cy="158" r="8"/>
+              <circle class="step-fill" cx="50" cy="158" r="8"/>
+              <path class="step-check" d="M46.4 158 l2.6 2.8 l4.6 -5.6"/>
+              <text class="step-txt" x="66" y="161">Live</text>
+            </g>
+          </g>
+
+          <!-- the update that lands in your inbox every 2 to 3 days -->
+          <g class="toast">
+            <rect x="128" y="2" width="112" height="24" rx="12"/>
+            <circle cx="143" cy="14" r="4"/>
+            <text x="154" y="17">Progress update sent</text>
+          </g>
+        </svg>
+      </div>
+      <div class="divider"></div>
+      <p>A progress update every 2 to 3 days and a live site in weeks, not months. You always know exactly where things stand.</p>
+    </article>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var gfx = [].slice.call(document.querySelectorAll('.gfx'));
+  gfx.forEach(function(g){ g.classList.add('run','paused'); });
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ e.target.classList.toggle('paused', !e.isIntersecting); });
+  }, { rootMargin:'80px 0px', threshold:0 });
+  gfx.forEach(function(g){ io.observe(g); });
+
+  document.addEventListener('visibilitychange', function(){
+    gfx.forEach(function(g){
+      if(document.hidden) g.classList.add('paused');
+      else g.classList.remove('paused');
+    });
+  });
+})();
+</script>
+</body>
+</html>

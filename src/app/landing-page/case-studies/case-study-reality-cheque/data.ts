@@ -4,15 +4,15 @@ export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Reality Cheque",
   liveUrl: "https://example.com",
-  heroEyebrow: "Case Study — Reality Cheque · The Community for Agency Owners",
+  heroEyebrow: "Case Study · Reality Cheque · The Community for Agency Owners",
   headline:
     "How a website they'd almost given up on drove 407 paid signups in 24 hours.",
   heroStat: "407 paid signups in the first 24 hours",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
-    "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
+    "/assets/case-studies/Reality-cheque-hero-left.png",
+    "/assets/case-studies/Reality-cheque-hero-right.png",
   ],
   meta: {
     year: "",
@@ -39,9 +39,7 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   context: [
-    "Reality Cheque is the biggest paid community for agency owners in Pakistan. Members get courses, private WhatsApp and Skool groups, live coaching calls, and quarterly in-person meetups, all in one place.",
-    "It's run by Saddam Hasan, who has scaled three businesses past $1M, and has since done the same with Reality Cheque itself.",
-    "When your whole brand runs on authority, the website can't look like an afterthought. Theirs did.",
+    "Reality Cheque is Pakistan's biggest paid community for agency owners, run by Saddam Hasan, who's scaled three businesses past $1M. With the whole brand built on authority, the outdated website undercut it at every turn.",
   ],
   challenge: {
     intro: "A website that undersold everything the community was worth.",
@@ -94,10 +92,8 @@ export const CASE_STUDY: CaseStudyData = {
   turningPoint: {
     header: "The real problem was never the design.",
     body: [
-      "The old site described the community. It didn't sell it.",
-      'No stranger could go from "who are these guys?" to "take my money" in one visit. And for a paid community, that journey is the whole business.',
-      "So we stopped thinking about a redesign and built a path to purchase instead. The VSL does the pitching at scale. The course page sells the outcome people actually want. Checkout just gets out of the way.",
-      "The design was only the surface. The real fix was the path to a sale.",
+      "The old site described the community. It didn't sell it. No stranger could go from curious to paying in one visit, and for a paid community, that journey is the whole business.",
+      "So we built a path to purchase instead: the VSL pitches at scale, the course page sells the outcome, and checkout gets out of the way. The design was only the surface, the real fix was the path to a sale.",
     ],
   },
   quote: {
@@ -107,8 +103,7 @@ export const CASE_STUDY: CaseStudyData = {
     photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
   },
   results: {
-    chartImage:
-      "PLACEHOLDER: results-chart — signups over first 24 hours 1400×600",
+    chartImage: "/assets/case-studies/Reality-cheque-results-chart.png",
     stats: [
       {
         value: "7.1K+",

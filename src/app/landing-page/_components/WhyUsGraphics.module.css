@@ -1,0 +1,609 @@
+/* Ported verbatim from reference/whyus-v3.html. Class names are
+   camelCased for CSS Modules, computed styles are unchanged: same
+   material system tokens, same keyframes, same durations (6.6s / 5.0s
+   / 6.4s), same .paused behaviour. */
+
+.g1,
+.g2,
+.g3 {
+  --purple: #5c45fd;
+  --purple-lo: #a89bff;
+  --ink: #161616;
+  --cold-surface: #f4f4f8;
+  --cold-stroke: #dcdce6;
+  --cold-ink: #cbcbd8;
+  --cold-ink-2: #dcdce4;
+  --warm-surface: #ffffff;
+  --warm-stroke: #d8d0ff;
+  --track: #eceaf6;
+  --out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.gfx {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.gfx text {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+.gfx.paused * {
+  animation-play-state: paused !important;
+}
+
+.tag {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+.tag.cold {
+  fill: #a5a5b6;
+}
+.tag.hot {
+  fill: var(--purple);
+}
+.mini {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.shade {
+  fill: rgba(92, 69, 253, 0.09);
+}
+
+/* ── 1 · comparison slider ── */
+.beforeSurface {
+  fill: var(--cold-surface);
+  stroke: var(--cold-stroke);
+  stroke-width: 1.5;
+}
+.beforeInk {
+  fill: var(--cold-ink);
+}
+.beforeInk2 {
+  fill: var(--cold-ink-2);
+}
+.dead {
+  fill: none;
+  stroke: var(--cold-ink);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+.crack {
+  fill: none;
+  stroke: #cfcfdb;
+  stroke-width: 1.5;
+}
+
+.afterSurface {
+  fill: var(--warm-surface);
+  stroke: var(--warm-stroke);
+  stroke-width: 1.5;
+}
+.afterInk {
+  fill: rgba(92, 69, 253, 0.22);
+}
+.afterInk2 {
+  fill: rgba(92, 69, 253, 0.12);
+}
+.afterCta {
+  fill: var(--purple);
+}
+
+.after {
+  clip-path: inset(0 0 0 0);
+}
+.handle {
+  transform: translateX(180px);
+}
+
+.g1.run .after {
+  animation: reveal 6.6s ease-in-out infinite;
+}
+.g1.run .handle {
+  animation: handle 6.6s ease-in-out infinite;
+}
+.g1.run .tiltA {
+  animation: tiltA 3.7s ease-in-out infinite alternate;
+}
+.g1.run .tiltB {
+  animation: tiltB 4.3s ease-in-out infinite alternate;
+}
+
+@keyframes reveal {
+  0%,
+  10% {
+    clip-path: inset(0 100% 0 0);
+  }
+  44%,
+  58% {
+    clip-path: inset(0 0 0 0);
+  }
+  92%,
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+@keyframes handle {
+  0%,
+  10% {
+    transform: translateX(0);
+  }
+  44%,
+  58% {
+    transform: translateX(180px);
+  }
+  92%,
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes tiltA {
+  from {
+    transform: rotate(-1.6deg) translate(0, 0);
+  }
+  to {
+    transform: rotate(-2.6deg) translate(1.5px, -1px);
+  }
+}
+@keyframes tiltB {
+  from {
+    transform: rotate(1.8deg) translate(0, 0);
+  }
+  to {
+    transform: rotate(2.8deg) translate(-1.5px, 1px);
+  }
+}
+
+/* ── 2 · A/B test ── */
+.coldSurface {
+  fill: #fafafd;
+  stroke: var(--cold-stroke);
+  stroke-width: 1.5;
+}
+.coldInk {
+  fill: var(--cold-ink-2);
+}
+.ornament {
+  fill: #f0f0f6;
+  stroke: var(--cold-stroke);
+  stroke-width: 1.5;
+}
+.flourish {
+  fill: none;
+  stroke: var(--cold-stroke);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.warmSurface {
+  fill: var(--warm-surface);
+  stroke: var(--warm-stroke);
+  stroke-width: 1.5;
+}
+.warmInk {
+  fill: rgba(92, 69, 253, 0.24);
+}
+.warmInk2 {
+  fill: rgba(92, 69, 253, 0.14);
+}
+.cta {
+  fill: var(--purple);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ctaArrow {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.meter {
+  fill: var(--track);
+}
+.bar {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.bar.cold {
+  fill: #c8c8d6;
+  transform: scaleX(0.08);
+}
+.bar.hot {
+  fill: var(--purple);
+  transform: scaleX(0.84);
+}
+.v {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.g2.run .l1 {
+  animation: repel 5s linear infinite;
+}
+.g2.run .l2 {
+  animation: repel 5s linear infinite;
+  animation-delay: -1.7s;
+}
+.g2.run .l3 {
+  animation: repel 5s linear infinite;
+  animation-delay: -3.4s;
+}
+.g2.run .r1 {
+  animation: absorb 5s linear infinite;
+}
+.g2.run .r2 {
+  animation: absorb 5s linear infinite;
+  animation-delay: -1.7s;
+}
+.g2.run .r3 {
+  animation: absorb 5s linear infinite;
+  animation-delay: -3.4s;
+}
+.g2.run .bar.hot {
+  animation: climb 5s linear infinite;
+}
+.g2.run .bar.cold {
+  animation: flat 5s ease-in-out infinite;
+}
+.g2.run .cta {
+  animation: thump 5s ease-in-out infinite;
+}
+
+@keyframes repel {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+  }
+  9% {
+    opacity: 1;
+  }
+  32% {
+    opacity: 1;
+    transform: translate(0, 30px) scale(1);
+  }
+  38% {
+    transform: translate(-5px, 27px) scale(1.25, 0.72);
+  }
+  74% {
+    opacity: 0;
+    transform: translate(-38px, 86px) scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-38px, 86px) scale(0.6);
+  }
+}
+@keyframes absorb {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+  }
+  9% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 1;
+    transform: translate(0, 86px) scale(1);
+  }
+  56% {
+    opacity: 1;
+    transform: translate(0, 94px) scale(1.6);
+  }
+  64% {
+    opacity: 0;
+    transform: translate(0, 94px) scale(0.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 94px) scale(0.15);
+  }
+}
+@keyframes climb {
+  0%,
+  12% {
+    transform: scaleX(0.22);
+  }
+  13%,
+  34% {
+    transform: scaleX(0.4);
+  }
+  35%,
+  56% {
+    transform: scaleX(0.57);
+  }
+  57%,
+  78% {
+    transform: scaleX(0.73);
+  }
+  79%,
+  95% {
+    transform: scaleX(0.88);
+  }
+  96%,
+  100% {
+    transform: scaleX(0.22);
+  }
+}
+@keyframes flat {
+  0%,
+  100% {
+    transform: scaleX(0.08);
+  }
+  50% {
+    transform: scaleX(0.095);
+  }
+}
+@keyframes thump {
+  0%,
+  52%,
+  100% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.07);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+/* ── 3 · project dashboard ── */
+.board {
+  fill: var(--warm-surface);
+  stroke: var(--warm-stroke);
+  stroke-width: 1.5;
+}
+.boardTitle {
+  font-size: 9px;
+  font-weight: 800;
+  fill: var(--ink);
+  letter-spacing: -0.01em;
+}
+.liveTxt {
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  fill: var(--purple);
+}
+.liveDot {
+  fill: var(--purple);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.trackBg {
+  fill: var(--track);
+}
+.trackFill {
+  fill: var(--purple);
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(1);
+}
+
+.stepRing {
+  fill: #f1f1f7;
+  stroke: #e2e2ec;
+  stroke-width: 1.5;
+}
+.stepFill {
+  fill: var(--purple);
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(1);
+}
+.stepCheck {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 11;
+  stroke-dashoffset: 0;
+}
+.stepTxt {
+  font-size: 8px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.toast {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+.toast rect {
+  fill: var(--ink);
+}
+.toast text {
+  font-size: 7.5px;
+  font-weight: 700;
+  fill: #fff;
+  letter-spacing: 0.01em;
+}
+.toast circle {
+  fill: var(--purple-lo);
+}
+
+.g3.run .boardGroup {
+  animation: boardLoop 6.4s linear infinite;
+}
+.g3.run .trackFill {
+  animation: advance 6.4s linear infinite;
+}
+.g3.run .liveDot {
+  animation: blip 1.7s ease-in-out infinite;
+}
+.g3.run .toast {
+  animation: notify 6.4s ease-in-out infinite;
+}
+.g3.run .stepFill {
+  animation: tick 0.5s var(--out) infinite;
+  animation-duration: 6.4s;
+}
+.g3.run .stepCheck {
+  animation: drawCheck 6.4s linear infinite;
+}
+.g3.run .stepTxt {
+  animation: txtOn 6.4s linear infinite;
+}
+
+.g3.run .stepFill:nth-of-type(1),
+.g3.run .stepCheck:nth-of-type(1),
+.g3.run .stepTxt:nth-of-type(1) {
+  animation-delay: 0s;
+}
+.g3.run .gStep:nth-of-type(1) .stepFill,
+.g3.run .gStep:nth-of-type(1) .stepCheck,
+.g3.run .gStep:nth-of-type(1) .stepTxt {
+  animation-delay: 0.5s;
+}
+.g3.run .gStep:nth-of-type(2) .stepFill,
+.g3.run .gStep:nth-of-type(2) .stepCheck,
+.g3.run .gStep:nth-of-type(2) .stepTxt {
+  animation-delay: 1.6s;
+}
+.g3.run .gStep:nth-of-type(3) .stepFill,
+.g3.run .gStep:nth-of-type(3) .stepCheck,
+.g3.run .gStep:nth-of-type(3) .stepTxt {
+  animation-delay: 2.7s;
+}
+.g3.run .gStep:nth-of-type(4) .stepFill,
+.g3.run .gStep:nth-of-type(4) .stepCheck,
+.g3.run .gStep:nth-of-type(4) .stepTxt {
+  animation-delay: 3.8s;
+}
+
+@keyframes boardLoop {
+  0%,
+  88% {
+    opacity: 1;
+  }
+  97%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes advance {
+  0% {
+    transform: scaleX(0.02);
+  }
+  72%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes blip {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.45;
+  }
+}
+@keyframes tick {
+  0% {
+    transform: scale(0);
+  }
+  3% {
+    transform: scale(1.3);
+  }
+  6%,
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes drawCheck {
+  0% {
+    stroke-dashoffset: 11;
+  }
+  3% {
+    stroke-dashoffset: 11;
+  }
+  8%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes txtOn {
+  0%,
+  4% {
+    opacity: 0.34;
+  }
+  9%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes notify {
+  0%,
+  14% {
+    opacity: 0;
+    transform: translate(26px, 0) scale(0.94);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  28% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    opacity: 0;
+    transform: translate(14px, 0) scale(0.97);
+  }
+  40% {
+    opacity: 0;
+    transform: translate(26px, 0) scale(0.94);
+  }
+  44% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  54% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  59% {
+    opacity: 0;
+    transform: translate(14px, 0) scale(0.97);
+  }
+  66% {
+    opacity: 0;
+    transform: translate(26px, 0) scale(0.94);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  85%,
+  100% {
+    opacity: 0;
+    transform: translate(14px, 0) scale(0.97);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gfx * {
+    animation: none !important;
+  }
+  .g1 .after {
+    clip-path: inset(0 0 0 0) !important;
+  }
+  .g1 .handle {
+    transform: translateX(180px) !important;
+  }
+  .g2 .v {
+    opacity: 0 !important;
+  }
+}

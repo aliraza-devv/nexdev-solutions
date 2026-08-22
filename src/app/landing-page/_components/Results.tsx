@@ -95,8 +95,12 @@ function CaseCard({
   return (
     <div
       style={{ top: `${stickyTop}px` }}
-      className="sticky w-full flex items-center justify-center mb-[15vh]"
+      data-cursor="card"
+      className="sticky w-full flex items-center justify-center mb-[15vh] rounded-3xl"
     >
+      <span className="cursor-card-cue pointer-events-none absolute left-5 bottom-5 z-50 text-sm font-bold text-white">
+        View case study &rarr;
+      </span>
       <motion.div
         style={{
           scale,
@@ -291,7 +295,12 @@ export default function Results() {
                 letterSpacing: "-0.02em",
               }}
             >
-              <span className="block overflow-hidden pb-1">
+              <span
+                className="block overflow-hidden pb-1"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="Numbers don't care"
+              >
                 <motion.span
                   className="block"
                   variants={{
@@ -305,7 +314,12 @@ export default function Results() {
                   Numbers don&apos;t care
                 </motion.span>
               </span>
-              <span className="block overflow-hidden pb-1">
+              <span
+                className="block overflow-hidden pb-1"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="about our pitch."
+              >
                 <motion.span
                   className="block"
                   variants={{

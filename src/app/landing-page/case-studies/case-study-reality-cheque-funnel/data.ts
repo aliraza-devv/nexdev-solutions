@@ -5,15 +5,15 @@ export const CASE_STUDY: CaseStudyData = {
   client: "Reality Cheque DFY",
   liveUrl: "https://example.com",
   heroEyebrow:
-    "Case Study — Reality Cheque DFY · Done-For-You Systems for Agency Owners",
+    "Case Study · Reality Cheque DFY · Done-For-You Systems for Agency Owners",
   headline:
     "How a brand-new website turned $1K in ad spend into 26X ROAS and doing $1M.",
   heroStat: "26X ROAS from $1,000 in ad spend and doing $1M",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
-    "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
+    "PLACEHOLDER: hero-device-mockup, desktop 1600×1000",
+    "PLACEHOLDER: hero-device-mockup, mobile 1600×1000",
   ],
   meta: {
     year: "",
@@ -40,9 +40,7 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   context: [
-    "Reality Cheque DFY helps agency owners already doing $10k a month build the systems, sales, and lead generation they need to grow.",
-    "It comes from the team behind Pakistan's biggest agency-owner community, run by an operator who has taken multiple businesses past $1M.",
-    "The credibility was there. The website wasn't, because there wasn't one yet.",
+    "Reality Cheque DFY helps agency owners past $10K a month build systems and lead generation to scale. It's from the team behind Pakistan's biggest agency-owner community, credibility was there, but the website wasn't.",
   ],
   challenge: {
     intro: "A first website that couldn't afford to be a first draft.",
@@ -92,12 +90,10 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   turningPoint: {
-    header: "The website was never the point. The funnel was.",
+    header: "The website was never the point.",
     body: [
-      "Anyone can put up a good-looking page. What made this one work was treating the whole thing as one connected path, where every step had a single job.",
-      "The VSL did the selling. The form did the filtering. The confirmation page protected the show-up rate.",
-      "And because tracking was built in from day one, the funnel didn't go quiet after launch. They could watch it and keep sharpening it.",
-      "That's the difference between a website that just exists and a funnel that pays for itself.",
+      "Anyone can build a good-looking page. What made this one work was treating it as one connected path, where every step had a single job: the VSL sold, the form filtered, the confirmation page protected the show-up rate.",
+      "Tracking was built in from day one, so the funnel never went quiet after launch, they could watch it and keep sharpening it. That's the difference between a website that exists and a funnel that pays for itself.",
     ],
   },
   quote: {
@@ -107,7 +103,7 @@ export const CASE_STUDY: CaseStudyData = {
     photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
   },
   results: {
-    chartImage: "PLACEHOLDER: results-chart — ROAS over first 2 weeks 1400×600",
+    chartImage: "PLACEHOLDER: results-chart, ROAS over first 2 weeks 1400×600",
     stats: [
       {
         label: "Scaled to $1M in revenue",

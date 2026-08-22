@@ -185,7 +185,7 @@ export default function CaseStudiesPage() {
             Real results, real clients.
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-zinc-500">
-            Every project, filtered by industry — see exactly what we did and what it moved.
+            Every project, filtered by industry. See exactly what we did and what it moved.
           </p>
         </motion.div>
       </section>

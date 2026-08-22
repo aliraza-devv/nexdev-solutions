@@ -810,3 +810,7 @@ a {
     @apply bg-background text-foreground;
   }
 }
+
+/* Cursor native-cursor override now lives in
+   src/components/site-cursor/element-mask.css, imported from the root
+   layout, so it stays with the rest of the cursor system's stylesheet. */

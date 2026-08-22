@@ -4,14 +4,14 @@ export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "The HDDs",
   liveUrl: "https://example.com",
-  heroEyebrow: "Case Study — The HDDs · Refurbished Storage, Built From Zero",
+  heroEyebrow: "Case Study · The HDDs · Refurbished Storage, Built From Zero",
   headline: "How a brand-new store started getting orders before it even launched.",
   heroStat: "Organic orders in testing, before launch, with zero ad spend",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
-    "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
+    "PLACEHOLDER: hero-device-mockup, desktop 1600×1000",
+    "PLACEHOLDER: hero-device-mockup, mobile 1600×1000",
   ],
   meta: {
     year: "",
@@ -42,8 +42,7 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   context: [
-    "The HDDs sells refurbished hard drives, SSDs, and USB drives in the US. It launched fresh, with no recognition, into a market measured in billions.",
-    "The competition isn't small either. Household names like Western Digital, Seagate, and Toshiba, plus every established reseller already fighting for the same buyer.",
+    "The HDDs sells refurbished hard drives, SSDs, and USB drives in the US, launching fresh with zero recognition into a billion-dollar market already owned by Western Digital, Seagate, and Toshiba.",
   ],
   challenge: {
     intro:
@@ -93,11 +92,10 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   turningPoint: {
-    header: "The real competition wasn't the giants. It was doubt.",
+    header: "The real competition wasn't the giants.",
     body: [
-      'A new store selling refurbished storage faces two hesitations at once. Nobody knows the brand, and "refurbished" already makes people nervous about reliability.',
-      "So we didn't try to out-shout Seagate or WD. We built the whole store to remove doubt at every step, from the way the brand looked, to how the product pages answered objections, to a checkout that made buying feel safe and simple.",
-      "It worked before we even flipped the switch. Orders started coming in during the testing phase, organically, with no ads running at all. When a store earns trust that well, people buy before you've even asked them to.",
+      "A new store selling refurbished storage faces two hesitations at once: nobody knows the brand, and \"refurbished\" already makes buyers nervous.",
+      "So instead of out-shouting Seagate or WD, we built the whole store to remove doubt: in the branding, the product pages, and a checkout that felt safe. It worked before launch: orders came in during testing, organically, with zero ad spend.",
     ],
   },
   quote: {
@@ -107,7 +105,7 @@ export const CASE_STUDY: CaseStudyData = {
     photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
   },
   results: {
-    chartImage: "PLACEHOLDER: results-chart — pre-launch testing orders 1400×600",
+    chartImage: "PLACEHOLDER: results-chart, pre-launch testing orders 1400×600",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

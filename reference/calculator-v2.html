@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NeXDev · Conversion gap calculator v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141416;
+  --surface:#1e1e24;        /* solid. no translucent purple anywhere */
+  --surface-2:#26262e;
+  --surface-3:#31313b;
+  --purple:#5c45fd;
+  --purple-lo:#a89bff;
+  --paper:#f5f5f5;
+  --body:rgba(245,245,245,.66);
+  --faint:rgba(245,245,245,.38);
+  --hair:rgba(245,245,245,.10);
+  --display:"Bricolage Grotesque",Georgia,serif;
+  --text:"Archivo",system-ui,sans-serif;
+  --data:"JetBrains Mono",ui-monospace,monospace;
+  --out:cubic-bezier(.23,1,.32,1);
+}
+*,*::before,*::after{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--ink); color:var(--paper);
+  font-family:var(--text); -webkit-font-smoothing:antialiased;
+}
+
+/* SAME container token as every other section on the page */
+.hold{ width:min(1200px, calc(100% - 48px)); margin-inline:auto; }
+
+.calc{ padding:110px 0 120px; }
+
+.calc-head{ max-width:52ch; margin-bottom:44px; }
+.calc-head h2{
+  margin:0 0 14px; font-family:var(--display);
+  font-size:clamp(32px,4vw,54px); line-height:1; letter-spacing:-.035em;
+  font-variation-settings:"wdth" 94,"wght" 640,"opsz" 54;
+}
+.calc-head p{ margin:0; font-size:16.5px; line-height:1.6; color:var(--body); }
+
+.grid{ display:grid; grid-template-columns:1fr 1.08fr; gap:24px; align-items:stretch; }
+
+/* ═══════════ LEFT · inputs ═══════════ */
+.pane{
+  background:var(--surface); border:1px solid var(--hair);
+  border-radius:22px; padding:30px 30px 32px;
+}
+.pane-title{
+  font-family:var(--data); font-size:10px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--faint); margin-bottom:24px;
+}
+
+.seg{ display:grid; grid-template-columns:repeat(3,1fr); gap:4px; background:var(--surface-2); padding:4px; border-radius:12px; margin-bottom:28px; }
+.seg button{
+  font:inherit; font-size:13px; font-weight:600; letter-spacing:-.01em;
+  padding:10px 6px; border:0; border-radius:9px; cursor:pointer;
+  background:transparent; color:var(--faint);
+  transition:background 180ms var(--out), color 180ms var(--out);
+}
+.seg button:hover{ color:var(--body); }
+.seg button.on{ background:var(--surface-3); color:var(--paper); }
+.seg button:focus-visible{ outline:2px solid var(--purple-lo); outline-offset:2px; }
+
+.field{ margin-bottom:26px; }
+.field:last-of-type{ margin-bottom:8px; }
+.field .row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px; gap:12px; }
+.field label{ font-size:14.5px; font-weight:600; letter-spacing:-.01em; color:var(--body); }
+.field .out{
+  font-family:var(--data); font-size:15px; font-weight:500; color:var(--paper);
+  background:var(--surface-2); padding:5px 11px; border-radius:8px; white-space:nowrap;
+}
+
+input[type=range]{
+  -webkit-appearance:none; appearance:none;
+  width:100%; height:4px; border-radius:4px; background:var(--surface-3);
+  outline:none; cursor:pointer; margin:0;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; appearance:none;
+  width:22px; height:22px; border-radius:50%;
+  background:var(--paper); border:5px solid var(--purple);
+  cursor:grab; box-shadow:0 3px 10px -2px rgba(0,0,0,.7);
+  transition:transform 140ms var(--out);
+}
+input[type=range]::-webkit-slider-thumb:active{ cursor:grabbing; transform:scale(1.12); }
+input[type=range]::-moz-range-thumb{
+  width:22px; height:22px; border-radius:50%;
+  background:var(--paper); border:5px solid var(--purple); cursor:grab;
+}
+input[type=range]:focus-visible{ outline:2px solid var(--purple-lo); outline-offset:6px; }
+
+.dunno{
+  display:inline-block; margin-top:12px;
+  font-size:12.5px; color:var(--faint); background:none; border:0; padding:0;
+  cursor:pointer; text-decoration:underline; text-underline-offset:3px; font-family:inherit;
+}
+.dunno:hover{ color:var(--purple-lo); }
+.hint{ margin:10px 0 0; font-size:12.5px; line-height:1.5; color:var(--faint); }
+
+/* ═══════════ RIGHT · one answer ═══════════ */
+.answer{
+  background:var(--surface); border:1px solid var(--hair);
+  border-radius:22px; padding:34px 34px 30px;
+  display:flex; flex-direction:column;
+}
+
+.answer .kicker{
+  font-family:var(--data); font-size:10px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--purple-lo);
+}
+
+.bignum{
+  margin:16px 0 0;
+  font-family:var(--display);
+  font-size:clamp(46px,6.4vw,86px); line-height:.92;
+  letter-spacing:-.05em;
+  font-variation-settings:"wdth" 92,"wght" 780,"opsz" 86;
+  display:flex; align-items:baseline; gap:4px;
+}
+.bignum .per{
+  font-family:var(--text); font-size:16px; font-weight:600;
+  letter-spacing:-.01em; color:var(--faint); align-self:flex-end; padding-bottom:10px;
+}
+.saywhat{ margin:14px 0 0; font-size:15.5px; line-height:1.55; color:var(--body); max-width:34ch; }
+
+/* the gap, as two bars. one glance, no table */
+.gap{ margin:30px 0 0; padding-top:26px; border-top:1px solid var(--hair); }
+.gapline{ margin-bottom:18px; }
+.gapline:last-child{ margin-bottom:0; }
+.gapline .top{
+  display:flex; justify-content:space-between; align-items:baseline; margin-bottom:9px;
+}
+.gapline .nm{ font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); }
+.gapline .amt{ font-family:var(--data); font-size:14px; color:var(--body); }
+.gapline.hot .nm{ color:var(--purple-lo); }
+.gapline.hot .amt{ color:var(--paper); }
+.bar{ height:12px; border-radius:6px; background:var(--surface-2); overflow:hidden; }
+.bar i{
+  display:block; height:100%; border-radius:6px; width:0;
+  transition:width 480ms var(--out);
+}
+.gapline.cold .bar i{ background:var(--surface-3); }
+.gapline.hot  .bar i{ background:var(--purple); }
+
+.cta{
+  margin-top:auto; padding-top:28px;
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+}
+.cta a{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--purple); color:#fff; text-decoration:none;
+  padding:16px 26px; border-radius:99px; font-size:15px; font-weight:600;
+  transition:transform 150ms var(--out), box-shadow 150ms var(--out);
+  box-shadow:0 10px 26px -12px rgba(92,69,253,.9);
+}
+.cta a:hover{ transform:translateY(-2px); }
+.cta a:active{ transform:scale(.975); }
+.cta a:focus-visible{ outline:2px solid var(--purple-lo); outline-offset:4px; }
+.cta a i{ font-style:normal; transition:transform 150ms var(--out); }
+.cta a:hover i{ transform:translateX(4px); }
+
+.reveal{
+  background:none; border:0; padding:0; cursor:pointer; font-family:inherit;
+  font-size:13px; color:var(--faint); text-decoration:underline; text-underline-offset:3px;
+}
+.reveal:hover{ color:var(--purple-lo); }
+
+/* progressive disclosure: the detail nobody needs on first look */
+.detail{
+  display:grid; grid-template-rows:0fr;
+  transition:grid-template-rows 380ms var(--out), opacity 260ms var(--out), margin 380ms var(--out);
+  opacity:0; margin-top:0;
+}
+.detail.open{ grid-template-rows:1fr; opacity:1; margin-top:24px; }
+.detail > div{ overflow:hidden; }
+.detail table{
+  width:100%; border-collapse:collapse;
+  border-top:1px solid var(--hair);
+}
+.detail td{
+  padding:11px 0; font-size:13.5px; border-bottom:1px solid var(--hair); color:var(--body);
+}
+.detail td:last-child{ text-align:right; font-family:var(--data); color:var(--paper); }
+.detail .note{ margin:16px 0 0; font-size:12.5px; line-height:1.55; color:var(--faint); }
+.detail .note a{ color:var(--purple-lo); }
+
+@media (max-width:900px){
+  .grid{ grid-template-columns:1fr; }
+  .calc{ padding:76px 0 84px; }
+  .answer{ padding:28px 24px 26px; }
+  .pane{ padding:26px 24px 28px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .bar i,.detail,.cta a,.cta a i{ transition:none !important; }
+}
+</style>
+</head>
+<body>
+
+<section class="calc">
+  <div class="hold">
+
+    <div class="calc-head">
+      <h2>Your traffic is already worth more than it pays you.</h2>
+      <p>Move three sliders. See what your current conversion rate costs you every month.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- ═══════ inputs ═══════ -->
+      <div class="pane">
+        <p class="pane-title">Your numbers</p>
+
+        <div class="seg" id="seg" role="tablist">
+          <button class="on" data-t="service" role="tab">Service</button>
+          <button data-t="ecom" role="tab">E-commerce</button>
+          <button data-t="saas" role="tab">SaaS</button>
+        </div>
+
+        <div class="field">
+          <div class="row">
+            <label for="vis">Monthly website visitors</label>
+            <span class="out" id="visOut">5,000</span>
+          </div>
+          <input id="vis" type="range" min="0" max="1000" value="420">
+        </div>
+
+        <div class="field">
+          <div class="row">
+            <label for="val" id="valLabel">Average deal value</label>
+            <span class="out" id="valOut">$3,000</span>
+          </div>
+          <input id="val" type="range" min="0" max="1000" value="520">
+        </div>
+
+        <div class="field">
+          <div class="row">
+            <label for="cr">Your conversion rate</label>
+            <span class="out" id="crOut">1.5%</span>
+          </div>
+          <input id="cr" type="range" min="1" max="100" value="15">
+          <button class="dunno" id="dunno">I don't know my conversion rate</button>
+          <p class="hint" id="hint" hidden></p>
+        </div>
+      </div>
+
+      <!-- ═══════ one answer ═══════ -->
+      <div class="answer">
+        <p class="kicker">Left on the table, every month</p>
+
+        <p class="bignum"><span id="big">$96,000</span><span class="per">at least</span></p>
+        <p class="saywhat" id="saywhat">That is the revenue your traffic is already capable of, and is not producing.</p>
+
+        <div class="gap">
+          <div class="gapline cold">
+            <div class="top"><span class="nm">Today</span><span class="amt" id="todayAmt">$225,000</span></div>
+            <div class="bar"><i id="todayBar"></i></div>
+          </div>
+          <div class="gapline hot">
+            <div class="top"><span class="nm">After SYNC</span><span class="amt" id="afterAmt">$321,000</span></div>
+            <div class="bar"><i id="afterBar"></i></div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a href="#">See how we would get you there <i>&rarr;</i></a>
+          <button class="reveal" id="reveal" aria-expanded="false" aria-controls="detail">Show the working</button>
+        </div>
+
+        <div class="detail" id="detail">
+          <div>
+            <table>
+              <tbody>
+                <tr><td>Customers today</td><td id="dCustToday">75 / month</td></tr>
+                <tr><td>Customers after</td><td id="dCustAfter">107 / month</td></tr>
+                <tr><td>Conversion rate today</td><td id="dCrToday">1.5%</td></tr>
+                <tr><td>Conversion rate after</td><td id="dCrAfter">2.1% to 3.0%</td></tr>
+                <tr><td>Extra revenue, per year</td><td id="dYear">$1,152,000</td></tr>
+              </tbody>
+            </table>
+            <p class="note" id="dNote">Assumes lifting your conversion rate toward the service benchmark of 4.0%. The headline figure uses the low end of that range on purpose. Our Reality Cheque rebuild lifted conversions <a href="#">51.12%</a>.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var TYPES = {
+    service: { ceiling:4.0, cr:1.5, val:3000,  valLabel:'Average deal value',     unit:'customers' },
+    ecom:    { ceiling:3.2, cr:1.8, val:85,    valLabel:'Average order value',    unit:'orders'    },
+    saas:    { ceiling:3.5, cr:2.2, val:500,   valLabel:'Average customer value', unit:'signups'   }
+  };
+  var type = 'service', crTouched = false;
+
+  var $ = function(id){ return document.getElementById(id); };
+  var vis=$('vis'), val=$('val'), cr=$('cr');
+
+  /* sliders are eased so the low end is usable and the top end is reachable */
+  function visVal(){ return Math.round(easeRange(vis.value/1000, 100, 200000) / 100) * 100; }
+  function valVal(){ return Math.round(easeRange(val.value/1000, 20, 50000) / 5) * 5; }
+  function crVal(){  return +(cr.value/10).toFixed(1); }
+  function easeRange(t, lo, hi){ return lo * Math.pow(hi/lo, t); }
+
+  function money(n){
+    return new Intl.NumberFormat('en-US',{ style:'currency', currency:'USD', maximumFractionDigits:0 }).format(n);
+  }
+  function tidy(n){
+    if(n >= 100000) return Math.round(n/1000)*1000;
+    if(n >= 1000)   return Math.round(n/100)*100;
+    return Math.round(n);
+  }
+
+  /* count the headline number rather than snapping it */
+  var animTo = 0, animFrom = 0, animT0 = 0, animID;
+  function setBig(target){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+      $('big').textContent = money(target); animTo = target; return;
+    }
+    animFrom = animTo; animTo = target; animT0 = performance.now();
+    cancelAnimationFrame(animID);
+    (function run(now){
+      var k = Math.min(1, (now-animT0)/420), e = 1-Math.pow(1-k,3);
+      $('big').textContent = money(Math.round(animFrom + (animTo-animFrom)*e));
+      if(k < 1) animID = requestAnimationFrame(run);
+    })(animT0);
+  }
+
+  function compute(){
+    var T = TYPES[type];
+    var v = visVal(), av = valVal(), c = crVal(), ceil = T.ceiling;
+
+    var lowCR  = Math.max(c*1.10, Math.min(c*1.4, ceil));
+    var highCR = Math.max(c*1.15, Math.min(c*2.0, ceil));
+
+    var custNow  = v * c/100;
+    var revNow   = custNow * av;
+    var custLow  = v * lowCR/100,  revLow  = custLow  * av;
+    var custHigh = v * highCR/100, revHigh = custHigh * av;
+
+    var gapLow = tidy(Math.max(0, revLow - revNow));
+
+    /* the display cap keeps absurd slider combinations from printing a silly number */
+    var capped = gapLow > 500000;
+    setBig(capped ? 500000 : gapLow);
+    $('big').textContent = capped ? money(500000) + '+' : $('big').textContent;
+
+    $('visOut').textContent = v.toLocaleString('en-US');
+    $('valOut').textContent = money(av);
+    $('crOut').textContent  = c.toFixed(1) + '%';
+
+    $('todayAmt').textContent = money(tidy(revNow));
+    $('afterAmt').textContent = money(tidy(revLow));
+
+    var max = Math.max(revLow, revNow) || 1;
+    $('todayBar').style.width = (revNow/max*100).toFixed(1) + '%';
+    $('afterBar').style.width = '100%';
+
+    $('saywhat').textContent = (c >= ceil)
+      ? 'You already convert above the ' + T.ceiling.toFixed(1) + '% benchmark. The bigger lever now is deal value and lead quality, which is a conversation for a call.'
+      : 'That is the revenue your traffic is already capable of, and is not producing.';
+
+    $('dCustToday').textContent = Math.round(custNow).toLocaleString('en-US') + ' / month';
+    $('dCustAfter').textContent = Math.round(custLow).toLocaleString('en-US') + ' to ' + Math.round(custHigh).toLocaleString('en-US') + ' / month';
+    $('dCrToday').textContent   = c.toFixed(1) + '%';
+    $('dCrAfter').textContent   = lowCR.toFixed(1) + '% to ' + highCR.toFixed(1) + '%';
+    $('dYear').textContent      = money(tidy(gapLow*12));
+    $('dNote').firstChild.nodeValue =
+      'Assumes lifting your conversion rate toward the ' + ceilName() + ' benchmark of ' + ceil.toFixed(1) +
+      '%. The headline uses the low end of that range on purpose. Our Reality Cheque rebuild lifted conversions ';
+  }
+  function ceilName(){ return type === 'service' ? 'service' : type === 'ecom' ? 'e-commerce' : 'SaaS'; }
+
+  [vis,val,cr].forEach(function(el){ el.addEventListener('input', compute); });
+  cr.addEventListener('input', function(){ crTouched = true; $('hint').hidden = true; });
+
+  $('seg').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    [].forEach.call(this.children, function(c){ c.classList.toggle('on', c===b); });
+    type = b.dataset.t;
+    var T = TYPES[type];
+    $('valLabel').textContent = T.valLabel;
+    val.value = Math.round(Math.log(T.val/20) / Math.log(50000/20) * 1000);
+    if(!crTouched) cr.value = Math.round(T.cr*10);
+    compute();
+  });
+
+  $('dunno').addEventListener('click', function(){
+    var T = TYPES[type];
+    cr.value = Math.round(T.cr*10); crTouched = false;
+    $('hint').hidden = false;
+    $('hint').textContent = 'We have used the ' + ceilName() + ' average of ' + T.cr.toFixed(1) + '%. Most sites we audit come in below it.';
+    compute();
+  });
+
+  $('reveal').addEventListener('click', function(){
+    var open = $('detail').classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+    this.textContent = open ? 'Hide the working' : 'Show the working';
+  });
+
+  compute();
+})();
+</script>
+</body>
+</html>

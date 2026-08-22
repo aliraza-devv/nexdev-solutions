@@ -1,27 +1,28 @@
 "use client";
 
 import React from "react";
-import { Target, TrendingUp, Zap, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ComparisonSliderGraphic, ABTestGraphic, ProjectDashboardGraphic } from "./WhyUsGraphics";
 
 const stats = [
   {
-    icon: Target,
-    num: "8 Years",
+    Graphic: ComparisonSliderGraphic,
+    num: "Since 2016",
     label: "We've fixed what other agencies broke.",
-    desc: "Most of our 200+ projects are rebuilds — founders who paid another agency for a 'beautiful' site that never sold a thing. Our SYNC Method™ audits exactly why visitors leave before we touch a single pixel.",
+    desc: "Most of our 200+ projects are rebuilds for founders who paid someone else for a pretty site that never sold. We find out why visitors leave before we touch a pixel.",
   },
   {
-    icon: TrendingUp,
+    Graphic: ABTestGraphic,
     num: "Sales > Style",
     label: "Built to sell. Not just to look good.",
-    desc: "We're not a design studio chasing awards. Every layout, headline, and button exists to move a visitor toward a sale — good looks are a side effect, never the goal.",
+    desc: "We're not chasing awards. Every layout, headline, and button is there to move someone closer to buying. Good looks are a side effect.",
   },
   {
-    icon: Zap,
+    Graphic: ProjectDashboardGraphic,
     num: "Speed & transparency",
     label: "Fast. Transparent. No surprises.",
-    desc: "A progress update every 2–3 days and a live site in weeks, not months — you always know exactly where things stand.",
+    desc: "An update every 2 to 3 days. A live site in weeks, not months. You always know where things stand.",
   },
 ];
 
@@ -41,34 +42,46 @@ export default function WhyUs() {
             letterSpacing: "-0.02em",
           }}
         >
-          <span className="block">You&apos;ve seen agencies.</span>
-          <span className="block text-black/30">You haven&apos;t seen this.</span>
+          <span className="block" data-cursor="text" data-text="You've seen agencies.">
+            You&apos;ve seen agencies.
+          </span>
+          <span
+            className="block text-black/30"
+            data-cursor="text"
+            data-text="You haven't seen this."
+          >
+            You haven&apos;t seen this.
+          </span>
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {stats.map((s, i) => {
-            const Icon = s.icon;
+            const Graphic = s.Graphic;
             return (
               <div
                 key={i}
-                className="group flex flex-col gap-5 p-8 lg:p-9 rounded-3xl border border-black/[0.06] bg-zinc-50/60 transition-all duration-300 hover:border-[#5C45FD]/25 hover:bg-white hover:shadow-[0_24px_48px_-20px_rgba(92,69,253,0.18)]"
+                className="group flex h-full flex-col rounded-3xl border border-black/[0.06] bg-zinc-50/60 p-8 lg:p-9 transition-all duration-300 hover:border-[#5C45FD]/25 hover:bg-white hover:shadow-[0_24px_48px_-20px_rgba(92,69,253,0.18)]"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#5C45FD] text-white transition-transform duration-300 group-hover:scale-110">
-                  <Icon className="h-5 w-5" strokeWidth={2.25} />
-                </div>
                 <div
-                  className="text-3xl md:text-4xl font-black text-[#5C45FD] tracking-tighter"
+                  className="min-h-[2.2em] max-[940px]:min-h-0 text-[clamp(24px,2.1vw,29px)] font-extrabold leading-[1.1] tracking-[-0.025em] text-[#5C45FD]"
                   style={{ fontFamily: "Arial, sans-serif" }}
                 >
                   {s.num}
                 </div>
-                <h3
-                  className="text-lg md:text-xl text-[#0A0A0E] font-bold tracking-tight"
-                  style={{ fontFamily: "Arial, sans-serif" }}
+                <p
+                  className="mt-[10px] text-[15px] font-bold leading-[1.35] text-[#1c1c26]"
+                  style={{ letterSpacing: "-0.01em" }}
                 >
                   {s.label}
-                </h3>
-                <p className="text-base leading-relaxed text-[#6b7280]">
+                </p>
+
+                <div className="mt-6 grid h-[196px] max-[940px]:h-[170px] w-full place-items-center overflow-hidden rounded-[14px] bg-[#f7f6ff] transition-colors duration-[220ms] group-hover:bg-[#f0edff]">
+                  <Graphic />
+                </div>
+
+                <div className="mt-6 h-px w-full bg-[rgba(22,22,22,0.08)]" />
+
+                <p className="mt-5 text-[14.5px] leading-[1.62] text-[#5a5a70]">
                   {s.desc}
                 </p>
               </div>
@@ -83,6 +96,7 @@ export default function WhyUs() {
           </p>
           <Link
             href="/landing-page/book-call"
+            data-cursor="button"
             className="group inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#5C45FD] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0]"
           >
             Book Your Free Strategy Call

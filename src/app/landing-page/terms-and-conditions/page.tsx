@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import TermsContent from "../_components/TermsContent";
 
-const title = "Terms and Conditions — NeXDev Solutions";
+const title = "Terms and Conditions | NeXDev Solutions";
 const description =
   "The terms and conditions governing use of the NeXDev Solutions website and services.";
 const path = "/landing-page/terms-and-conditions";

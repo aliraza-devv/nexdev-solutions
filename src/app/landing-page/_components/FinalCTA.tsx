@@ -12,6 +12,19 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useLenisScrollTo } from "@/hooks/use-lenis-scroll-to";
+
+function flattenToText(node: React.ReactNode): string {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(flattenToText).join("");
+  if (React.isValidElement(node)) {
+    const props = node.props as { children?: React.ReactNode };
+    return flattenToText(props.children);
+  }
+  return "";
+}
 
 export default function FinalCTA({
   headline,
@@ -22,6 +35,21 @@ export default function FinalCTA({
 } = {}) {
   const primaryFont = "Arial, sans-serif";
   const secondaryFont = '"Inter", sans-serif';
+  const pathname = usePathname();
+  const scrollTo = useLenisScrollTo();
+
+  // Same-page hash links ease there with Lenis. A hash link to a different
+  // route falls through to Next's normal navigation, then SmoothScroll
+  // picks up the hash once the new route has mounted.
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    const [path, hash] = href.split("#");
+    if (!hash || path !== pathname) return;
+    e.preventDefault();
+    scrollTo(`#${hash}`);
+  };
 
   return (
     <footer id="cta" className="relative pt-20 overflow-hidden isolate">
@@ -73,6 +101,9 @@ export default function FinalCTA({
               fontSize: "clamp(36px, 6.2vw, 64px)",
               lineHeight: "1.1",
             }}
+            data-cursor="text"
+            data-cursor-on-dark=""
+            data-text={flattenToText(headline)}
           >
             {headline}
           </motion.h2>
@@ -90,6 +121,9 @@ export default function FinalCTA({
                 fontSize: "clamp(36px, 6.2vw, 64px)",
                 lineHeight: "1.1",
               }}
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="The right website turns visitors into customers. Let's build yours."
             >
               The right <span className="italic text-[#5C45FD]">website</span>{" "}
               turns visitors into customers. Let&apos;s build yours.{" "}
@@ -116,7 +150,12 @@ export default function FinalCTA({
                 lineHeight: "1.1",
               }}
             >
-              <span className="block overflow-hidden pb-1">
+              <span
+                className="block overflow-hidden pb-1"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="The right website turns visitors"
+              >
                 <motion.span
                   className="block"
                   variants={{
@@ -131,7 +170,12 @@ export default function FinalCTA({
                   turns visitors
                 </motion.span>
               </span>
-              <span className="block overflow-hidden pb-1">
+              <span
+                className="block overflow-hidden pb-1"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="into customers. Let's build"
+              >
                 <motion.span
                   className="block"
                   variants={{
@@ -145,7 +189,12 @@ export default function FinalCTA({
                   into customers. Let&apos;s build
                 </motion.span>
               </span>
-              <span className="block overflow-hidden pb-1">
+              <span
+                className="block overflow-hidden pb-1"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="yours"
+              >
                 <motion.span
                   className="block"
                   variants={{
@@ -176,7 +225,7 @@ export default function FinalCTA({
             <>
               30 minutes. No pitch. Just a clear look at what&apos;s holding{" "}
               <br className="hidden lg:block" />
-              your site back — and what to do about it.
+              your site back, and what to do about it.
             </>
           )}
         </motion.p>
@@ -191,6 +240,7 @@ export default function FinalCTA({
         >
           <Link
             href="/landing-page/book-call"
+            data-cursor="button"
             className="group relative flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-[#5C45FD] px-7 py-4 text-base font-bold text-white transition-all hover:bg-[#4a36e0] hover:scale-105 shadow-xl shadow-[#5C45FD]/20"
             style={{ fontFamily: primaryFont }}
           >
@@ -201,7 +251,7 @@ export default function FinalCTA({
           <div className="flex items-center justify-center gap-2.5 px-4 text-center max-w-[290px] sm:max-w-none">
             <div className="h-1.5 w-1.5 rounded-full bg-[#22C55E] shrink-0 shadow-[0_0_8px_#22C55E]" />
             <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.08em] sm:tracking-[0.1em] text-white/80 uppercase leading-relaxed text-center">
-              4–6 spots open per month. Currently accepting new clients.
+              4 to 6 spots open per month. Currently accepting new clients.
             </span>
           </div>
         </motion.div>
@@ -212,7 +262,7 @@ export default function FinalCTA({
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-start mb-16 text-left w-full">
             {/* Column 1: Brand (Logo & Tagline & Socials) */}
             <div className="col-span-1 md:col-span-6 flex flex-col items-start gap-4">
-              <Link href="/" className="relative h-10 w-44">
+              <Link href="/" data-cursor="button" className="relative h-10 w-44">
                 <Image
                   src="/assets/nexdev-full-logo.png"
                   alt="NeXDev Logo"
@@ -235,6 +285,7 @@ export default function FinalCTA({
                   href="https://www.linkedin.com/company/nexdev-solutions"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-cursor="button"
                   className="text-zinc-400 hover:text-white transition-colors p-2.5"
                   aria-label="Linkedin"
                 >
@@ -244,6 +295,7 @@ export default function FinalCTA({
                   href="https://www.instagram.com/nexdevsolutions/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-cursor="button"
                   className="text-zinc-400 hover:text-white transition-colors p-2.5"
                   aria-label="Instagram"
                 >
@@ -266,24 +318,31 @@ export default function FinalCTA({
               >
                 <Link
                   href="/landing-page/case-studies"
+                  data-cursor="button"
                   className="hover:text-white transition-colors py-1.5 px-1"
                 >
                   Case studies
                 </Link>
                 <Link
-                  href="/#how-it-works"
+                  href="/landing-page#testimonials"
+                  onClick={(e) => handleAnchorClick(e, "/landing-page#testimonials")}
+                  data-cursor="button"
                   className="hover:text-white transition-colors py-1.5 px-1"
                 >
                   Testimonials
                 </Link>
                 <Link
-                  href="/#results"
+                  href="/landing-page#how-it-works"
+                  onClick={(e) => handleAnchorClick(e, "/landing-page#how-it-works")}
+                  data-cursor="button"
                   className="hover:text-white transition-colors py-1.5 px-1"
                 >
                   Our Process
                 </Link>
                 <Link
-                  href="/#deliverables"
+                  href="/landing-page#faq"
+                  onClick={(e) => handleAnchorClick(e, "/landing-page#faq")}
+                  data-cursor="button"
                   className="hover:text-white transition-colors py-1.5 px-1"
                 >
                   FAQs
@@ -305,12 +364,14 @@ export default function FinalCTA({
               >
                 <Link
                   href="mailto:info@nexdevsolutions.net"
+                  data-cursor="button"
                   className="hover:text-white transition-colors py-1.5 px-1"
                 >
                   info@nexdevsolutions.net
                 </Link>
                 <Link
                   href="tel:+923081992088"
+                  data-cursor="button"
                   className="hover:text-white transition-colors py-1.5 px-1"
                 >
                   +92 308 199 2088
@@ -331,12 +392,14 @@ export default function FinalCTA({
             <div className="flex gap-6">
               <Link
                 href="/landing-page/privacy-policy"
+                data-cursor="button"
                 className="hover:text-white transition-colors py-2 px-1"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/landing-page/terms-and-conditions"
+                data-cursor="button"
                 className="hover:text-white transition-colors py-2 px-1"
               >
                 Terms of Service

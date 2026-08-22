@@ -2,6 +2,7 @@ import Navbar from "./_components/Navbar";
 import Hero from "./_components/Hero";
 import LogosStrip from "./_components/Logos";
 import Problem from "./_components/Problem";
+import ConversionCalculator from "./_components/ConversionCalculator";
 import Solution from "./_components/Solution";
 import OurProcess from "./_components/OurProcess";
 import Results from "./_components/Results";
@@ -40,7 +41,7 @@ export default function Home() {
           {
             letter: "2",
             title: "SYNC METHOD AUDIT",
-            desc: "We analyze sales architecture, narrative positioning, cognitive layouts, and conversion flows — mapping every decision in advance to give design a clear job.",
+            desc: "We analyze sales architecture, narrative positioning, cognitive layouts, and conversion flows, mapping every decision in advance to give design a clear job.",
           },
           {
             letter: "3",
@@ -55,6 +56,7 @@ export default function Home() {
         ]}
       />
       <Results />
+      <ConversionCalculator />
       <Testimonials />
       <ReviewsMarquee />
       <Deliverables />

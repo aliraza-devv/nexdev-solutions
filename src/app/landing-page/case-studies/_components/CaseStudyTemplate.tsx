@@ -1,7 +1,7 @@
 "use client";
 
 // ============================================================================
-// Shared case study page template — every case-study-[brand] route renders
+// Shared case study page template. Every case-study-[brand] route renders
 // this same component with its own CaseStudyData. Edit a brand's data.ts to
 // change that page's content; edit this file to change the structure/design
 // of every case study page at once.
@@ -27,11 +27,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView, useReducedMotion, animate } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 import {
   ArrowRight,
   TrendingUp,
   MousePointerClick,
   BarChart3,
+  Lightbulb,
 } from "lucide-react";
 import type {
   CaseStudyData,
@@ -56,7 +63,7 @@ function statsGridCols(count: number) {
 }
 
 // ----------------------------------------------------------------------------
-// Reveal wrapper — fade/slide-up on scroll, shared by every section so the
+// Reveal wrapper: fade/slide-up on scroll, shared by every section so the
 // motion feels consistent instead of each section rolling its own timing.
 // Reduced-motion users get the final state immediately, no animation at all.
 // ----------------------------------------------------------------------------
@@ -94,10 +101,9 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 // ----------------------------------------------------------------------------
-// Blank placeholder box — stands in for every real image/screenshot. Keeps
-// the exact aspect ratio the final asset will use so the layout never shifts
-// once real photography/screens are dropped in; the label is aria-only so
-// the block itself reads clean.
+// Renders a real photo/screenshot once a brand's data.ts points at one;
+// until then, falls back to a blank box that keeps the exact aspect ratio
+// the final asset will use so the layout never shifts once it's dropped in.
 // ----------------------------------------------------------------------------
 function ImagePlaceholder({
   label,
@@ -110,11 +116,57 @@ function ImagePlaceholder({
   rounded?: string;
   className?: string;
 }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const isReal = !label.startsWith("PLACEHOLDER:");
+
+  useEffect(() => {
+    if (!isReal) return;
+    const el = wrapRef.current;
+    const img = el?.querySelector("img");
+    if (!el || !img) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top 88%",
+          toggleActions: "play none none none",
+        },
+      });
+      tl.fromTo(
+        el,
+        { clipPath: "inset(100% 0% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 1.1, ease: "power3.out", immediateRender: true }
+      ).fromTo(
+        img,
+        { y: "6%", scale: 1.08 },
+        { y: "0%", scale: 1, duration: 1.1, ease: "power3.out", immediateRender: true },
+        0
+      );
+    }, el);
+    return () => ctx.revert();
+  }, [isReal, label]);
+
+  if (isReal) {
+    // object-contain (not object-cover) so a real screenshot always shows
+    // in full inside the box, regardless of its native aspect ratio -
+    // cover would crop it to fill the box exactly, contain never crops,
+    // it just letterboxes on the shorter axis against the bg color.
+    // The GSAP effect above grows the box open (clip-path) while the image
+    // itself settles in from a slight zoom, once it scrolls into view.
+    return (
+      <div
+        ref={wrapRef}
+        className={`relative w-full ${aspect} ${rounded} overflow-hidden bg-zinc-100 ${className}`}
+      >
+        <Image src={label} alt="" fill className="object-contain" />
+      </div>
+    );
+  }
   const clean = label.replace(/^PLACEHOLDER:\s*/, "");
   return (
     <div
       role="img"
-      aria-label={`Placeholder image — ${clean}`}
+      aria-label={`Placeholder image: ${clean}`}
       className={`w-full ${aspect} ${rounded} bg-zinc-100 ${className}`}
     />
   );
@@ -136,27 +188,6 @@ function useShowSecondImage() {
     return () => mq.removeEventListener("change", update);
   }, []);
   return show;
-}
-
-// One real photo/screenshot per Approach fix card - falls back to the same
-// blank placeholder box until a brand's data.ts sets a real asset path.
-function ApproachImage({
-  image,
-  aspect = "aspect-[4/3]",
-  rounded = "rounded-2xl",
-}: {
-  image: string;
-  aspect?: string;
-  rounded?: string;
-}) {
-  if (image.startsWith("PLACEHOLDER:")) {
-    return <ImagePlaceholder label={image} aspect={aspect} rounded={rounded} />;
-  }
-  return (
-    <div className={`relative w-full ${aspect} ${rounded} overflow-hidden bg-zinc-100`}>
-      <Image src={image} alt="" fill className="object-cover" />
-    </div>
-  );
 }
 
 // Index 0 is always the more meaningful ("after"/result) image and is the
@@ -270,7 +301,7 @@ function MetaItem({ label, value }: { label: string; value: string }) {
         <div className="mt-1.5 text-sm font-medium text-zinc-700">{value}</div>
       ) : (
         <div className="mt-1.5 text-sm font-medium italic text-zinc-300">
-          — Add {label.toLowerCase()} —
+          [Add {label.toLowerCase()}]
         </div>
       )}
     </div>
@@ -345,13 +376,18 @@ function Hero({ data }: { data: CaseStudyData }) {
 function Context({ data }: { data: CaseStudyData }) {
   return (
     <section className="bg-white px-6 pb-16 md:px-10 md:pb-20">
-      <Reveal className="mx-auto flex max-w-[800px] flex-col gap-4 text-center">
+      <div className="mx-auto flex max-w-[760px] flex-col gap-5 text-center">
         {data.context.map((paragraph, i) => (
-          <p key={i} className="text-lg leading-relaxed text-zinc-600">
-            {paragraph}
-          </p>
+          <Reveal key={i} delay={i * 0.12}>
+            <p
+              className="text-xl leading-snug text-[#0A0A0E] md:text-2xl"
+              style={{ fontFamily: "Arial, sans-serif", fontWeight: 500 }}
+            >
+              {paragraph}
+            </p>
+          </Reveal>
         ))}
-      </Reveal>
+      </div>
     </section>
   );
 }
@@ -436,7 +472,7 @@ function ApproachRow({
         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-zinc-600">{item.body}</p>
       </div>
       <div className={reversed ? "lg:order-1" : ""}>
-        <ApproachImage image={item.image} aspect="aspect-[4/3]" />
+        <ImagePlaceholder label={item.image} aspect="aspect-[4/3]" />
       </div>
     </Reveal>
   );
@@ -490,19 +526,33 @@ function TurningPoint({ data }: { data: CaseStudyData }) {
   if (!data.turningPoint) return null;
   return (
     <section className="bg-zinc-50/60 px-6 py-20 md:px-10 md:py-28">
-      <Reveal className="mx-auto max-w-[800px] text-center">
-        <p
-          className="text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
-          style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
-        >
-          {data.turningPoint.header}
-        </p>
-        <div className="mt-6 flex flex-col gap-4">
-          {data.turningPoint.body.map((paragraph, i) => (
-            <p key={i} className="text-lg leading-relaxed text-zinc-600">
-              {paragraph}
-            </p>
-          ))}
+      <Reveal className="mx-auto max-w-[820px]">
+        <div className="relative overflow-hidden rounded-[28px] border border-[#5C45FD]/15 bg-white px-6 py-12 text-center shadow-[0_30px_60px_-35px_rgba(10,10,14,0.25)] md:px-16 md:py-16">
+          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#5C45FD]/[0.06] blur-2xl" />
+          <div className="pointer-events-none absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-[#5C45FD]/[0.05] blur-2xl" />
+
+          <div className="relative mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#5C45FD]/10 text-[#5C45FD]">
+            <Lightbulb className="h-5 w-5" strokeWidth={2} />
+          </div>
+
+          <div className="relative flex justify-center">
+            <Eyebrow>The Turning Point</Eyebrow>
+          </div>
+
+          <p
+            className="relative mx-auto max-w-xl text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
+          >
+            {data.turningPoint.header}
+          </p>
+
+          <div className="relative mx-auto mt-6 flex max-w-lg flex-col gap-4">
+            {data.turningPoint.body.map((paragraph, i) => (
+              <p key={i} className="text-[15px] leading-relaxed text-zinc-500">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
       </Reveal>
     </section>
@@ -539,7 +589,7 @@ function ResultsAtLaunch({ data }: { data: CaseStudyData }) {
         <Reveal delay={0.2} className="mt-6">
           <ImagePlaceholder
             label={data.results.chartImage}
-            aspect="aspect-[16/7]"
+            aspect={data.results.chartImage.startsWith("PLACEHOLDER:") ? "aspect-[16/7]" : "aspect-[4/3]"}
             rounded="rounded-[24px]"
           />
         </Reveal>
@@ -639,12 +689,12 @@ function Testimonial({ data }: { data: CaseStudyData }) {
             {data.quote.name ? (
               <div className="text-sm font-bold text-[#0A0A0E]">{data.quote.name}</div>
             ) : (
-              <div className="text-sm font-bold italic text-zinc-300">— Add client name —</div>
+              <div className="text-sm font-bold italic text-zinc-300">[Add client name]</div>
             )}
             {data.quote.role ? (
               <div className="text-xs text-zinc-500">{data.quote.role}</div>
             ) : (
-              <div className="text-xs italic text-zinc-300">— Add role/company —</div>
+              <div className="text-xs italic text-zinc-300">[Add role/company]</div>
             )}
           </div>
         </div>
@@ -655,7 +705,7 @@ function Testimonial({ data }: { data: CaseStudyData }) {
 
 export default function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
   return (
-    // --accent is the single line to change for a full rebrand — every
+    // --accent is the single line to change for a full rebrand: every
     // color reference in this file reads from this CSS variable.
     <div style={{ "--accent": ACCENT } as React.CSSProperties} className="bg-white">
       <Navbar ctaLabel="Book a Free Call" ctaHref={CTA_HREF} />

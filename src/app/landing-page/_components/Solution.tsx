@@ -61,13 +61,16 @@ export default function Solution() {
               fontSize: "clamp(28px, 5vw, 46px)",
               letterSpacing: "-0.02em",
             }}
+            data-cursor="text"
+            data-cursor-on-dark=""
+            data-text="There's a fix. And it's not another redesign."
           >
             There&apos;s a fix. And it&apos;s not{" "}
             <span className="text-[#5C45FD] italic">another redesign.</span>
           </motion.h2>
         </div>
 
-        {/* Letters Area — each card is always in the flow above its own
+        {/* Letters Area: each card is always in the flow above its own
             letter (not a hover-only overlay), so there's no empty reserved
             gap when nothing is hovered. Hovering a letter or its card just
             highlights that one. */}
@@ -100,9 +103,10 @@ export default function Solution() {
                     setHoveredIndex(hoveredIndex === idx ? null : idx);
                   }
                 }}
+                data-cursor="button"
                 className="relative cursor-pointer select-none group flex-1 flex flex-col items-center gap-5"
               >
-                {/* Card — always visible, hover just highlights it. Plain
+                {/* Card: always visible, hover just highlights it. Plain
                     conditional classes + CSS transition rather than a
                     framer-motion `animate` prop, so the highlight is driven
                     by React state directly instead of Framer's own

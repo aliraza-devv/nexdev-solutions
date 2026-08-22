@@ -4,14 +4,14 @@ export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Bamper",
   liveUrl: "https://example.com",
-  heroEyebrow: "Case Study — Bamper · Bamboo Toilet Paper, Built From Zero",
+  heroEyebrow: "Case Study · Bamper · Bamboo Toilet Paper, Built From Zero",
   headline: "How a brand-new bamboo brand sold out its inventory in 60 days.",
   heroStat: "Sold out in 60 days at a 4.2% conversion rate",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
-    "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
+    "/assets/case-studies/Bamper-hero-left.png",
+    "/assets/case-studies/Bamper-hero-right.png",
   ],
   meta: {
     year: "",
@@ -42,8 +42,7 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   context: [
-    "Bamper makes bamboo toilet paper, and it launched with zero name recognition in the US market. That market already has a handful of household bamboo brands doing millions in revenue.",
-    "No past customers, no reviews, no story anyone had heard yet. Just a product and a launch date.",
+    "Bamper launched a bamboo toilet paper brand with zero name recognition, going up against household bamboo brands already doing millions. No past customers, no reviews, no story yet, just a product and a launch date.",
   ],
   challenge: {
     intro: "A new brand with nothing to lean on but the site itself.",
@@ -93,12 +92,10 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   turningPoint: {
-    header: "A new brand can't sell on trust it hasn't earned yet. So we built the site to earn it.",
+    header: "We didn't build a store. We built trust.",
     body: [
-      "An established brand can survive an average product page. Its name does some of the selling before anyone reads a word.",
-      "Bamper didn't have that. Every visitor showed up as a stranger, and had to leave convinced.",
-      "So we stopped treating this as a store build and started treating it as a trust build. The about page, the product page, the video reviews, the checkout: every piece existed to answer the doubt a new brand naturally creates, right at the moment it would show up.",
-      "That's what let a brand nobody had heard of sell out in 60 days.",
+      "An established brand can lean on its name. Bamper couldn't: every visitor showed up a stranger who had to leave convinced.",
+      "So we stopped building a store and started building trust: the about page, product page, reviews, and checkout each existed to answer doubt the moment it appeared. That's what let an unknown brand quickly sell out in 60 days.",
     ],
   },
   quote: {
@@ -108,7 +105,7 @@ export const CASE_STUDY: CaseStudyData = {
     photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
   },
   results: {
-    chartImage: "PLACEHOLDER: results-chart — sell-through over 60 days 1400×600",
+    chartImage: "/assets/case-studies/Bamper-results-chart.png",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

@@ -44,6 +44,9 @@ export default function ReviewsMarquee() {
             lineHeight: 1.1,
             letterSpacing: "-0.02em",
           }}
+          data-cursor="text"
+          data-cursor-on-dark=""
+          data-text="More receipts, if you needed them."
         >
           More receipts,{" "}
           <span className="text-[#5C45FD] italic">if you needed them.</span>

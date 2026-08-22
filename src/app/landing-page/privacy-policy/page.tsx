@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PrivacyPolicyContent from "../_components/PrivacyPolicyContent";
 
-const title = "Privacy Policy — NeXDev Solutions";
+const title = "Privacy Policy | NeXDev Solutions";
 const description =
   "How NeXDev Solutions collects, uses, and protects your personal information.";
 const path = "/landing-page/privacy-policy";

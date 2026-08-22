@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { CASE_STUDY } from "./data";
 import CaseStudyTemplate from "../_components/CaseStudyTemplate";
 
-const title = `${CASE_STUDY.client} Case Study — ${CASE_STUDY.agencyName}`;
+const title = `${CASE_STUDY.client} Case Study | ${CASE_STUDY.agencyName}`;
 const metricsLead = CASE_STUDY.metrics
   .map((m) => ("change" in m && m.change ? `${m.label} ${m.change}` : m.label))
   .join(", ");
-const description = `${metricsLead} — how we rebuilt ${CASE_STUDY.client}'s site into a conversion engine in ${CASE_STUDY.meta.timeline}.`;
+const description = `${metricsLead}. How we rebuilt ${CASE_STUDY.client}'s site into a conversion engine in ${CASE_STUDY.meta.timeline}.`;
 const path = "/landing-page/case-studies/case-study-bamper";
 
 export const metadata: Metadata = {

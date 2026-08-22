@@ -140,10 +140,11 @@ export default function Hero() {
               className="mb-4 lg:mb-2 text-left text-xs sm:text-sm font-medium text-gray-600"
             >
               For founders who need a website that actually
-              <span className="font-semibold text-black"> sell</span>.
+              <span className="font-semibold text-black"> sells</span>.
             </motion.div>
 
             <h1
+              data-cursor="text"
               className="text-[40px] xs:text-[46px] sm:text-[50px] md:text-[50px] lg:text-[50px] xl:text-[56px] 2xl:text-[64px] leading-[1.1] font-medium tracking-tight text-[#0A0A0E]"
               style={{ fontFamily: "Arial, sans-serif" }}
             >
@@ -231,7 +232,7 @@ export default function Hero() {
               className="w-full mt-8 lg:mt-5 flex flex-col sm:flex-row items-stretch sm:items-start justify-center lg:justify-start gap-3"
             >
               <div className="flex flex-col items-center lg:items-start w-full sm:w-auto gap-2">
-                <Link href="/landing-page/book-call" className="w-full sm:w-auto">
+                <Link href="/landing-page/book-call" data-cursor="button" className="w-full sm:w-auto">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

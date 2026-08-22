@@ -5,22 +5,20 @@ export const CASE_STUDY: CaseStudyData = {
   client: "Smarterform",
   liveUrl: "https://example.com",
   heroEyebrow:
-    "Case Study — Smarterform · Secure Form-Building SaaS for High-Stakes Firms",
+    "Case Study · Smarterform · Secure Form-Building SaaS for High-Stakes Firms",
   headline: "How a from-scratch SaaS product went from idea to funded in two weeks.",
   heroStat: "Investor secured in 2 weeks",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's slowing your product down. No pitch.",
   heroImages: [
-    "PLACEHOLDER: hero-device-mockup — desktop 1600×1000",
-    "PLACEHOLDER: hero-device-mockup — mobile 1600×1000",
+    "/assets/case-studies/Smarterform-hero-left.png",
+    "/assets/case-studies/Smarterform-hero-right.png",
   ],
   meta: {
     year: "",
     timeline: "30-Day MVP, 90-Day Full Build",
     industry: "SaaS / Legal Tech / Secure Data",
     services: [
-      "SYNC Audit",
-      "Product & UX Design",
       "Full-Stack Web App Development",
       "MVP Build",
       "Security Engineering",
@@ -39,8 +37,7 @@ export const CASE_STUDY: CaseStudyData = {
     },
   ],
   context: [
-    "Smarterform is a drag-and-drop tool for building complex, multi-step forms, made for organizations that handle highly sensitive data, like law firms and corporate compliance teams.",
-    "It started with no product and no recognition. Just an idea, a serious problem to solve, and a market that takes data security very seriously.",
+    "Smarterform is a drag-and-drop tool for building complex, multi-step fonpmrms for law firms and compliance teams handling sensitive data. It started with no product, no recognition, just an idea and a serious problem to solve.",
   ],
   challenge: {
     intro:
@@ -75,28 +72,26 @@ export const CASE_STUDY: CaseStudyData = {
       title: "An MVP Built to Raise On (30 Days)",
       body: "In 30 days we shipped an MVP that made the value impossible to miss: the problem it solves, who it's for, and how big it could get. Clear enough to walk an investor through, and it worked.",
       solves: 0,
-      image: "PLACEHOLDER: mvp-overview 1200×900",
+      image: "/assets/case-studies/Smarterform-approach-1.png",
     },
     {
       title: "Complex Form-Building, Made Effortless",
       body: "The core is a drag-and-drop builder where an admin creates multi-step forms with complicated logic, no code required. We set up roles for admin reviewers, reviewers, and submitters so each person only sees what they need, plus a dashboard for stats and settings. Hard on the inside, simple on the surface.",
       solves: 1,
-      image: "PLACEHOLDER: form-builder 1200×900",
+      image: "/assets/case-studies/Smarterform-approach-2.png",
     },
     {
       title: "Security Built Into the Foundation",
       body: "We built secure authentication and an encryption layer so sensitive data stays protected from end to end. Then it was put through penetration testing, and it held.",
       solves: 2,
-      image: "PLACEHOLDER: auth-security 1200×900",
+      image: "/assets/case-studies/Smarterform-approach-3.png",
     },
   ],
   turningPoint: {
-    header:
-      "The hard part was never the features. It was making complexity feel effortless, and provably safe.",
+    header: "The hard part wasn't the features.",
     body: [
-      "Plenty of teams can build a form tool. Building one a non-technical person at a law firm will trust with confidential data, and actually likes using, is a different problem entirely.",
-      "So we treated two things as the real product: the experience and the security. The drag-and-drop had to hide enormous complexity behind something anyone could pick up in minutes. The data protection had to be strong enough to survive real attempts to break it.",
-      "Get those two right and the features sell themselves. That's what turned an idea into a funded product in two weeks, and a funded product into one that passed security testing.",
+      "Building a form tool is easy. Building one a non-technical person at a law firm will trust with confidential data, and actually enjoy using, is a different problem entirely.",
+      "So we treated the experience and the security as the real product: drag-and-drop simple on the surface, hard-tested underneath. Get both right and the features sell themselves. That's how an idea became funded in two weeks, and secure enough to pass testing.",
     ],
   },
   quote: {
@@ -106,7 +101,7 @@ export const CASE_STUDY: CaseStudyData = {
     photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
   },
   results: {
-    chartImage: "PLACEHOLDER: results-chart — build timeline MVP to full launch 1400×600",
+    chartImage: "/assets/case-studies/Smarterform-results-chart.png",
     stats: [
       { label: "Full web app launched in 90 days" },
       { label: "Passed penetration testing" },

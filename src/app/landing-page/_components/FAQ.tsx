@@ -7,14 +7,14 @@ import { Plus, X } from "lucide-react";
 const faqs = [
   {
     q: "How fast will this actually launch?",
-    a: "Most SYNC rebuilds live within 2–4 weeks. Complex enterprise custom builds typically range 6–10 weeks depending on integrations.",
+    a: "Most SYNC rebuilds live within 2 to 4 weeks. Complex enterprise custom builds typically range 6 to 10 weeks depending on integrations.",
   },
   {
     q: "What if I don't like the design?",
-    a: "You won’t get a surprise. You see the plan and direction before we build — and we revise until it’s right.",
+    a: "You won’t get a surprise. You see the plan and direction before we build, and we revise until it’s right.",
   },
   {
-    q: "Why not a cheaper agencies/freelancer?",
+    q: "Why not a cheaper agency or freelancer?",
     a: "Cheaper agencies/freelancer sell you a design. We sell you a number. If the site doesn’t convert, the cheap one cost you more.",
   },
   {
@@ -75,7 +75,12 @@ export default function FAQ() {
               letterSpacing: "-0.02em",
             }}
           >
-            <span className="block overflow-hidden pb-1">
+            <span
+              className="block overflow-hidden pb-1"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="The questions"
+            >
               <motion.span
                 className="block"
                 variants={{
@@ -89,7 +94,12 @@ export default function FAQ() {
                 The questions
               </motion.span>
             </span>
-            <span className="block overflow-hidden pb-1">
+            <span
+              className="block overflow-hidden pb-1"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="you're already thinking."
+            >
               <motion.span
                 className="block text-white/20"
                 variants={{
@@ -111,6 +121,7 @@ export default function FAQ() {
             <div key={i} className="border-t border-white/5 last:border-b py-8">
               <button
                 onClick={() => setActiveIdx(activeIdx === i ? null : i)}
+                data-cursor="button"
                 className="flex w-full items-center justify-between gap-8 group"
               >
                 <span

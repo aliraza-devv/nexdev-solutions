@@ -3,11 +3,22 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
 
+function flattenToText(node: React.ReactNode): string {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(flattenToText).join("");
+  if (React.isValidElement(node)) {
+    const props = node.props as { children?: React.ReactNode };
+    return flattenToText(props.children);
+  }
+  return "";
+}
+
 const defaultLayers = [
   {
     letter: 'S',
     title: 'Sales Architecture',
-    desc: 'What your site says — and in what order. Built around how your customer thinks, not how you talk about yourself.',
+    desc: 'What your site says, and in what order. Built around how your customer thinks, not how you talk about yourself.',
   },
   {
     letter: 'Y',
@@ -17,7 +28,7 @@ const defaultLayers = [
   {
     letter: 'N',
     title: 'Neuro Persuasion',
-    desc: 'Cognitive psychology — heuristics, bias, mental models — baked into every layout decision. Not manipulation. Just how brains work.',
+    desc: 'Cognitive psychology: heuristics, bias, mental models, baked into every layout decision. Not manipulation. Just how brains work.',
   },
   {
     letter: 'C',
@@ -44,7 +55,11 @@ export default function OurProcess({
   chipText = "THE SYSTEM",
   heading = (
     <>
-      <span className="block overflow-hidden pb-1">
+      <span
+        className="block overflow-hidden pb-1"
+        data-cursor="text"
+        data-text="Other agencies build websites."
+      >
         <motion.span
           className="block"
           variants={{
@@ -58,7 +73,11 @@ export default function OurProcess({
           Other agencies build websites.
         </motion.span>
       </span>
-      <span className="block overflow-hidden pb-1">
+      <span
+        className="block overflow-hidden pb-1"
+        data-cursor="text"
+        data-text="We build what happens after."
+      >
         <motion.span
           className="block"
           variants={{
@@ -129,7 +148,12 @@ export default function OurProcess({
             }}>
             {headingLines ? (
               headingLines.map((line, idx) => (
-                <span key={idx} className="block overflow-hidden pb-1">
+                <span
+                  key={idx}
+                  className="block overflow-hidden pb-1"
+                  data-cursor="text"
+                  data-text={flattenToText(line)}
+                >
                   <motion.span
                     className="block"
                     variants={{

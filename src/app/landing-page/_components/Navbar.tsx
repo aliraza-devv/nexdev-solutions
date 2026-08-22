@@ -4,8 +4,10 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { useLenisScrollTo } from "@/hooks/use-lenis-scroll-to";
 
 export default function Navbar({
   ctaLabel = "Book Your Free Call",
@@ -16,6 +18,21 @@ export default function Navbar({
 } = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const scrollTo = useLenisScrollTo();
+
+  // Same-page hash links ease there with Lenis. A hash link to a different
+  // route falls through to Next's normal navigation, then SmoothScroll
+  // picks up the hash once the new route has mounted.
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    const [path, hash] = href.split("#");
+    if (!hash || path !== pathname) return;
+    e.preventDefault();
+    scrollTo(`#${hash}`);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,6 +79,7 @@ export default function Navbar({
           <div className="flex items-center gap-2">
             <Link
               href="/landing-page"
+              data-cursor="button"
               className="relative h-7 w-36 md:h-8 md:w-40"
             >
               <Image
@@ -80,6 +98,8 @@ export default function Navbar({
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleAnchorClick(e, item.href)}
+                data-cursor="button"
                 className="text-[15px] font-medium text-[#0A0A0E]/80 transition-colors hover:text-[#5C45FD]"
               >
                 {item.name}
@@ -89,7 +109,7 @@ export default function Navbar({
 
           {/* Desktop CTA Button */}
           <div className="hidden items-center gap-4 lg:flex">
-            <Link href={ctaHref}>
+            <Link href={ctaHref} data-cursor="button">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -104,6 +124,7 @@ export default function Navbar({
           <div className="flex items-center lg:hidden">
             <button
               onClick={() => setIsOpen(true)}
+              data-cursor="button"
               className="p-1.5 rounded-full text-[#0A0A0E]/80 hover:text-[#5C45FD] transition-colors focus:outline-none"
               aria-label="Toggle Menu"
             >
@@ -171,7 +192,10 @@ export default function Navbar({
                     >
                       <Link
                         href={item.href}
-                        onClick={() => setIsOpen(false)}
+                        onClick={(e) => {
+                          setIsOpen(false);
+                          handleAnchorClick(e, item.href);
+                        }}
                         className="block py-2 text-[15px] font-semibold text-[#0A0A0E]/70 transition-colors hover:text-[#5C45FD]"
                       >
                         {item.name}

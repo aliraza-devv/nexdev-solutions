@@ -14,7 +14,7 @@ const deliverables = [
   "CTA engineering + friction mapping",
   // "Unlimited revisions",
   "Hand-off documentation + training",
-  "Full ownership — yours, forever",
+  "Full ownership, yours forever",
 ];
 
 const bonuses = [
@@ -46,8 +46,10 @@ export default function Deliverables() {
             lineHeight: "1.1",
             letterSpacing: "-0.02em",
           }}
+          data-cursor="text"
+          data-text="Everything your website needs to actually work. Nothing it doesn't."
         >
-          Everything your website needs to actually work — nothing it
+          Everything your website needs to actually work. Nothing it
           doesn&apos;t.
         </motion.h2>
 
@@ -72,7 +74,11 @@ export default function Deliverables() {
             letterSpacing: "-0.02em",
           }}
         >
-          <span className="block overflow-hidden pb-1">
+          <span
+            className="block overflow-hidden pb-1"
+            data-cursor="text"
+            data-text="Everything your website needs"
+          >
             <motion.span
               className="block"
               variants={{
@@ -86,7 +92,11 @@ export default function Deliverables() {
               Everything your website needs
             </motion.span>
           </span>
-          <span className="block overflow-hidden pb-1">
+          <span
+            className="block overflow-hidden pb-1"
+            data-cursor="text"
+            data-text="to actually work. Nothing it doesn't."
+          >
             <motion.span
               className="block"
               variants={{
@@ -97,7 +107,7 @@ export default function Deliverables() {
                 },
               }}
             >
-              to actually work — nothing it doesn&apos;t.
+              to actually work. Nothing it doesn&apos;t.
             </motion.span>
           </span>
         </motion.h2>
@@ -164,7 +174,7 @@ export default function Deliverables() {
 
               {/* CTA Button */}
               <div className="mt-2">
-                <Link href="/landing-page/book-call">
+                <Link href="/landing-page/book-call" data-cursor="button">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
