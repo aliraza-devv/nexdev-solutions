@@ -238,7 +238,7 @@ export function useCursor() {
 
       let targetX = pointer.current.x;
       let targetY = pointer.current.y;
-      if ((currentVariant === "button" || currentVariant === "cta") && hoveredEl.current && config.magneticPull) {
+      if (currentVariant === "button" && hoveredEl.current && config.magneticPull) {
         const rect = hoveredEl.current.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
@@ -271,8 +271,10 @@ export function useCursor() {
       // not just the cursor dot toward the button - that's what makes
       // it read as an actual magnetic pull instead of a cursor trick.
       // Skipped on full-width rows (nav links, FAQ triggers) where the
-      // whole row shifting would look broken, not magnetic.
-      if ((currentVariant === "button" || currentVariant === "cta") && hoveredEl.current && hoveredRect.current) {
+      // whole row shifting would look broken, not magnetic. CTAs
+      // (data-cursor="cta") are excluded entirely, by request - the
+      // smiley pill stays put, no drift.
+      if (currentVariant === "button" && hoveredEl.current && hoveredRect.current) {
         const rect = hoveredRect.current;
         if (rect.width <= MAGNETIC_MAX_WIDTH && rect.height <= MAGNETIC_MAX_HEIGHT) {
           const cx = rect.left + rect.width / 2;

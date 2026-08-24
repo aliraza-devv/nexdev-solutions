@@ -7,8 +7,9 @@ export const CURSOR_VARIANTS: Record<CursorVariant, CursorVariantConfig> = {
   button: { lerp: DEFAULT_LERP, size: 20, magneticPull: 0.2 },
   // The brand's primary purple CTA pills only - a bit bigger than a
   // regular button, white instead of purple, with a smiley face (see
-  // cursor-mark.module.css/.face in Cursor.tsx).
-  cta: { lerp: DEFAULT_LERP, size: 30, magneticPull: 0.25 },
+  // cursor-mark.module.css/.face in Cursor.tsx). No magnetic pull, by
+  // request - the smiley dot just tracks the pointer normally.
+  cta: { lerp: DEFAULT_LERP, size: 30 },
   card: { lerp: DEFAULT_LERP, size: 92, label: "View case study" },
   text: { lerp: DEFAULT_LERP, size: 7 },
   video: { lerp: DEFAULT_LERP, size: 92, label: "Play" },
