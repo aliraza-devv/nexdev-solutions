@@ -639,9 +639,9 @@ export default function ConversionCalculator() {
 
             <div className="mt-auto flex flex-wrap items-center gap-4 pt-7">
               <Link
-                href="/landing-page/book-call"
+                href="/landing-page/qualify"
                 onClick={handleCtaClick}
-                data-cursor="button"
+                data-cursor="cta"
                 className="group inline-flex items-center gap-2.5 rounded-full bg-[#5c45fd] px-[26px] py-4 text-[15px] font-semibold text-white shadow-[0_10px_26px_-12px_rgba(92,69,253,0.9)] transition-transform hover:-translate-y-0.5"
               >
                 See how we would get you there
@@ -735,7 +735,7 @@ export default function ConversionCalculator() {
             <p className="text-white font-bold text-sm truncate">{bigNumberText} at least</p>
           </div>
           <Link
-            href="/landing-page/book-call"
+            href="/landing-page/qualify"
             onClick={handleCtaClick}
             className="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-[#5C45FD] px-4 py-2.5 text-xs font-bold text-white"
           >

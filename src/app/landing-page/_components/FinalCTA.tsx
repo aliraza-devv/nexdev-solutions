@@ -14,6 +14,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useLenisScrollTo } from "@/hooks/use-lenis-scroll-to";
+import FooterWatermarkFill from "./FooterWatermarkFill";
 
 function flattenToText(node: React.ReactNode): string {
   if (node == null || typeof node === "boolean") return "";
@@ -121,13 +122,26 @@ export default function FinalCTA({
                 fontSize: "clamp(36px, 6.2vw, 64px)",
                 lineHeight: "1.1",
               }}
-              data-cursor="text"
-              data-cursor-on-dark=""
-              data-text="The right website turns visitors into customers. Let's build yours."
             >
-              The right <span className="italic text-[#5C45FD]">website</span>{" "}
-              turns visitors into customers. Let&apos;s build yours.{" "}
-              {/* <span className="italic text-white/30">don&apos;t leave.</span> */}
+              <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="The right">
+                The right
+              </span>{" "}
+              <span
+                className="inline-block italic text-[#5C45FD]"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="website"
+              >
+                website
+              </span>{" "}
+              <span
+                className="inline-block"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="turns visitors into customers. Let's build yours."
+              >
+                turns visitors into customers. Let&apos;s build yours.
+              </span>{" "}
             </motion.h2>
 
             {/* Desktop Heading */}
@@ -150,12 +164,7 @@ export default function FinalCTA({
                 lineHeight: "1.1",
               }}
             >
-              <span
-                className="block overflow-hidden pb-1"
-                data-cursor="text"
-                data-cursor-on-dark=""
-                data-text="The right website turns visitors"
-              >
+              <span className="block overflow-hidden pb-1">
                 <motion.span
                   className="block"
                   variants={{
@@ -166,8 +175,25 @@ export default function FinalCTA({
                     },
                   }}
                 >
-                  The right <span className="italic text-[#5C45FD]">website</span>{" "}
-                  turns visitors
+                  <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="The right">
+                    The right
+                  </span>{" "}
+                  <span
+                    className="inline-block italic text-[#5C45FD]"
+                    data-cursor="text"
+                    data-cursor-on-dark=""
+                    data-text="website"
+                  >
+                    website
+                  </span>{" "}
+                  <span
+                    className="inline-block"
+                    data-cursor="text"
+                    data-cursor-on-dark=""
+                    data-text="turns visitors"
+                  >
+                    turns visitors
+                  </span>
                 </motion.span>
               </span>
               <span
@@ -239,8 +265,8 @@ export default function FinalCTA({
           className="mt-8 flex flex-col items-center gap-8 w-full max-w-md sm:max-w-none"
         >
           <Link
-            href="/landing-page/book-call"
-            data-cursor="button"
+            href="/landing-page/qualify"
+            data-cursor="cta"
             className="group relative flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-[#5C45FD] px-7 py-4 text-base font-bold text-white transition-all hover:bg-[#4a36e0] hover:scale-105 shadow-xl shadow-[#5C45FD]/20"
             style={{ fontFamily: primaryFont }}
           >
@@ -407,13 +433,9 @@ export default function FinalCTA({
             </div>
           </div>
 
-          {/* Huge NEXDEV Watermark */}
+          {/* Huge NEXDEV Watermark, fills purple like water on scroll into view */}
           <div className="w-full mt-12 mb-0 select-none pointer-events-none overflow-hidden flex justify-center">
-            <img
-              src="/assets/NEXDEV-footer.svg"
-              alt="NEXDEV"
-              className="w-full h-auto opacity-10"
-            />
+            <FooterWatermarkFill />
           </div>
         </div>
       </div>

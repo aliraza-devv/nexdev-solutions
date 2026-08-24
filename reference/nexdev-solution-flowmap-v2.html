@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NeXDev · Solution flow map v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161616;
+  --ink-2:#1a1a1f;
+  --surface:#1f1f26;
+  --surface-2:#282830;
+  --surface-3:#34343f;
+  --purple:#5c45fd;
+  --purple-lo:#a89bff;
+  --purple-deep:#241f42;
+  --paper:#f5f5f5;
+  --faint:rgba(245,245,245,.42);
+  --dim:rgba(245,245,245,.64);
+  --hair:rgba(245,245,245,.09);
+  --line:#3a3a46;
+  --out:cubic-bezier(.23,1,.32,1);
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--ink); color:var(--paper);
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+}
+.section{
+  position:relative; overflow:hidden; padding:104px 0 116px;
+  background:radial-gradient(120% 70% at 50% -5%, rgba(92,69,253,.10), transparent 58%), var(--ink);
+}
+.section::before{
+  content:""; position:absolute; inset:0;
+  background-image:linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(72% 60% at 50% 44%,#000,transparent 80%);
+  opacity:.45; pointer-events:none;
+}
+.hold{ width:min(1120px,calc(100% - 48px)); margin-inline:auto; position:relative; z-index:2; }
+
+.head{ text-align:center; max-width:52ch; margin:0 auto 14px; }
+.eyebrow{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--purple-lo); margin-bottom:16px; }
+.head h2{ margin:0 0 15px; font-size:clamp(30px,4vw,50px); line-height:1.03; letter-spacing:-.035em; font-weight:800; }
+.head h2 em{ font-style:normal; color:var(--purple); }
+.head p{ margin:0; font-size:16.5px; line-height:1.6; color:var(--dim); }
+
+.map{ position:relative; max-width:900px; margin:44px auto 0; }
+.svgwrap{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+.links{ width:100%; height:100%; }
+.links path{ fill:none; stroke:var(--line); stroke-width:2; transition:stroke .45s var(--out); }
+.links path.lit{ stroke:url(#litgrad); stroke-width:2.5; }
+
+.grid{
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:1fr 1fr; gap:26px 40px; align-items:center; justify-items:center;
+}
+.row-full{ grid-column:1 / -1; }
+
+.node{
+  position:relative; width:min(370px,100%);
+  display:grid; grid-template-columns:46px 1fr; gap:16px; align-items:center;
+  background:var(--surface); border:1px solid var(--hair); border-radius:16px; padding:16px 22px;
+  transition:border-color 300ms var(--out), background 300ms var(--out), box-shadow 300ms var(--out), transform 200ms var(--out);
+  will-change:transform;
+}
+.node .idx{ font-family:var(--mono); font-size:12px; letter-spacing:.14em; color:var(--faint); transition:color 300ms var(--out); }
+.node h3{ margin:0; font-size:16px; line-height:1.18; letter-spacing:-.02em; font-weight:700; }
+.node .sub{ margin:3px 0 0; font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); transition:color 300ms var(--out); }
+.node.wide{ width:min(440px,100%); }
+
+.node.on{
+  background:var(--surface-2); border-color:rgba(168,155,255,.45);
+  box-shadow:0 20px 44px -22px rgba(92,69,253,.7), inset 0 0 0 1px rgba(168,155,255,.08);
+}
+.node.on .idx, .node.on .sub{ color:var(--purple-lo); }
+
+.node.key{ background:var(--purple); border-color:var(--purple); box-shadow:0 22px 50px -22px rgba(92,69,253,.9); }
+.node.key .idx{ color:rgba(255,255,255,.72); }
+.node.key h3{ color:#fff; }
+.node.key .sub{ color:rgba(255,255,255,.82); }
+
+.node.cap{ background:var(--ink-2); border-style:dashed; border-color:var(--surface-3); }
+.node.out{
+  background:linear-gradient(135deg,var(--purple-deep),var(--ink-2));
+  border:1px solid rgba(168,155,255,.5); box-shadow:0 24px 56px -28px rgba(92,69,253,.8);
+}
+.node.out h3{ color:#fff; }
+.node.out .sub{ color:var(--purple-lo); }
+
+.forklabel{
+  grid-column:1 / -1; justify-self:center;
+  font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin:2px 0;
+}
+
+.pipe{
+  position:absolute; right:-14px; top:50%; transform:translate(100%,-50%);
+  background:var(--surface); border:1px solid rgba(168,155,255,.35); border-radius:12px; padding:10px 14px; text-align:center; white-space:nowrap;
+}
+.pipe .n{ font-size:18px; font-weight:800; letter-spacing:-.03em; color:var(--paper); }
+.pipe .s{ font-family:var(--mono); font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:var(--purple-lo); margin-top:2px; }
+
+@media (max-width:720px){
+  .section{ padding:72px 0 84px; }
+  .grid{ grid-template-columns:1fr; gap:16px; }
+  .svgwrap{ display:none; }
+  .node,.node.wide{ width:100%; }
+  .forklabel{ margin:8px 0 0; }
+  .pipe{ position:static; transform:none; margin-top:10px; display:inline-block; }
+  .node.out{ text-align:center; }
+}
+@media (prefers-reduced-motion:reduce){ .dots{ display:none; } }
+</style>
+</head>
+<body>
+
+<section class="section">
+  <div class="hold">
+    <div class="head">
+      <span class="eyebrow">The Solution</span>
+      <h2>The fix isn't a <em>redesign</em>. It's a system.</h2>
+      <p>The same audience you already have, routed through four steps until it turns into customers.</p>
+    </div>
+
+    <div class="map" id="map">
+      <div class="svgwrap">
+        <svg class="links" id="links" viewBox="0 0 900 640" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="litgrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#a89bff"/><stop offset="1" stop-color="#5c45fd"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <canvas class="dots" id="dots"></canvas>
+      </div>
+
+      <div class="grid" id="grid">
+        <div class="node cap row-full" id="n_in">
+          <span class="idx">00</span>
+          <div><h3>The audience you already have</h3><p class="sub">Paid, organic, or referrals</p></div>
+        </div>
+
+        <div class="node key row-full" id="n0">
+          <span class="idx">01</span>
+          <div><h3>SYNC Audit</h3><p class="sub">Why they leave, before we design</p></div>
+        </div>
+
+        <div class="node row-full" id="n1">
+          <span class="idx">02</span>
+          <div><h3>A page built to sell</h3><p class="sub">Website or landing page</p></div>
+        </div>
+
+        <div class="forklabel">then it splits, by what you sell</div>
+
+        <div class="node" id="n2a">
+          <span class="idx">03</span>
+          <div><h3>Lead qualification system</h3><p class="sub">Service and B2B</p></div>
+        </div>
+        <div class="node" id="n2b">
+          <span class="idx">03</span>
+          <div><h3>Frictionless checkout</h3><p class="sub">E-commerce</p></div>
+        </div>
+
+        <div class="node row-full" id="n3">
+          <span class="idx">04</span>
+          <div><h3>Design, applied last</h3><p class="sub">Once the selling already works</p></div>
+        </div>
+
+        <div class="node out wide row-full" id="n4">
+          <span class="idx">&#9679;</span>
+          <div><h3>Booked calls. Sales. Signups.</h3><p class="sub">From traffic you already pay for</p></div>
+          <div class="pipe"><div class="n" id="pipeN">$0</div><div class="s">monthly pipeline</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="height:80px"></div>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var map=document.getElementById('map'), links=document.getElementById('links'),
+      canvas=document.getElementById('dots'), pipeN=document.getElementById('pipeN');
+  var els={}; ['n_in','n0','n1','n2a','n2b','n3','n4'].forEach(function(k){ els[k]=document.getElementById(k); });
+
+  var STAGES=[['n0'],['n1'],['n2a','n2b'],['n3'],['n4']];
+  var PIPE=[2000,9000,20000,34000,52000];
+  var active=0, hovering=false;
+
+  function centre(el,side){
+    var b=el.getBoundingClientRect(), m=map.getBoundingClientRect();
+    return { x:(b.left+b.width/2-m.left)/m.width*900, y:(side==='top'?b.top-m.top:b.bottom-m.top)/m.height*640 };
+  }
+  var segs=[];
+  function build(){
+    links.querySelectorAll('path').forEach(function(p){p.remove();}); segs=[];
+    function link(a,b,tag){
+      var p1=centre(a,'bottom'), p2=centre(b,'top'), midY=(p1.y+p2.y)/2;
+      var d='M'+p1.x+' '+p1.y+' C '+p1.x+' '+midY+' '+p2.x+' '+midY+' '+p2.x+' '+p2.y;
+      var el=document.createElementNS('http://www.w3.org/2000/svg','path'); el.setAttribute('d',d);
+      links.appendChild(el); segs.push({el:el,tag:tag});
+    }
+    link(els.n_in,els.n0,0); link(els.n0,els.n1,1);
+    link(els.n1,els.n2a,2); link(els.n1,els.n2b,2);
+    link(els.n2a,els.n3,3); link(els.n2b,els.n3,3);
+    link(els.n3,els.n4,4);
+    paint();
+  }
+  function paint(){ segs.forEach(function(s){ s.el.classList.toggle('lit', s.tag<=active); }); }
+
+  function money(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+  var shown=0,cid;
+  function countTo(t){
+    cancelAnimationFrame(cid);
+    if(reduce){ pipeN.textContent=money(t); shown=t; return; }
+    var f=shown,t0=performance.now();
+    (function run(now){ var k=Math.min(1,(now-t0)/600),e=1-Math.pow(1-k,3);
+      shown=f+(t-f)*e; pipeN.textContent=money(shown); if(k<1) cid=requestAnimationFrame(run); })(t0);
+  }
+  function setActive(i){
+    active=i;
+    ['n1','n2a','n2b','n3','n4'].forEach(function(k){ els[k].classList.remove('on'); });
+    STAGES[i].forEach(function(k){ if(k!=='n0') els[k].classList.add('on'); });
+    paint(); countTo(PIPE[i]);
+  }
+  var auto;
+  function start(){ if(reduce)return; stop(); auto=setInterval(function(){ if(!hovering) setActive((active+1)%STAGES.length); },2600); }
+  function stop(){ clearInterval(auto); }
+
+  Object.keys(els).forEach(function(k){
+    var stage=STAGES.findIndex(function(s){return s.indexOf(k)>=0;}); if(stage<0)return;
+    els[k].addEventListener('mouseenter',function(){ hovering=true; setActive(stage); });
+    els[k].addEventListener('mouseleave',function(){ hovering=false; });
+  });
+
+  var ctx=canvas.getContext('2d'), DPR=Math.min(devicePixelRatio||1,2), W=0,H=0, dots=[], raf, running=false;
+  function size(){ W=map.clientWidth; H=map.clientHeight; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
+  function seed(){ dots=[]; for(var i=0;i<11;i++) dots.push({seg:0,t:Math.random(),sp:.005+Math.random()*.004}); }
+  function frame(){
+    if(!running)return; ctx.clearRect(0,0,W,H);
+    var lit=segs.filter(function(s){return s.tag<=active;});
+    dots.forEach(function(d){
+      if(!lit.length)return;
+      d.t+=d.sp; if(d.t>1){ d.t=0; d.seg++; } if(d.seg>=lit.length) d.seg=0;
+      var s=lit[d.seg]; if(!s)return;
+      var L=s.el.getTotalLength(), p=s.el.getPointAtLength(L*d.t);
+      ctx.beginPath(); ctx.arc(p.x/900*W, p.y/640*H, 2.4, 0, 6.2832);
+      ctx.fillStyle='rgba(168,155,255,.9)'; ctx.fill();
+    });
+    raf=requestAnimationFrame(frame);
+  }
+  function boot(){
+    size(); build(); seed();
+    new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting){ running=true; start(); frame(); } else { running=false; stop(); cancelAnimationFrame(raf); }
+    }); },{threshold:.12}).observe(map);
+    addEventListener('resize', function(){ size(); build(); });
+  }
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ boot(); setActive(0); }); });
+})();
+</script>
+</body>
+</html>

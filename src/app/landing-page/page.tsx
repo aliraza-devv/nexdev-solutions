@@ -4,6 +4,7 @@ import LogosStrip from "./_components/Logos";
 import Problem from "./_components/Problem";
 import ConversionCalculator from "./_components/ConversionCalculator";
 import Solution from "./_components/Solution";
+import SolutionFlowMap from "./_components/SolutionFlowMap";
 import OurProcess from "./_components/OurProcess";
 import Results from "./_components/Results";
 import Testimonials from "./_components/Testimonials";
@@ -22,7 +23,11 @@ export default function Home() {
         <LogosStrip />
       </div>
       <Problem />
-      <Solution />
+      {/* Solution temporarily hidden while SolutionFlowMap is reviewed
+          in its place, per request. Swap back by uncommenting this and
+          removing SolutionFlowMap below. */}
+      {/* <Solution /> */}
+      <SolutionFlowMap />
       <OurProcess
         chipText="HOW WE WORK"
         headingLines={[

@@ -11,7 +11,7 @@ import { useLenisScrollTo } from "@/hooks/use-lenis-scroll-to";
 
 export default function Navbar({
   ctaLabel = "Book Your Free Call",
-  ctaHref = "/landing-page/book-call",
+  ctaHref = "/landing-page/qualify",
 }: {
   ctaLabel?: string;
   ctaHref?: string;
@@ -62,7 +62,10 @@ export default function Navbar({
 
   return (
     <>
-      <nav
+      <motion.nav
+        initial={{ opacity: 0, y: -14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
           scrolled
@@ -109,7 +112,7 @@ export default function Navbar({
 
           {/* Desktop CTA Button */}
           <div className="hidden items-center gap-4 lg:flex">
-            <Link href={ctaHref} data-cursor="button">
+            <Link href={ctaHref} data-cursor="cta">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -132,7 +135,7 @@ export default function Navbar({
             </button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Side Drawer Menu */}
       <AnimatePresence>

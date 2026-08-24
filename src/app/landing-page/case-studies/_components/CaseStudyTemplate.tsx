@@ -13,7 +13,7 @@
 // footer) are the real site-wide components, not case-study-specific
 // reimplementations.
 //
-// Single-CTA rule: every button on this page points at the /book-call page
+// Single-CTA rule: every button on this page points at the /qualify page
 // via the same href, and the Navbar's CTA is overridden (via its
 // ctaLabel/ctaHref props) to match, so there is exactly one conversion
 // action repeated in different words, not several destinations.
@@ -38,7 +38,6 @@ import {
   TrendingUp,
   MousePointerClick,
   BarChart3,
-  Lightbulb,
 } from "lucide-react";
 import type {
   CaseStudyData,
@@ -51,7 +50,7 @@ import SiteFooter from "../../_components/FinalCTA";
 
 const ACCENT = "#5C45FD";
 const METRIC_ICONS = [TrendingUp, MousePointerClick, BarChart3];
-const CTA_HREF = "/landing-page/book-call";
+const CTA_HREF = "/landing-page/qualify";
 
 // A results tier usually has 3 stats, but not always (e.g. a two-stat MVP
 // phase) - size the grid to what's actually there instead of leaving an
@@ -70,19 +69,23 @@ function statsGridCols(count: number) {
 function Reveal({
   children,
   delay = 0,
+  duration = 0.6,
+  y = 24,
   className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
+  duration?: number;
+  y?: number;
   className?: string;
 }) {
   const reduceMotion = useReducedMotion();
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+      initial={reduceMotion ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}
@@ -520,41 +523,146 @@ function Approach({ data }: { data: CaseStudyData }) {
   );
 }
 
+const TURNING_POINT_MONO =
+  'ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace';
+
+// First metrics-tier entry with an actual number to show as this
+// section's proof number. Bamper/Reality Cheque/the funnel all have
+// one; Smarterform and The HDDs only have qualitative metrics, so this
+// returns null for them and MetricProof falls back to a statement
+// instead of faking a count.
+function findKeyMetric(metrics: MetricItem[]): { value: string; label: string } | null {
+  const withNumber = metrics.find((m): m is Extract<MetricItem, { to: string }> => "to" in m && /\d/.test(m.to));
+  return withNumber ? { value: withNumber.to, label: withNumber.label } : null;
+}
+
+function MetricProof({ metrics }: { metrics: MetricItem[] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10%" });
+  const reduceMotion = useReducedMotion();
+  const keyMetric = findKeyMetric(metrics);
+  const target = keyMetric ? parseMetric(keyMetric.value) : null;
+  const [display, setDisplay] = useState(() => {
+    if (!keyMetric || !target) return "";
+    return reduceMotion ? keyMetric.value : `${target.prefix}0${target.suffix}`;
+  });
+
+  useEffect(() => {
+    if (!inView || !keyMetric || !target) return;
+    if (reduceMotion) {
+      setDisplay(keyMetric.value);
+      return;
+    }
+    const controls = animate(0, target.number, {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v) => setDisplay(`${target.prefix}${v.toFixed(target.decimals)}${target.suffix}`),
+    });
+    return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  if (!keyMetric) {
+    // No numeric metric in this case study's data - a qualitative
+    // statement stands in rather than a fabricated number.
+    return (
+      <div ref={ref} className="text-center">
+        <p
+          className="mx-auto max-w-2xl text-2xl font-extrabold leading-snug text-[#F5F5F5] md:text-3xl"
+          style={{ fontFamily: "Arial, sans-serif" }}
+        >
+          {metrics[0]?.label}
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div ref={ref} className="text-center">
+      <div
+        className="font-extrabold text-[#5C45FD]"
+        style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
+      >
+        {display}
+      </div>
+      <div
+        className="mt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgba(245,245,245,0.5)]"
+        style={{ fontFamily: TURNING_POINT_MONO }}
+      >
+        {keyMetric.label}
+      </div>
+    </div>
+  );
+}
+
 // Optional narrative beat between Approach and Results - only renders when a
-// case study's data sets `turningPoint`.
+// case study's data sets `turningPoint`. Before/after split: the problem
+// (muted, left) against the turning point and result (bright, purple-edged,
+// right), then the case study's real key number full width below - three
+// layers of hierarchy (muted problem, bright insight, proof number) instead
+// of a wall of paragraphs on a light card that didn't match the rest of the
+// (dark) site.
 function TurningPoint({ data }: { data: CaseStudyData }) {
   if (!data.turningPoint) return null;
+  const [problem, ...rest] = data.turningPoint.body;
+  const insight = rest.join(" ");
+
   return (
-    <section className="bg-zinc-50/60 px-6 py-20 md:px-10 md:py-28">
-      <Reveal className="mx-auto max-w-[820px]">
-        <div className="relative overflow-hidden rounded-[28px] border border-[#5C45FD]/15 bg-white px-6 py-12 text-center shadow-[0_30px_60px_-35px_rgba(10,10,14,0.25)] md:px-16 md:py-16">
-          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#5C45FD]/[0.06] blur-2xl" />
-          <div className="pointer-events-none absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-[#5C45FD]/[0.05] blur-2xl" />
+    <section className="bg-[#0A0A0E] px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-[1040px]">
+        <div className="relative grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-0">
+          {/* Divider between the two halves, gone once they stack on mobile */}
+          <div className="pointer-events-none absolute inset-y-6 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#A89BFF66] to-transparent md:block" />
 
-          <div className="relative mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#5C45FD]/10 text-[#5C45FD]">
-            <Lightbulb className="h-5 w-5" strokeWidth={2} />
-          </div>
-
-          <div className="relative flex justify-center">
-            <Eyebrow>The Turning Point</Eyebrow>
-          </div>
-
-          <p
-            className="relative mx-auto max-w-xl text-2xl leading-snug text-[#0A0A0E] md:text-3xl"
-            style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
-          >
-            {data.turningPoint.header}
-          </p>
-
-          <div className="relative mx-auto mt-6 flex max-w-lg flex-col gap-4">
-            {data.turningPoint.body.map((paragraph, i) => (
-              <p key={i} className="text-[15px] leading-relaxed text-zinc-500">
-                {paragraph}
+          <Reveal duration={0.3} className="md:pr-8">
+            <div
+              className="h-full rounded-[20px] p-8 md:p-10"
+              style={{ background: "#1F1F26", border: "1px solid rgba(245,245,245,0.09)" }}
+            >
+              <span
+                className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[rgba(245,245,245,0.4)]"
+                style={{ fontFamily: TURNING_POINT_MONO }}
+              >
+                The Problem
+              </span>
+              <p className="mt-4 text-[15px] leading-[1.6] text-[rgba(245,245,245,0.66)] md:text-base">
+                {problem}
               </p>
-            ))}
-          </div>
+            </div>
+          </Reveal>
+
+          <Reveal duration={0.3} delay={0.12} className="md:pl-8">
+            <div
+              className="h-full rounded-[20px] p-8 md:p-10"
+              style={{
+                background: "#1F1F26",
+                border: "1px solid rgba(245,245,245,0.09)",
+                borderTopColor: "rgba(168,155,255,0.4)",
+              }}
+            >
+              <span
+                className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#A89BFF]"
+                style={{ fontFamily: TURNING_POINT_MONO }}
+              >
+                The Turning Point
+              </span>
+              <p
+                className="mt-4 text-xl font-extrabold leading-snug text-[#F5F5F5] md:text-2xl"
+                style={{ fontFamily: "Arial, sans-serif" }}
+              >
+                {data.turningPoint.header}
+              </p>
+              <p className="mt-4 text-[15px] leading-[1.6] text-[rgba(245,245,245,0.72)] md:text-base">
+                {insight}
+              </p>
+            </div>
+          </Reveal>
         </div>
-      </Reveal>
+
+        <div className="mt-14 md:mt-16">
+          <MetricProof metrics={data.metrics} />
+        </div>
+      </div>
     </section>
   );
 }

@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import QualifyStepper from "../_components/QualifyStepper";
 
 const CONFIRMATION_PATH = "/landing-page/book-call/confirmed";
 
@@ -101,6 +102,8 @@ export default function BookCallPage() {
           />
         </div>
       </div>
+
+      <QualifyStepper step1="done" step2="active" connectorFilled />
 
       <section className="px-6 pb-16 pt-6 md:px-12 md:pt-10">
         <motion.div

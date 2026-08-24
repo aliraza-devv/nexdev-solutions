@@ -1,9 +1,9 @@
-/* Element-side hover treatment for the cursor v2 system. The cursor
-   itself never contains a label, fill, or lens, it only ever
-   translates, scales, and rotates (see cursor-mark.module.css). Every
-   visible reaction below lives on the hovered element, driven by two
-   custom properties useCursor.ts writes onto that one element while
-   it's hovered:
+/* Element-side hover treatment for the cursor system. The cursor
+   itself only ever translates, resizes, and (card/video) shows a
+   label as its own text - see cursor-mark.module.css. Everything
+   below lives on the hovered element, driven by three custom
+   properties useCursor.ts writes onto that one element while it's
+   hovered:
 
      --mx, --my    pointer position as a percentage of the element's
                    own bounding box
@@ -23,46 +23,12 @@
 
 /* ---- BUTTON / LINK: element has no reveal at all, by request. Every
    nav link, CTA, FAQ row, Problem row, and plain link keeps its own
-   existing background/style untouched. Only the cursor mark itself
-   reacts (circle fills, arms retract, magnetic pull), see
-   cursor-mark.module.css. */
+   existing background/style untouched. Only the cursor dot itself
+   reacts (grows, magnetic pull), see cursor-mark.module.css. */
 
-/* ---- CASE STUDY CARD: soft spotlight + real label child ------------ */
-[data-cursor="card"] {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-[data-cursor="card"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: #5c45fd;
-  opacity: 0.18;
-  -webkit-mask-image: radial-gradient(circle var(--r, 0px) at var(--mx, 50%) var(--my, 50%), #000 70%, transparent 100%);
-  mask-image: radial-gradient(circle var(--r, 0px) at var(--mx, 50%) var(--my, 50%), #000 70%, transparent 100%);
-  transition: --r 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-  z-index: 0;
-}
-[data-cursor="card"][data-cursor-hovered="true"]::before {
-  --r: var(--r-target, 220px);
-}
-[data-cursor="card"] .cursor-card-cue {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  z-index: 2;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-[data-cursor="card"][data-cursor-hovered="true"] .cursor-card-cue {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* ---- CASE STUDY CARD: no element-side reveal at all, by request -
+   just the cursor dot growing and showing "View case study", nothing
+   painted on the card itself. */
 
 /* ---- TEXT / HEADING: a lens that only ever adds colour ------------- */
 [data-text] {
@@ -89,28 +55,6 @@
   color: #a89bff;
 }
 
-/* ---- IMAGE / MOCKUP: treated duplicate revealed under the lens ----- */
-[data-cursor="image"] {
-  position: relative;
-  overflow: hidden;
-}
-[data-cursor="image"]::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: var(--cursor-img, none);
-  background-size: cover;
-  background-position: center;
-  filter: saturate(1.6) contrast(1.05);
-  pointer-events: none;
-  -webkit-mask-image: radial-gradient(circle var(--r, 0px) at var(--mx, 50%) var(--my, 50%), #000 70%, transparent 100%);
-  mask-image: radial-gradient(circle var(--r, 0px) at var(--mx, 50%) var(--my, 50%), #000 70%, transparent 100%);
-  transition: --r 0.3s ease;
-}
-[data-cursor="image"][data-cursor-hovered="true"]::after {
-  --r: var(--r-target, 110px);
-}
-
 /* ---- Native cursor: only ever hidden while the mark is actually
    visible and positioned (html.cursor-ready, toggled by useCursor.ts).
    Real inputs and anything marked data-cursor="none" always win the
@@ -135,14 +79,7 @@ html.cursor-ready input[data-cursor="input"][type="range"] {
 /* ---- Reduced motion: the reveals still work, they just don't
    animate. A calmer art direction, not a dead page. */
 @media (prefers-reduced-motion: reduce) {
-  [data-cursor="card"]::before,
-  [data-text]::after,
-  [data-cursor="image"]::after {
-    transition: none !important;
-  }
-  [data-cursor="card"] .cursor-card-cue {
-    opacity: 1 !important;
-    transform: none !important;
+  [data-text]::after {
     transition: none !important;
   }
 }

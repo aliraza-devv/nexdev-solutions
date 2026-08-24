@@ -44,12 +44,18 @@ export default function ReviewsMarquee() {
             lineHeight: 1.1,
             letterSpacing: "-0.02em",
           }}
-          data-cursor="text"
-          data-cursor-on-dark=""
-          data-text="More receipts, if you needed them."
         >
-          More receipts,{" "}
-          <span className="text-[#5C45FD] italic">if you needed them.</span>
+          <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="More receipts,">
+            More receipts,
+          </span>{" "}
+          <span
+            className="inline-block text-[#5C45FD] italic"
+            data-cursor="text"
+            data-cursor-on-dark=""
+            data-text="if you needed them."
+          >
+            if you needed them.
+          </span>
         </motion.h2>
       </div>
 

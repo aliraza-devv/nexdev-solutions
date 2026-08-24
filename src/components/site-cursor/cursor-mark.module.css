@@ -1,11 +1,9 @@
-/* The registration-mark cursor's own visuals. Position (translate3d)
-   is written every frame straight to .dotLayer/.ringLayer by the rAF
-   loop in useCursor.ts and never touches this stylesheet. Rotation
-   lives on a separate, nested .rotateWrap so it can use a normal CSS
-   transition (a spring-like overshoot curve) without fighting the
-   per-frame position transform, and so it never changes the fixed
-   layers' containing block. Every variant look below is transform,
-   opacity, fill, and stroke only, nothing here reflows layout. */
+/* Single dot. Position (translate3d) is written every frame straight
+   to .dotLayer by the rAF loop in useCursor.ts. Size is a real px
+   width/height driven by --dot-size (not a transform scale), so a
+   label growing into a big circle (card/video) keeps its own normal
+   font size and just gets more room to sit in, instead of being
+   magnified and blurred along with the geometry. */
 
 .fixedRoot {
   position: fixed;
@@ -14,8 +12,7 @@
   z-index: 9999;
 }
 
-.dotLayer,
-.ringLayer {
+.dotLayer {
   position: fixed;
   top: 0;
   left: 0;
@@ -24,189 +21,70 @@
   transition: opacity 0.2s ease;
 }
 
-.rotateWrap {
-  transform: rotate(var(--rot, 0deg));
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.dotSvg {
-  display: block;
-  width: 8px;
-  height: 8px;
-  margin-left: -4px;
-  margin-top: -4px;
-  overflow: visible;
-}
-
-.ringSvg {
-  display: block;
-  width: 40px;
-  height: 40px;
-  margin-left: -20px;
-  margin-top: -20px;
-  overflow: visible;
-}
-
 .dot {
-  fill: #5c45fd;
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-}
-
-.circle {
-  fill: none;
-  stroke: #a89bff;
-  stroke-width: 1;
-  transform-box: fill-box;
-  transform-origin: center;
+  position: relative;
+  width: var(--dot-size, 10px);
+  height: var(--dot-size, 10px);
+  margin-left: calc(var(--dot-size, 10px) * -0.5);
+  margin-top: calc(var(--dot-size, 10px) * -0.5);
+  border-radius: 50%;
+  background: #5c45fd;
+  display: grid;
+  place-items: center;
   transition:
-    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    fill 0.3s ease,
-    stroke 0.3s ease,
-    stroke-width 0.3s ease;
+    width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s ease,
+    opacity 0.25s ease;
 }
 
-.arm {
-  stroke: #5c45fd;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+.dot[data-variant="card"],
+.dot[data-variant="video"] {
+  background: rgba(92, 69, 253, 0.94);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
 }
 
-.playGlyph,
-.pauseGlyph,
-.dashedRing,
-.chevronLeft,
-.chevronRight {
-  opacity: 0;
-  fill: #ffffff;
-  stroke: #ffffff;
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: opacity 0.25s ease;
+/* Brand purple CTA pills: white dot instead of purple, with the
+   smiley face (see .face below). */
+.dot[data-variant="cta"] {
+  background: #f5f5f5;
+  box-shadow: 0 0 0 1px rgba(92, 69, 253, 0.25), 0 6px 18px -6px rgba(92, 69, 253, 0.55);
 }
 
-.chevronLeft,
-.chevronRight {
-  fill: none;
-  stroke: #5c45fd;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* ---- BUTTON / LINK ------------------------------------------------ */
-.rotateWrap[data-variant="button"] .circle {
-  transform: scale(1.7);
-  fill: #5c45fd;
-  stroke: transparent;
-}
-.rotateWrap[data-variant="button"] .arm {
-  transform: scale(0.3);
+.label {
+  width: 72%;
+  text-align: center;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  color: #fff;
   opacity: 0;
+  transition: opacity 0.2s ease;
 }
-.rotateWrap[data-variant="button"] .dot {
-  transform: scale(0);
-  opacity: 0;
-}
-
-/* ---- CASE STUDY CARD: collapses to just the dot, enlarged --------- */
-.rotateWrap[data-variant="card"] .circle,
-.rotateWrap[data-variant="card"] .arm {
-  transform: scale(0);
-  opacity: 0;
-}
-.rotateWrap[data-variant="card"] .dot {
-  transform: scale(1.6);
-}
-
-/* ---- TEXT / HEADING: tall thin registration bar -------------------- */
-.rotateWrap[data-variant="text"] .circle {
-  transform: scale(0.5);
-}
-.rotateWrap[data-variant="text"] .armN {
-  transform: translateY(-6px);
-}
-.rotateWrap[data-variant="text"] .armS {
-  transform: translateY(6px);
-}
-.rotateWrap[data-variant="text"] .armE,
-.rotateWrap[data-variant="text"] .armW {
-  opacity: 0;
-  transform: scale(0.3);
-}
-
-/* ---- IMAGE / MOCKUP: wide soft lens, slow dashed ring -------------- */
-.rotateWrap[data-variant="image"] .circle {
-  transform: scale(2.6);
-  stroke-width: 0.6;
-}
-.rotateWrap[data-variant="image"] .arm {
-  opacity: 0;
-  transform: scale(0.3);
-}
-.rotateWrap[data-variant="image"] .dashedRing {
-  opacity: 1;
-  fill: none;
-  stroke: #a89bff;
-  stroke-width: 1;
-  stroke-dasharray: 3 4;
-  animation: cursor-mark-spin 5s linear infinite;
-}
-
-/* ---- VIDEO ---------------------------------------------------------*/
-.rotateWrap[data-variant="video"] .circle {
-  fill: #5c45fd;
-  stroke: transparent;
-}
-.rotateWrap[data-variant="video"] .arm {
-  opacity: 0;
-  transform: scale(0.3);
-}
-.rotateWrap[data-variant="video"] .playGlyph {
-  opacity: 1;
-}
-.rotateWrap[data-variant="video"][data-playing="true"] .playGlyph {
-  opacity: 0;
-}
-.rotateWrap[data-variant="video"][data-playing="true"] .pauseGlyph {
+.dot[data-variant="card"] .label,
+.dot[data-variant="video"] .label {
   opacity: 1;
 }
 
-/* ---- DRAG / CAROUSEL: horizontal arms become chevrons -------------- */
-.rotateWrap[data-variant="drag"] .armN,
-.rotateWrap[data-variant="drag"] .armS {
+.face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  transform: scale(0.3);
+  transition: opacity 0.2s ease;
 }
-.rotateWrap[data-variant="drag"] .armE,
-.rotateWrap[data-variant="drag"] .armW {
-  opacity: 0;
-}
-.rotateWrap[data-variant="drag"] .chevronLeft,
-.rotateWrap[data-variant="drag"] .chevronRight {
+.dot[data-variant="cta"] .face {
   opacity: 1;
-}
-
-/* ---- INPUT / NONE: mark fully hidden, native cursor wins ----------- */
-.hidden {
-  opacity: 0;
-}
-
-@keyframes cursor-mark-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rotateWrap[data-variant="image"] .dashedRing {
-    animation: none;
+  .dot,
+  .label,
+  .face {
+    transition: none;
   }
 }

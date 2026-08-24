@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '../_components/Navbar';
 import FinalCTA from '../_components/FinalCTA';
 
@@ -16,6 +17,10 @@ interface CaseStudy {
   desc: string;
   results: { value: string; label: string }[];
   href: string;
+  // Only set for clients with a real screenshot - the same asset the
+  // homepage Results section already uses. Cards without one keep the
+  // decorative placeholder rather than showing a fabricated photo.
+  image?: string;
 }
 
 // Same clients/numbers already established in the homepage Results section
@@ -31,6 +36,7 @@ const caseStudies: CaseStudy[] = [
       { value: '4.2%', label: 'Conversion Rate' },
     ],
     href: '/landing-page/case-studies/case-study-bamper',
+    image: '/assets/case-studies/Bamper-case-study.png',
   },
   {
     client: 'Reality Cheque',
@@ -42,6 +48,7 @@ const caseStudies: CaseStudy[] = [
       { value: '407', label: 'Members in 24 Hrs' },
     ],
     href: '/landing-page/case-studies/case-study-reality-cheque',
+    image: '/assets/case-studies/Reality-cheque-case-study.png',
   },
   {
     client: 'Reality Cheque',
@@ -53,6 +60,7 @@ const caseStudies: CaseStudy[] = [
       { value: '26×', label: 'ROAS' },
     ],
     href: '/landing-page/case-studies/case-study-reality-cheque-funnel',
+    image: '/assets/case-studies/Reality-cheque-case-study.png',
   },
   {
     client: 'Smarterform',
@@ -64,6 +72,7 @@ const caseStudies: CaseStudy[] = [
       { value: '30 Days', label: 'MVP Shipped' },
     ],
     href: '/landing-page/case-studies/case-study-smarterform',
+    image: '/assets/case-studies/Smarterform-case-study.png',
   },
   {
     client: 'The HDDs',
@@ -104,17 +113,25 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
   return (
     <Link
       href={cs.href}
+      data-cursor="card"
       className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/[0.05] bg-[#0A0A0E] shadow-xl transition-all hover:border-[#5C45FD]/30 hover:shadow-[0_20px_50px_-15px_rgba(92,69,253,0.25)]"
     >
-      {/* Mockup placeholder */}
+      {/* Real screenshot when we have one, otherwise the decorative
+          placeholder - never a fabricated photo. */}
       <div className="relative aspect-[4/3] overflow-hidden bg-white/[0.02]">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/10 to-transparent" />
-        <div className="absolute inset-0 flex items-center justify-center p-8">
-          <div className="relative aspect-video w-full rounded-xl border border-white/5 bg-[#222235]">
-            <div className="absolute left-3 top-3 h-2 w-10 rounded-full bg-white/5" />
-            <div className="absolute bottom-3 right-3 h-6 w-6 rounded-full border border-white/10" />
-          </div>
-        </div>
+        {cs.image ? (
+          <Image src={cs.image} alt={cs.client} fill className="object-cover" />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/10 to-transparent" />
+            <div className="absolute inset-0 flex items-center justify-center p-8">
+              <div className="relative aspect-video w-full rounded-xl border border-white/5 bg-[#222235]">
+                <div className="absolute left-3 top-3 h-2 w-10 rounded-full bg-white/5" />
+                <div className="absolute bottom-3 right-3 h-6 w-6 rounded-full border border-white/10" />
+              </div>
+            </div>
+          </>
+        )}
         <span className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#0A0A0E]">
           {cs.industry}
         </span>

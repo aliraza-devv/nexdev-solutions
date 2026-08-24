@@ -1,0 +1,367 @@
+/* Ported from reference/nexdev-solution-flowmap-v2.html. Computed
+   values are unchanged, class names are camelCased for CSS Modules,
+   and the two Google Fonts the reference loads (Plus Jakarta Sans,
+   JetBrains Mono) are not brought in, the site's own Inter/Arial and a
+   generic monospace stack are used instead, matching how the other
+   reference ports this session (calculator, WhyUs) were handled. */
+
+.section {
+  /* Matches the site's own dark sections (Problem, Results, FAQ,
+     Calculator, Testimonials all use #0A0A0E), not the reference
+     demo's own #161616. */
+  --ink: #0a0a0e;
+  --ink2: #121218;
+  --surface: #1a1a22;
+  --surface2: #232330;
+  --surface3: #30303e;
+  --purple: #5c45fd;
+  --purple-lo: #a89bff;
+  --purple-deep: #201a3d;
+  --paper: #f5f5f5;
+  --faint: rgba(245, 245, 245, 0.42);
+  --dim: rgba(245, 245, 245, 0.64);
+  --hair: rgba(245, 245, 245, 0.09);
+  --line: #3a3a46;
+  --out: cubic-bezier(0.23, 1, 0.32, 1);
+  --mono: ui-monospace, monospace;
+  --sans: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --heading: Arial, Helvetica, sans-serif;
+
+  /* Flat, matching every other dark section on the page exactly
+     (Problem, Results, FAQ, Calculator): a solid --ink background,
+     no grid lines, no radial glow. Those decorative layers were
+     what made this section read as a different shade of dark next
+     to its neighbours. */
+  position: relative;
+  overflow: hidden;
+  padding: 104px 0 116px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+}
+
+.hold {
+  /* Same container token every other section on the page uses:
+     max-w-[1280px] px-6 md:px-12. */
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  position: relative;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .hold {
+    padding-inline: 48px;
+  }
+}
+
+.head {
+  text-align: left;
+  max-width: 52ch;
+  margin: 0 0 14px;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(92, 69, 253, 0.4);
+  background: rgba(92, 69, 253, 0.1);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple-lo);
+  margin-bottom: 24px;
+}
+.head h2 {
+  margin: 0 0 15px;
+  font-family: Arial, sans-serif;
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+.head h2 em {
+  font-style: normal;
+  color: var(--purple);
+}
+.head p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.6);
+}
+
+.map {
+  position: relative;
+  max-width: 1040px;
+  margin: 52px auto 0;
+}
+.svgwrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.links {
+  width: 100%;
+  height: 100%;
+}
+.links :global(path) {
+  fill: none;
+  stroke: rgba(160, 160, 182, 0.35);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition:
+    stroke 0.45s var(--out),
+    filter 0.45s var(--out);
+}
+.links :global(path).lit {
+  stroke: url(#solutionFlowLitGrad);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 5px rgba(92, 69, 253, 0.55));
+}
+
+.dots {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px 40px;
+  align-items: center;
+  justify-items: center;
+}
+.rowFull {
+  grid-column: 1 / -1;
+}
+
+.node {
+  position: relative;
+  width: min(370px, 100%);
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 16px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: 16px;
+  padding: 16px 22px;
+  cursor: pointer;
+  transition:
+    border-color 300ms var(--out),
+    background 300ms var(--out),
+    box-shadow 300ms var(--out),
+    transform 200ms var(--out);
+  will-change: transform;
+}
+.node::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(168, 155, 255, 0.9), rgba(92, 69, 253, 0.25));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 300ms var(--out);
+  pointer-events: none;
+}
+.node:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 44px -24px rgba(92, 69, 253, 0.6);
+}
+.node:hover::before {
+  opacity: 1;
+}
+.idx {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(245, 245, 245, 0.06);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  transition:
+    color 300ms var(--out),
+    background 300ms var(--out);
+}
+.node h3 {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 16px;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+.sub {
+  margin: 3px 0 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  transition: color 300ms var(--out);
+}
+.wide {
+  width: min(440px, 100%);
+}
+
+.on {
+  background: var(--surface2);
+  border-color: rgba(168, 155, 255, 0.45);
+  box-shadow: 0 20px 44px -22px rgba(92, 69, 253, 0.7), inset 0 0 0 1px rgba(168, 155, 255, 0.08);
+}
+.on .idx,
+.on .sub {
+  color: var(--purple-lo);
+}
+.on .idx {
+  background: rgba(168, 155, 255, 0.16);
+}
+
+.key {
+  background: var(--purple);
+  border-color: var(--purple);
+  box-shadow: 0 22px 50px -22px rgba(92, 69, 253, 0.9);
+}
+.key .idx {
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.72);
+}
+.key h3 {
+  color: #fff;
+}
+.key .sub {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.cap {
+  background: var(--ink2);
+  border-style: dashed;
+  border-color: var(--surface3);
+}
+.out {
+  background: linear-gradient(135deg, var(--purple-deep), var(--ink2));
+  border: 1px solid rgba(168, 155, 255, 0.5);
+  box-shadow: 0 24px 56px -28px rgba(92, 69, 253, 0.8);
+}
+.out h3 {
+  color: #fff;
+}
+.out .sub {
+  color: var(--purple-lo);
+}
+
+.forklabel {
+  grid-column: 1 / -1;
+  justify-self: center;
+  position: relative;
+  z-index: 2;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 2px 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--ink);
+}
+
+.pipe {
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translate(100%, -50%);
+  background: linear-gradient(135deg, #6d58ff, #5c45fd);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 14px;
+  padding: 14px 20px;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow:
+    0 22px 50px -18px rgba(92, 69, 253, 0.9),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  animation: solutionPipePulse 3.2s ease-in-out infinite;
+}
+.pipeValue {
+  font-family: var(--heading);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.pipeSub {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 3px;
+}
+@keyframes solutionPipePulse {
+  0%,
+  100% {
+    box-shadow:
+      0 22px 50px -18px rgba(92, 69, 253, 0.9),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 28px 60px -14px rgba(92, 69, 253, 1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 72px 0 84px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .svgwrap {
+    display: none;
+  }
+  .node,
+  .wide {
+    width: 100%;
+  }
+  .forklabel {
+    margin: 8px 0 0;
+  }
+  .pipe {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  .out {
+    text-align: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dots {
+    display: none;
+  }
+  .pipe {
+    animation: none;
+  }
+}

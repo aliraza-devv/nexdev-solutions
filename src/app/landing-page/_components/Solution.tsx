@@ -61,12 +61,23 @@ export default function Solution() {
               fontSize: "clamp(28px, 5vw, 46px)",
               letterSpacing: "-0.02em",
             }}
-            data-cursor="text"
-            data-cursor-on-dark=""
-            data-text="There's a fix. And it's not another redesign."
           >
-            There&apos;s a fix. And it&apos;s not{" "}
-            <span className="text-[#5C45FD] italic">another redesign.</span>
+            <span
+              className="inline-block"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="There's a fix. And it's not"
+            >
+              There&apos;s a fix. And it&apos;s not
+            </span>{" "}
+            <span
+              className="inline-block text-[#5C45FD] italic"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="another redesign."
+            >
+              another redesign.
+            </span>
           </motion.h2>
         </div>
 

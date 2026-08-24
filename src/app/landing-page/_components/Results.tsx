@@ -1,56 +1,218 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useInView, useScroll, useTransform, useReducedMotion, animate } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-const cases = [
+// NOTE: built from the written spec in the port request, not from
+// reference/casestudy-card.html - that file was never added to the
+// repo. If it shows up later, re-check this against it.
+
+interface CaseMetric {
+  value: string;
+  label: string;
+  // "From X to Y" or a qualifier like "Launch period" / "First 60
+  // days" - never fabricated, only what the case study data already
+  // establishes elsewhere.
+  context: string;
+}
+
+interface CaseStudyCard {
+  brand: string;
+  // The key metric inside the heading is wrapped in its own span
+  // (highlighted in light purple) rather than derived by regex, so
+  // each card controls exactly which words get the emphasis.
+  heading: React.ReactNode;
+  desc: string;
+  results: [CaseMetric, CaseMetric];
+  href: string;
+  image?: string;
+}
+
+const HEADING_HIGHLIGHT = "text-[#A89BFF]";
+
+const cases: CaseStudyCard[] = [
   {
-    stat: "Rebuilt a Coaching website",
     brand: "Reality Cheque",
-    desc: "We rebuilt Pakistan's biggest coaching platform for conversions. Reality Cheque had the audience but a site that wasn't turning attention into signups. We rebuilt it around conversion and brand authority.",
+    heading: (
+      <>
+        <span className={HEADING_HIGHLIGHT}>51.12%</span> more conversions for Pakistan&apos;s biggest coaching
+        platform
+      </>
+    ),
+    desc: "Reality Cheque had the audience but a site that wasn't turning attention into signups. We rebuilt it around conversion and brand authority.",
     results: [
-      { value: "51.12%", label: "Increase conversion rate" },
-      { value: "407", label: "members in 24 hrs" },
+      { value: "51.12%", label: "Conversion lift", context: "Launch period" },
+      { value: "407", label: "New signups", context: "First 24 hours" },
     ],
     href: "/landing-page/case-studies/case-study-reality-cheque",
     image: "/assets/case-studies/Reality-cheque-case-study.png",
   },
   {
-    stat: "Shopify store built for a brand",
     brand: "Bamper",
-    desc: "We built a Shopify store from scratch for a bamboo-goods brand. A new e-commerce brand that needed to sell fast. We built the store around conversion and brand trust from day one.",
+    heading: (
+      <>
+        <span className={HEADING_HIGHLIGHT}>4.2%</span> conversion rate for a brand-new e-commerce store
+      </>
+    ),
+    desc: "A new bamboo-goods brand that needed to sell fast. We built the store around conversion and brand trust from day one.",
     results: [
-      { value: "60 Days", label: "Sold-out inventory" },
-      { value: "4.2%", label: "Conversion rate" },
+      { value: "4.2%", label: "Conversion rate", context: "From 0% to 4.2%" },
+      { value: "60 Days", label: "To sell out", context: "From launch" },
     ],
     href: "/landing-page/case-studies/case-study-bamper",
     image: "/assets/case-studies/Bamper-case-study.png",
   },
   {
-    stat: "Built a secure form-building SaaS platform",
     brand: "Smarterform",
-    desc: "We built a drag-and-drop, multi-step form builder from scratch for law firms and compliance teams handling sensitive data. An MVP fast enough to raise on, then a full secure build.",
+    heading: (
+      <>
+        Funded in <span className={HEADING_HIGHLIGHT}>2 weeks</span>: a secure form platform built for law firms
+      </>
+    ),
+    desc: "A drag-and-drop, multi-step form builder for law firms and compliance teams handling sensitive data. An MVP fast enough to raise on.",
     results: [
-      { value: "2 Weeks", label: "To secure investor" },
-      { value: "30 Days", label: "MVP shipped" },
+      { value: "2 Weeks", label: "To secure funding", context: "From kickoff" },
+      { value: "30 Days", label: "To MVP", context: "From kickoff" },
     ],
     href: "/landing-page/case-studies/case-study-smarterform",
     image: "/assets/case-studies/Smarterform-case-study.png",
   },
   {
-    stat: "Built a funnel for service business",
     brand: "Reality Cheque",
-    desc: "We built a lead-gen funnel from scratch for their DFY service. Same brand, different goal: book high-quality leads for their service business. So we built a dedicated funnel from the ground up.",
+    heading: (
+      <>
+        <span className={HEADING_HIGHLIGHT}>26X ROAS</span> from a lead-gen funnel for Pakistan&apos;s biggest
+        coaching platform
+      </>
+    ),
+    desc: "Same brand, different goal: book high-quality leads for their service business with a dedicated funnel.",
     results: [
-      { value: "70+", label: "leads in 2 weeks" },
-      { value: "26X", label: "ROAS" },
+      { value: "26X", label: "ROAS", context: "From $1,000 ad spend" },
+      { value: "70+", label: "Qualified leads", context: "First 2 weeks" },
     ],
     href: "/landing-page/case-studies/case-study-reality-cheque-funnel",
   },
 ];
+
+// Parses a formatted metric ("51.12%", "60 Days", "26X") into the
+// pieces needed to animate it: a numeric value to tween, plus the
+// suffix and decimal precision to reconstruct the same format on every
+// frame. Decimal values count with the same number of decimal places,
+// integers count as whole numbers, matching spec.
+function parseMetric(value: string) {
+  const match = value.match(/^([\d.]+)(.*)$/);
+  if (!match) return { number: 0, suffix: value, decimals: 0 };
+  const [, numStr, suffix] = match;
+  const decimals = numStr.includes(".") ? numStr.split(".")[1].length : 0;
+  return { number: parseFloat(numStr), suffix, decimals };
+}
+
+// Counts up independently the moment THIS metric (not the card, not
+// the section) crosses 35% into the viewport, over 800ms. Under
+// reduced motion it just shows the final value.
+function MetricValue({ value }: { value: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.35 });
+  const reduceMotion = useReducedMotion();
+  const target = parseMetric(value);
+  const [display, setDisplay] = useState(reduceMotion ? value : `0${target.suffix}`);
+
+  useEffect(() => {
+    if (!inView) return;
+    if (reduceMotion) {
+      setDisplay(value);
+      return;
+    }
+    const controls = animate(0, target.number, {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v) => setDisplay(`${v.toFixed(target.decimals)}${target.suffix}`),
+    });
+    return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  return (
+    <div
+      ref={ref}
+      className="text-2xl font-bold text-[#A89BFF] lg:text-3xl"
+      style={{ fontFamily: "Arial, sans-serif" }}
+    >
+      {display}
+    </div>
+  );
+}
+
+function CaseMetrics({ results }: { results: [CaseMetric, CaseMetric] }) {
+  return (
+    <div className="mb-10 flex max-w-md flex-col items-start gap-5 border-t border-white/10 pt-6 md:flex-row md:gap-8">
+      {results.map((r, ri) => (
+        <div
+          key={ri}
+          className={
+            ri > 0
+              ? "border-t border-white/10 pt-5 md:border-l md:border-t-0 md:pl-8 md:pt-0"
+              : ""
+          }
+        >
+          <MetricValue value={r.value} />
+          <div
+            className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-white/40"
+            style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}
+          >
+            {r.label}
+          </div>
+          <div className="mt-0.5 text-[11px] text-white/30">{r.context}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Kept exactly as it was before this port (per explicit request): a
+// plain full-bleed screenshot, or the original decorative placeholder
+// when a case study has no image yet. No laptop frame.
+function CaseMockup({ image, brand }: { image?: string; brand: string }) {
+  return (
+    <div className="h-full w-full min-h-[300px] flex items-center justify-center relative overflow-hidden bg-white/[0.02]">
+      {image ? (
+        <Image src={image} alt={brand} fill className="object-cover" />
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />
+          <div className="w-2/3 aspect-video bg-[#222235] border border-white/5 rounded-2xl relative">
+            <div className="absolute top-4 left-4 h-2 w-12 bg-white/5 rounded-full" />
+            <div className="absolute bottom-4 right-4 h-8 w-8 rounded-full border border-white/10" />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function CaseCardBody({ c }: { c: CaseStudyCard }) {
+  return (
+    <div className="p-10 lg:p-16">
+      <span className="mb-5 inline-block rounded-full bg-[#5C45FD] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+        {c.brand}
+      </span>
+      <div
+        className="mb-6 text-4xl font-bold text-white lg:text-5xl"
+        style={{ fontFamily: "Arial, sans-serif" }}
+      >
+        {c.heading}
+      </div>
+      <p className="mb-8 max-w-md text-lg font-light leading-relaxed text-white/60">{c.desc}</p>
+      <CaseMetrics results={c.results} />
+      <span className="inline-flex items-center gap-2 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#5C45FD] transition-all duration-300 group-hover:gap-4">
+        See how we did it <ArrowRight className="h-4 w-4" />
+      </span>
+    </div>
+  );
+}
 
 function CaseCard({
   c,
@@ -58,213 +220,82 @@ function CaseCard({
   progress,
   total,
 }: {
-  c: any;
+  c: CaseStudyCard;
   i: number;
-  progress: any;
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
   total: number;
 }) {
-  // Define the range for this specific card
   const start = i / total;
   const end = 1;
+  const scale = useTransform(progress, [start, end], [1, 1 - (total - 1 - i) * 0.05]);
 
-  // Scaling happens throughout the scroll
-  const scale = useTransform(
-    progress,
-    [start, end],
-    [1, 1 - (total - 1 - i) * 0.05],
-  );
-
-  // Opacity logic:
-  // Only start fading when the NEXT card arrives
   const isLast = i === total - 1;
   const nextCardArrival = (i + 1) / total;
-
-  // We trigger the fade based on the next card's arrival
-  // Ensure the range values are within [0, 1] and strictly increasing
   const fadeStart = Math.min(0.9, nextCardArrival + (1 / total) * 0.4);
   const fadeEnd = Math.min(1, fadeStart + 0.1);
-
   const opacity = useTransform(
     progress,
     isLast ? [0, 1] : [start, fadeStart, fadeEnd],
-    isLast ? [1, 1] : [1, 1, 0.4],
+    isLast ? [1, 1] : [1, 1, 0],
   );
 
   const stickyTop = 100 + i * 24;
 
   return (
-    <div
-      style={{ top: `${stickyTop}px` }}
-      data-cursor="card"
-      className="sticky w-full flex items-center justify-center mb-[15vh] rounded-3xl"
-    >
-      <span className="cursor-card-cue pointer-events-none absolute left-5 bottom-5 z-50 text-sm font-bold text-white">
-        View case study &rarr;
-      </span>
-      <motion.div
-        style={{
-          scale,
-          opacity,
-          zIndex: i,
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
-        }}
-        className="group relative grid grid-cols-1 lg:grid-cols-2 bg-[#14141A]/90 rounded-3xl overflow-hidden border border-white/[0.05] shadow-2xl origin-top transition-colors duration-500"
-      >
-        {/* Content Side */}
-        <div
-          className={i % 2 === 1 ? "lg:order-2 p-10 lg:p-16" : "p-10 lg:p-16"}
+    <div style={{ top: `${stickyTop}px` }} className="sticky mb-[15vh] flex w-full items-center justify-center">
+      <motion.div style={{ scale, opacity, zIndex: i }} className="w-full origin-top">
+        <Link
+          href={c.href}
+          data-cursor="card"
+          className="group relative grid grid-cols-1 overflow-hidden rounded-[22px] border border-[rgba(245,245,245,0.09)] bg-[#14141A] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(168,155,255,0.38)] hover:shadow-[0_30px_60px_-25px_rgba(92,69,253,0.35)] lg:grid-cols-2"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#5C45FD] text-white text-xs font-bold uppercase tracking-wide mb-5">
-            {c.brand}
-          </span>
-          <div
-            className="text-4xl lg:text-5xl font-bold text-white mb-6"
-            style={{ fontFamily: "Arial, sans-serif" }}
-          >
-            {c.stat}
+          <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+            <CaseCardBody c={c} />
           </div>
-          <p className="text-lg text-white/60 leading-relaxed font-light mb-8 max-w-md">
-            {c.desc}
-          </p>
-          <div className="flex items-start gap-8 pt-6 mb-10 max-w-md border-t border-white/10">
-            {c.results.map(
-              (r: { value: string; label: string }, ri: number) => (
-                <div
-                  key={ri}
-                  className={ri > 0 ? "pl-8 border-l border-white/10" : ""}
-                >
-                  <div
-                    className="text-2xl lg:text-3xl font-bold text-[#5C45FD]"
-                    style={{ fontFamily: "Arial, sans-serif" }}
-                  >
-                    {r.value}
-                  </div>
-                  <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-1">
-                    {r.label}
-                  </div>
-                </div>
-              ),
-            )}
+          <div className={i % 2 === 1 ? "lg:order-1" : ""}>
+            <CaseMockup brand={c.brand} image={c.image} />
           </div>
-          <Link
-            href={c.href}
-            className="inline-flex items-center gap-2 py-3 -ml-0.5 px-0.5 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300"
-          >
-            READ THE STORY <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        {/* Image / Graphic Side */}
-        <div
-          className={
-            i % 2 === 1 ? "lg:order-1 bg-white/[0.02]" : "bg-white/[0.02]"
-          }
-        >
-          <div className="h-full w-full min-h-[300px] flex items-center justify-center relative overflow-hidden">
-            {c.image ? (
-              <Image
-                src={c.image}
-                alt={c.brand}
-                fill
-                className="object-cover"
-              />
-            ) : (
-              <>
-                <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />
-                <div className="w-2/3 aspect-video bg-[#222235] border border-white/5 rounded-2xl relative">
-                  <div className="absolute top-4 left-4 h-2 w-12 bg-white/5 rounded-full" />
-                  <div className="absolute bottom-4 right-4 h-8 w-8 rounded-full border border-white/10" />
-                </div>
-              </>
-            )}
-          </div>
-        </div>
+        </Link>
       </motion.div>
     </div>
   );
 }
 
-function MobileCaseCard({ c, i }: { c: any; i: number }) {
+function MobileCaseCard({ c, i }: { c: CaseStudyCard; i: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 0.5, delay: i * 0.1 }}
-      className="group relative flex flex-col bg-[#14141A]/90 rounded-3xl overflow-hidden border border-white/[0.05] shadow-2xl transition-colors duration-500 p-8"
     >
-      {/* Content Side */}
-      <div className="flex flex-col">
-        <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#5C45FD] text-white text-[11px] font-bold uppercase tracking-wide mb-4 self-start">
-          {c.brand}
-        </span>
-        <div
-          className="text-4xl font-bold text-white mb-4"
-          style={{ fontFamily: "Arial, sans-serif" }}
-        >
-          {c.stat}
-        </div>
-        <p className="text-base text-white/60 leading-relaxed font-light mb-6">
-          {c.desc}
-        </p>
-        <div className="flex items-start gap-6 pt-5 mb-8 border-t border-white/10">
-          {c.results.map((r: { value: string; label: string }, ri: number) => (
-            <div
-              key={ri}
-              className={ri > 0 ? "pl-6 border-l border-white/10" : ""}
-            >
-              <div
-                className="text-xl font-bold text-[#5C45FD]"
-                style={{ fontFamily: "Arial, sans-serif" }}
-              >
-                {r.value}
-              </div>
-              <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-1">
-                {r.label}
-              </div>
-            </div>
-          ))}
-        </div>
-        <Link
-          href={c.href}
-          className="inline-flex items-center gap-2 py-3 -ml-0.5 px-0.5 text-xs font-bold text-[#5C45FD] uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-300"
-        >
-          READ THE STORY <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-
-      {/* Image / Graphic Side (Bleeds full width and bottom of the card) */}
-      <div className="mt-8 bg-white/[0.02] -mx-8 -mb-8 overflow-hidden">
-        <div className="h-[200px] w-full flex items-center justify-center relative">
-          {c.image ? (
-            <Image src={c.image} alt={c.brand} fill className="object-cover" />
-          ) : (
-            <>
-              <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />
-              <div className="w-4/5 aspect-video bg-[#222235] border border-white/5 rounded-2xl relative">
-                <div className="absolute top-3 left-3 h-1.5 w-10 bg-white/5 rounded-full" />
-                <div className="absolute bottom-3 right-3 h-6 w-6 rounded-full border border-white/10" />
-              </div>
-            </>
-          )}
-        </div>
-      </div>
+      <Link
+        href={c.href}
+        data-cursor="card"
+        className="group relative flex flex-col overflow-hidden rounded-[22px] border border-[rgba(245,245,245,0.09)] bg-[#14141A] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(168,155,255,0.38)] hover:shadow-[0_30px_60px_-25px_rgba(92,69,253,0.35)]"
+      >
+        <CaseCardBody c={c} />
+        <CaseMockup brand={c.brand} image={c.image} />
+      </Link>
     </motion.div>
   );
 }
 
 export default function Results() {
-  const container = useRef(null);
+  // Scoped to just the sticky-card stack, not the whole section (which
+  // also includes the tall header and footer CTA) - otherwise most of
+  // the 0-1 scroll progress gets spent scrolling past those, and the
+  // stack transitions end up compressed into a sliver of the actual
+  // scroll range instead of spanning the time the cards are in view.
+  const stackRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: container,
+    target: stackRef,
     offset: ["start start", "end end"],
   });
 
   return (
     <section
       id="results"
-      ref={container}
       className="relative bg-[#0A0A0E] py-20 lg:py-40 border-b border-white/[0.08]"
     >
       <div className="bg-grain absolute inset-0 opacity-10 pointer-events-none" />
@@ -337,7 +368,7 @@ export default function Results() {
             </motion.h2>
           </div>
 
-          <Link href="landing-page/case-studies">
+          <Link href="landing-page/case-studies" data-cursor="cta">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -350,7 +381,7 @@ export default function Results() {
         </div>
 
         {/* Stacking Case Study Cards (Desktop/Tablet Only) */}
-        <div className="hidden lg:block relative">
+        <div ref={stackRef} className="hidden lg:block relative">
           {cases.map((c, i) => (
             <CaseCard
               key={i}
@@ -374,12 +405,12 @@ export default function Results() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 lg:mt-40 text-center"
+          className="mt-24 lg:mt-64 text-center"
         >
           <p className="text-xl md:text-2xl text-white font-medium leading-relaxed md:leading-normal">
             Want results like these? <br className="md:hidden" />
             <Link
-              href="/landing-page/book-call"
+              href="/landing-page/qualify"
               className="text-[#5C45FD] underline underline-offset-8 decoration-white/20 hover:decoration-[#5C45FD] transition-all mt-2 md:mt-0 inline-block md:inline"
             >
               Let&apos;s build yours.

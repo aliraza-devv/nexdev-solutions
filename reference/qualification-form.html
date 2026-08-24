@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NeXDev · Qualification form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161616;
+  --ink-2:#1a1a1f;
+  --surface:#1f1f26;
+  --surface-2:#282830;
+  --surface-3:#34343f;
+  --purple:#5c45fd;
+  --purple-lo:#a89bff;
+  --purple-deep:#241f42;
+  --paper:#f5f5f5;
+  --faint:rgba(245,245,245,.42);
+  --dim:rgba(245,245,245,.64);
+  --hair:rgba(245,245,245,.10);
+  --out:cubic-bezier(.23,1,.32,1);
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+body{
+  margin:0; min-height:100vh; background:
+    radial-gradient(130% 80% at 50% -10%, rgba(92,69,253,.12), transparent 60%),
+    var(--ink);
+  color:var(--paper); font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  display:flex; flex-direction:column;
+}
+
+/* ---- bare navbar: logo only, not clickable ---- */
+.nav{ padding:26px 32px; display:flex; justify-content:center; }
+.logo{
+  font-size:20px; font-weight:800; letter-spacing:-.02em; user-select:none;
+}
+.logo span{ color:var(--purple-lo); }
+
+/* ---- parent stepper: step 1 form, step 2 book ---- */
+.parent{
+  width:min(440px,calc(100% - 48px)); margin:8px auto 0;
+  display:grid; grid-template-columns:1fr 40px 1fr; align-items:center; gap:0;
+}
+.pstep{ display:flex; align-items:center; gap:10px; }
+.pstep .dot{
+  width:26px; height:26px; border-radius:50%; flex:none;
+  display:grid; place-items:center; font-size:12px; font-weight:800;
+  background:var(--surface-2); color:var(--faint); border:1px solid var(--hair);
+  transition:all 300ms var(--out);
+}
+.pstep .txt{ font-size:12.5px; font-weight:700; color:var(--faint); }
+.pstep.done .dot{ background:var(--purple); color:#fff; border-color:var(--purple); }
+.pstep.active .dot{ background:var(--purple); color:#fff; border-color:var(--purple); box-shadow:0 0 0 4px rgba(92,69,253,.22); }
+.pstep.active .txt, .pstep.done .txt{ color:var(--paper); }
+.pconn{ height:2px; background:var(--surface-3); border-radius:2px; position:relative; overflow:hidden; }
+.pconn i{ position:absolute; inset:0; background:var(--purple); transform-origin:left; transform:scaleX(var(--f,0)); transition:transform .5s var(--out); }
+
+/* ---- the card ---- */
+.stage{ flex:1; display:flex; align-items:center; justify-content:center; padding:40px 24px 64px; }
+.card{
+  width:min(560px,100%);
+  background:var(--surface); border:1px solid var(--hair); border-radius:24px;
+  padding:14px 34px 32px; position:relative; overflow:hidden;
+  box-shadow:0 40px 100px -50px #000;
+}
+
+/* inner progress across the questions */
+.qbar{ height:4px; background:var(--surface-2); border-radius:4px; margin:18px 0 30px; overflow:hidden; }
+.qbar i{ display:block; height:100%; background:linear-gradient(90deg,var(--purple-lo),var(--purple)); border-radius:4px; width:20%; transition:width .45s var(--out); }
+
+.count{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--faint); text-transform:uppercase; }
+
+.step{ display:none; animation:in .42s var(--out); }
+.step.on{ display:block; }
+@keyframes in{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+
+.step h2{ margin:12px 0 6px; font-size:clamp(21px,2.6vw,27px); line-height:1.15; letter-spacing:-.025em; font-weight:800; }
+.step .hint{ margin:0 0 22px; font-size:14.5px; line-height:1.5; color:var(--dim); }
+
+input[type=text], input[type=email]{
+  width:100%; font:inherit; font-size:16px; color:var(--paper);
+  background:var(--surface-2); border:1px solid var(--surface-3); border-radius:12px;
+  padding:15px 16px; outline:none; transition:border-color 180ms var(--out), box-shadow 180ms var(--out);
+}
+input::placeholder{ color:var(--faint); }
+input:focus{ border-color:var(--purple); box-shadow:0 0 0 3px rgba(92,69,253,.22); }
+
+.opts{ display:grid; gap:10px; }
+.opt{
+  display:flex; align-items:center; gap:14px; cursor:pointer;
+  background:var(--surface-2); border:1px solid var(--surface-3); border-radius:12px;
+  padding:15px 18px; transition:border-color 180ms var(--out), background 180ms var(--out), transform 120ms var(--out);
+}
+.opt:hover{ border-color:rgba(168,155,255,.5); transform:translateX(2px); }
+.opt .tick{ width:20px; height:20px; border-radius:50%; border:2px solid var(--surface-3); flex:none; display:grid; place-items:center; transition:all 160ms var(--out); }
+.opt .tick::after{ content:""; width:9px; height:9px; border-radius:50%; background:#fff; transform:scale(0); transition:transform 160ms var(--out); }
+.opt.sel{ border-color:var(--purple); background:var(--purple-deep); }
+.opt.sel .tick{ border-color:var(--purple); background:var(--purple); }
+.opt.sel .tick::after{ transform:scale(1); }
+.opt .lab{ font-size:15px; font-weight:600; }
+
+.nav-row{ display:flex; justify-content:space-between; align-items:center; margin-top:28px; gap:14px; }
+.back{ background:none; border:0; color:var(--faint); font:inherit; font-size:14px; font-weight:600; cursor:pointer; padding:10px 4px; }
+.back:hover{ color:var(--paper); }
+.back[hidden]{ visibility:hidden; }
+.next{
+  display:inline-flex; align-items:center; gap:9px;
+  background:var(--purple); color:#fff; border:0; border-radius:99px;
+  font:inherit; font-size:15px; font-weight:700; padding:14px 26px; cursor:pointer;
+  transition:transform 150ms var(--out), opacity 150ms var(--out);
+  box-shadow:0 12px 28px -12px rgba(92,69,253,.9);
+}
+.next:hover{ transform:translateY(-2px); }
+.next:disabled{ opacity:.4; cursor:not-allowed; transform:none; }
+.next i{ font-style:normal; }
+
+/* ---- end states ---- */
+.end{ display:none; text-align:center; padding:20px 6px 6px; }
+.end.on{ display:block; animation:in .42s var(--out); }
+.end . picon{ width:60px; height:60px; border-radius:50%; margin:0 auto 20px; display:grid; place-items:center; background:var(--purple); }
+.end.no . picon{ background:var(--surface-2); border:1px solid var(--surface-3); }
+.end h2{ margin:0 0 10px; font-size:26px; letter-spacing:-.025em; font-weight:800; }
+.end p{ margin:0 auto 24px; max-width:40ch; font-size:15px; line-height:1.6; color:var(--dim); }
+.end .go{
+  display:inline-flex; align-items:center; gap:10px; background:var(--purple); color:#fff;
+  text-decoration:none; padding:15px 28px; border-radius:99px; font-size:15px; font-weight:700;
+}
+.end .alt{ display:block; margin-top:16px; font-size:13px; color:var(--faint); text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+
+@media (max-width:560px){
+  .card{ padding:12px 22px 26px; }
+  .parent .txt{ display:none; }
+  .parent{ grid-template-columns:1fr 60px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="logo">NeX<span>Dev</span></div></nav>
+
+<div class="parent" id="parent">
+  <div class="pstep active" id="ps1"><span class="dot">1</span><span class="txt">Quick questions</span></div>
+  <div class="pconn"><i id="pconn"></i></div>
+  <div class="pstep" id="ps2"><span class="dot">2</span><span class="txt">Book your call</span></div>
+</div>
+
+<div class="stage">
+  <div class="card">
+
+    <!-- form -->
+    <div id="form">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;">
+        <span class="count" id="count">Question 1 of 5</span>
+      </div>
+      <div class="qbar"><i id="qbar"></i></div>
+
+      <!-- Q1 -->
+      <div class="step on" data-q="0">
+        <h2>First, who are we talking to?</h2>
+        <p class="hint">Your name and best work email.</p>
+        <div style="display:grid; gap:12px;">
+          <input type="text" id="f_name" placeholder="Full name" />
+          <input type="email" id="f_email" placeholder="Work email" />
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="step" data-q="1">
+        <h2>What kind of business is this for?</h2>
+        <p class="hint">We work with all three, plus B2B partnerships.</p>
+        <div class="opts" data-single="type">
+          <label class="opt"><span class="tick"></span><span class="lab">Service or consulting</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">E-commerce or physical products</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">SaaS or digital product</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">B2B partnership or agency collab</span></label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="step" data-q="2">
+        <h2>What's the main thing costing you right now?</h2>
+        <p class="hint">Pick the closest one.</p>
+        <div class="opts" data-single="problem">
+          <label class="opt"><span class="tick"></span><span class="lab">Traffic comes but leaves without buying</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">Leads come in but they're the wrong fit</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">My site looks dated next to competitors</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">It's slow, broken, or hard to update</span></label>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="step" data-q="3">
+        <h2>What's your budget for this project?</h2>
+        <p class="hint">Ballpark is fine. It helps us point you to the right option.</p>
+        <div class="opts" data-single="budget">
+          <label class="opt" data-v="low"><span class="tick"></span><span class="lab">Under $500</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">$500 to $2,000</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">$2,000 to $5,000</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">$5,000+</span></label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="step" data-q="4">
+        <h2>How soon do you want to start?</h2>
+        <p class="hint">No wrong answer, it just sets expectations.</p>
+        <div class="opts" data-single="timeline">
+          <label class="opt"><span class="tick"></span><span class="lab">Ready now</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">Within 30 days</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">Within 90 days</span></label>
+          <label class="opt"><span class="tick"></span><span class="lab">Just researching</span></label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="back" id="back" hidden>&larr; Back</button>
+        <button class="next" id="next" disabled>Continue <i>&rarr;</i></button>
+      </div>
+    </div>
+
+    <!-- qualified -->
+    <div class="end" id="yes">
+      <div class=" picon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2>You're a great fit.</h2>
+      <p>Grab a time and we'll map out exactly how we'd get you there. No pitch, just a plan.</p>
+      <a class="go" href="#book">Book your call <span>&rarr;</span></a>
+    </div>
+
+    <!-- disqualified -->
+    <div class="end no" id="no">
+      <div class="picon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16.5v.5" stroke="#a89bff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#a89bff" stroke-width="1.6"/></svg>
+      </div>
+      <h2>Let's start smaller.</h2>
+      <p>A full build isn't the right move at this budget yet, but a paid SYNC Audit is. We'll pinpoint exactly why your site loses visitors and hand you a fix list you can act on, with us or not.</p>
+      <a class="go" href="#audit">Tell me about the audit <span>&rarr;</span></a>
+      <span class="alt">Just send me the free checklist</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var TOTAL = 5, i = 0, data = {};
+  var steps = [].slice.call(document.querySelectorAll('.step'));
+  var qbar = document.getElementById('qbar'), count = document.getElementById('count');
+  var back = document.getElementById('back'), next = document.getElementById('next');
+
+  function valid(){
+    if(i===0){
+      var n=document.getElementById('f_name').value.trim();
+      var e=document.getElementById('f_email').value.trim();
+      return n.length>1 && /.+@.+\..+/.test(e);
+    }
+    var group = steps[i].querySelector('[data-single]');
+    return group && group.querySelector('.opt.sel');
+  }
+  function refresh(){
+    steps.forEach(function(s,n){ s.classList.toggle('on', n===i); });
+    qbar.style.width = ((i+1)/TOTAL*100)+'%';
+    count.textContent = 'Question '+(i+1)+' of '+TOTAL;
+    back.hidden = i===0;
+    next.textContent = ''; next.appendChild(document.createTextNode(i===TOTAL-1?'See my result ':'Continue '));
+    var ic=document.createElement('i'); ic.textContent='\u2192'; next.appendChild(ic);
+    next.disabled = !valid();
+  }
+
+  // selection
+  document.querySelectorAll('[data-single]').forEach(function(group){
+    group.addEventListener('click', function(e){
+      var opt=e.target.closest('.opt'); if(!opt) return;
+      group.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('sel'); });
+      opt.classList.add('sel');
+      data[group.dataset.single] = { label: opt.querySelector('.lab').textContent, v: opt.dataset.v||'' };
+      next.disabled=false;
+    });
+  });
+  ['f_name','f_email'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', function(){ next.disabled=!valid(); });
+  });
+
+  back.addEventListener('click', function(){ if(i>0){ i--; refresh(); } });
+  next.addEventListener('click', function(){
+    if(!valid()) return;
+    if(i < TOTAL-1){ i++; refresh(); return; }
+    // last step -> qualify
+    data.name = document.getElementById('f_name').value.trim();
+    data.email = document.getElementById('f_email').value.trim();
+    finish();
+  });
+
+  function finish(){
+    // qualification: disqualify only on Under $500
+    var qualified = !(data.budget && data.budget.v === 'low');
+    document.getElementById('form').style.display='none';
+    // advance parent stepper: step 1 done
+    document.getElementById('ps1').classList.remove('active'); document.getElementById('ps1').classList.add('done');
+    document.getElementById('pconn').style.setProperty('--f', qualified ? '1' : '0');
+    if(qualified){
+      document.getElementById('ps2').classList.add('active');
+      document.getElementById('yes').classList.add('on');
+    } else {
+      document.getElementById('no').classList.add('on');
+    }
+    // in the real build: POST data to /api/qualify here, which emails info@nexdevsolutions.net
+    console.log('SUBMIT', data, 'qualified:', qualified);
+  }
+
+  refresh();
+})();
+</script>
+</body>
+</html>

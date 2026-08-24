@@ -174,7 +174,7 @@ export default function Deliverables() {
 
               {/* CTA Button */}
               <div className="mt-2">
-                <Link href="/landing-page/book-call" data-cursor="button">
+                <Link href="/landing-page/qualify" data-cursor="cta">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

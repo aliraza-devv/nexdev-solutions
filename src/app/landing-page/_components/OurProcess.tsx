@@ -214,7 +214,12 @@ export default function OurProcess({
                 }}>
                 {headingLines ? (
                   headingLines.map((line, idx) => (
-                    <span key={idx} className="block overflow-hidden pb-1">
+                    <span
+                      key={idx}
+                      className="block overflow-hidden pb-1"
+                      data-cursor="text"
+                      data-text={flattenToText(line)}
+                    >
                       <motion.span
                         className="block"
                         variants={{

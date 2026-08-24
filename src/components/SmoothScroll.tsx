@@ -46,12 +46,19 @@ export default function SmoothScroll({
     }
 
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      // Longer duration plus a gentler quart-out curve (rather than the
+      // old sharp expo-out) is what actually reads as "premium weight"
+      // instead of "snappy then stuck" - it decelerates gradually the
+      // whole way through the glide instead of almost all at once.
+      duration: 1.6,
+      easing: (t: number) => 1 - Math.pow(1 - t, 4),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      touchMultiplier: 2,
+      // Below 1: each wheel notch covers a bit less distance, so the
+      // page doesn't feel like it's racing even on a fast scroll wheel.
+      wheelMultiplier: 0.85,
+      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;

@@ -232,7 +232,7 @@ export default function Hero() {
               className="w-full mt-8 lg:mt-5 flex flex-col sm:flex-row items-stretch sm:items-start justify-center lg:justify-start gap-3"
             >
               <div className="flex flex-col items-center lg:items-start w-full sm:w-auto gap-2">
-                <Link href="/landing-page/book-call" data-cursor="button" className="w-full sm:w-auto">
+                <Link href="/landing-page/qualify" data-cursor="cta" className="w-full sm:w-auto">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -290,17 +290,28 @@ export default function Hero() {
             </motion.div>
 
             {/* Mobile Visuals - 2 horizontal scrolling rows */}
-            <div className="-mx-6 w-[calc(100%+3rem)] md:-mx-12 md:w-[calc(100%+6rem)] flex flex-col gap-3 lg:hidden mt-8 overflow-hidden">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 14 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 50, damping: 18 },
+                },
+              }}
+              className="-mx-6 w-[calc(100%+3rem)] md:-mx-12 md:w-[calc(100%+6rem)] flex flex-col gap-3 lg:hidden mt-8 overflow-hidden"
+            >
               <MockupRow images={column1Images} speed={25} />
               <MockupRow images={column2Images} speed={22} reverse={true} />
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Right Visuals */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            id="hero-carousel-target"
+            initial={{ opacity: 0, y: 24, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 55, damping: 18, delay: 0.25 }}
             className="relative hidden lg:h-[min(480px,44vh)] xl:h-[min(560px,48vh)] 2xl:h-[min(620px,52vh)] lg:block"
           >
             <div

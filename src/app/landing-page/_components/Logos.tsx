@@ -17,7 +17,12 @@ const partners = [
 
 export default function LogosStrip() {
   return (
-    <section className="relative overflow-hidden bg-[#0A0A0E] py-8 border-y border-white/[0.12]">
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.9 }}
+      className="relative overflow-hidden bg-[#0A0A0E] py-8 border-y border-white/[0.12]"
+    >
       <div className="flex w-fit overflow-hidden">
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
@@ -56,6 +61,6 @@ export default function LogosStrip() {
       {/* Edge Fades */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0A0A0E] to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0A0A0E] to-transparent z-10" />
-    </section>
+    </motion.section>
   );
 }

@@ -6,32 +6,44 @@ import { Plus, X } from "lucide-react";
 
 const faqs = [
   {
-    q: "How fast will this actually launch?",
-    a: "Most SYNC rebuilds live within 2 to 4 weeks. Complex enterprise custom builds typically range 6 to 10 weeks depending on integrations.",
+    q: "I already have a website. Do I need a full rebuild?",
+    a: "Not always. We start every project with a SYNC Audit that shows exactly where visitors drop off. Sometimes the fix is a rebuild. Sometimes it's restructuring what you already have. You'll know which one before you spend anything.",
   },
   {
-    q: "What if I don't like the design?",
-    a: "You won’t get a surprise. You see the plan and direction before we build, and we revise until it’s right.",
+    q: "I don't have a website yet. Can you build one from scratch?",
+    a: "Yes. About half our projects are new builds. The process is the same: we start with the audit of your business and your competitors, then build the site in the SYNC order, so it sells from day one instead of looking good and doing nothing.",
   },
   {
-    q: "Why not a cheaper agency or freelancer?",
-    a: "Cheaper agencies/freelancer sell you a design. We sell you a number. If the site doesn’t convert, the cheap one cost you more.",
+    q: "What platforms do you build on?",
+    a: "WordPress, Shopify, custom code, and most no-code tools. The platform follows the project, not the other way around. We'll recommend the right one during the audit.",
   },
   {
-    q: "Is it really 100% mine when it's done?",
-    a: "Yes. You own the code, the copy, and the assets. We hand over the keys completely. No recurring licensing fees.",
+    q: "How long does a project take?",
+    a: "Most projects are live in 3 to 6 weeks. You'll get a progress update every 2 to 3 days, so nothing goes quiet. If we're behind, you'll know before we are.",
   },
   {
-    q: "What happens after launch?",
-    a: "We don't ghost. Every project includes a 60-day check-in to ensure the conversion engineering is performing as expected.",
+    q: "What does it cost?",
+    a: "Projects start at $500 and go up based on scope. You'll get a fixed quote after the audit call, not a surprise invoice at the end. If you're under $500, we'll point you to the right starting option instead.",
   },
   {
-    q: "Will it rank on Google?",
-    a: "Every site is built on an SEO-perfect foundation. We optimize for speed, accessibility, and crawlability from line one.",
+    q: "Can you guarantee results?",
+    a: "No, and you should be cautious of anyone who does without defining the terms. What we can tell you: our last four builds averaged a 51% conversion lift, and our process is designed around measuring before and after. If the numbers don't move, we keep working until they do.",
   },
   {
-    q: "How do I get started?",
-    a: "Book a 30-min strategy call. No pitch. We'll audit your current situation and see if its a right fit for both of us.",
+    q: "What if I already have a designer or developer?",
+    a: "That's fine. We can run the SYNC Audit and hand you the conversion strategy, and your team handles the implementation. We also work alongside existing teams when it makes sense.",
+  },
+  {
+    q: "Do I own everything you build?",
+    a: "Yes. Code, design, copy, all of it. No lock-in, no monthly dependency, no \"you lose the site if you leave.\" It's yours on day one.",
+  },
+  {
+    q: "What happens on the first call?",
+    a: "We ask about your business, your traffic, and what's not working. Then we tell you what we'd do, in plain language, with no jargon. If we're not the right fit, we'll say so. The call is 30 minutes, no pitch deck.",
+  },
+  {
+    q: "I've been burned by an agency before. How is this different?",
+    a: "Most of the 200+ projects behind NeXDev are rebuilds for people in exactly that situation. The difference is the order we build in. We figure out why visitors leave before anyone opens a design tool, so the site sells first and looks good second, not the other way around.",
   },
 ];
 
