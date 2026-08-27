@@ -94,6 +94,7 @@ const cases: CaseStudyCard[] = [
       { value: "70+", label: "Qualified leads", context: "First 2 weeks" },
     ],
     href: "/landing-page/case-studies/case-study-reality-cheque-funnel",
+    image: "/assets/case-studies/RealityChequeDFY-case-study.png",
   },
 ];
 

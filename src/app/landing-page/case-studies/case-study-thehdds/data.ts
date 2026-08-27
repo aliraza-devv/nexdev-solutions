@@ -10,8 +10,8 @@ export const CASE_STUDY: CaseStudyData = {
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: hero-device-mockup, desktop 1600×1000",
-    "PLACEHOLDER: hero-device-mockup, mobile 1600×1000",
+    "/assets/case-studies/TheHDDs-hero-left.png",
+    "/assets/case-studies/TheHDDs-hero-right.png",
   ],
   meta: {
     year: "",
@@ -76,19 +76,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "A Brand-Aligned Store That Looks the Part",
       body: "We designed the whole store around the brand so it felt established from day one, not like a new arrival. Conversion-focused copy, written to rank in search too, carried the message across every page.",
       solves: 0,
-      image: "PLACEHOLDER: brand-aligned-store 1200×900",
+      image: "/assets/case-studies/TheHDDs-approach-1.png",
     },
     {
       title: "A Product Page That Kills the Doubt",
       body: "The product pages were built to answer the reliability question head on, state the real value clearly, and remove the hesitation that comes with buying refurbished. Trust where the buyer needs it, right when they need it.",
       solves: 1,
-      image: "PLACEHOLDER: product-page 1200×900",
+      image: "/assets/case-studies/TheHDDs-approach-2.png",
     },
     {
       title: "Seamless Checkout Plus a Wholesale Path",
       body: "We built a checkout that removes friction and makes buying the obvious choice, and added a clean wholesale purchase form so bulk buyers get their own smooth path without complicating the main store.",
       solves: 2,
-      image: "PLACEHOLDER: checkout-flow 1200×900",
+      image: "/assets/case-studies/TheHDDs-approach-3.png",
     },
   ],
   turningPoint: {
@@ -105,7 +105,7 @@ export const CASE_STUDY: CaseStudyData = {
     photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
   },
   results: {
-    chartImage: "PLACEHOLDER: results-chart, pre-launch testing orders 1400×600",
+    chartImage: "/assets/case-studies/TheHDDs-results-chart.png",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

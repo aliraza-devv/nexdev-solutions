@@ -14,7 +14,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useLenisScrollTo } from "@/hooks/use-lenis-scroll-to";
-import FooterWatermarkFill from "./FooterWatermarkFill";
+import FooterWatermarkReveal from "./FooterWatermarkReveal";
 
 function flattenToText(node: React.ReactNode): string {
   if (node == null || typeof node === "boolean") return "";
@@ -433,9 +433,12 @@ export default function FinalCTA({
             </div>
           </div>
 
-          {/* Huge NEXDEV Watermark, fills purple like water on scroll into view */}
-          <div className="w-full mt-12 mb-0 select-none pointer-events-none overflow-hidden flex justify-center">
-            <FooterWatermarkFill />
+          {/* Huge NEXDEV Watermark, each letter rises into place on scroll into view */}
+          <div
+            className="w-full mt-12 mb-0 select-none pointer-events-none overflow-hidden flex justify-center"
+            style={{ aspectRatio: "1440 / 220" }}
+          >
+            <FooterWatermarkReveal />
           </div>
         </div>
       </div>

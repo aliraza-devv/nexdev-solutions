@@ -60,7 +60,7 @@ const caseStudies: CaseStudy[] = [
       { value: '26×', label: 'ROAS' },
     ],
     href: '/landing-page/case-studies/case-study-reality-cheque-funnel',
-    image: '/assets/case-studies/Reality-cheque-case-study.png',
+    image: '/assets/case-studies/RealityChequeDFY-case-study.png',
   },
   {
     client: 'Smarterform',
@@ -84,6 +84,7 @@ const caseStudies: CaseStudy[] = [
       { value: '5 Weeks', label: 'Store Built' },
     ],
     href: '/landing-page/case-studies/case-study-thehdds',
+    image: '/assets/case-studies/TheHDDs-case-study.png',
   },
   {
     client: 'Vantage Metrics',

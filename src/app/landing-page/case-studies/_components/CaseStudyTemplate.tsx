@@ -38,6 +38,9 @@ import {
   TrendingUp,
   MousePointerClick,
   BarChart3,
+  AlertTriangle,
+  Sparkles,
+  Plus,
 } from "lucide-react";
 import type {
   CaseStudyData,
@@ -376,20 +379,44 @@ function Hero({ data }: { data: CaseStudyData }) {
   );
 }
 
+// Splits "First sentence. Rest of it." into its lead fact and the
+// supporting detail behind it, so the paragraph can carry two weights of
+// type instead of reading as one flat block.
+function splitLeadSentence(text: string): [string, string] {
+  const match = text.match(/^(.+?[.!?])\s*([\s\S]*)$/);
+  if (!match) return [text, ""];
+  return [match[1], match[2]];
+}
+
+// The client's opening fact, not a footnote - a decorative quote mark and a
+// bold lead sentence give it a visual anchor and instant hierarchy (the one
+// fact that matters, then the supporting detail), left-aligned like the
+// rest of the page instead of floating centered with nothing to hold it.
 function Context({ data }: { data: CaseStudyData }) {
   return (
-    <section className="bg-white px-6 pb-16 md:px-10 md:pb-20">
-      <div className="mx-auto flex max-w-[760px] flex-col gap-5 text-center">
-        {data.context.map((paragraph, i) => (
-          <Reveal key={i} delay={i * 0.12}>
-            <p
-              className="text-xl leading-snug text-[#0A0A0E] md:text-2xl"
-              style={{ fontFamily: "Arial, sans-serif", fontWeight: 500 }}
-            >
-              {paragraph}
-            </p>
-          </Reveal>
-        ))}
+    <section className="bg-white px-6 pb-12 md:px-10 md:pb-16">
+      <div className="mx-auto flex max-w-[820px] flex-col gap-6">
+        {data.context.map((paragraph, i) => {
+          const [lead, rest] = splitLeadSentence(paragraph);
+          return (
+            <Reveal key={i} delay={i * 0.12} className="flex items-start gap-4 md:gap-7">
+              <span
+                aria-hidden="true"
+                className="-mt-1 flex-shrink-0 select-none leading-none text-[#5C45FD]/15"
+                style={{ fontFamily: "Arial, sans-serif", fontWeight: 700, fontSize: "clamp(56px, 9vw, 96px)" }}
+              >
+                “
+              </span>
+              <p
+                className="text-balance pt-2 text-xl leading-[1.35] md:pt-3 md:text-[28px]"
+                style={{ fontFamily: "Arial, sans-serif" }}
+              >
+                <span className="font-semibold text-[#0A0A0E]">{lead}</span>
+                {rest && <span className="text-zinc-500"> {rest}</span>}
+              </p>
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );
@@ -485,20 +512,44 @@ function Approach({ data }: { data: CaseStudyData }) {
   return (
     <section id="approach" className="bg-white px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1400px]">
-        <Reveal className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
-          <Eyebrow>The Approach</Eyebrow>
-          <p
-            className="text-2xl text-[#0A0A0E] md:text-3xl"
-            style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
-          >
-            {data.approachHeader}
-          </p>
-          {data.approachIntro && (
-            <p className="mt-4 text-[15px] leading-relaxed text-zinc-500">
-              {data.approachIntro}
+        {/* Left-aligned, not centered: the heading carries the section's
+            weight on its own, and the right column previews the actual
+            process below instead of leaving the header as plain text with
+            nothing to show for the section it's introducing. */}
+        <div className="mb-16 grid grid-cols-1 gap-10 md:mb-20 lg:grid-cols-12 lg:items-start">
+          <Reveal className="lg:col-span-7">
+            <p
+              className="text-3xl leading-[1.15] text-[#0A0A0E] md:text-[40px]"
+              style={{ fontFamily: "Arial, sans-serif", fontWeight: 500 }}
+            >
+              {data.approachHeader}
             </p>
-          )}
-        </Reveal>
+            {data.approachIntro && (
+              <p className="mt-4 max-w-md text-[15px] leading-relaxed text-zinc-500">
+                {data.approachIntro}
+              </p>
+            )}
+          </Reveal>
+
+          <Reveal delay={0.12} className="lg:col-span-5">
+            <div className="flex flex-col gap-5 border-l-2 border-black/[0.06] pl-6">
+              {data.approach.map((item, i) => (
+                <div key={item.title} className="relative">
+                  <span className="absolute -left-[27px] top-1.5 h-2 w-2 rounded-full bg-[#5C45FD]" />
+                  <span
+                    className="text-xs font-bold text-zinc-300"
+                    style={{ fontFamily: "Arial, sans-serif" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-sm font-semibold leading-snug text-[#0A0A0E]">
+                    {item.title}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
 
         <div className="flex flex-col gap-16 md:gap-24">
           {data.approach.map((item, i) => (
@@ -512,10 +563,14 @@ function Approach({ data }: { data: CaseStudyData }) {
         </div>
 
         {data.approachPlusLine && (
-          <Reveal delay={0.1} className="mx-auto mt-16 max-w-2xl text-center md:mt-24">
-            <p className="text-[15px] leading-relaxed text-zinc-500">
-              {data.approachPlusLine}
-            </p>
+          // A bonus fix worth calling out, not a stray closing sentence -
+          // a tinted callout card gives it real visual weight instead of
+          // leaving one muted line adrift in the section's own padding.
+          <Reveal delay={0.1} className="mt-10 md:mt-14">
+            <div className="inline-flex max-w-xl items-start gap-2.5 rounded-2xl border border-[#5C45FD]/15 bg-[#5C45FD]/[0.04] px-4 py-3.5">
+              <Plus className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[#5C45FD]" strokeWidth={2.5} />
+              <p className="text-[14px] leading-relaxed text-zinc-600">{data.approachPlusLine}</p>
+            </div>
           </Reveal>
         )}
       </div>
@@ -568,7 +623,7 @@ function MetricProof({ metrics }: { metrics: MetricItem[] }) {
     return (
       <div ref={ref} className="text-center">
         <p
-          className="mx-auto max-w-2xl text-2xl font-extrabold leading-snug text-[#F5F5F5] md:text-3xl"
+          className="mx-auto max-w-2xl text-2xl font-extrabold leading-snug text-[#161616] md:text-3xl"
           style={{ fontFamily: "Arial, sans-serif" }}
         >
           {metrics[0]?.label}
@@ -581,12 +636,12 @@ function MetricProof({ metrics }: { metrics: MetricItem[] }) {
     <div ref={ref} className="text-center">
       <div
         className="font-extrabold text-[#5C45FD]"
-        style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
+        style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(32px, 4vw, 48px)" }}
       >
         {display}
       </div>
       <div
-        className="mt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgba(245,245,245,0.5)]"
+        className="mt-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#9090A0]"
         style={{ fontFamily: TURNING_POINT_MONO }}
       >
         {keyMetric.label}
@@ -596,70 +651,80 @@ function MetricProof({ metrics }: { metrics: MetricItem[] }) {
 }
 
 // Optional narrative beat between Approach and Results - only renders when a
-// case study's data sets `turningPoint`. Before/after split: the problem
-// (muted, left) against the turning point and result (bright, purple-edged,
-// right), then the case study's real key number full width below - three
-// layers of hierarchy (muted problem, bright insight, proof number) instead
-// of a wall of paragraphs on a light card that didn't match the rest of the
-// (dark) site.
+// case study's data sets `turningPoint`. Before/after split on the page's own
+// white background: the problem (muted, left) against the turning point and
+// result (purple top-edge, right), then the case study's real key number
+// full width below - three layers of hierarchy (muted problem, purple-edged
+// insight, proof number), all on the same light surface as the rest of the
+// page instead of a dark island in the middle of a white site.
 function TurningPoint({ data }: { data: CaseStudyData }) {
   if (!data.turningPoint) return null;
   const [problem, ...rest] = data.turningPoint.body;
   const insight = rest.join(" ");
 
+  const cardBase: React.CSSProperties = {
+    background: "#ffffff",
+    border: "1px solid rgba(0,0,0,0.08)",
+    borderRadius: "18px",
+    padding: "28px 30px",
+    boxShadow: "0 8px 24px -12px rgba(0,0,0,0.06)",
+  };
+
   return (
-    <section className="bg-[#0A0A0E] px-6 py-20 md:px-10 md:py-28">
+    <section className="bg-white px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1040px]">
-        <div className="relative grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-0">
-          {/* Divider between the two halves, gone once they stack on mobile */}
-          <div className="pointer-events-none absolute inset-y-6 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#A89BFF66] to-transparent md:block" />
+        {/* items-start: the two cards size to their own copy instead of
+            CSS Grid's default stretch, which was forcing the shorter
+            "Problem" card to match the taller card's height and leaving a
+            dead gap of empty padding at its bottom. The icon on each label
+            and the connecting arrow between them read as a before/after
+            diagram at a glance, before anyone reads a word of the copy. */}
+        <div className="relative">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-start">
+            <Reveal duration={0.3} y={12}>
+              <div style={cardBase}>
+                <span
+                  className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#9090A0]"
+                  style={{ fontFamily: TURNING_POINT_MONO }}
+                >
+                  <AlertTriangle className="h-3 w-3" strokeWidth={2.5} />
+                  The Problem
+                </span>
+                <p className="mt-4 text-[15px] leading-[1.6] text-[#5A5A6E]">{problem}</p>
+              </div>
+            </Reveal>
 
-          <Reveal duration={0.3} className="md:pr-8">
-            <div
-              className="h-full rounded-[20px] p-8 md:p-10"
-              style={{ background: "#1F1F26", border: "1px solid rgba(245,245,245,0.09)" }}
-            >
-              <span
-                className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[rgba(245,245,245,0.4)]"
-                style={{ fontFamily: TURNING_POINT_MONO }}
-              >
-                The Problem
-              </span>
-              <p className="mt-4 text-[15px] leading-[1.6] text-[rgba(245,245,245,0.66)] md:text-base">
-                {problem}
-              </p>
-            </div>
-          </Reveal>
+            <Reveal duration={0.3} delay={0.12} y={12}>
+              <div style={{ ...cardBase, borderTop: "3px solid #5C45FD" }}>
+                <span
+                  className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#5C45FD]"
+                  style={{ fontFamily: TURNING_POINT_MONO }}
+                >
+                  <Sparkles className="h-3 w-3" strokeWidth={2.5} />
+                  The Turning Point
+                </span>
+                <p
+                  className="mt-4 font-bold leading-snug text-[#161616]"
+                  style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(20px, 2.2vw, 28px)" }}
+                >
+                  {data.turningPoint.header}
+                </p>
+                <p className="mt-4 text-[15px] leading-[1.6] text-[#5A5A6E]">{insight}</p>
+              </div>
+            </Reveal>
+          </div>
 
-          <Reveal duration={0.3} delay={0.12} className="md:pl-8">
-            <div
-              className="h-full rounded-[20px] p-8 md:p-10"
-              style={{
-                background: "#1F1F26",
-                border: "1px solid rgba(245,245,245,0.09)",
-                borderTopColor: "rgba(168,155,255,0.4)",
-              }}
+          <div className="pointer-events-none absolute left-1/2 top-6 hidden -translate-x-1/2 md:flex">
+            <span
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white"
+              style={{ border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 8px 20px -10px rgba(0,0,0,0.15)" }}
             >
-              <span
-                className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#A89BFF]"
-                style={{ fontFamily: TURNING_POINT_MONO }}
-              >
-                The Turning Point
-              </span>
-              <p
-                className="mt-4 text-xl font-extrabold leading-snug text-[#F5F5F5] md:text-2xl"
-                style={{ fontFamily: "Arial, sans-serif" }}
-              >
-                {data.turningPoint.header}
-              </p>
-              <p className="mt-4 text-[15px] leading-[1.6] text-[rgba(245,245,245,0.72)] md:text-base">
-                {insight}
-              </p>
-            </div>
-          </Reveal>
+              <ArrowRight className="h-4 w-4 text-[#5C45FD]" strokeWidth={2.5} />
+            </span>
+          </div>
         </div>
 
-        <div className="mt-14 md:mt-16">
+        <div className="mt-10 md:mt-12">
           <MetricProof metrics={data.metrics} />
         </div>
       </div>
