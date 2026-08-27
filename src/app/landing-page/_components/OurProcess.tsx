@@ -407,7 +407,7 @@ function LaunchSupportGraphics() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </div>
           </div>
-          <div className="text-[8px] font-bold text-[#5C45FD] uppercase">60 Days Monitoring</div>
+          <div className="text-[8px] font-bold text-[#5C45FD] uppercase">Post-Launch Monitoring</div>
         </div>
 
         {/* 2. Page Speed Chart (Top Right) */}
@@ -648,12 +648,28 @@ function DiscoveryGraphics() {
                 {card.id === 0 && (
                   <div className="space-y-2">
                     {[
-                      { percent: '90%', delay: 0.2 },
-                      { percent: '65%', delay: 0.4 },
-                      { percent: '45%', delay: 0.6 }
+                      {
+                        percent: '90%',
+                        delay: 0.2,
+                        photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop&crop=faces&q=80',
+                      },
+                      {
+                        percent: '65%',
+                        delay: 0.4,
+                        photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop&crop=faces&q=80',
+                      },
+                      {
+                        percent: '45%',
+                        delay: 0.6,
+                        photo: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=64&h=64&fit=crop&crop=faces&q=80',
+                      },
                     ].map((profile, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-full bg-zinc-100 border border-black/5 flex-shrink-0" />
+                        <img
+                          src={profile.photo}
+                          alt=""
+                          className="h-6 w-6 flex-shrink-0 rounded-full border border-black/5 object-cover"
+                        />
                         <div className="h-1 flex-1 bg-zinc-100 rounded-full overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import styles from "./SolutionFlowMap.module.css";
 
 // Ported from reference/nexdev-solution-flowmap-v2.html. Node ids, stage
@@ -235,7 +236,10 @@ export default function SolutionFlowMap() {
         branch: Math.random() < 0.5 ? "a" : "b",
         stage: 0,
         t: -((i / PARTICLE_COUNT) * STAGE_COUNT) - Math.random() * 0.3,
-        speed: 0.006 + Math.random() * 0.003,
+        // Slowed from the reference's 0.006-0.009 - at that pace the
+        // audience stream read as a rushed blur instead of a readable,
+        // one-at-a-time flow through the steps.
+        speed: 0.0026 + Math.random() * 0.0013,
       }));
     }
 
@@ -382,33 +386,57 @@ export default function SolutionFlowMap() {
       <div className={styles.hold}>
         <div className={styles.head}>
           <span className={styles.eyebrow}>The Solution</span>
-          <h2>
+          {/* Same per-line slide-up reveal as OurProcess's heading:
+              overflow-hidden wrapper + a motion.span sliding from
+              y:100%, staggered so the second line follows the first. */}
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.08 } },
+            }}
+          >
             <span
-              style={{ display: "inline-block" }}
+              // pb-2, not the usual pb-1: "redesign" is italic and has a
+              // descender (the g), which the reveal mask's overflow-hidden
+              // box would otherwise clip at the tighter padding.
+              className="block overflow-hidden pb-2"
               data-cursor="text"
               data-cursor-on-dark=""
-              data-text="The fix isn't a"
+              data-text="The fix isn't a redesign."
             >
-              The fix isn&apos;t a
-            </span>{" "}
-            <em
-              style={{ display: "inline-block" }}
-              data-cursor="text"
-              data-cursor-on-dark=""
-              data-text="redesign"
-            >
-              redesign
-            </em>
-            <span
-              style={{ display: "inline-block" }}
-              data-cursor="text"
-              data-cursor-on-dark=""
-              data-text=". It's a system."
-            >
-              . It&apos;s a system.
+              <motion.span
+                className="block"
+                variants={{
+                  hidden: { y: "100%" },
+                  visible: { y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+                }}
+              >
+                {/* The period lives right after "redesign" (not on the
+                    next line) - it's the sentence's closing punctuation,
+                    not the next sentence's opening one. */}
+                The fix isn&apos;t a <em>redesign</em>.
+              </motion.span>
             </span>
-          </h2>
-          <p>The same audience you already have, routed through four steps until it turns into customers.</p>
+            <span
+              className="block overflow-hidden pb-1"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="It's a system."
+            >
+              <motion.span
+                className="block"
+                variants={{
+                  hidden: { y: "100%" },
+                  visible: { y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+                }}
+              >
+                It&apos;s a system.
+              </motion.span>
+            </span>
+          </motion.h2>
         </div>
 
         <div className={styles.map} ref={mapRef}>

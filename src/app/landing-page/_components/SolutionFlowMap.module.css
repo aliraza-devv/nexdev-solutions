@@ -1,9 +1,12 @@
 /* Ported from reference/nexdev-solution-flowmap-v2.html. Computed
    values are unchanged, class names are camelCased for CSS Modules,
    and the two Google Fonts the reference loads (Plus Jakarta Sans,
-   JetBrains Mono) are not brought in, the site's own Inter/Arial and a
-   generic monospace stack are used instead, matching how the other
-   reference ports this session (calculator, WhyUs) were handled. */
+   JetBrains Mono) are not brought in - the site's own Inter/Arial are
+   used instead, matching how the other reference ports this session
+   (calculator, WhyUs) were handled. The step badges, sub-labels, and
+   fork label all read in Inter now too, not a monospace stack, so
+   the section reads as one typographic voice with the rest of the
+   page instead of switching to a "technical" font mid-section. */
 
 .section {
   /* Matches the site's own dark sections (Problem, Results, FAQ,
@@ -23,7 +26,6 @@
   --hair: rgba(245, 245, 245, 0.09);
   --line: #3a3a46;
   --out: cubic-bezier(0.23, 1, 0.32, 1);
-  --mono: ui-monospace, monospace;
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
   --heading: Arial, Helvetica, sans-serif;
 
@@ -84,14 +86,8 @@
   font-weight: 400;
 }
 .head h2 em {
-  font-style: normal;
+  font-style: italic;
   color: var(--purple);
-}
-.head p {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.6;
-  color: rgba(245, 245, 245, 0.6);
 }
 
 .map {
@@ -111,8 +107,11 @@
 }
 .links :global(path) {
   fill: none;
-  stroke: rgba(160, 160, 182, 0.35);
-  stroke-width: 2;
+  /* Brighter and thicker than the reference's faint 0.35 alpha, which
+     read as a broken/dashed thread rather than a continuous line
+     next to the moving particle trail. */
+  stroke: rgba(180, 180, 200, 0.55);
+  stroke-width: 2.25;
   stroke-linecap: round;
   transition:
     stroke 0.45s var(--out),
@@ -193,9 +192,10 @@
   height: 32px;
   border-radius: 10px;
   background: rgba(245, 245, 245, 0.06);
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   color: var(--faint);
   transition:
     color 300ms var(--out),
@@ -211,9 +211,10 @@
 }
 .sub {
   margin: 3px 0 0;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--faint);
   transition: color 300ms var(--out);
@@ -273,9 +274,10 @@
   justify-self: center;
   position: relative;
   z-index: 2;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--faint);
   margin: 2px 0;
@@ -308,9 +310,10 @@
   color: #fff;
 }
 .pipeSub {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 9px;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.85);
   margin-top: 3px;
