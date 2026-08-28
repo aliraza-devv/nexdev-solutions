@@ -841,6 +841,7 @@ function ResultsSustained({ data }: { data: CaseStudyData }) {
 }
 
 function Testimonial({ data }: { data: CaseStudyData }) {
+  if (!data.quote) return null;
   return (
     <section className="bg-white px-6 py-20 md:px-10 md:py-28">
       <Reveal className="mx-auto max-w-[800px] text-center">

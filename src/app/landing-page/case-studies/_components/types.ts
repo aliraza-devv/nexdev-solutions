@@ -89,7 +89,10 @@ export interface CaseStudyData {
     header: string;
     body: string[];
   };
-  quote: {
+  // Optional - omit entirely for a case study with no real testimonial to
+  // show yet. The Testimonial section just doesn't render rather than
+  // shipping an empty or fabricated quote.
+  quote?: {
     text: string;
     name: string;
     role: string;

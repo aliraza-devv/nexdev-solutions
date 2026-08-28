@@ -89,24 +89,42 @@ export default function FinalCTA({
           </div>
         </motion.div>
 
-        {/* Main Headline */}
+        {/* Main Headline - same block-overflow-hidden slide-up reveal as the
+            default heading below, just as one unit instead of hard-coded
+            per-line splits, since a case study's custom headline is a
+            dynamic string rather than fixed copy. */}
         {headline ? (
           <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.08 } },
+            }}
             className="tracking-tighter text-white max-w-5xl font-medium text-center"
             style={{
               fontFamily: primaryFont,
               fontSize: "clamp(36px, 6.2vw, 64px)",
               lineHeight: "1.1",
             }}
-            data-cursor="text"
-            data-cursor-on-dark=""
-            data-text={flattenToText(headline)}
           >
-            {headline}
+            <span
+              className="block overflow-hidden pb-1"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text={flattenToText(headline)}
+            >
+              <motion.span
+                className="block"
+                variants={{
+                  hidden: { y: "100%" },
+                  visible: { y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+                }}
+              >
+                {headline}
+              </motion.span>
+            </span>
           </motion.h2>
         ) : (
           <>
