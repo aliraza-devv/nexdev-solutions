@@ -48,7 +48,7 @@ const cases: CaseStudyCard[] = [
       { value: "407", label: "New signups", context: "First 24 hours" },
     ],
     href: "/landing-page/case-studies/case-study-reality-cheque",
-    image: "/assets/case-studies/Reality-cheque-case-study.png",
+    image: "/assets/case-studies/Reality-cheque-case-study.webp",
   },
   {
     brand: "Bamper",
@@ -63,7 +63,7 @@ const cases: CaseStudyCard[] = [
       { value: "60 Days", label: "To sell out", context: "From launch" },
     ],
     href: "/landing-page/case-studies/case-study-bamper",
-    image: "/assets/case-studies/Bamper-case-study.png",
+    image: "/assets/case-studies/Bamper-case-study.webp",
   },
   {
     brand: "Smarterform",
@@ -78,7 +78,7 @@ const cases: CaseStudyCard[] = [
       { value: "30 Days", label: "To MVP", context: "From kickoff" },
     ],
     href: "/landing-page/case-studies/case-study-smarterform",
-    image: "/assets/case-studies/Smarterform-case-study.png",
+    image: "/assets/case-studies/Smarterform-case-study.webp",
   },
   {
     brand: "Reality Cheque",
@@ -94,7 +94,7 @@ const cases: CaseStudyCard[] = [
       { value: "70+", label: "Qualified leads", context: "First 2 weeks" },
     ],
     href: "/landing-page/case-studies/case-study-reality-cheque-funnel",
-    image: "/assets/case-studies/RealityChequeDFY-case-study.png",
+    image: "/assets/case-studies/RealityChequeDFY-case-study.webp",
   },
 ];
 
@@ -139,7 +139,7 @@ function MetricValue({ value }: { value: string }) {
   return (
     <div
       ref={ref}
-      className="text-2xl font-bold text-[#A89BFF] lg:text-3xl"
+      className="text-xl font-bold text-[#A89BFF] md:text-2xl lg:text-3xl"
       style={{ fontFamily: "Arial, sans-serif" }}
     >
       {display}
@@ -147,18 +147,16 @@ function MetricValue({ value }: { value: string }) {
   );
 }
 
+// Side by side at every width, not just md+ - stacking the two metrics
+// on mobile (the original flex-col) was the actual cause of the card
+// reading as too long: two full-width blocks each with their own
+// divider ate a lot of vertical space for content that's short enough
+// to sit in two columns even on a phone.
 function CaseMetrics({ results }: { results: [CaseMetric, CaseMetric] }) {
   return (
-    <div className="mb-10 flex max-w-md flex-col items-start gap-5 border-t border-white/10 pt-6 md:flex-row md:gap-8">
+    <div className="mb-8 flex max-w-md flex-row items-start gap-6 border-t border-white/10 pt-6 md:mb-10 md:gap-8">
       {results.map((r, ri) => (
-        <div
-          key={ri}
-          className={
-            ri > 0
-              ? "border-t border-white/10 pt-5 md:border-l md:border-t-0 md:pl-8 md:pt-0"
-              : ""
-          }
-        >
+        <div key={ri} className={ri > 0 ? "border-l border-white/10 pl-6 md:pl-8" : ""}>
           <MetricValue value={r.value} />
           <div
             className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-white/40"
@@ -180,7 +178,13 @@ function CaseMockup({ image, brand }: { image?: string; brand: string }) {
   return (
     <div className="h-full w-full min-h-[300px] flex items-center justify-center relative overflow-hidden bg-white/[0.02]">
       {image ? (
-        <Image src={image} alt={brand} fill className="object-cover" />
+        <Image
+          src={image}
+          alt={brand}
+          fill
+          sizes="(min-width: 1024px) 800px, 100vw"
+          className="object-cover"
+        />
       ) : (
         <>
           <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/5 to-transparent" />
@@ -401,22 +405,27 @@ export default function Results() {
           ))}
         </div>
 
-        {/* Footer CTA */}
+        {/* Footer CTA - a real button now, not an underlined inline link,
+            so it actually reads as the section's closing action instead
+            of getting lost against the dark background. Margin cut way
+            down from mt-64 - that was the whole empty gap, not missing
+            content. */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24 lg:mt-64 text-center"
+          className="mt-16 lg:mt-20 flex flex-col items-center gap-5 text-center"
         >
           <p className="text-xl md:text-2xl text-white font-medium leading-relaxed md:leading-normal">
-            Want results like these? <br className="md:hidden" />
-            <Link
-              href="/landing-page/qualify"
-              className="text-[#5C45FD] underline underline-offset-8 decoration-white/20 hover:decoration-[#5C45FD] transition-all mt-2 md:mt-0 inline-block md:inline"
-            >
-              Let&apos;s build yours.
-            </Link>
+            Want results like these?
           </p>
+          <Link
+            href="/landing-page/qualify"
+            data-cursor="cta"
+            className="inline-flex items-center gap-2 rounded-full bg-[#5C45FD] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0] hover:scale-[1.02]"
+          >
+            Let&apos;s build yours <ArrowRight className="h-4 w-4" />
+          </Link>
         </motion.div>
       </div>
     </section>

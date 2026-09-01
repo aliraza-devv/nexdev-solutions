@@ -236,9 +236,9 @@ export default function Hero() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25"
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0]"
                   >
-                    Book Your Free Strategy Call
+                    See If We&apos;re a Fit
                     <ArrowRight className="h-4 w-4" />
                   </motion.button>
                 </Link>
@@ -248,10 +248,14 @@ export default function Hero() {
                 </p>
               </div>
 
-              <div className="relative w-full sm:w-auto">
-                {/* Clipping Container for Peeking Card (Desktop Only) */}
+              {/* "See How It Works" VSL trigger - commented out for now
+                  per request. The peeking video-thumbnail decoration lived
+                  entirely inside this block since it's positioned relative
+                  to this button. isVslOpen/the VSL modal below are left
+                  in place, just unreachable from here until this comes
+                  back. */}
+              {/* <div className="relative w-full sm:w-auto">
                 <div className="hidden md:block absolute bottom-[80%] right-0 -z-10 w-48 h-32 overflow-hidden pointer-events-none">
-                  {/* Peeking Video Thumbnail Preview */}
                   <motion.div
                     animate={{
                       rotate: [0, 15, 15, 0],
@@ -267,7 +271,6 @@ export default function Hero() {
                     className="absolute right-[20px] top-[116px] w-28 aspect-[4/3] rounded-xl bg-[#F5F3FF] border border-[#5C45FD]/20 shadow-[0_8px_24px_rgba(92,69,253,0.15)] overflow-hidden select-none"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/20 via-transparent to-white/80 flex items-center justify-center">
-                      {/* Play Button Icon */}
                       <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center border border-[#5C45FD]/10 shadow-[0_4px_12px_rgba(92,69,253,0.15)]">
                         <Play className="text-[#5C45FD] fill-[#5C45FD] w-3 h-3 ml-0.5" />
                       </div>
@@ -286,7 +289,7 @@ export default function Hero() {
                   </div>
                   See How It Works
                 </motion.button>
-              </div>
+              </div> */}
             </motion.div>
 
             {/* Mobile Visuals - 2 horizontal scrolling rows */}

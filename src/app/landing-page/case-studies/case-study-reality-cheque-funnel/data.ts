@@ -3,7 +3,6 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Reality Cheque DFY",
-  liveUrl: "https://example.com",
   heroEyebrow:
     "Case Study · Reality Cheque DFY · Done-For-You Systems for Agency Owners",
   headline:
@@ -12,8 +11,8 @@ export const CASE_STUDY: CaseStudyData = {
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "/assets/case-studies/RealityChequeDFY-hero-left.png",
-    "/assets/case-studies/RealityChequeDFY-hero-right.png",
+    "/assets/case-studies/RealityChequeDFY-hero-left.webp",
+    "/assets/case-studies/RealityChequeDFY-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -74,19 +73,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "SYNC Landing Page with a High-Converting VSL",
       body: "The landing page was built on the SYNC Method. A VSL does the heavy selling, the copy makes the service clear, and real case studies and testimonials carry the trust. CTAs were placed around how people actually read the page.",
       solves: 1,
-      image: "/assets/case-studies/RealityChequeDFY-approach-1.png",
+      image: "/assets/case-studies/RealityChequeDFY-approach-1.webp",
     },
     {
       title: "A Distraction-Free Qualifying Funnel",
       body: "After the landing page, the flow does the filtering. A stripped-back form page qualifies each lead, then sends them to book a call. A confirmation page follows, stacked with more proof to protect the show-up rate.",
       solves: 2,
-      image: "/assets/case-studies/RealityChequeDFY-approach-2.png",
+      image: "/assets/case-studies/RealityChequeDFY-approach-2.webp",
     },
     {
       title: "Tracking Wired In From Day One",
       body: "We set up Microsoft Clarity and the Meta pixel across the site and connected every page to GoHighLevel. No guessing. They could see where leads came from and where to tighten the funnel.",
       solves: 0,
-      image: "/assets/case-studies/RealityChequeDFY-approach-3.png",
+      image: "/assets/case-studies/RealityChequeDFY-approach-3.webp",
     },
   ],
   turningPoint: {
@@ -96,14 +95,8 @@ export const CASE_STUDY: CaseStudyData = {
       "Tracking was built in from day one, so the funnel never went quiet after launch, they could watch it and keep sharpening it. That's the difference between a website that exists and a funnel that pays for itself.",
     ],
   },
-  quote: {
-    text: "We started using Ali and NeXDev Solutions for our website, and the results were good enough that we now use them as a white-label partner for our own clients. We got 26X ROAS from $1,000 in ad spend. I had never seen results like that before.",
-    name: "Saddam Hasan",
-    role: "Founder, Reality Cheque",
-    photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
-  },
   results: {
-    chartImage: "/assets/case-studies/RealityChequeDFY-results-chart.png",
+    chartImage: "/assets/case-studies/RealityChequeDFY-results-chart.webp",
     stats: [
       {
         label: "Scaled to $1M in revenue",

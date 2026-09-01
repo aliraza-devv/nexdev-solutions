@@ -3,15 +3,14 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Bamper",
-  liveUrl: "https://example.com",
   heroEyebrow: "Case Study · Bamper · Bamboo Toilet Paper, Built From Zero",
   headline: "How a brand-new bamboo brand sold out its inventory in 60 days.",
   heroStat: "Sold out in 60 days at a 4.2% conversion rate",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "/assets/case-studies/Bamper-hero-left.png",
-    "/assets/case-studies/Bamper-hero-right.png",
+    "/assets/case-studies/Bamper-hero-left.webp",
+    "/assets/case-studies/Bamper-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -76,19 +75,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "An About Page That Earns Belief",
       body: 'We gave Bamper a real story, not a generic "who we are" block. It\'s the page a skeptical first-time visitor reads before they trust anything else on the site.',
       solves: 0,
-      image: "/assets/case-studies/Bamper-approach-1.png",
+      image: "/assets/case-studies/Bamper-approach-1.webp",
     },
     {
       title: "A High-Converting, Objection-Killing Product Page",
       body: "Every likely doubt got answered before the visitor could ask it. Real video reviews from actual customers sat right where the hesitation would happen, so trust showed up exactly when it was needed.",
       solves: 1,
-      image: "/assets/case-studies/Bamper-approach-2.png",
+      image: "/assets/case-studies/Bamper-approach-2.webp",
     },
     {
       title: "A Seamless, Branded Checkout",
       body: "We built checkout to remove friction and reinforce trust at the exact moment people talk themselves out of buying. Every screen matched the brand, so nothing felt like a generic Shopify template bolted on at the end.",
       solves: 2,
-      image: "/assets/case-studies/Bamper-approach-3.png",
+      image: "/assets/case-studies/Bamper-approach-3.webp",
     },
   ],
   turningPoint: {
@@ -98,14 +97,8 @@ export const CASE_STUDY: CaseStudyData = {
       "So we stopped building a store and started building trust: the about page, product page, reviews, and checkout each existed to answer doubt the moment it appeared. That's what let an unknown brand quickly sell out in 60 days.",
     ],
   },
-  quote: {
-    text: "Working with Ali on Bamper felt different from the start. He didn't just design a website, he understood we needed sales, not just a nice-looking store. He got our brand fast and built a site that made total strangers trust a company they had never heard of. Selling out in two months on a brand-new launch still doesn't feel real.",
-    name: "",
-    role: "Founder, Bamper",
-    photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
-  },
   results: {
-    chartImage: "/assets/case-studies/Bamper-results-chart.png",
+    chartImage: "/assets/case-studies/Bamper-results-chart.webp",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

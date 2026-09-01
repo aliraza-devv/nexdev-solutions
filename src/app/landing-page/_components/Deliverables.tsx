@@ -173,17 +173,20 @@ export default function Deliverables() {
               </div>
 
               {/* CTA Button */}
-              <div className="mt-2">
-                <Link href="/landing-page/qualify" data-cursor="cta">
+              <div className="mt-2 flex flex-col items-center gap-2">
+                <Link href="/landing-page/qualify" data-cursor="cta" className="w-full">
                   <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full flex items-center justify-center gap-3 bg-[#5C45FD] text-white py-3.5 px-8 rounded-full font-bold text-[13px] hover:bg-[#4a36e0] transition-colors shadow-lg shadow-[#5C45FD]/25"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0]"
                   >
-                    Book Your Free Strategy Call
+                    Start with a free audit call
                     <ArrowRight className="w-4 h-4" />
                   </motion.button>
                 </Link>
+                <p className="text-[13px] text-[#6b7280] text-center">
+                  No commitment. Just a clear plan.
+                </p>
               </div>
             </div>
           </motion.div>

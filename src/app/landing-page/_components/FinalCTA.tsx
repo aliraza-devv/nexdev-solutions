@@ -4,17 +4,26 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Twitter,
   Linkedin,
   Instagram,
   Mail,
-  Phone,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useLenisScrollTo } from "@/hooks/use-lenis-scroll-to";
 import FooterWatermarkReveal from "./FooterWatermarkReveal";
+
+// lucide-react has no WhatsApp glyph, so this is a plain inline SVG of the
+// standard logo. currentColor keeps it in sync with the other social icons'
+// text-zinc-400 / hover:text-white treatment without a separate fill prop.
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm5.8 14.13c-.24.68-1.4 1.3-1.93 1.36-.5.06-1.05.31-3.5-.73-2.96-1.25-4.83-4.25-4.97-4.45-.15-.2-1.19-1.58-1.19-3.01 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.29.15.47.13.64-.08.17-.2.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.22.55.34.07.13.07.72-.17 1.4Z" />
+    </svg>
+  );
+}
 
 function flattenToText(node: React.ReactNode): string {
   if (node == null || typeof node === "boolean") return "";
@@ -71,9 +80,15 @@ export default function FinalCTA({
                 key={i}
                 className="w-10 h-10 rounded-full border-2 border-[#0A0A0E] overflow-hidden bg-gray-800"
               >
-                <img
+                {/* Generic stock avatars, not real client photos - decorative
+                    filler for the "200+ Satisfied clients" stat next to them,
+                    which already carries the actual information. alt="" so
+                    a screen reader doesn't announce "client" five times. */}
+                <Image
                   src={`https://i.pravatar.cc/100?img=${i + 10}`}
-                  alt="client"
+                  alt=""
+                  width={40}
+                  height={40}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -282,18 +297,26 @@ export default function FinalCTA({
           transition={{ delay: 0.4 }}
           className="mt-8 flex flex-col items-center gap-8 w-full max-w-md sm:max-w-none"
         >
-          <Link
-            href="/landing-page/qualify"
-            data-cursor="cta"
-            className="group relative flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-[#5C45FD] px-7 py-4 text-base font-bold text-white transition-all hover:bg-[#4a36e0] hover:scale-105 shadow-xl shadow-[#5C45FD]/20"
-            style={{ fontFamily: primaryFont }}
-          >
-            Book Your Free Strategy Call
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+          <Link href="/landing-page/qualify" data-cursor="cta" className="w-full sm:w-auto">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0]"
+              style={{ fontFamily: primaryFont }}
+            >
+              Book Your Free Call
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </motion.button>
           </Link>
 
-          <div className="flex items-center justify-center gap-2.5 px-4 text-center max-w-[290px] sm:max-w-none">
-            <div className="h-1.5 w-1.5 rounded-full bg-[#22C55E] shrink-0 shadow-[0_0_8px_#22C55E]" />
+          {/* items-start, not items-center: with items-center the dot
+              vertically centers against the whole wrapped 2-line block
+              on mobile, landing in the gap between the lines instead of
+              next to either one. Top-aligning it against the first line
+              (plus a hair of margin to sit on its cap-height, not its
+              very top edge) is what actually reads as "aligned". */}
+          <div className="flex items-start justify-center gap-2.5 px-4 text-center max-w-[290px] sm:max-w-none">
+            <div className="mt-[3px] h-1.5 w-1.5 rounded-full bg-[#22C55E] shrink-0 shadow-[0_0_8px_#22C55E] sm:mt-[5px]" />
             <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.08em] sm:tracking-[0.1em] text-white/80 uppercase leading-relaxed text-center">
               4 to 6 spots open per month. Currently accepting new clients.
             </span>
@@ -311,6 +334,7 @@ export default function FinalCTA({
                   src="/assets/nexdev-full-logo.png"
                   alt="NeXDev Logo"
                   fill
+                  sizes="176px"
                   className="object-contain object-left"
                   priority
                 />
@@ -344,6 +368,24 @@ export default function FinalCTA({
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="https://wa.me/923081992088"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="button"
+                  className="text-zinc-400 hover:text-white transition-colors p-2.5"
+                  aria-label="WhatsApp"
+                >
+                  <WhatsAppIcon className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="mailto:info@nexdevsolutions.net"
+                  data-cursor="button"
+                  className="text-zinc-400 hover:text-white transition-colors p-2.5"
+                  aria-label="Email"
+                >
+                  <Mail className="w-5 h-5" />
                 </Link>
               </div>
             </div>
@@ -414,9 +456,12 @@ export default function FinalCTA({
                   info@nexdevsolutions.net
                 </Link>
                 <Link
-                  href="tel:+923081992088"
+                  href="https://wa.me/923081992088"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   data-cursor="button"
                   className="hover:text-white transition-colors py-1.5 px-1"
+                  aria-label="Chat on WhatsApp: +92 308 199 2088"
                 >
                   +92 308 199 2088
                 </Link>

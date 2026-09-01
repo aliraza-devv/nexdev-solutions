@@ -164,7 +164,7 @@ export default function SolutionScene({
         container.removeChild(renderer.domElement);
       }
     };
-  }, [buildScene, webglAvailable]);
+  }, [buildScene, webglAvailable, maxParallaxDeg]);
 
   if (!webglAvailable) return null;
 

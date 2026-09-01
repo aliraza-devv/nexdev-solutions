@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const partners = [
-  { logo: "/assets/partner-1.png", metric: "26X", label: "ROAS" },
-  { logo: "/assets/partner-2.png", metric: "3.2%", label: "Conversion" },
-  { logo: "/assets/partner-3.png", metric: "+180%", label: "Growth" },
-  { logo: "/assets/partner-4.png", metric: "60 days", label: "Sold-out" },
-  { logo: "/assets/partner-5.png", metric: "+147%", label: "Leads" },
-  { logo: "/assets/partner-6.png", metric: "+83%", label: "Growth" },
-  { logo: "/assets/partner-7.svg", metric: "+57%", label: "Conversion" },
-  { logo: "/assets/partner-8.png", metric: "+51.3%", label: "Conversion" },
+  { logo: "/assets/partner-1.png", name: "Reality Cheque", metric: "26X", label: "ROAS" },
+  { logo: "/assets/partner-2.png", name: "Partner logo", metric: "3.2%", label: "Conversion" },
+  { logo: "/assets/partner-3.png", name: "OutSouth Tech", metric: "+180%", label: "Growth" },
+  { logo: "/assets/partner-4.png", name: "Bamper", metric: "60 days", label: "Sold-out" },
+  { logo: "/assets/partner-5.png", name: "The Elemental Shop", metric: "+147%", label: "Leads" },
+  { logo: "/assets/partner-6.png", name: "Partner logo", metric: "+83%", label: "Growth" },
+  { logo: "/assets/partner-7.svg", name: "Clenvia", metric: "+57%", label: "Conversion" },
+  { logo: "/assets/partner-8.png", name: "Shevat Vitamins", metric: "+51.3%", label: "Conversion" },
 ];
 
 export default function LogosStrip() {
@@ -38,8 +38,9 @@ export default function LogosStrip() {
               <div className="relative aspect-square h-full bg-black overflow-hidden border-r border-white/[0.08]">
                 <Image
                   src={partner.logo}
-                  alt="Partner Logo"
+                  alt={partner.name}
                   fill
+                  sizes="80px"
                   className="object-cover opacity-60 grayscale transition-all group-hover:opacity-100 group-hover:grayscale-0"
                 />
               </div>

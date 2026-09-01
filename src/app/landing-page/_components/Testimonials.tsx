@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ChevronLeft, ChevronRight, X } from "lucide-react";
+import Image from "next/image";
 
 const videoTestimonials = [
   {
@@ -68,8 +69,22 @@ export default function Testimonials() {
 
   useEffect(() => {
     checkCanScroll();
+    // The immediate call above can run before web fonts/video metadata
+    // finish settling the cards' real layout, undercounting scrollWidth
+    // and leaving canScroll stuck false even though the row genuinely
+    // overflows - a deferred re-check catches that once things settle.
+    const settleTimer = window.setTimeout(checkCanScroll, 150);
     window.addEventListener("resize", checkCanScroll);
-    return () => window.removeEventListener("resize", checkCanScroll);
+    // Catches content-driven width changes a plain resize listener
+    // can't (font swap, video metadata loading) without depending on
+    // a specific timeout being "enough".
+    const observer = new ResizeObserver(checkCanScroll);
+    if (scrollContainerRef.current) observer.observe(scrollContainerRef.current);
+    return () => {
+      window.clearTimeout(settleTimer);
+      window.removeEventListener("resize", checkCanScroll);
+      observer.disconnect();
+    };
   }, [activeId]);
 
   useEffect(() => {
@@ -381,9 +396,11 @@ export default function Testimonials() {
                     <X className="w-6 h-6" />
                   </button>
 
-                  <img
+                  <Image
                     src="/assets/testimonial-icon.png"
                     alt="quote icon"
+                    width={48}
+                    height={48}
                     className="w-12 h-12 mb-8 object-contain"
                   />
 

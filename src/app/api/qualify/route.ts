@@ -40,45 +40,57 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Rejected" }, { status: 400 });
   }
 
-  const name = isNonEmptyString(body.name) ? body.name.trim() : "";
+  const situation = readOption(body.situation);
+  const pain = readOption(body.pain);
+  const desiredOutcome = readOption(body.desired_outcome);
+  const readiness = readOption(body.readiness);
+
+  // The readiness question doubles as the budget signal: "Fix it" and
+  // "see the plan first" are the $500+ leads, serious or evaluating.
+  // "Tight budget" and "just exploring" are the under-$500 segment.
+  const qualified = readiness?.value === "high" || readiness?.value === "mid";
+
+  // Contact info only ever exists here when a disqualified lead submits
+  // the downsell screen's email capture - the main form never asks for
+  // it, so this request has no email attached most of the time.
   const email = isNonEmptyString(body.email) ? body.email.trim() : "";
-  if (name.length < 2 || !EMAIL_RE.test(email)) {
-    return NextResponse.json({ error: "Missing or invalid name or email" }, { status: 400 });
+  const hasEmail = email.length > 0;
+
+  if (hasEmail && !EMAIL_RE.test(email)) {
+    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  const type = readOption(body.type);
-  const problem = readOption(body.problem);
-  const budget = readOption(body.budget);
-  const timeline = readOption(body.timeline);
+  // Qualified leads give their contact info on the booking page - there
+  // is nothing to email here. A disqualified lead's first POST (the
+  // form completion, no email yet) sends nothing either, it just
+  // reports the verdict. Only the second POST, once they've actually
+  // submitted an email on the downsell screen, triggers a notification.
+  if (!qualified && hasEmail) {
+    const summaryLines = [
+      `Email: ${email}`,
+      `Situation: ${situation?.label ?? "-"}`,
+      `Frustration: ${pain?.label ?? "-"}`,
+      `Desired outcome: ${desiredOutcome?.label ?? "-"}`,
+      `Readiness: ${readiness?.label ?? "-"}`,
+      `Status: Disqualified, offered audit`,
+    ];
 
-  // The only disqualifier: budget under $500.
-  const qualified = budget?.value !== "low";
-
-  const summaryLines = [
-    `Name: ${name}`,
-    `Email: ${email}`,
-    `Business type: ${type?.label ?? "-"}`,
-    `Main problem: ${problem?.label ?? "-"}`,
-    `Budget: ${budget?.label ?? "-"}`,
-    `Timeline: ${timeline?.label ?? "-"}`,
-    `Qualified: ${qualified ? "Yes" : "No, nurture (under $500 budget)"}`,
-  ];
-
-  if (RESEND_API_KEY) {
-    try {
-      const resend = new Resend(RESEND_API_KEY);
-      await resend.emails.send({
-        from: FROM_ADDRESS,
-        to: LEAD_INBOX,
-        subject: `New lead: ${name} [${qualified ? "QUALIFIED" : "NURTURE"}]`,
-        text: summaryLines.join("\n"),
-      });
-    } catch (err) {
-      console.error("Failed to send qualification email:", err);
-      return NextResponse.json({ error: "Failed to send email" }, { status: 502 });
+    if (RESEND_API_KEY) {
+      try {
+        const resend = new Resend(RESEND_API_KEY);
+        await resend.emails.send({
+          from: FROM_ADDRESS,
+          to: LEAD_INBOX,
+          subject: "New lead - NURTURE",
+          text: summaryLines.join("\n"),
+        });
+      } catch (err) {
+        console.error("Failed to send nurture email:", err);
+        return NextResponse.json({ error: "Failed to send email" }, { status: 502 });
+      }
+    } else {
+      console.error("RESEND_API_KEY is not set - nurture email was not sent.");
     }
-  } else {
-    console.error("RESEND_API_KEY is not set - qualification email was not sent.");
   }
 
   const response: QualifyResponse = { qualified };

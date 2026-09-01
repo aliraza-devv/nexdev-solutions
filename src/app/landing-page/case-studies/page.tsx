@@ -36,7 +36,7 @@ const caseStudies: CaseStudy[] = [
       { value: '4.2%', label: 'Conversion Rate' },
     ],
     href: '/landing-page/case-studies/case-study-bamper',
-    image: '/assets/case-studies/Bamper-case-study.png',
+    image: '/assets/case-studies/Bamper-case-study.webp',
   },
   {
     client: 'Reality Cheque',
@@ -48,7 +48,7 @@ const caseStudies: CaseStudy[] = [
       { value: '407', label: 'Members in 24 Hrs' },
     ],
     href: '/landing-page/case-studies/case-study-reality-cheque',
-    image: '/assets/case-studies/Reality-cheque-case-study.png',
+    image: '/assets/case-studies/Reality-cheque-case-study.webp',
   },
   {
     client: 'Reality Cheque',
@@ -60,7 +60,7 @@ const caseStudies: CaseStudy[] = [
       { value: '26×', label: 'ROAS' },
     ],
     href: '/landing-page/case-studies/case-study-reality-cheque-funnel',
-    image: '/assets/case-studies/RealityChequeDFY-case-study.png',
+    image: '/assets/case-studies/RealityChequeDFY-case-study.webp',
   },
   {
     client: 'Smarterform',
@@ -72,7 +72,7 @@ const caseStudies: CaseStudy[] = [
       { value: '30 Days', label: 'MVP Shipped' },
     ],
     href: '/landing-page/case-studies/case-study-smarterform',
-    image: '/assets/case-studies/Smarterform-case-study.png',
+    image: '/assets/case-studies/Smarterform-case-study.webp',
   },
   {
     client: 'The HDDs',
@@ -84,7 +84,7 @@ const caseStudies: CaseStudy[] = [
       { value: '5 Weeks', label: 'Store Built' },
     ],
     href: '/landing-page/case-studies/case-study-thehdds',
-    image: '/assets/case-studies/TheHDDs-case-study.png',
+    image: '/assets/case-studies/TheHDDs-case-study.webp',
   },
   {
     client: 'The We One',
@@ -96,6 +96,7 @@ const caseStudies: CaseStudy[] = [
       { value: '74%', label: 'Show Rate' },
     ],
     href: '/landing-page/case-studies/case-study-the-we-one',
+    image: '/assets/case-studies/TheWeOne-approach-1.webp',
   },
   {
     client: 'Innvente',
@@ -107,6 +108,19 @@ const caseStudies: CaseStudy[] = [
       { value: '71%', label: 'Show Rate' },
     ],
     href: '/landing-page/case-studies/case-study-innvente',
+    image: '/assets/case-studies/Innvente-approach-1.webp',
+  },
+  {
+    client: 'The Scaleup Lab',
+    industry: 'Service Business',
+    title: '47% of Meta ad leads qualified as launch-ready product founders',
+    desc: 'A crowdfunding launch agency needed a funnel that separated real product founders from idea-stage browsers. We built a landing page and qualifier that cut their cost per qualified lead by more than half.',
+    results: [
+      { value: '47%', label: 'Qualified Lead Rate' },
+      { value: '$89', label: 'Cost Per Qualified Lead' },
+    ],
+    href: '/landing-page/case-studies/case-study-the-scaleup-lab',
+    image: '/assets/case-studies/TheScaleupLab-approach-1.webp',
   },
 ];
 
@@ -121,7 +135,13 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
           placeholder - never a fabricated photo. */}
       <div className="relative aspect-[4/3] overflow-hidden bg-white/[0.02]">
         {cs.image ? (
-          <Image src={cs.image} alt={cs.client} fill className="object-cover" />
+          <Image
+            src={cs.image}
+            alt={cs.client}
+            fill
+            sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
         ) : (
           <>
             <div className="absolute inset-0 bg-gradient-to-br from-[#5C45FD]/10 to-transparent" />

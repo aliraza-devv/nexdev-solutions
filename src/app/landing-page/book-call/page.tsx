@@ -97,6 +97,7 @@ export default function BookCallPage() {
             src="/assets/nexdev-full-logo-black.png"
             alt="NeXDev Logo"
             fill
+            sizes="(min-width: 768px) 160px, 144px"
             className="object-contain object-left"
             priority
           />

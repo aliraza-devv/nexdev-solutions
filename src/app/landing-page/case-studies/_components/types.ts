@@ -39,7 +39,6 @@ export type MetricItem =
 export interface CaseStudyData {
   agencyName: string;
   client: string;
-  liveUrl: string;
   // Text shown in the hero's pill eyebrow above the H1. Optional - falls
   // back to plain `client` when omitted, which is how the earlier case
   // studies (no eyebrow field set) keep rendering unchanged.
@@ -88,15 +87,6 @@ export interface CaseStudyData {
   turningPoint?: {
     header: string;
     body: string[];
-  };
-  // Optional - omit entirely for a case study with no real testimonial to
-  // show yet. The Testimonial section just doesn't render rather than
-  // shipping an empty or fabricated quote.
-  quote?: {
-    text: string;
-    name: string;
-    role: string;
-    photo: string;
   };
   // "Sustained" results tier - plain stat strip.
   results: {

@@ -57,6 +57,7 @@ export default function Navbar({
   const navLinks = [
     { name: "How It Works", href: "/landing-page#how-it-works" },
     { name: "Results", href: "/landing-page#results" },
+    { name: "The Math", href: "/landing-page#calculator" },
     { name: "FAQs", href: "/landing-page#faq" },
   ];
 
@@ -128,7 +129,7 @@ export default function Navbar({
             <button
               onClick={() => setIsOpen(true)}
               data-cursor="button"
-              className="p-1.5 rounded-full text-[#0A0A0E]/80 hover:text-[#5C45FD] transition-colors focus:outline-none"
+              className="p-1.5 rounded-full text-[#0A0A0E]/80 hover:text-[#5C45FD] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C45FD] focus-visible:ring-offset-2"
               aria-label="Toggle Menu"
             >
               <Menu className="h-6 w-6" />
@@ -177,7 +178,7 @@ export default function Navbar({
                   </Link>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="p-1.5 rounded-full text-[#0A0A0E]/70 hover:text-[#5C45FD] transition-colors hover:bg-black/5 focus:outline-none"
+                    className="p-1.5 rounded-full text-[#0A0A0E]/70 hover:text-[#5C45FD] transition-colors hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C45FD] focus-visible:ring-offset-2"
                     aria-label="Close Menu"
                   >
                     <X className="h-6 w-6" />

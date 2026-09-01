@@ -637,22 +637,28 @@ export default function ConversionCalculator() {
               />
             </div>
 
-            <div className="mt-auto flex flex-wrap items-center gap-4 pt-7">
-              <Link
-                href="/landing-page/qualify"
-                onClick={handleCtaClick}
-                data-cursor="cta"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-[#5c45fd] px-[26px] py-4 text-[15px] font-semibold text-white shadow-[0_10px_26px_-12px_rgba(92,69,253,0.9)] transition-transform hover:-translate-y-0.5"
-              >
-                See how we would get you there
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+            <div className="mt-auto flex flex-wrap items-start gap-6 pt-7">
+              <div className="flex flex-col items-start gap-2">
+                <Link href="/landing-page/qualify" onClick={handleCtaClick} data-cursor="cta">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0]"
+                  >
+                    See how we&apos;d close that gap
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </motion.button>
+                </Link>
+                <p className="text-[13px] text-[rgba(245,245,245,0.5)]">
+                  Free. 30 minutes. We&apos;ll show you the numbers.
+                </p>
+              </div>
               <button
                 type="button"
                 onClick={handleToggleDetail}
                 aria-expanded={detailOpen}
                 aria-controls="calculator-detail"
-                className="text-[13px] text-white/[0.38] underline underline-offset-[3px] hover:text-[#a89bff]"
+                className="mt-3 text-[13px] text-white/[0.38] underline underline-offset-[3px] hover:text-[#a89bff]"
               >
                 {detailOpen ? "Hide the working" : "Show the working"}
               </button>

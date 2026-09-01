@@ -113,14 +113,27 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 // ----------------------------------------------------------------------------
 function ImagePlaceholder({
   label,
+  // Real content, not decoration - every caller passes a description of
+  // what the screenshot actually shows. Only unused on the still-a-box
+  // placeholder path below, where there's no image for a screen reader
+  // to need a description of yet.
+  alt,
   aspect = "aspect-[4/3]",
   rounded = "rounded-2xl",
   className = "",
+  // Without this, next/image assumes the box spans 100vw and requests
+  // the largest configured breakpoint (up to 3840px) no matter how
+  // small it actually renders. Default matches the common 2-column
+  // case - callers in a different layout (e.g. the full-width results
+  // chart) pass their own.
+  sizes = "(min-width: 1024px) 50vw, 100vw",
 }: {
   label: string;
+  alt: string;
   aspect?: string;
   rounded?: string;
   className?: string;
+  sizes?: string;
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const isReal = !label.startsWith("PLACEHOLDER:");
@@ -164,7 +177,7 @@ function ImagePlaceholder({
         ref={wrapRef}
         className={`relative w-full ${aspect} ${rounded} overflow-hidden bg-zinc-100 ${className}`}
       >
-        <Image src={label} alt="" fill className="object-contain" />
+        <Image src={label} alt={alt} fill sizes={sizes} className="object-contain" />
       </div>
     );
   }
@@ -200,19 +213,21 @@ function useShowSecondImage() {
 // only one shown below desktop width.
 function ImagePair({
   images,
+  alts,
   aspect = "aspect-[4/3]",
   rounded = "rounded-2xl",
 }: {
   images: [string, string];
+  alts: [string, string];
   aspect?: string;
   rounded?: string;
 }) {
   const showSecond = useShowSecondImage();
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <ImagePlaceholder label={images[0]} aspect={aspect} rounded={rounded} />
+      <ImagePlaceholder label={images[0]} alt={alts[0]} aspect={aspect} rounded={rounded} />
       {showSecond && (
-        <ImagePlaceholder label={images[1]} aspect={aspect} rounded={rounded} />
+        <ImagePlaceholder label={images[1]} alt={alts[1]} aspect={aspect} rounded={rounded} />
       )}
     </div>
   );
@@ -373,7 +388,15 @@ function Hero({ data }: { data: CaseStudyData }) {
       </div>
 
       <Reveal delay={0.3} className="mx-auto mt-12 max-w-[1400px]">
-        <ImagePair images={data.heroImages} aspect="aspect-[4/3]" rounded="rounded-[24px]" />
+        <ImagePair
+          images={data.heroImages}
+          alts={[
+            `${data.client} website screenshot`,
+            `${data.client} website screenshot, alternate view`,
+          ]}
+          aspect="aspect-[4/3]"
+          rounded="rounded-[24px]"
+        />
       </Reveal>
     </section>
   );
@@ -502,7 +525,7 @@ function ApproachRow({
         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-zinc-600">{item.body}</p>
       </div>
       <div className={reversed ? "lg:order-1" : ""}>
-        <ImagePlaceholder label={item.image} aspect="aspect-[4/3]" />
+        <ImagePlaceholder label={item.image} alt={`${item.title} screenshot`} aspect="aspect-[4/3]" />
       </div>
     </Reveal>
   );
@@ -762,8 +785,10 @@ function ResultsAtLaunch({ data }: { data: CaseStudyData }) {
         <Reveal delay={0.2} className="mt-6">
           <ImagePlaceholder
             label={data.results.chartImage}
+            alt={`${data.client} results chart`}
             aspect={data.results.chartImage.startsWith("PLACEHOLDER:") ? "aspect-[16/7]" : "aspect-[4/3]"}
             rounded="rounded-[24px]"
+            sizes="(min-width: 1400px) 1400px, 100vw"
           />
         </Reveal>
       </div>
@@ -840,43 +865,6 @@ function ResultsSustained({ data }: { data: CaseStudyData }) {
   );
 }
 
-function Testimonial({ data }: { data: CaseStudyData }) {
-  if (!data.quote) return null;
-  return (
-    <section className="bg-white px-6 py-20 md:px-10 md:py-28">
-      <Reveal className="mx-auto max-w-[800px] text-center">
-        <p
-          className="text-2xl italic leading-snug text-[#0A0A0E] md:text-3xl"
-          style={{ fontFamily: "Arial, sans-serif", fontWeight: 400 }}
-        >
-          &quot;{data.quote.text}&quot;
-        </p>
-        <div className="mt-8 flex items-center justify-center gap-3">
-          <div className="h-14 w-14 flex-shrink-0">
-            <ImagePlaceholder
-              label={data.quote.photo}
-              aspect="aspect-square"
-              rounded="rounded-full"
-            />
-          </div>
-          <div className="text-left">
-            {data.quote.name ? (
-              <div className="text-sm font-bold text-[#0A0A0E]">{data.quote.name}</div>
-            ) : (
-              <div className="text-sm font-bold italic text-zinc-300">[Add client name]</div>
-            )}
-            {data.quote.role ? (
-              <div className="text-xs text-zinc-500">{data.quote.role}</div>
-            ) : (
-              <div className="text-xs italic text-zinc-300">[Add role/company]</div>
-            )}
-          </div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
 export default function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
   return (
     // --accent is the single line to change for a full rebrand: every
@@ -896,7 +884,6 @@ export default function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
             <ResultsSustained data={data} />
           </>
         )}
-        <Testimonial data={data} />
       </main>
       <SiteFooter headline={data.finalCta?.headline} subline={data.finalCta?.subline} />
     </div>

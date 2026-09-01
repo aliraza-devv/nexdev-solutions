@@ -159,7 +159,12 @@ export default function TermsContent() {
               </a>
               <br />
               Phone:{" "}
-              <a href="tel:+923081992088" className="text-[#5C45FD] hover:underline">
+              <a
+                href="https://wa.me/923081992088"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#5C45FD] hover:underline"
+              >
                 +92 308 199 2088
               </a>
               <br />

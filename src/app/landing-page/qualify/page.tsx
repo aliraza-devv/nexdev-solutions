@@ -14,30 +14,40 @@ import type { QualifyOption, QualifyPayload, QualifyResponse, QualifySelections 
 // which options are selected, the qualified/disqualified verdict) is
 // React useState driving conditional classNames, not the reference's
 // vanilla-JS display toggling on static divs.
-const TOTAL_STEPS = 1 + OPTION_QUESTIONS.length;
+//
+// No name/email fields anywhere in the main form - this form's only
+// job is to qualify and route. Contact info is collected on the
+// booking page for qualified leads, and on the downsell screen below
+// for disqualified ones (the only place their email is ever asked for).
+const TOTAL_STEPS = OPTION_QUESTIONS.length;
 const EMAIL_RE = /.+@.+\..+/;
 const BOOK_CALL_PATH = "/landing-page/book-call";
 // Long enough to read "You're a great fit" before the auto-redirect.
 const QUALIFIED_REDIRECT_MS = 1600;
 
 type Phase = "form" | "qualified" | "disqualified";
+type DownsellStatus = "idle" | "sending" | "sent" | "error";
 
 export default function QualifyPage() {
   const router = useRouter();
   const reduceMotion = useReducedMotion();
   const [step, setStep] = useState(0);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [selections, setSelections] = useState<QualifySelections>({
-    type: null,
-    problem: null,
-    budget: null,
-    timeline: null,
+    situation: null,
+    pain: null,
+    desired_outcome: null,
+    readiness: null,
   });
   const [phase, setPhase] = useState<Phase>("form");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // The one place a disqualified lead's contact info is ever collected -
+  // its own small piece of state and its own submit flow, separate from
+  // the main form's.
+  const [downsellEmail, setDownsellEmail] = useState("");
+  const [downsellStatus, setDownsellStatus] = useState<DownsellStatus>("idle");
 
   // A qualified lead sees the confirmation for a moment, then moves on
   // to booking automatically - the "Book your call" link still works
@@ -52,12 +62,9 @@ export default function QualifyPage() {
     return () => window.clearTimeout(timer);
   }, [phase, reduceMotion, router]);
 
-  const isContactStep = step === 0;
-  const question = isContactStep ? null : OPTION_QUESTIONS[step - 1];
-
-  const isValid = isContactStep
-    ? name.trim().length > 1 && EMAIL_RE.test(email.trim())
-    : Boolean(question && selections[question.key]);
+  const question = OPTION_QUESTIONS[step];
+  const isValid = Boolean(question && selections[question.key]);
+  const downsellEmailValid = EMAIL_RE.test(downsellEmail.trim());
 
   function selectOption(key: QuestionKey, option: QualifyOption) {
     setSelections((prev) => ({ ...prev, [key]: option }));
@@ -66,7 +73,7 @@ export default function QualifyPage() {
   async function submit() {
     setSubmitting(true);
     setError(null);
-    const payload: QualifyPayload = { name: name.trim(), email: email.trim(), honeypot, ...selections };
+    const payload: QualifyPayload = { honeypot, ...selections };
     try {
       const res = await fetch("/api/qualify", {
         method: "POST",
@@ -84,6 +91,27 @@ export default function QualifyPage() {
       setError("Something went wrong sending that. Please try again.");
     } finally {
       setSubmitting(false);
+    }
+  }
+
+  // Second, separate POST to the same endpoint, this time with an email
+  // attached - this is what actually triggers the nurture notification,
+  // since the first POST (the form completion above) never has one.
+  async function submitDownsell() {
+    if (!downsellEmailValid || downsellStatus === "sending") return;
+    setDownsellStatus("sending");
+    const payload: QualifyPayload = { honeypot, email: downsellEmail.trim(), ...selections };
+    try {
+      const res = await fetch("/api/qualify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setDownsellStatus("sent");
+    } catch (err) {
+      console.error("Downsell submit failed:", err);
+      setDownsellStatus("error");
     }
   }
 
@@ -110,6 +138,7 @@ export default function QualifyPage() {
             src="/assets/nexdev-full-logo.png"
             alt="NeXDev Logo"
             fill
+            sizes="(min-width: 768px) 160px, 144px"
             className="object-contain object-center"
             priority
           />
@@ -125,7 +154,7 @@ export default function QualifyPage() {
 
       <div className={styles.stage}>
         <div className={styles.card}>
-          {phase === "form" && (
+          {phase === "form" && question && (
             <div>
               <div className={styles.countRow}>
                 <span className={styles.count}>
@@ -137,63 +166,26 @@ export default function QualifyPage() {
               </div>
 
               <div key={step} className={`${styles.step} ${reduceMotion ? styles.stepNoMotion : ""}`}>
-                {isContactStep ? (
-                  <>
-                    <h2 className={styles.stepHeading}>First, who are we talking to?</h2>
-                    <p className={styles.stepHint}>Your name and best work email.</p>
-                    <div className={styles.fields}>
-                      <input
-                        type="text"
-                        className={styles.input}
-                        placeholder="Full name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                      <input
-                        type="email"
-                        className={styles.input}
-                        placeholder="Work email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                      {/* Honeypot: invisible to real visitors, bots that
-                          fill every field trip it. */}
-                      <input
-                        type="text"
-                        name="company"
-                        autoComplete="off"
-                        tabIndex={-1}
-                        className={`${styles.honeypot} sr-only`}
-                        value={honeypot}
-                        onChange={(e) => setHoneypot(e.target.value)}
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </>
-                ) : question ? (
-                  <>
-                    <h2 className={styles.stepHeading}>{question.heading}</h2>
-                    <p className={styles.stepHint}>{question.hint}</p>
-                    <div className={styles.opts}>
-                      {question.options.map((option) => {
-                        const selected = selections[question.key]?.label === option.label;
-                        return (
-                          <label key={option.label} className={`${styles.opt} ${selected ? styles.sel : ""}`}>
-                            <span className={styles.tick} />
-                            <span className={styles.lab}>{option.label}</span>
-                            <input
-                              type="radio"
-                              name={question.key}
-                              className="sr-only"
-                              checked={selected}
-                              onChange={() => selectOption(question.key, option)}
-                            />
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </>
-                ) : null}
+                <h2 className={styles.stepHeading}>{question.heading}</h2>
+                <p className={styles.stepHint}>{question.hint}</p>
+                <div className={styles.opts}>
+                  {question.options.map((option) => {
+                    const selected = selections[question.key]?.label === option.label;
+                    return (
+                      <label key={option.label} className={`${styles.opt} ${selected ? styles.sel : ""}`}>
+                        <span className={styles.tick} />
+                        <span className={styles.lab}>{option.label}</span>
+                        <input
+                          type="radio"
+                          name={question.key}
+                          className="sr-only"
+                          checked={selected}
+                          onChange={() => selectOption(question.key, option)}
+                        />
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
 
               {error && <p className={styles.error}>{error}</p>}
@@ -241,16 +233,61 @@ export default function QualifyPage() {
               </div>
               <h2>Let&apos;s start smaller.</h2>
               <p>
-                A full build isn&apos;t the right move at this budget yet, but a paid SYNC Audit is. We&apos;ll
-                pinpoint exactly why your site loses visitors and hand you a fix list you can act on, with us or
-                not.
+                A full build isn&apos;t the right move yet, but a paid SYNC Audit is. We&apos;ll pinpoint exactly
+                where your site loses visitors and hand you a fix list you can act on, with us or not.
               </p>
-              {/* Placeholder destination per spec - lands back on the
-                  landing page until a dedicated audit page exists. */}
-              <Link href="/landing-page" className={styles.go}>
-                Tell me about the audit <span>&rarr;</span>
-              </Link>
-              {/* FLAGGED: no destination yet, intentionally not a link. */}
+
+              {downsellStatus === "sent" ? (
+                <p className={styles.stepHint}>Got it. We&apos;ll follow up at {downsellEmail.trim()}.</p>
+              ) : (
+                <form
+                  className={styles.fields}
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    submitDownsell();
+                  }}
+                >
+                  <input
+                    type="email"
+                    className={styles.input}
+                    placeholder="Your best email"
+                    value={downsellEmail}
+                    onChange={(e) => setDownsellEmail(e.target.value)}
+                  />
+                  {/* Honeypot: invisible to real visitors, bots that fill
+                      every field trip it. This screen is the only place
+                      left collecting contact info, so it's the one place
+                      a honeypot still matters. */}
+                  <input
+                    type="text"
+                    name="company"
+                    autoComplete="off"
+                    tabIndex={-1}
+                    className={`${styles.honeypot} sr-only`}
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    aria-hidden="true"
+                  />
+                  {downsellStatus === "error" && (
+                    <p className={styles.error}>Something went wrong sending that. Please try again.</p>
+                  )}
+                  <button
+                    type="submit"
+                    className={styles.go}
+                    disabled={!downsellEmailValid || downsellStatus === "sending"}
+                    style={{
+                      border: "none",
+                      fontFamily: "inherit",
+                      justifyContent: "center",
+                      opacity: !downsellEmailValid || downsellStatus === "sending" ? 0.5 : 1,
+                      cursor: !downsellEmailValid || downsellStatus === "sending" ? "not-allowed" : "pointer",
+                    }}
+                  >
+                    {downsellStatus === "sending" ? "Sending…" : "Send me the details"}
+                  </button>
+                </form>
+              )}
+
               <span className={styles.alt}>Just send me the free checklist</span>
             </div>
           )}

@@ -3,7 +3,6 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Reality Cheque",
-  liveUrl: "https://example.com",
   heroEyebrow: "Case Study · Reality Cheque · The Community for Agency Owners",
   headline:
     "How a website they'd almost given up on drove 407 paid signups in 24 hours.",
@@ -11,8 +10,8 @@ export const CASE_STUDY: CaseStudyData = {
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "/assets/case-studies/Reality-cheque-hero-left.png",
-    "/assets/case-studies/Reality-cheque-hero-right.png",
+    "/assets/case-studies/Reality-cheque-hero-left.webp",
+    "/assets/case-studies/Reality-cheque-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -74,19 +73,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "SYNC Landing Page Redesign",
       body: "We rebuilt the landing page around trust and authority. Clean, credible, clearly premium. Then we backed it with proof: real video and screenshot testimonials from members. The first design got approved on the spot, and we kept going.",
       solves: 0,
-      image: "/assets/case-studies/Reality-cheque-approach-1.png",
+      image: "/assets/case-studies/Reality-cheque-approach-1.webp",
     },
     {
       title: "Dedicated Course Page + VSL",
       body: "This was the centerpiece. A page that actually sells the courses and what they change for you, anchored by a VSL that lets Saddam pitch the community at scale, the way he would one on one.",
       solves: 1,
-      image: "/assets/case-studies/Reality-cheque-approach-2.png",
+      image: "/assets/case-studies/Reality-cheque-approach-2.webp",
     },
     {
       title: "Clean Checkout Flow",
       body: "We rebuilt checkout so picking a plan and paying takes seconds instead of second-guessing.",
       solves: 2,
-      image: "/assets/case-studies/Reality-cheque-approach-3.png",
+      image: "/assets/case-studies/Reality-cheque-approach-3.webp",
     },
   ],
   turningPoint: {
@@ -96,14 +95,8 @@ export const CASE_STUDY: CaseStudyData = {
       "So we built a path to purchase instead: the VSL pitches at scale, the course page sells the outcome, and checkout gets out of the way. The design was only the surface, the real fix was the path to a sale.",
     ],
   },
-  quote: {
-    text: "We started using Ali and NeXDev Solutions for our website, and the results were good enough that we now use them as a white-label partner for our own clients. What stood out most was the speed they work at and the results they get. We're still working with them, and it's going well for us and for our clients.",
-    name: "Saddam Hasan",
-    role: "Founder, Reality Cheque",
-    photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
-  },
   results: {
-    chartImage: "/assets/case-studies/Reality-cheque-results-chart.png",
+    chartImage: "/assets/case-studies/Reality-cheque-results-chart.webp",
     stats: [
       {
         value: "7.1K+",

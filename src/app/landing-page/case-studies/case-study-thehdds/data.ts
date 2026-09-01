@@ -3,15 +3,14 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "The HDDs",
-  liveUrl: "https://example.com",
   heroEyebrow: "Case Study · The HDDs · Refurbished Storage, Built From Zero",
   headline: "How a brand-new store started getting orders before it even launched.",
   heroStat: "Organic orders in testing, before launch, with zero ad spend",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "/assets/case-studies/TheHDDs-hero-left.png",
-    "/assets/case-studies/TheHDDs-hero-right.png",
+    "/assets/case-studies/TheHDDs-hero-left.webp",
+    "/assets/case-studies/TheHDDs-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -76,19 +75,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "A Brand-Aligned Store That Looks the Part",
       body: "We designed the whole store around the brand so it felt established from day one, not like a new arrival. Conversion-focused copy, written to rank in search too, carried the message across every page.",
       solves: 0,
-      image: "/assets/case-studies/TheHDDs-approach-1.png",
+      image: "/assets/case-studies/TheHDDs-approach-1.webp",
     },
     {
       title: "A Product Page That Kills the Doubt",
       body: "The product pages were built to answer the reliability question head on, state the real value clearly, and remove the hesitation that comes with buying refurbished. Trust where the buyer needs it, right when they need it.",
       solves: 1,
-      image: "/assets/case-studies/TheHDDs-approach-2.png",
+      image: "/assets/case-studies/TheHDDs-approach-2.webp",
     },
     {
       title: "Seamless Checkout Plus a Wholesale Path",
       body: "We built a checkout that removes friction and makes buying the obvious choice, and added a clean wholesale purchase form so bulk buyers get their own smooth path without complicating the main store.",
       solves: 2,
-      image: "/assets/case-studies/TheHDDs-approach-3.png",
+      image: "/assets/case-studies/TheHDDs-approach-3.webp",
     },
   ],
   turningPoint: {
@@ -98,14 +97,8 @@ export const CASE_STUDY: CaseStudyData = {
       "So instead of out-shouting Seagate or WD, we built the whole store to remove doubt: in the branding, the product pages, and a checkout that felt safe. It worked before launch: orders came in during testing, organically, with zero ad spend.",
     ],
   },
-  quote: {
-    text: "Ali and the team got what we were up against right away. Competing with the big storage brands felt impossible, but they built us a store that actually looks like it belongs in that league. We were getting orders before we'd even properly launched, which honestly caught us off guard in the best way.",
-    name: "",
-    role: "Founder, The HDDs",
-    photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
-  },
   results: {
-    chartImage: "/assets/case-studies/TheHDDs-results-chart.png",
+    chartImage: "/assets/case-studies/TheHDDs-results-chart.webp",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

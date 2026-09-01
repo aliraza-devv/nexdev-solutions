@@ -351,6 +351,12 @@
     margin: 8px 0 0;
   }
   .pipe {
+    /* Once position goes static, this becomes a normal grid item inside
+       .node's own 46px-idx / 1fr-content grid - without spanning both
+       columns it lands in the narrow 46px track by auto-placement,
+       which is why the pill was rendering squeezed to ~46px wide with
+       its text spilling out of it. */
+    grid-column: 1 / -1;
     position: static;
     transform: none;
     margin-top: 10px;

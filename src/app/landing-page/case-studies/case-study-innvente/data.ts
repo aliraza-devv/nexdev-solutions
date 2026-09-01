@@ -3,7 +3,6 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Innvente",
-  liveUrl: "https://offer.innvente.com",
   heroEyebrow: "Case Study · Innvente · Y Combinator-Trusted Dev Agency",
   headline:
     "$127 per qualified founder lead from Meta ads for a Y Combinator-trusted dev agency.",
@@ -11,8 +10,8 @@ export const CASE_STUDY: CaseStudyData = {
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: hero-device-mockup, desktop 1600×1000",
-    "PLACEHOLDER: hero-device-mockup, mobile 1600×1000",
+    "/assets/case-studies/Innvente-hero-left.webp",
+    "/assets/case-studies/Innvente-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -91,19 +90,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "A Dedicated Landing Page on offer.innvente.com",
       body: "Next.js, one offer, one CTA. Copy speaks to the funded founder's pain: 6-month timelines, junior devs, code that breaks at scale. Case studies with real exits and a trust bar naming Y Combinator, BBC Studios, Microsoft.",
       solves: 0,
-      image: "PLACEHOLDER: landing-page 1200×900",
+      image: "/assets/case-studies/Innvente-approach-1.webp",
     },
     {
       title: "A Qualification Page Before the Calendar Loads",
       body: "Collects project details, timeline, and funding stage before the calendar loads. Screens out enquiries not ready for a $20K+ engagement and lets Innvente prepare for every call.",
       solves: 1,
-      image: "PLACEHOLDER: qualification-page 1200×900",
+      image: "/assets/case-studies/Innvente-approach-2.webp",
     },
     {
       title: "A Thank You Page That Pre-Frames the Call",
       body: "Post-booking confirmation that pre-frames the call, reduces no-shows by reinforcing what the founder will walk away with.",
       solves: 2,
-      image: "PLACEHOLDER: thank-you-page 1200×900",
+      image: "/assets/case-studies/Innvente-approach-3.webp",
     },
   ],
   approachPlusLine: "Built on Next.js and hosted on Vercel, from brief to live in 2 weeks.",
@@ -115,7 +114,7 @@ export const CASE_STUDY: CaseStudyData = {
     ],
   },
   results: {
-    chartImage: "PLACEHOLDER: results-chart, qualified lead funnel 1400×600",
+    chartImage: "/assets/case-studies/Innvente-results-chart.webp",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

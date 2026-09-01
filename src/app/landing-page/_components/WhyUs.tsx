@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { ComparisonSliderGraphic, ABTestGraphic, ProjectDashboardGraphic } from "./WhyUsGraphics";
@@ -94,14 +95,19 @@ export default function WhyUs() {
           <p className="text-lg font-medium text-[#0A0A0E] text-center sm:text-left">
             Curious how we&apos;d approach your website?
           </p>
-          <Link
-            href="/landing-page/qualify"
-            data-cursor="cta"
-            className="group inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#5C45FD] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/20 transition-all hover:bg-[#4a36e0]"
-          >
-            Book Your Free Strategy Call
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          <div className="flex flex-shrink-0 flex-col items-center gap-2">
+            <Link href="/landing-page/qualify" data-cursor="cta">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0]"
+              >
+                Let&apos;s talk about your site
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </motion.button>
+            </Link>
+            <p className="text-[13px] text-[#6b7280]">30 minutes. No pitch deck.</p>
+          </div>
         </div>
       </div>
     </section>

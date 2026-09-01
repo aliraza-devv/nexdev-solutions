@@ -3,15 +3,14 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "The We One",
-  liveUrl: "https://theweone.com",
   heroEyebrow: "Case Study · The We One · Amazon Growth Agency Funnel",
   headline: "42% of Meta ad leads qualified before they touched the calendar.",
   heroStat: "42% qualified lead rate and a 74% show rate on Meta ad traffic",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: hero-device-mockup, desktop 1600×1000",
-    "PLACEHOLDER: hero-device-mockup, mobile 1600×1000",
+    "/assets/case-studies/TheWeOne-hero-left.webp",
+    "/assets/case-studies/TheWeOne-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -86,25 +85,25 @@ export const CASE_STUDY: CaseStudyData = {
       title: "A Landing Page With One Offer, One CTA",
       body: "One offer, one CTA. Copy built around the exact pain of The We One's ICP: growing sales, shrinking margins, 20 hours a week in Seller Central.",
       solves: 0,
-      image: "PLACEHOLDER: landing-page 1200×900",
+      image: "/assets/case-studies/TheWeOne-approach-1.webp",
     },
     {
       title: "A Multi-Step Qualification Form",
       body: "Collects monthly revenue, primary pain, and readiness. Qualified leads ($10K and above, clear pain, real timeline) route to booking. Everyone else gets a warm exit.",
       solves: 1,
-      image: "PLACEHOLDER: qualification-form 1200×900",
+      image: "/assets/case-studies/TheWeOne-approach-2.webp",
     },
     {
       title: "A Booking Page That Only Unlocks After Qualifying",
       body: "Only accessible after qualifying. Pre-frames the call, what to expect and what to prepare.",
       solves: 0,
-      image: "PLACEHOLDER: booking-page 1200×900",
+      image: "/assets/case-studies/TheWeOne-approach-3.webp",
     },
     {
       title: "A Post-Booking Page That Protects the Show Rate",
       body: "Confirms the slot, reinforces the value of showing up, reduces no-shows.",
       solves: 2,
-      image: "PLACEHOLDER: post-booking-page 1200×900",
+      image: "/assets/case-studies/TheWeOne-approach-4.webp",
     },
   ],
   approachPlusLine: "Built on WordPress with Elementor, from brief to live in 3 weeks.",
@@ -116,7 +115,7 @@ export const CASE_STUDY: CaseStudyData = {
     ],
   },
   results: {
-    chartImage: "PLACEHOLDER: results-chart, qualified lead funnel 1400×600",
+    chartImage: "/assets/case-studies/TheWeOne-results-chart.webp",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

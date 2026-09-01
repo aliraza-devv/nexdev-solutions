@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
+import Image from 'next/image';
 
 function flattenToText(node: React.ReactNode): string {
   if (node == null || typeof node === "boolean") return "";
@@ -665,9 +666,11 @@ function DiscoveryGraphics() {
                       },
                     ].map((profile, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <img
+                        <Image
                           src={profile.photo}
                           alt=""
+                          width={24}
+                          height={24}
                           className="h-6 w-6 flex-shrink-0 rounded-full border border-black/5 object-cover"
                         />
                         <div className="h-1 flex-1 bg-zinc-100 rounded-full overflow-hidden">

@@ -3,7 +3,6 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "Smarterform",
-  liveUrl: "https://example.com",
   heroEyebrow:
     "Case Study · Smarterform · Secure Form-Building SaaS for High-Stakes Firms",
   headline: "How a from-scratch SaaS product went from idea to funded in two weeks.",
@@ -11,8 +10,8 @@ export const CASE_STUDY: CaseStudyData = {
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's slowing your product down. No pitch.",
   heroImages: [
-    "/assets/case-studies/Smarterform-hero-left.png",
-    "/assets/case-studies/Smarterform-hero-right.png",
+    "/assets/case-studies/Smarterform-hero-left.webp",
+    "/assets/case-studies/Smarterform-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -72,19 +71,19 @@ export const CASE_STUDY: CaseStudyData = {
       title: "An MVP Built to Raise On (30 Days)",
       body: "In 30 days we shipped an MVP that made the value impossible to miss: the problem it solves, who it's for, and how big it could get. Clear enough to walk an investor through, and it worked.",
       solves: 0,
-      image: "/assets/case-studies/Smarterform-approach-1.png",
+      image: "/assets/case-studies/Smarterform-approach-1.webp",
     },
     {
       title: "Complex Form-Building, Made Effortless",
       body: "The core is a drag-and-drop builder where an admin creates multi-step forms with complicated logic, no code required. We set up roles for admin reviewers, reviewers, and submitters so each person only sees what they need, plus a dashboard for stats and settings. Hard on the inside, simple on the surface.",
       solves: 1,
-      image: "/assets/case-studies/Smarterform-approach-2.png",
+      image: "/assets/case-studies/Smarterform-approach-2.webp",
     },
     {
       title: "Security Built Into the Foundation",
       body: "We built secure authentication and an encryption layer so sensitive data stays protected from end to end. Then it was put through penetration testing, and it held.",
       solves: 2,
-      image: "/assets/case-studies/Smarterform-approach-3.png",
+      image: "/assets/case-studies/Smarterform-approach-3.webp",
     },
   ],
   turningPoint: {
@@ -94,14 +93,8 @@ export const CASE_STUDY: CaseStudyData = {
       "So we treated the experience and the security as the real product: drag-and-drop simple on the surface, hard-tested underneath. Get both right and the features sell themselves. That's how an idea became funded in two weeks, and secure enough to pass testing.",
     ],
   },
-  quote: {
-    text: "I've been working with Ali and NeXDev for a while now, and they genuinely go beyond what the client needs. Always responsive, always on it. I'd recommend NeXDev Solutions for design and development without hesitation.",
-    name: "",
-    role: "",
-    photo: "PLACEHOLDER: client-headshot 160×160 (real face, not avatar)",
-  },
   results: {
-    chartImage: "/assets/case-studies/Smarterform-results-chart.png",
+    chartImage: "/assets/case-studies/Smarterform-results-chart.webp",
     stats: [
       { label: "Full web app launched in 90 days" },
       { label: "Passed penetration testing" },
