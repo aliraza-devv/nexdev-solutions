@@ -41,12 +41,12 @@ export default function Home() {
           {
             letter: "1",
             title: "DISCOVERY & RESEARCH",
-            desc: "A deep-dive strategy session mapping your audience, competitors, and conversion gaps before we build. This is where others skip ahead. We don't.",
+            desc: "We map your audience, your competitors, and every reason people leave. Most agencies skip this. That's why their sites don't sell.",
           },
           {
             letter: "2",
             title: "SYNC METHOD AUDIT",
-            desc: "We analyze sales architecture, narrative positioning, cognitive layouts, and conversion flows, mapping every decision in advance to give design a clear job.",
+            desc: "We figure out what your page needs to do before we decide how it looks. Design gets a job, not a guess.",
           },
           {
             letter: "3",

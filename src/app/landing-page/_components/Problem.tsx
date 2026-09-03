@@ -6,24 +6,24 @@ import { Plus, Minus } from "lucide-react";
 
 const problems = [
   {
-    title: "Visitors leave. Always.",
-    desc: "Good traffic, zero action. Something on your page is pushing them out.",
+    title: "Most websites just sit there.",
+    desc: "They look the part and do nothing. People land, look around, and leave without doing the one thing the site was built for. Yours can't afford to be one of them.",
   },
   {
-    title: "Your competitor just won a customer who almost chose you.",
-    desc: "Their site felt more credible. It wasn't luck, it was engineered.",
+    title: "And your competitor gets the customer.",
+    desc: "The buyer who almost chose you goes with whoever made the decision easy. Same demand, better site, and the sale is theirs, not yours.",
   },
   {
-    title: "You've been here before.",
-    desc: "Paid thousands. Got a pretty page. Nothing moved. That ends here.",
+    title: "You already know how this goes.",
+    desc: "Maybe you paid for a site that looked great and delivered nothing. Maybe you've watched it happen to someone else and you refuse to be next. Either way, you want one thing: proof it'll actually work before you spend on it.",
   },
   {
-    title: "Every day costs you.",
-    desc: "Not in theory, in real leads, real revenue, real momentum lost.",
+    title: "And waiting has a price.",
+    desc: "Every week without a site that sells is customers going to someone else. Whether yours is underperforming right now or still isn't live, the cost is the same: business you should be winning and aren't.",
   },
   {
-    title: "This is your only shot at doing it right the first time.",
-    desc: "Skip the strategy, ship a pretty page, and nobody buys. Then you're rebuilding, paying twice for one site.",
+    title: "You get one shot at doing it right.",
+    desc: "Building it right once costs you far less than building it twice. That's why we start with strategy, not a template, whether it's your first site or your fifth.",
   },
 ];
 
@@ -395,7 +395,7 @@ export default function Problem() {
               className="block overflow-hidden pb-1"
               data-cursor="text"
               data-cursor-on-dark=""
-              data-text="Traffic without conversions isn't growth."
+              data-text="A website that doesn't sell isn't your asset."
             >
               <motion.span
                 className="block"
@@ -407,14 +407,14 @@ export default function Problem() {
                   },
                 }}
               >
-                Traffic without conversions isn&apos;t growth.
+                A website that doesn&apos;t sell isn&apos;t your asset.
               </motion.span>
             </span>
             <span
               className="block overflow-hidden pb-1"
               data-cursor="text"
               data-cursor-on-dark=""
-              data-text="It's an expensive leak."
+              data-text="It's your expense."
             >
               <motion.span
                 className="block text-white/40"
@@ -426,7 +426,7 @@ export default function Problem() {
                   },
                 }}
               >
-                It&apos;s an expensive leak.
+                It&apos;s your expense.
               </motion.span>
             </span>
           </motion.h2>

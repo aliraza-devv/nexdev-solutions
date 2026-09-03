@@ -80,12 +80,12 @@ export default function FinalCTA({
                 key={i}
                 className="w-10 h-10 rounded-full border-2 border-[#0A0A0E] overflow-hidden bg-gray-800"
               >
-                {/* Generic stock avatars, not real client photos - decorative
+                {/* Real client photos, no names attached here - decorative
                     filler for the "200+ Satisfied clients" stat next to them,
                     which already carries the actual information. alt="" so
-                    a screen reader doesn't announce "client" five times. */}
+                    a screen reader doesn't announce nothing useful five times. */}
                 <Image
-                  src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                  src={`/assets/avatars/avatar-${i}.webp`}
                   alt=""
                   width={40}
                   height={40}

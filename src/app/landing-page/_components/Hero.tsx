@@ -139,8 +139,8 @@ export default function Hero() {
               }}
               className="mb-4 lg:mb-2 text-left text-xs sm:text-sm font-medium text-gray-600"
             >
-              For founders who need a website that actually
-              <span className="font-semibold text-black"> sells</span>.
+              For businesses that need their website to
+              <span className="font-semibold text-black"> sell</span>, not just exist.
             </motion.div>
 
             <h1
@@ -159,7 +159,7 @@ export default function Hero() {
                     },
                   }}
                 >
-                  We Build Websites
+                  Most websites
                 </motion.span>
               </span>
               <span className="block overflow-hidden pb-1">
@@ -177,8 +177,7 @@ export default function Hero() {
                     },
                   }}
                 >
-                  That Sell and
-                  <span className="italic text-[#5C45FD]"> 2X</span>
+                  just sit there.
                 </motion.span>
               </span>
               <span className="block overflow-hidden pb-1">
@@ -196,10 +195,8 @@ export default function Hero() {
                     },
                   }}
                 >
-                  <span className="italic text-[#5C45FD]">
-                    {" "}
-                    the Conversion.
-                  </span>
+                  Yours will
+                  <span className="italic text-[#5C45FD]"> sell.</span>
                 </motion.span>
               </span>
             </h1>
