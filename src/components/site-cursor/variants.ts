@@ -1,9 +1,18 @@
 import type { CursorVariant, CursorVariantConfig } from "./types";
 
-const DEFAULT_LERP = 0.22;
+// Was 0.22 - noticeably laggy relative to the real pointer, which made
+// the dot feel more like a trailing effect than something you're
+// actually pointing with. Tighter tracking reads as more precise/
+// controllable without losing the smoothing that keeps it from
+// jittering on fast mouse moves.
+const DEFAULT_LERP = 0.32;
 
 export const CURSOR_VARIANTS: Record<CursorVariant, CursorVariantConfig> = {
-  default: { lerp: DEFAULT_LERP, size: 10 },
+  // Bumped from 10px - the size at rest, i.e. what's on screen almost
+  // all the time, and a flat 10px fill was easy to lose against busy
+  // or similarly-toned backgrounds (see the ring added in
+  // cursor-mark.module.css for the other half of that fix).
+  default: { lerp: DEFAULT_LERP, size: 14 },
   button: { lerp: DEFAULT_LERP, size: 20, magneticPull: 0.2 },
   // The brand's primary purple CTA pills only - a bit bigger than a
   // regular button, white instead of purple, with a smiley face (see
@@ -14,8 +23,8 @@ export const CURSOR_VARIANTS: Record<CursorVariant, CursorVariantConfig> = {
   text: { lerp: DEFAULT_LERP, size: 7 },
   video: { lerp: DEFAULT_LERP, size: 92, label: "Play" },
   drag: { lerp: DEFAULT_LERP, size: 16 },
-  input: { lerp: DEFAULT_LERP, size: 10 },
-  none: { lerp: DEFAULT_LERP, size: 10 },
+  input: { lerp: DEFAULT_LERP, size: 14 },
+  none: { lerp: DEFAULT_LERP, size: 14 },
 };
 
 export const CLICK_SQUASH_SCALE = 0.7;

@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import type { QualifyOption, QualifyPayload, QualifyResponse } from "@/app/landing-page/qualify/types";
+import type { QualifyOption, QualifyPayload, QualifyResponse } from "@/app/qualify/types";
 
 // Never send to the browser: read server-side only, inside this route
 // handler, and never re-exported.
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const LEAD_INBOX = "info@nexdevsolutions.net";
-// Resend requires a verified sending domain for a custom "from" address.
-// Swap this to something on nexdevsolutions.net once that domain is
-// verified in the Resend dashboard.
-const FROM_ADDRESS = "NeXDev Solutions <onboarding@resend.dev>";
+// nexdevsolutions.net is verified in Resend as of Sep 2026 - this no
+// longer needs to be the onboarding@resend.dev sandbox address, which
+// could only ever deliver to the Resend account's own inbox, never to
+// LEAD_INBOX above. That's why no nurture email ever arrived before this.
+const FROM_ADDRESS = "NeXDev Solutions <notifications@nexdevsolutions.net>";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -60,11 +61,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  // Qualified leads give their contact info on the booking page - there
-  // is nothing to email here. A disqualified lead's first POST (the
-  // form completion, no email yet) sends nothing either, it just
-  // reports the verdict. Only the second POST, once they've actually
-  // submitted an email on the downsell screen, triggers a notification.
+  // A disqualified lead's first POST (the form completion, no email yet)
+  // sends nothing, it just reports the verdict - only the second POST,
+  // once they've actually submitted an email on the downsell screen,
+  // triggers this nurture notification.
   if (!qualified && hasEmail) {
     const summaryLines = [
       `Email: ${email}`,
@@ -90,6 +90,38 @@ export async function POST(request: Request) {
       }
     } else {
       console.error("RESEND_API_KEY is not set - nurture email was not sent.");
+    }
+  }
+
+  // Qualified leads give their contact info on the booking page, not
+  // here, so this is a heads-up notification only - no lead email to
+  // include yet. Unlike the nurture email above, a failed send here
+  // never fails the response: the visitor is already on their way to
+  // the calendar (see qualify/page.tsx), and a missed internal
+  // notification shouldn't block that.
+  if (qualified) {
+    const summaryLines = [
+      `Situation: ${situation?.label ?? "-"}`,
+      `Frustration: ${pain?.label ?? "-"}`,
+      `Desired outcome: ${desiredOutcome?.label ?? "-"}`,
+      `Readiness: ${readiness?.label ?? "-"}`,
+      `Status: Qualified, sent to book a call`,
+    ];
+
+    if (RESEND_API_KEY) {
+      try {
+        const resend = new Resend(RESEND_API_KEY);
+        await resend.emails.send({
+          from: FROM_ADDRESS,
+          to: LEAD_INBOX,
+          subject: "New lead - QUALIFIED",
+          text: summaryLines.join("\n"),
+        });
+      } catch (err) {
+        console.error("Failed to send qualified-lead email:", err);
+      }
+    } else {
+      console.error("RESEND_API_KEY is not set - qualified-lead email was not sent.");
     }
   }
 

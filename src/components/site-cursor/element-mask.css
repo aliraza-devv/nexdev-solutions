@@ -55,26 +55,10 @@
   color: #a89bff;
 }
 
-/* ---- Native cursor: only ever hidden while the mark is actually
-   visible and positioned (html.cursor-ready, toggled by useCursor.ts).
-   Real inputs and anything marked data-cursor="none" always win the
-   native cursor back; a range input gets its own so a slider never
-   fights a text caret. :focus-visible is never touched by any of
-   this, cursor:none only affects the pointer, not focus rendering. */
-html.cursor-ready,
-html.cursor-ready * {
-  cursor: none;
-}
-html.cursor-ready [data-cursor="none"],
-html.cursor-ready [data-cursor="none"] * {
-  cursor: auto !important;
-}
-html.cursor-ready [data-cursor="input"] {
-  cursor: auto !important;
-}
-html.cursor-ready input[data-cursor="input"][type="range"] {
-  cursor: ew-resize !important;
-}
+/* ---- Native cursor: by request, shown alongside the custom dot
+   rather than hidden by it - the dot is a trailing accent, not a
+   cursor replacement, so the browser's own arrow/pointer/text-caret
+   cursors are left completely alone everywhere. */
 
 /* ---- Reduced motion: the reveals still work, they just don't
    animate. A calmer art direction, not a dead page. */

@@ -1,5 +1,5 @@
 // Pure math and formatting for the "Conversion Impact Calculator" section
-// on /landing-page. No React, no side effects, safe to unit test in
+// on the homepage. No React, no side effects, safe to unit test in
 // isolation. The component that renders this only calls these functions,
 // it does not compute anything itself.
 

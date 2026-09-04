@@ -31,18 +31,31 @@
   background: #5c45fd;
   display: grid;
   place-items: center;
+  /* A flat fill with no edge disappears against anything close to its
+     own hue or brightness (dark sections, photos, video thumbnails).
+     A crisp light ring plus a soft dark contact-shadow gives it a
+     defined edge against both light and dark surfaces, and the outer
+     glow keeps the brand colour readable even where the ring alone
+     would blend in. */
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.9),
+    0 0 0 3px rgba(92, 69, 253, 0.3),
+    0 3px 10px -2px rgba(0, 0, 0, 0.5);
   transition:
     width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     margin 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     background 0.25s ease,
+    box-shadow 0.25s ease,
     opacity 0.25s ease;
 }
 
 .dot[data-variant="card"],
 .dot[data-variant="video"] {
   background: rgba(92, 69, 253, 0.94);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.4),
+    0 8px 24px -8px rgba(0, 0, 0, 0.55);
 }
 
 /* Brand purple CTA pills: white dot instead of purple, with the

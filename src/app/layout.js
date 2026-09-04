@@ -23,7 +23,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      {/* font-sans/bg-white/text/min-h-screen/antialiased carried over from
+          the old landing-page/layout.tsx now that its page lives here as
+          the real root - inter.className already applies the actual Inter
+          font, so no second font instantiation is needed. */}
+      <body
+        className={`${inter.className} font-sans bg-white text-[#0A0A0E] min-h-screen w-full antialiased`}
+      >
         <SmoothScroll>{children}</SmoothScroll>
         <Cursor />
         <Analytics />
