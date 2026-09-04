@@ -145,7 +145,7 @@ export default function Hero() {
 
             <h1
               data-cursor="text"
-              className="text-[40px] xs:text-[46px] sm:text-[50px] md:text-[50px] lg:text-[50px] xl:text-[56px] 2xl:text-[64px] leading-[1.1] font-medium tracking-tight text-[#0A0A0E]"
+              className="text-[50px] xl:text-[56px] 2xl:text-[64px] leading-[1.1] font-medium tracking-tight text-[#0A0A0E]"
               style={{ fontFamily: "Arial, sans-serif" }}
             >
               <span className="block overflow-hidden pb-1">

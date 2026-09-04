@@ -117,10 +117,10 @@ export default function FinalCTA({
               hidden: {},
               visible: { transition: { staggerChildren: 0.08 } },
             }}
-            className="tracking-tighter text-white max-w-5xl font-medium text-center"
+            className="tracking-tighter text-white max-w-2xl font-medium text-center"
             style={{
               fontFamily: primaryFont,
-              fontSize: "clamp(36px, 6.2vw, 64px)",
+              fontSize: "clamp(48px, 8vw, 64px)",
               lineHeight: "1.1",
             }}
           >
@@ -149,10 +149,10 @@ export default function FinalCTA({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className="tracking-tighter text-white max-w-5xl font-medium text-center block md:hidden"
+              className="tracking-tighter text-white max-w-2xl font-medium text-center block md:hidden"
               style={{
                 fontFamily: primaryFont,
-                fontSize: "clamp(36px, 6.2vw, 64px)",
+                fontSize: "clamp(48px, 8vw, 64px)",
                 lineHeight: "1.1",
               }}
             >
@@ -190,10 +190,10 @@ export default function FinalCTA({
                   },
                 },
               }}
-              className="tracking-tighter text-white max-w-5xl font-medium text-center hidden md:block"
+              className="tracking-tighter text-white max-w-2xl font-medium text-center hidden md:block"
               style={{
                 fontFamily: primaryFont,
-                fontSize: "clamp(36px, 6.2vw, 64px)",
+                fontSize: "clamp(48px, 8vw, 64px)",
                 lineHeight: "1.1",
               }}
             >

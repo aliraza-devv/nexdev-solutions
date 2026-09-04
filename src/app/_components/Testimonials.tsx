@@ -13,6 +13,7 @@ const videoTestimonials = [
     quote:
       "We chose NeXDev because of their modern sophisticated approach to design and conversion. And we couldn't be happier. We highly recommend NeXDev for all your website & software development needs.",
     videoUrl: "/assets/TESTIMONIALS/Testimonial-1.mp4",
+    poster: "/assets/TESTIMONIALS/posters/testimonial-1.webp",
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const videoTestimonials = [
     quote:
       "I have been working with Ali & NeXDev and they go beyond for the clients needs and also very responsive. I definately recommend them for design & development.",
     videoUrl: "/assets/TESTIMONIALS/Testimonial-2.MP4",
+    poster: "/assets/TESTIMONIALS/posters/testimonial-2.webp",
   },
   {
     id: 2.1,
@@ -29,6 +31,7 @@ const videoTestimonials = [
     quote:
       "It has been amazing experience working with NeXDev. What's great is the at speed they work and results. In first month we spent $1K on ads and generated $26K in revenue with 26X ROAS, the results I have never seen before. And we've using their services as a white-label service. So far it's working well for us & our clients.",
     videoUrl: "/assets/TESTIMONIALS/Saddam.mp4",
+    poster: "/assets/TESTIMONIALS/posters/saddam.webp",
   },
   {
     id: 4,
@@ -37,6 +40,7 @@ const videoTestimonials = [
     quote:
       "Best part was they were super responsive and the efforts to make sure the client is always satisfied. He made sure out of the ways for us to get the best results.",
     videoUrl: "/assets/TESTIMONIALS/Hamna.mp4",
+    poster: "/assets/TESTIMONIALS/posters/hamna.webp",
   },
 ];
 
@@ -333,6 +337,7 @@ export default function Testimonials() {
                         {v.videoUrl ? (
                           <video
                             src={v.videoUrl}
+                            poster={v.poster}
                             preload="metadata"
                             muted
                             playsInline
@@ -495,6 +500,7 @@ export default function Testimonials() {
                   {videoItem.videoUrl ? (
                     <video
                       src={videoItem.videoUrl}
+                      poster={videoItem.poster}
                       controls
                       autoPlay
                       playsInline
