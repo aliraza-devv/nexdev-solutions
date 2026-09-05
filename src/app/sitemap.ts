@@ -16,10 +16,11 @@ const SITE_ROUTES = [
   "/case-studies/case-study-reality-cheque-funnel",
   "/case-studies/case-study-smarterform",
   "/case-studies/case-study-thehdds",
-  // case-study-the-we-one, case-study-innvente, and case-study-the-scaleup-lab
-  // are temporarily excluded - those 3 pages redirect back to /case-studies
-  // while their copy is being revised (see each page.tsx's own comment).
-  // Add them back once that redirect is removed.
+  "/case-studies/case-study-clenvia",
+  "/case-studies/case-study-shevat-vitamins",
+  "/case-studies/case-study-the-we-one",
+  "/case-studies/case-study-innvente",
+  "/case-studies/case-study-the-scaleup-lab",
   "/contact",
   "/sync-method",
   "/sync-method-3d",

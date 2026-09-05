@@ -170,12 +170,12 @@ export default function TermsContent() {
               <br />
               Website:{" "}
               <a
-                href="https://www.nexdevsolutions.net"
+                href="https://nexdevsolutions.net"
                 className="text-[#5C45FD] hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                https://www.nexdevsolutions.net
+                https://nexdevsolutions.net
               </a>
             </P>
 

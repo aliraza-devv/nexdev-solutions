@@ -5,8 +5,8 @@ export const CASE_STUDY: CaseStudyData = {
   client: "Innvente",
   heroEyebrow: "Case Study · Innvente · Y Combinator-Trusted Dev Agency",
   headline:
-    "$127 per qualified founder lead from Meta ads for a Y Combinator-trusted dev agency.",
-  heroStat: "$127 per qualified lead and a 71% show rate on Meta ad traffic",
+    "$63 per qualified founder lead from Meta ads for a Y Combinator-trusted dev agency.",
+  heroStat: "$63 per qualified lead and a 71% show rate on Meta ad traffic",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
@@ -16,13 +16,12 @@ export const CASE_STUDY: CaseStudyData = {
   meta: {
     year: "",
     timeline: "2 Weeks",
-    industry: "Rapid MVP Development / Venture-Backed Startups",
+    industry: "Rapid MVP Development",
     services: [
       "SYNC Audit",
-      "Landing Page Design",
+      "Design",
       "Lead Qualification Funnel",
       "Next.js Development",
-      "Booking Flow Optimization",
     ],
   },
   resultsAtLaunchEyebrow: "FIRST 30 DAYS",
@@ -30,22 +29,7 @@ export const CASE_STUDY: CaseStudyData = {
     {
       label: "cost per qualified lead",
       from: "$310",
-      to: "$127",
-    },
-    {
-      label: "click-through from landing page to qualifier",
-      from: "0%",
-      to: "58%",
-    },
-    {
-      label: "form completion rate",
-      from: "0%",
-      to: "73%",
-    },
-    {
-      label: "of completions were qualified funded founders",
-      from: "0%",
-      to: "44%",
+      to: "$63",
     },
     {
       label: "show rate on booked calls",
@@ -53,7 +37,8 @@ export const CASE_STUDY: CaseStudyData = {
       to: "71%",
     },
     {
-      label: "Average deal size from funnel leads: $52K",
+      label:
+        "Funnel leads converting into noticeably larger deals than average",
       qualitative: true,
     },
   ],
@@ -84,7 +69,8 @@ export const CASE_STUDY: CaseStudyData = {
       },
     ],
   },
-  approachHeader: "Three pages, one job: only funded founders reach the calendar.",
+  approachHeader:
+    "Three pages, one job: only funded founders reach the calendar.",
   approach: [
     {
       title: "A Dedicated Landing Page on offer.innvente.com",
@@ -105,7 +91,8 @@ export const CASE_STUDY: CaseStudyData = {
       image: "/assets/case-studies/Innvente-approach-3.webp",
     },
   ],
-  approachPlusLine: "Built on Next.js and hosted on Vercel, from brief to live in 2 weeks.",
+  approachPlusLine:
+    "Built on Next.js and hosted on Vercel, from brief to live in 2 weeks.",
   turningPoint: {
     header: "We built the filter before the calendar.",
     body: [
@@ -121,7 +108,8 @@ export const CASE_STUDY: CaseStudyData = {
     secondary: "Get a free CRO audit",
   },
   finalCta: {
-    headline: "Running ads to funded founders? Filter them before your calendar does.",
+    headline:
+      "Running ads to funded founders? Filter them before your calendar does.",
     subline:
       "30 minutes. No pitch. Just a clear look at how a qualification step protects your team's time and your close rate.",
   },

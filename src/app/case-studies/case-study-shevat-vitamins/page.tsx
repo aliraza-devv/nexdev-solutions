@@ -6,8 +6,8 @@ const title = `${CASE_STUDY.client} Case Study | ${CASE_STUDY.agencyName}`;
 const metricsLead = CASE_STUDY.metrics
   .map((m) => ("change" in m && m.change ? `${m.label} ${m.change}` : m.label))
   .join(", ");
-const description = `${metricsLead}. How we rebuilt ${CASE_STUDY.client}'s site into a conversion engine in ${CASE_STUDY.meta.timeline}.`;
-const path = "/case-studies/case-study-the-we-one";
+const description = `${metricsLead}. How we launched ${CASE_STUDY.client}'s Shopify store from scratch.`;
+const path = "/case-studies/case-study-shevat-vitamins";
 
 export const metadata: Metadata = {
   title,

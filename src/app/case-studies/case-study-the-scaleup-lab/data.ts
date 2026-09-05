@@ -3,9 +3,11 @@ import type { CaseStudyData } from "../_components/types";
 export const CASE_STUDY: CaseStudyData = {
   agencyName: "NeXDev Solutions",
   client: "The Scaleup Lab",
-  heroEyebrow: "Case Study · The Scaleup Lab · Crowdfunding Launch Agency Funnel",
+  heroEyebrow:
+    "Case Study · The Scaleup Lab · Crowdfunding Launch Agency Funnel",
   headline: "47% of Meta ad leads qualified as launch-ready product founders.",
-  heroStat: "47% qualified lead rate and $89 cost per qualified lead from cold Meta traffic",
+  heroStat:
+    "47% qualified lead rate and $89 cost per qualified lead from cold Meta traffic",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
@@ -15,13 +17,12 @@ export const CASE_STUDY: CaseStudyData = {
   meta: {
     year: "",
     timeline: "2 Weeks",
-    industry: "Crowdfunding Launch Agency / Physical Product Founders",
+    industry: "Crowdfunding Launch Agency",
     services: [
       "SYNC Audit",
-      "Landing Page Design",
+      "Design",
       "Lead Qualification Funnel",
       "Webflow Development",
-      "Booking Flow Optimization",
     ],
   },
   resultsAtLaunchEyebrow: "FIRST 45 DAYS",
@@ -32,27 +33,12 @@ export const CASE_STUDY: CaseStudyData = {
       to: "34%",
     },
     {
-      label: "form completion rate",
-      from: "0%",
-      to: "62%",
-    },
-    {
-      label: "of completions were qualified launch-ready founders",
-      from: "0%",
-      to: "47%",
-    },
-    {
-      label: "show rate on booked strategy calls",
-      from: "0%",
-      to: "68%",
-    },
-    {
       label: "cost per qualified lead",
       from: "$210",
       to: "$89",
     },
     {
-      label: "3 partnerships closed from the first 45 days of funnel traffic",
+      label: "New partnerships closed directly from funnel traffic within the first 45 days",
       qualitative: true,
     },
   ],
@@ -83,7 +69,8 @@ export const CASE_STUDY: CaseStudyData = {
       },
     ],
   },
-  approachHeader: "Four pages, one job: only launch-ready founders reach the calendar.",
+  approachHeader:
+    "Four pages, one job: only launch-ready founders reach the calendar.",
   approach: [
     {
       title: "A Dedicated Offer Page on thescaleuplab.com/offer",
@@ -126,7 +113,8 @@ export const CASE_STUDY: CaseStudyData = {
     secondary: "Get a free CRO audit",
   },
   finalCta: {
-    headline: "Running ads to founders who are not ready? Filter them before your calendar does.",
+    headline:
+      "Running ads to founders who are not ready? Filter them before your calendar does.",
     subline:
       "30 minutes. No pitch. Just a clear look at how a qualification step protects your pipeline and your close rate.",
   },

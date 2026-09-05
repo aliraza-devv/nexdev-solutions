@@ -11,8 +11,8 @@ const partners = [
   { logo: "/assets/partner-4.png", name: "Bamper", metric: "60 days", label: "Sold-out" },
   { logo: "/assets/partner-5.png", name: "The Elemental Shop", metric: "+147%", label: "Leads" },
   { logo: "/assets/partner-6.png", name: "Partner logo", metric: "+83%", label: "Growth" },
-  { logo: "/assets/partner-7.svg", name: "Clenvia", metric: "+57%", label: "Conversion" },
-  { logo: "/assets/partner-8.png", name: "Shevat Vitamins", metric: "+51.3%", label: "Conversion" },
+  { logo: "/assets/partner-7.svg", name: "Clenvia", metric: "3.8%", label: "Store CVR" },
+  { logo: "/assets/partner-8.png", name: "Shevat Vitamins", metric: "4.1%", label: "Store CVR" },
 ];
 
 export default function LogosStrip() {

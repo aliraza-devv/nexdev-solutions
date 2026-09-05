@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 import { CASE_STUDY } from "./data";
 import CaseStudyTemplate from "../_components/CaseStudyTemplate";
 
@@ -19,13 +18,6 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  // Temporary: copy on this page is being revised - marked "Coming Soon"
-  // on the case studies index (see that page's comingSoon flag), and
-  // this stops the page itself from being reachable by a direct URL
-  // visit too. Remove this one line to bring the real page back once
-  // the copy is ready; nothing else here changed.
-  redirect("/case-studies");
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",

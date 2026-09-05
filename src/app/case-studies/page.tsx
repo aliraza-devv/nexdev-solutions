@@ -102,20 +102,18 @@ const caseStudies: CaseStudy[] = [
     ],
     href: '/case-studies/case-study-the-we-one',
     image: '/assets/case-studies/TheWeOne-approach-1.webp',
-    comingSoon: true,
   },
   {
     client: 'Innvente',
     industry: 'Service Business',
-    title: '$127 per qualified founder lead for a Y Combinator-trusted dev agency',
+    title: '$63 per qualified founder lead for a Y Combinator-trusted dev agency',
     desc: 'A qualification funnel that turned cold ad traffic into discovery calls with funded founders.',
     results: [
-      { value: '$127', label: 'Cost Per Qualified Lead' },
+      { value: '$63', label: 'Cost Per Qualified Lead' },
       { value: '71%', label: 'Show Rate' },
     ],
     href: '/case-studies/case-study-innvente',
     image: '/assets/case-studies/Innvente-approach-1.webp',
-    comingSoon: true,
   },
   {
     client: 'The Scaleup Lab',
@@ -128,7 +126,28 @@ const caseStudies: CaseStudy[] = [
     ],
     href: '/case-studies/case-study-the-scaleup-lab',
     image: '/assets/case-studies/TheScaleupLab-approach-1.webp',
-    comingSoon: true,
+  },
+  {
+    client: 'Clenvia',
+    industry: 'E-commerce',
+    title: "A supplement brand's Shopify store, built from scratch",
+    desc: 'A multi-category supplement brand with no existing store. We built their Shopify presence engineered to convert from launch day.',
+    results: [
+      { value: '3.8%', label: 'Store Conversion Rate' },
+      { value: '$142K', label: 'First 90 Days Revenue' },
+    ],
+    href: '/case-studies/case-study-clenvia',
+  },
+  {
+    client: 'Shevat Vitamins',
+    industry: 'E-commerce',
+    title: "A pet-wellness brand's Shopify store, built from scratch",
+    desc: 'Vet-formulated products for five animal categories with no store to sell them from. We built their Shopify presence from the ground up.',
+    results: [
+      { value: '4.1%', label: 'Store Conversion Rate' },
+      { value: '$118K', label: 'First 90 Days Revenue' },
+    ],
+    href: '/case-studies/case-study-shevat-vitamins',
   },
 ];
 

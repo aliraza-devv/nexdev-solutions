@@ -34,6 +34,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 import {
+  ArrowLeft,
   ArrowRight,
   TrendingUp,
   MousePointerClick,
@@ -332,6 +333,19 @@ function MetaItem({ label, value }: { label: string; value: string }) {
 function Hero({ data }: { data: CaseStudyData }) {
   return (
     <section className="relative bg-white px-6 pb-16 pt-32 md:px-10 md:pt-40">
+      {data.backLink && (
+        <div className="mx-auto mb-6 max-w-[900px]">
+          <Reveal>
+            <a
+              href={data.backLink.href}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition-colors hover:text-[#5C45FD]"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              {data.backLink.label}
+            </a>
+          </Reveal>
+        </div>
+      )}
       <div className="mx-auto max-w-[900px] text-center">
         <Reveal>
           <Eyebrow>{data.heroEyebrow ?? data.client}</Eyebrow>
@@ -684,6 +698,8 @@ function TurningPoint({ data }: { data: CaseStudyData }) {
   if (!data.turningPoint) return null;
   const [problem, ...rest] = data.turningPoint.body;
   const insight = rest.join(" ");
+  const problemLabel = data.turningPoint.problemLabel ?? "The Problem";
+  const insightLabel = data.turningPoint.insightLabel ?? "The Turning Point";
 
   const cardBase: React.CSSProperties = {
     background: "#ffffff",
@@ -711,7 +727,7 @@ function TurningPoint({ data }: { data: CaseStudyData }) {
                   style={{ fontFamily: TURNING_POINT_MONO }}
                 >
                   <AlertTriangle className="h-3 w-3" strokeWidth={2.5} />
-                  The Problem
+                  {problemLabel}
                 </span>
                 <p className="mt-4 text-[15px] leading-[1.6] text-[#5A5A6E]">{problem}</p>
               </div>
@@ -724,7 +740,7 @@ function TurningPoint({ data }: { data: CaseStudyData }) {
                   style={{ fontFamily: TURNING_POINT_MONO }}
                 >
                   <Sparkles className="h-3 w-3" strokeWidth={2.5} />
-                  The Turning Point
+                  {insightLabel}
                 </span>
                 <p
                   className="mt-4 font-bold leading-snug text-[#161616]"

@@ -39,6 +39,9 @@ export type MetricItem =
 export interface CaseStudyData {
   agencyName: string;
   client: string;
+  // Optional back-to-index link shown above the hero. Omit to keep earlier
+  // case studies rendering exactly as before.
+  backLink?: { href: string; label: string };
   // Text shown in the hero's pill eyebrow above the H1. Optional - falls
   // back to plain `client` when omitted, which is how the earlier case
   // studies (no eyebrow field set) keep rendering unchanged.
@@ -87,6 +90,11 @@ export interface CaseStudyData {
   turningPoint?: {
     header: string;
     body: string[];
+    // Panel labels default to "The Problem" / "The Turning Point" - override
+    // for a from-scratch case study with no prior state to contrast against
+    // (e.g. "The Risk" / "What We Built").
+    problemLabel?: string;
+    insightLabel?: string;
   };
   // "Sustained" results tier - plain stat strip.
   results: {

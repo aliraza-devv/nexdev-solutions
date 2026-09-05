@@ -15,13 +15,12 @@ export const CASE_STUDY: CaseStudyData = {
   meta: {
     year: "",
     timeline: "3 Weeks",
-    industry: "Amazon Growth Agency / E-commerce Services",
+    industry: "Amazon Growth Agency",
     services: [
       "SYNC Audit",
-      "Landing Page Design",
+      "Design",
       "Lead Qualification Funnel",
-      "WordPress + Elementor Development",
-      "Booking Flow Optimization",
+      "WordPress Development",
     ],
   },
   resultsAtLaunchEyebrow: "FIRST 30 DAYS",
@@ -32,24 +31,8 @@ export const CASE_STUDY: CaseStudyData = {
       to: "42%",
     },
     {
-      label: "of form starts completed the qualifier",
-      from: "0%",
-      to: "68%",
-    },
-    {
-      label: "show rate",
-      from: "51%",
-      to: "74%",
-    },
-    {
-      label: "of booked calls were with brands at $10K or above monthly revenue",
-      from: "0%",
-      to: "81%",
-    },
-    {
-      label: "cost per qualified lead",
-      from: "$74",
-      to: "$38",
+      label: "A cost per qualified lead low enough to justify scaling the ad budget",
+      qualitative: true,
     },
   ],
   context: [
@@ -106,7 +89,8 @@ export const CASE_STUDY: CaseStudyData = {
       image: "/assets/case-studies/TheWeOne-approach-4.webp",
     },
   ],
-  approachPlusLine: "Built on WordPress with Elementor, from brief to live in 3 weeks.",
+  approachPlusLine:
+    "Built on WordPress with Elementor, from brief to live in 3 weeks.",
   turningPoint: {
     header: "We built the filter before the calendar.",
     body: [
