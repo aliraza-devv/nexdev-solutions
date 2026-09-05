@@ -28,11 +28,6 @@ export const CASE_STUDY: CaseStudyData = {
   resultsAtLaunchEyebrow: "FIRST 45 DAYS",
   metrics: [
     {
-      label: "click-through from landing page to application form",
-      from: "0%",
-      to: "34%",
-    },
-    {
       label: "cost per qualified lead",
       from: "$210",
       to: "$89",

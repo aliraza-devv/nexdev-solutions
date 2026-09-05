@@ -98,7 +98,6 @@ const caseStudies: CaseStudy[] = [
     desc: 'A four-page funnel that filters cold Meta traffic before it ever reaches the sales calendar.',
     results: [
       { value: '42%', label: 'Qualified Lead Rate' },
-      { value: '74%', label: 'Show Rate' },
     ],
     href: '/case-studies/case-study-the-we-one',
     image: '/assets/case-studies/TheWeOne-approach-1.webp',
@@ -118,10 +117,9 @@ const caseStudies: CaseStudy[] = [
   {
     client: 'The Scaleup Lab',
     industry: 'Service Business',
-    title: '47% of Meta ad leads qualified as launch-ready product founders',
+    title: '$89 cost per qualified lead for a crowdfunding launch agency',
     desc: 'A crowdfunding launch agency needed a funnel that separated real product founders from idea-stage browsers. We built a landing page and qualifier that cut their cost per qualified lead by more than half.',
     results: [
-      { value: '47%', label: 'Qualified Lead Rate' },
       { value: '$89', label: 'Cost Per Qualified Lead' },
     ],
     href: '/case-studies/case-study-the-scaleup-lab',

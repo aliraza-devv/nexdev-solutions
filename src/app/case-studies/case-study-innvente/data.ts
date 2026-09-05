@@ -5,7 +5,7 @@ export const CASE_STUDY: CaseStudyData = {
   client: "Innvente",
   heroEyebrow: "Case Study · Innvente · Y Combinator-Trusted Dev Agency",
   headline:
-    "$63 per qualified founder lead from Meta ads for a Y Combinator-trusted dev agency.",
+    "$63npm run dev per qualified founder lead from Meta ads for a Y Combinator-trusted dev agency.",
   heroStat: "$63 per qualified lead and a 71% show rate on Meta ad traffic",
   heroCtaMicrocopy:
     "30 minutes. We'll show you what's costing you conversions. No pitch.",

@@ -96,35 +96,6 @@ const cases: CaseStudyCard[] = [
     href: "/case-studies/case-study-reality-cheque-funnel",
     image: "/assets/case-studies/RealityChequeDFY-case-study.webp",
   },
-  {
-    brand: "Clenvia",
-    heading: (
-      <>
-        <span className={HEADING_HIGHLIGHT}>3.8%</span> conversion rate for a supplement brand we launched from
-        scratch
-      </>
-    ),
-    desc: "Clenvia had the products, the certifications, and the manufacturing, but no store. We built their Shopify presence from the ground up across health, skincare, and pet care, engineered to convert from launch day.",
-    results: [
-      { value: "3.8%", label: "Store conversion rate", context: "From launch" },
-      { value: "$142K", label: "In first 90 days", context: "First quarter live" },
-    ],
-    href: "/case-studies/case-study-clenvia",
-  },
-  {
-    brand: "Shevat Vitamins",
-    heading: (
-      <>
-        <span className={HEADING_HIGHLIGHT}>4.1%</span> conversion rate for a pet-wellness store built from scratch
-      </>
-    ),
-    desc: "Shevat Vitamins had vet-formulated products for five different animals but no store to sell them. We built their Shopify presence from scratch around pet-first navigation and trust, converting from day one.",
-    results: [
-      { value: "4.1%", label: "Store conversion rate", context: "From launch" },
-      { value: "$118K", label: "In first 90 days", context: "First quarter live" },
-    ],
-    href: "/case-studies/case-study-shevat-vitamins",
-  },
 ];
 
 // Parses a formatted metric ("51.12%", "60 Days", "26X") into the

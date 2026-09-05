@@ -97,6 +97,7 @@ const MockupRow = ({
               fill
               className="object-cover"
               sizes="(max-width: 768px) 230px, 300px"
+              priority={i < 3}
             />
           </div>
         ))}
