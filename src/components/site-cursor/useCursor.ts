@@ -254,19 +254,6 @@ export function useCursor() {
       dotLayer!.style.transform = `translate3d(${dotPos.current.x}px, ${dotPos.current.y}px, 0)`;
       dot!.style.setProperty("--dot-size", `${dotSize.current.toFixed(1)}px`);
 
-      // Card tilt: applied to the hovered element itself (never the
-      // cursor), capped at 4deg per axis. This element isn't Framer
-      // Motion controlled, so writing its transform directly can't
-      // fight an animated scale/opacity owned elsewhere. Clearing on
-      // leave happens in applyVariant/clearElementVars, not here.
-      if (currentVariant === "card" && hoveredEl.current && hoveredRect.current) {
-        const rect = hoveredRect.current;
-        const relX = (pointer.current.x - rect.left) / rect.width - 0.5;
-        const relY = (pointer.current.y - rect.top) / rect.height - 0.5;
-        const maxTiltDeg = 4;
-        hoveredEl.current.style.transform = `perspective(700px) rotateX(${(-relY * maxTiltDeg).toFixed(2)}deg) rotateY(${(relX * maxTiltDeg).toFixed(2)}deg)`;
-      }
-
       // Magnetic button: the button itself drifts toward the pointer,
       // not just the cursor dot toward the button - that's what makes
       // it read as an actual magnetic pull instead of a cursor trick.

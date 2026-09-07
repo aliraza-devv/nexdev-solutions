@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -31,6 +31,7 @@ type DownsellStatus = "idle" | "sending" | "sent" | "error";
 export default function QualifyPage() {
   const router = useRouter();
   const reduceMotion = useReducedMotion();
+  const emailInputRef = useRef<HTMLInputElement>(null);
   const [step, setStep] = useState(0);
   const [honeypot, setHoneypot] = useState("");
   const [selections, setSelections] = useState<QualifySelections>({
@@ -122,6 +123,19 @@ export default function QualifyPage() {
       console.error("Downsell submit failed:", err);
       setDownsellStatus("error");
     }
+  }
+
+  // "Just send me the free checklist" is the same underlying action as
+  // "Send me the details", the PDF only ever goes out by email, there is
+  // no separate no-email download. If an email is already typed in, this
+  // sends it straight away; otherwise it just focuses that field so the
+  // visitor knows where to type it, rather than doing nothing.
+  function handleChecklistClick() {
+    if (downsellEmailValid) {
+      submitDownsell();
+      return;
+    }
+    emailInputRef.current?.focus();
   }
 
   function handleNext() {
@@ -260,6 +274,7 @@ export default function QualifyPage() {
                   }}
                 >
                   <input
+                    ref={emailInputRef}
                     type="email"
                     className={styles.input}
                     placeholder="Your best email"
@@ -300,7 +315,16 @@ export default function QualifyPage() {
                 </form>
               )}
 
-              <span className={styles.alt}>Just send me the free checklist</span>
+              {downsellStatus !== "sent" && (
+                <button
+                  type="button"
+                  className={styles.alt}
+                  onClick={handleChecklistClick}
+                  disabled={downsellStatus === "sending"}
+                >
+                  Just send me the free checklist
+                </button>
+              )}
             </div>
           )}
         </div>

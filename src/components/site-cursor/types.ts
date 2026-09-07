@@ -6,6 +6,7 @@
 export type CursorVariant =
   | "default"
   | "button"
+  | "tab"
   | "cta"
   | "card"
   | "text"

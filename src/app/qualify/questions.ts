@@ -9,11 +9,12 @@ interface OptionQuestion {
   options: QualifyOption[];
 }
 
-// The readiness question doubles as the budget signal - "Fix it" and
-// "see the plan first" are the $500+ leads (serious or evaluating).
-// "Tight budget" and "just exploring" are the under-$500 segment. No
-// dollar amount is ever asked directly - this reads intent instead of
-// a number, so it feels like the start of a conversation, not a gate.
+// The readiness question doubles as the budget signal - "Fix it", "see
+// the plan first", and "tight budget" all qualify, they just carry
+// different budget expectations. Only "just exploring" signals no real
+// intent yet. No dollar amount is ever asked directly - this reads
+// intent instead of a number, so it feels like the start of a
+// conversation, not a gate.
 export const OPTION_QUESTIONS: OptionQuestion[] = [
   {
     key: "situation",

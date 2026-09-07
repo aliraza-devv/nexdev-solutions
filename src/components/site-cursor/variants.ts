@@ -14,6 +14,10 @@ export const CURSOR_VARIANTS: Record<CursorVariant, CursorVariantConfig> = {
   // cursor-mark.module.css for the other half of that fix).
   default: { lerp: DEFAULT_LERP, size: 14 },
   button: { lerp: DEFAULT_LERP, size: 20, magneticPull: 0.2 },
+  // Same size and lerp as "button" but no magnetic pull or self-drift -
+  // for tab-style toggles and inline text links, where a button pulling
+  // the pointer toward its center reads as a glitch, not a button.
+  tab: { lerp: DEFAULT_LERP, size: 20 },
   // The brand's primary purple CTA pills only - a bit bigger than a
   // regular button, white instead of purple, with a smiley face (see
   // cursor-mark.module.css/.face in Cursor.tsx). No magnetic pull, by

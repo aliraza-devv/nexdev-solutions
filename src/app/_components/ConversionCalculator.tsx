@@ -30,6 +30,7 @@ import {
   BUSINESS_TYPE_ORDER,
   CURRENCY_ORDER,
   calculateConversionImpact,
+  calculateScratchProjection,
   formatCappedCurrency,
   formatCurrency,
   formatPercent,
@@ -37,7 +38,11 @@ import {
   type CalculatorInput,
   type CalculatorResult,
   type CurrencyCode,
+  type ScratchInput,
+  type ScratchResult,
 } from "@/lib/conversion-calculator";
+
+type CalculatorMode = "have-website" | "scratch";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const CALC_DEBOUNCE_MS = 150;
@@ -139,6 +144,7 @@ function RangeField({
   disabled = false,
   inputPrefix,
   labelRight,
+  helperText,
 }: {
   label: string;
   ariaLabel: string;
@@ -153,6 +159,7 @@ function RangeField({
   disabled?: boolean;
   inputPrefix?: string;
   labelRight?: React.ReactNode;
+  helperText?: string;
 }) {
   const [numberText, setNumberText] = useState(String(value));
   const debounceRef = useRef<number | null>(null);
@@ -227,6 +234,9 @@ function RangeField({
         data-cursor="input"
         className={styles.range}
       />
+      {helperText && (
+        <p className="mt-2.5 text-[12.5px] leading-relaxed text-white/[0.38]">{helperText}</p>
+      )}
     </div>
   );
 }
@@ -280,6 +290,7 @@ export default function ConversionCalculator() {
   const sectionRef = useRef<HTMLElement>(null);
   const isSectionInView = useInView(sectionRef, { margin: "-20% 0px -20% 0px" });
 
+  const [mode, setMode] = useState<CalculatorMode>("have-website");
   const [businessType, setBusinessType] = useState<BusinessType>("service");
   const [visitors, setVisitors] = useState(5000);
   const [avgValue, setAvgValue] = useState(BUSINESS_TYPES.service.defaultAvgValue);
@@ -300,6 +311,16 @@ export default function ConversionCalculator() {
   );
 
   const result: CalculatorResult = useMemo(() => calculateConversionImpact(input), [input]);
+
+  const scratchInput: ScratchInput = useMemo(
+    () => ({ businessType, visitors, avgValue }),
+    [businessType, visitors, avgValue],
+  );
+
+  const scratchResult: ScratchResult = useMemo(
+    () => calculateScratchProjection(scratchInput),
+    [scratchInput],
+  );
 
   // Tracks analytics from the interaction handlers directly, not from a
   // useEffect watching derived state: an effect fires on mount (and, in
@@ -364,8 +385,17 @@ export default function ConversionCalculator() {
     trackInteraction({ ...input, currency: code });
   };
 
+  const handleModeChange = (next: CalculatorMode) => {
+    setMode(next);
+    track("calculator_mode_change", { mode: next });
+  };
+
   const handleCtaClick = () => {
-    track("calculator_cta_click", { ...input, additionalRevenueLow: result.additionalRevenueLow });
+    if (mode === "scratch") {
+      track("calculator_cta_click", { ...scratchInput, mode, projectedRevenue: scratchResult.revenue });
+    } else {
+      track("calculator_cta_click", { ...input, mode, additionalRevenueLow: result.additionalRevenueLow });
+    }
   };
 
   const handleToggleDetail = () => {
@@ -373,6 +403,7 @@ export default function ConversionCalculator() {
   };
 
   const animatedAdditionalLow = useAnimatedNumber(result.additionalRevenueLow);
+  const animatedScratchRevenue = useAnimatedNumber(scratchResult.revenue);
 
   const bigNumberText = result.isEmpty
     ? formatCurrency(0, currency)
@@ -382,16 +413,36 @@ export default function ConversionCalculator() {
         currency,
       );
 
+  const scratchBigNumberText = scratchResult.isEmpty
+    ? formatCurrency(0, currency)
+    : formatCappedCurrency(
+        Math.round(animatedScratchRevenue),
+        scratchResult.revenueCapped,
+        currency,
+      );
+
   // Debounced plain-text summary for the aria-live region, so screen
   // readers announce the settled result rather than every drag frame.
-  const liveSummary = result.isEmpty
-    ? "Move a slider to see your numbers."
-    : `Left on the table, every month: at least ${formatCappedCurrency(
-        result.additionalRevenueLow,
-        result.additionalRevenueLowCapped,
-        currency,
-      )}.`;
+  // Scratch mode never mentions a loss or a "left on the table" figure,
+  // it always announces the projection.
+  const liveSummary =
+    mode === "scratch"
+      ? scratchResult.isEmpty
+        ? "Move a slider to see your projection."
+        : `Projected revenue, every month: ${formatCappedCurrency(
+            scratchResult.revenue,
+            scratchResult.revenueCapped,
+            currency,
+          )}.`
+      : result.isEmpty
+        ? "Move a slider to see your numbers."
+        : `Left on the table, every month: at least ${formatCappedCurrency(
+            result.additionalRevenueLow,
+            result.additionalRevenueLowCapped,
+            currency,
+          )}.`;
   const debouncedLiveSummary = useDebouncedValue(liveSummary, LIVE_SUMMARY_DEBOUNCE_MS);
+  const isCurrentEmpty = mode === "scratch" ? scratchResult.isEmpty : result.isEmpty;
 
   const gapScaleMax = Math.max(result.projectedRevenueLow, result.currentRevenue, 1);
   const todayWidthPct = clamp((result.currentRevenue / gapScaleMax) * 100, 0, 100);
@@ -437,9 +488,11 @@ export default function ConversionCalculator() {
               data-cursor="text"
               data-cursor-on-dark=""
               data-text={
-                result.isEmpty || !result.isAboveBenchmark
-                  ? "Your traffic is worth"
-                  : "You're converting well."
+                mode === "scratch"
+                  ? "See what a site built right"
+                  : result.isEmpty || !result.isAboveBenchmark
+                    ? "Your traffic is worth"
+                    : "You're converting well."
               }
             >
               <motion.span
@@ -449,9 +502,11 @@ export default function ConversionCalculator() {
                   visible: { y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
                 }}
               >
-                {result.isEmpty || !result.isAboveBenchmark
-                  ? "Your traffic is worth"
-                  : "You're converting well."}
+                {mode === "scratch"
+                  ? "See what a site built right"
+                  : result.isEmpty || !result.isAboveBenchmark
+                    ? "Your traffic is worth"
+                    : "You're converting well."}
               </motion.span>
             </span>
             <span
@@ -459,9 +514,11 @@ export default function ConversionCalculator() {
               data-cursor="text"
               data-cursor-on-dark=""
               data-text={
-                result.isEmpty || !result.isAboveBenchmark
-                  ? "more than it pays you."
-                  : "The upside is what's next."
+                mode === "scratch"
+                  ? "could produce."
+                  : result.isEmpty || !result.isAboveBenchmark
+                    ? "more than it pays you."
+                    : "The upside is what's next."
               }
             >
               <motion.span
@@ -471,9 +528,11 @@ export default function ConversionCalculator() {
                   visible: { y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
                 }}
               >
-                {result.isEmpty || !result.isAboveBenchmark
-                  ? "more than it pays you."
-                  : "The upside is what's next."}
+                {mode === "scratch"
+                  ? "could produce."
+                  : result.isEmpty || !result.isAboveBenchmark
+                    ? "more than it pays you."
+                    : "The upside is what's next."}
               </motion.span>
             </span>
           </motion.h2>
@@ -484,10 +543,45 @@ export default function ConversionCalculator() {
             transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
             className="mt-4 text-lg text-white/50"
           >
-            {!result.isEmpty && result.isAboveBenchmark
-              ? "The bigger lever now: better leads and higher deal value."
-              : "Move three sliders. See your monthly gap."}
+            {mode === "scratch"
+              ? "Move two sliders. See the projection."
+              : !result.isEmpty && result.isAboveBenchmark
+                ? "The bigger lever now: better leads and higher deal value."
+                : "Move three sliders. See your monthly gap."}
           </motion.p>
+        </div>
+
+        <div
+          role="group"
+          aria-label="Calculator mode"
+          className="mb-6 grid max-w-md grid-cols-2 gap-1 rounded-xl bg-[#26262e] p-1"
+        >
+          <button
+            type="button"
+            aria-pressed={mode === "have-website"}
+            onClick={() => handleModeChange("have-website")}
+            data-cursor="tab"
+            className={`rounded-[9px] px-3 py-2.5 text-[13px] font-semibold tracking-[-0.01em] transition-colors duration-[180ms] ${
+              mode === "have-website"
+                ? "bg-[#31313b] text-[#f5f5f5]"
+                : "text-white/[0.38] hover:text-white/[0.66]"
+            }`}
+          >
+            I have a website
+          </button>
+          <button
+            type="button"
+            aria-pressed={mode === "scratch"}
+            onClick={() => handleModeChange("scratch")}
+            data-cursor="tab"
+            className={`rounded-[9px] px-3 py-2.5 text-[13px] font-semibold tracking-[-0.01em] transition-colors duration-[180ms] ${
+              mode === "scratch"
+                ? "bg-[#31313b] text-[#f5f5f5]"
+                : "text-white/[0.38] hover:text-white/[0.66]"
+            }`}
+          >
+            I&apos;m starting from scratch
+          </button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.08fr] gap-6 items-stretch">
@@ -508,7 +602,7 @@ export default function ConversionCalculator() {
                   type="button"
                   aria-pressed={businessType === type}
                   onClick={() => handleBusinessTypeChange(type)}
-                  data-cursor="button"
+                  data-cursor="tab"
                   className={`rounded-[9px] px-1.5 py-2.5 text-[13px] font-semibold tracking-[-0.01em] transition-colors duration-[180ms] ${
                     businessType === type
                       ? "bg-[#31313b] text-[#f5f5f5]"
@@ -521,8 +615,8 @@ export default function ConversionCalculator() {
             </div>
 
             <RangeField
-              label="Monthly website visitors"
-              ariaLabel="Monthly website visitors"
+              label={mode === "scratch" ? "Expected monthly visitors" : "Monthly website visitors"}
+              ariaLabel={mode === "scratch" ? "Expected monthly visitors" : "Monthly website visitors"}
               value={visitors}
               min={VISITOR_MIN}
               max={VISITOR_MAX}
@@ -530,6 +624,11 @@ export default function ConversionCalculator() {
               formatDisplay={(v) => v.toLocaleString()}
               toSliderPosition={(v) => logSliderPosition(v, VISITOR_MIN, VISITOR_MAX)}
               fromSliderPosition={(p) => Math.round(logSliderValue(p, VISITOR_MIN, VISITOR_MAX) / 100) * 100}
+              helperText={
+                mode === "scratch"
+                  ? "Roughly how many people you expect to send to the site from ads, social, or referrals."
+                  : undefined
+              }
             />
 
             <RangeField
@@ -560,34 +659,45 @@ export default function ConversionCalculator() {
               }
             />
 
-            <div>
-              <RangeField
-                label="Your conversion rate"
-                ariaLabel="Current conversion rate"
-                value={currentCR}
-                min={0.1}
-                max={10}
-                step={0.1}
-                onChange={handleCurrentCrChange}
-                formatDisplay={(v) => formatPercent(v)}
-                inputPrefix="%"
-              />
-              <button
-                type="button"
-                onClick={handleDunno}
-                data-cursor="button"
-                className="mt-3 inline-block text-[12.5px] text-white/[0.38] underline underline-offset-[3px] hover:text-[#a89bff]"
-              >
-                I don&apos;t know my conversion rate
-              </button>
-              {hintVisible && (
-                <p className="mt-2.5 text-[12.5px] leading-relaxed text-white/[0.38]">
-                  We&apos;ve used the {BENCHMARK_NAME[businessType]} average of{" "}
-                  {formatPercent(config.defaultConversionRate)}. Most sites we audit come in
-                  below it.
-                </p>
-              )}
-            </div>
+            {mode === "have-website" ? (
+              <div>
+                <RangeField
+                  label="Your conversion rate"
+                  ariaLabel="Current conversion rate"
+                  value={currentCR}
+                  min={0.1}
+                  max={10}
+                  step={0.1}
+                  onChange={handleCurrentCrChange}
+                  formatDisplay={(v) => formatPercent(v)}
+                  inputPrefix="%"
+                />
+                <button
+                  type="button"
+                  onClick={handleDunno}
+                  data-cursor="tab"
+                  className="mt-3 inline-block text-[12.5px] text-white/[0.38] underline underline-offset-[3px] hover:text-[#a89bff]"
+                >
+                  I don&apos;t know my conversion rate
+                </button>
+                {hintVisible && (
+                  <p className="mt-2.5 text-[12.5px] leading-relaxed text-white/[0.38]">
+                    We&apos;ve used the {BENCHMARK_NAME[businessType]} average of{" "}
+                    {formatPercent(config.defaultConversionRate)}. Most sites we audit come in
+                    below it.
+                  </p>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center justify-between gap-3 rounded-lg bg-[#26262e] px-[14px] py-3">
+                <span className="text-[14.5px] font-semibold tracking-[-0.01em] text-white/[0.66]">
+                  Conversion rate we build toward
+                </span>
+                <span className="font-mono text-[15px] font-medium text-[#f5f5f5]">
+                  {formatPercent(config.ceiling)}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Right · one answer */}
@@ -597,7 +707,7 @@ export default function ConversionCalculator() {
             </span>
 
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#a89bff]">
-              Left on the table, every month
+              {mode === "scratch" ? "What a site built right could do" : "Left on the table, every month"}
             </p>
 
             <p className="mt-4 flex items-baseline gap-1 text-white" style={{ fontFamily: "Arial, sans-serif" }}>
@@ -605,36 +715,67 @@ export default function ConversionCalculator() {
                 className="font-medium leading-[0.92] tracking-[-0.05em]"
                 style={{ fontSize: "clamp(46px, 6.4vw, 86px)" }}
               >
-                {bigNumberText}
+                {mode === "scratch" ? scratchBigNumberText : bigNumberText}
               </span>
-              <span className="pb-2.5 text-base font-semibold tracking-[-0.01em] text-white/[0.38]">
-                at least
-              </span>
+              {mode === "have-website" && (
+                <span className="pb-2.5 text-base font-semibold tracking-[-0.01em] text-white/[0.38]">
+                  at least
+                </span>
+              )}
             </p>
 
             <p className="mt-3.5 max-w-[34ch] text-[15.5px] leading-[1.55] text-white/[0.66]">
-              {!result.isEmpty && result.isAboveBenchmark
-                ? `You already convert above the ${formatPercent(
-                    result.ceiling,
-                  )} benchmark. The bigger lever now is deal value and lead quality, which is a conversation for a call.`
-                : "That is the revenue your traffic is already capable of, and is not producing."}
+              {mode === "scratch"
+                ? `Based on ${visitors.toLocaleString()} visitors a month at a ${formatPercent(
+                    config.ceiling,
+                  )} conversion rate, the benchmark we build toward for ${
+                    BENCHMARK_NAME[businessType]
+                  }. This is a projection, not a promise, your real numbers depend on your offer and traffic.`
+                : !result.isEmpty && result.isAboveBenchmark
+                  ? `You already convert above the ${formatPercent(
+                      result.ceiling,
+                    )} benchmark. The bigger lever now is deal value and lead quality, which is a conversation for a call.`
+                  : "That is the revenue your traffic is already capable of, and is not producing."}
             </p>
 
             <div className="mt-[30px] border-t border-white/10 pt-[26px]">
-              <GapLine
-                label="Today"
-                hot={false}
-                amountDisplay={formatCurrency(result.currentRevenue, currency)}
-                widthPct={todayWidthPct}
-                reduceMotion={reduceMotion}
-              />
-              <GapLine
-                label="After SYNC"
-                hot
-                amountDisplay={formatCurrency(result.projectedRevenueLow, currency)}
-                widthPct={100}
-                reduceMotion={reduceMotion}
-              />
+              {mode === "scratch" ? (
+                <>
+                  <div className="mb-[18px] flex items-baseline justify-between">
+                    <span className="text-[12.5px] font-bold uppercase tracking-[0.08em] text-white/[0.38]">
+                      Customers a month
+                    </span>
+                    <span className="font-mono text-sm text-white/[0.66]">
+                      {scratchResult.customers.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-[12.5px] font-bold uppercase tracking-[0.08em] text-[#a89bff]">
+                      Revenue a month
+                    </span>
+                    <span className="font-mono text-sm text-[#f5f5f5]">
+                      {formatCappedCurrency(scratchResult.revenue, scratchResult.revenueCapped, currency)}
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <GapLine
+                    label="Today"
+                    hot={false}
+                    amountDisplay={formatCurrency(result.currentRevenue, currency)}
+                    widthPct={todayWidthPct}
+                    reduceMotion={reduceMotion}
+                  />
+                  <GapLine
+                    label="After SYNC"
+                    hot
+                    amountDisplay={formatCurrency(result.projectedRevenueLow, currency)}
+                    widthPct={100}
+                    reduceMotion={reduceMotion}
+                  />
+                </>
+              )}
             </div>
 
             <div className="mt-auto flex flex-wrap items-start gap-6 pt-7">
@@ -645,7 +786,7 @@ export default function ConversionCalculator() {
                     whileTap={{ scale: 0.95 }}
                     className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#5C45FD] px-5 py-3 sm:py-2.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0]"
                   >
-                    See how we&apos;d close that gap
+                    {mode === "scratch" ? "See how we'd hit that number" : "See how we'd close that gap"}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </motion.button>
                 </Link>
@@ -671,54 +812,104 @@ export default function ConversionCalculator() {
               }`}
             >
               <div className="overflow-hidden">
-                <table className="w-full border-collapse border-t border-white/10">
-                  <tbody>
-                    <tr className="border-b border-white/10">
-                      <td className="py-[11px] text-[13.5px] text-white/[0.66]">Customers today</td>
-                      <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
-                        {result.currentConversions.toLocaleString()} / month
-                      </td>
-                    </tr>
-                    <tr className="border-b border-white/10">
-                      <td className="py-[11px] text-[13.5px] text-white/[0.66]">Customers after</td>
-                      <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
-                        {result.projectedConversionsLow.toLocaleString()} to{" "}
-                        {result.projectedConversionsHigh.toLocaleString()} / month
-                      </td>
-                    </tr>
-                    <tr className="border-b border-white/10">
-                      <td className="py-[11px] text-[13.5px] text-white/[0.66]">Conversion rate today</td>
-                      <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
-                        {formatPercent(currentCR)}
-                      </td>
-                    </tr>
-                    <tr className="border-b border-white/10">
-                      <td className="py-[11px] text-[13.5px] text-white/[0.66]">Conversion rate after</td>
-                      <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
-                        {formatPercent(result.lowCR)} to {formatPercent(result.highCR)}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-[11px] text-[13.5px] text-white/[0.66]">Extra revenue, per year</td>
-                      <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
-                        {formatCappedCurrency(result.annualLow, result.additionalRevenueLowCapped, currency)}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <p className="mt-4 text-[12.5px] leading-[1.55] text-white/[0.38]">
-                  Assumes lifting your conversion rate toward the {BENCHMARK_NAME[businessType]}{" "}
-                  benchmark of {formatPercent(result.ceiling)}. The headline figure uses the low
-                  end of that range on purpose. Our last four builds averaged a{" "}
-                  <Link
-                    href="/case-studies/case-study-reality-cheque"
-                    data-cursor="button"
-                    className="text-[#a89bff] underline underline-offset-2 hover:text-white transition-colors"
-                  >
-                    51% conversion lift
-                  </Link>
-                  . Currency changes formatting only. Figures are not converted.
-                </p>
+                {mode === "scratch" ? (
+                  <>
+                    <table className="w-full border-collapse border-t border-white/10">
+                      <tbody>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Expected visitors</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {visitors.toLocaleString()} / month
+                          </td>
+                        </tr>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Benchmark rate used</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {formatPercent(config.ceiling)}
+                          </td>
+                        </tr>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">
+                            {config.valueLabel[0].toUpperCase()}
+                            {config.valueLabel.slice(1)}
+                          </td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {formatCurrency(avgValue, currency)}
+                          </td>
+                        </tr>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Customers per month</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {scratchResult.customers.toLocaleString()} / month
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Revenue per month</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {formatCappedCurrency(scratchResult.revenue, scratchResult.revenueCapped, currency)}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p className="mt-4 text-[12.5px] leading-[1.55] text-white/[0.38]">
+                      This is a projection based on the {BENCHMARK_NAME[businessType]} benchmark of{" "}
+                      {formatPercent(config.ceiling)}, not a promise. Your real numbers depend on
+                      your offer and traffic. Currency changes formatting only. Figures are not
+                      converted.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <table className="w-full border-collapse border-t border-white/10">
+                      <tbody>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Customers today</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {result.currentConversions.toLocaleString()} / month
+                          </td>
+                        </tr>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Customers after</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {result.projectedConversionsLow.toLocaleString()} to{" "}
+                            {result.projectedConversionsHigh.toLocaleString()} / month
+                          </td>
+                        </tr>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Conversion rate today</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {formatPercent(currentCR)}
+                          </td>
+                        </tr>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Conversion rate after</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {formatPercent(result.lowCR)} to {formatPercent(result.highCR)}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Extra revenue, per year</td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {formatCappedCurrency(result.annualLow, result.additionalRevenueLowCapped, currency)}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p className="mt-4 text-[12.5px] leading-[1.55] text-white/[0.38]">
+                      Assumes lifting your conversion rate toward the {BENCHMARK_NAME[businessType]}{" "}
+                      benchmark of {formatPercent(result.ceiling)}. The headline figure uses the low
+                      end of that range on purpose. Our last four builds averaged a{" "}
+                      <Link
+                        href="/case-studies/case-study-reality-cheque"
+                        data-cursor="tab"
+                        className="text-[#a89bff] underline underline-offset-2 hover:text-white transition-colors"
+                      >
+                        51% conversion lift
+                      </Link>
+                      . Currency changes formatting only. Figures are not converted.
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -726,7 +917,7 @@ export default function ConversionCalculator() {
       </div>
 
       {/* Mobile sticky summary bar, visible only while the section is in view */}
-      {!result.isEmpty && isSectionInView && (
+      {!isCurrentEmpty && isSectionInView && (
         <motion.div
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -736,9 +927,11 @@ export default function ConversionCalculator() {
         >
           <div className="min-w-0">
             <p className="text-[10px] font-bold uppercase tracking-wide text-white/40 truncate">
-              Left on the table, every month
+              {mode === "scratch" ? "Projected revenue, every month" : "Left on the table, every month"}
             </p>
-            <p className="text-white font-bold text-sm truncate">{bigNumberText} at least</p>
+            <p className="text-white font-bold text-sm truncate">
+              {mode === "scratch" ? scratchBigNumberText : `${bigNumberText} at least`}
+            </p>
           </div>
           <Link
             href="/qualify"

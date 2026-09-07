@@ -60,6 +60,24 @@
    cursor replacement, so the browser's own arrow/pointer/text-caret
    cursors are left completely alone everywhere. */
 
+/* ---- CASE STUDY CARD / TESTIMONIAL VIDEO: the one exception - only
+   the custom dot should show here, never the native pointer, on
+   fine-pointer devices. Touch is excluded on purpose: the custom
+   cursor already disables itself entirely on a coarse pointer (see
+   useCursor.ts), so forcing cursor:none there would leave touch
+   visitors with no cursor feedback at all. Keyed to the existing
+   data-cursor attributes rather than a new class, so it can never
+   drift out of sync with which elements actually carry the "card"/
+   "video" cursor variant. */
+@media (pointer: fine) {
+  [data-cursor="card"],
+  [data-cursor="card"] *,
+  [data-cursor="video"],
+  [data-cursor="video"] * {
+    cursor: none;
+  }
+}
+
 /* ---- Reduced motion: the reveals still work, they just don't
    animate. A calmer art direction, not a dead page. */
 @media (prefers-reduced-motion: reduce) {

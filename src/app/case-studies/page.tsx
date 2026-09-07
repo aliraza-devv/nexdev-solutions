@@ -135,6 +135,7 @@ const caseStudies: CaseStudy[] = [
       { value: '$142K', label: 'First 90 Days Revenue' },
     ],
     href: '/case-studies/case-study-clenvia',
+    image: '/assets/case-studies/Clenvia-hero-left.webp',
   },
   {
     client: 'Shevat Vitamins',
@@ -146,6 +147,7 @@ const caseStudies: CaseStudy[] = [
       { value: '$118K', label: 'First 90 Days Revenue' },
     ],
     href: '/case-studies/case-study-shevat-vitamins',
+    image: '/assets/case-studies/ShevatVitamins-hero-left.webp',
   },
 ];
 

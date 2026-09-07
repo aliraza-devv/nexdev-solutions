@@ -29,6 +29,12 @@
         ],
         "createdAt": "2026-09-04T02:54:08.885Z",
         "reason": "Pre-existing: Arial is this project's deliberate heading font choice, used the same way across every landing-page component"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "createdAt": "2026-09-06T23:46:07.964Z",
+        "reason": "Intentional snap-back overshoot for the magnetic-button-pull release transition, matches expected magnetic-UI feel (e.g. Apple dock), pre-existing code from earlier in this session, unrelated to this turn's card-tilt removal"
       }
     ]
   }

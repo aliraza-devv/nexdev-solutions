@@ -142,134 +142,38 @@ export default function FinalCTA({
             </span>
           </motion.h2>
         ) : (
-          <>
-            {/* Mobile Heading */}
-            <motion.h2
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="tracking-tighter text-white max-w-2xl font-medium text-center block md:hidden"
-              style={{
-                fontFamily: primaryFont,
-                fontSize: "clamp(48px, 8vw, 64px)",
-                lineHeight: "1.1",
-              }}
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="tracking-tighter text-white max-w-2xl font-medium text-center text-balance"
+            style={{
+              fontFamily: primaryFont,
+              fontSize: "clamp(48px, 8vw, 64px)",
+              lineHeight: "1.1",
+            }}
+          >
+            <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="The right">
+              The right
+            </span>{" "}
+            <span
+              className="inline-block italic text-[#5C45FD]"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="website"
             >
-              <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="The right">
-                The right
-              </span>{" "}
-              <span
-                className="inline-block italic text-[#5C45FD]"
-                data-cursor="text"
-                data-cursor-on-dark=""
-                data-text="website"
-              >
-                website
-              </span>{" "}
-              <span
-                className="inline-block"
-                data-cursor="text"
-                data-cursor-on-dark=""
-                data-text="turns visitors into customers. Let's build yours."
-              >
-                turns visitors into customers. Let&apos;s build yours.
-              </span>{" "}
-            </motion.h2>
-
-            {/* Desktop Heading */}
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.08,
-                  },
-                },
-              }}
-              className="tracking-tighter text-white max-w-2xl font-medium text-center hidden md:block"
-              style={{
-                fontFamily: primaryFont,
-                fontSize: "clamp(48px, 8vw, 64px)",
-                lineHeight: "1.1",
-              }}
+              website
+            </span>{" "}
+            <span
+              className="inline-block"
+              data-cursor="text"
+              data-cursor-on-dark=""
+              data-text="turns visitors into customers. Let's build yours."
             >
-              <span className="block overflow-hidden pb-1">
-                <motion.span
-                  className="block"
-                  variants={{
-                    hidden: { y: "100%" },
-                    visible: {
-                      y: 0,
-                      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                    },
-                  }}
-                >
-                  <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="The right">
-                    The right
-                  </span>{" "}
-                  <span
-                    className="inline-block italic text-[#5C45FD]"
-                    data-cursor="text"
-                    data-cursor-on-dark=""
-                    data-text="website"
-                  >
-                    website
-                  </span>{" "}
-                  <span
-                    className="inline-block"
-                    data-cursor="text"
-                    data-cursor-on-dark=""
-                    data-text="turns visitors"
-                  >
-                    turns visitors
-                  </span>
-                </motion.span>
-              </span>
-              <span
-                className="block overflow-hidden pb-1"
-                data-cursor="text"
-                data-cursor-on-dark=""
-                data-text="into customers. Let's build"
-              >
-                <motion.span
-                  className="block"
-                  variants={{
-                    hidden: { y: "100%" },
-                    visible: {
-                      y: 0,
-                      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                    },
-                  }}
-                >
-                  into customers. Let&apos;s build
-                </motion.span>
-              </span>
-              <span
-                className="block overflow-hidden pb-1"
-                data-cursor="text"
-                data-cursor-on-dark=""
-                data-text="yours"
-              >
-                <motion.span
-                  className="block"
-                  variants={{
-                    hidden: { y: "100%" },
-                    visible: {
-                      y: 0,
-                      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                    },
-                  }}
-                >
-                  yours{" "}
-                  {/* <span className="italic text-white/30">don&apos;t leave.</span> */}
-                </motion.span>
-              </span>
-            </motion.h2>
-          </>
+              turns visitors into customers. Let&apos;s build yours.
+            </span>
+          </motion.h2>
         )}
 
         <motion.p

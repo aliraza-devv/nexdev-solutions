@@ -15,8 +15,8 @@ export const CASE_STUDY: CaseStudyData = {
   heroStat: "4.1% store conversion rate, $118K in the first 90 days",
   heroCtaMicrocopy: "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: Shevat Vitamins storefront homepage",
-    "PLACEHOLDER: Shevat Vitamins product page",
+    "/assets/case-studies/ShevatVitamins-hero-left.webp",
+    "/assets/case-studies/ShevatVitamins-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -72,31 +72,31 @@ export const CASE_STUDY: CaseStudyData = {
       title: "Trust Surfaced Everywhere",
       body: "Vet formulation and safety credentials showed up right where a skeptical first-time pet owner would look for them, not buried on a separate page.",
       solves: 0,
-      image: "PLACEHOLDER: Shevat Vitamins trust and certification section",
+      image: "/assets/case-studies/ShevatVitamins-approach-1.webp",
     },
     {
       title: "Pet-First Category Architecture",
       body: "Each of the five animal categories got its own clear path through the store, so a dog owner never had to wade through products meant for a cat or bird.",
       solves: 1,
-      image: "PLACEHOLDER: Shevat Vitamins category navigation",
+      image: "/assets/case-studies/ShevatVitamins-approach-2.webp",
     },
     {
       title: "Conversion-Focused Product Pages",
       body: "Every product page answered the obvious doubts before they came up, built and tested specifically to lift add-to-cart.",
       solves: 2,
-      image: "PLACEHOLDER: Shevat Vitamins product page layout",
+      image: "/assets/case-studies/ShevatVitamins-approach-3.webp",
     },
     {
       title: "Frictionless Checkout",
       body: "Checkout matched the brand and removed every extra step, so nothing felt like a generic template bolted on at the end.",
       solves: 2,
-      image: "PLACEHOLDER: Shevat Vitamins checkout flow",
+      image: "/assets/case-studies/ShevatVitamins-approach-4.webp",
     },
     {
       title: "Launch Offer Mechanics",
       body: "The first-purchase offer was built to convert new visitors immediately while still encouraging the multi-item, cross-category orders the catalog was built for.",
       solves: 2,
-      image: "PLACEHOLDER: Shevat Vitamins launch offer",
+      image: "/assets/case-studies/ShevatVitamins-approach-5.webp",
     },
   ],
   turningPoint: {
@@ -109,7 +109,7 @@ export const CASE_STUDY: CaseStudyData = {
     ],
   },
   results: {
-    chartImage: "PLACEHOLDER: Shevat Vitamins results chart",
+    chartImage: "/assets/case-studies/ShevatVitamins-results-chart.webp",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

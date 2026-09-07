@@ -314,7 +314,7 @@ export default function Testimonials() {
                     style={{ width: `${cardWidth}px` }}
                     data-cursor="video"
                     className={`
-                      group relative aspect-[9/16] cursor-pointer overflow-hidden border border-white/5 shadow-2xl rounded-[14px] flex-shrink-0 transition-all duration-500
+                      group relative aspect-[9/16] overflow-hidden border border-white/5 shadow-2xl rounded-[14px] flex-shrink-0 transition-all duration-500
                     `}
                   >
                     {/* Render active video player inside card for desktop */}
@@ -494,6 +494,7 @@ export default function Testimonials() {
                   animate={{ scale: 1, y: 0 }}
                   exit={{ scale: 0.9, y: 20 }}
                   transition={{ type: "spring", damping: 25, stiffness: 220 }}
+                  data-cursor="video"
                   className="relative w-full max-w-[400px] aspect-[9/16] bg-[#121216] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl"
                   onClick={(e) => e.stopPropagation()}
                 >

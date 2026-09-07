@@ -15,8 +15,8 @@ export const CASE_STUDY: CaseStudyData = {
   heroStat: "3.8% store conversion rate, $142K in the first 90 days",
   heroCtaMicrocopy: "30 minutes. We'll show you what's costing you conversions. No pitch.",
   heroImages: [
-    "PLACEHOLDER: Clenvia storefront homepage",
-    "PLACEHOLDER: Clenvia product page",
+    "/assets/case-studies/Clenvia-hero-left.webp",
+    "/assets/case-studies/Clenvia-hero-right.webp",
   ],
   meta: {
     year: "",
@@ -72,31 +72,31 @@ export const CASE_STUDY: CaseStudyData = {
       title: "Trust Surfaced Everywhere",
       body: "Certifications and manufacturing credibility showed up right where a skeptical first-time visitor would look for them, not buried on a separate page.",
       solves: 0,
-      image: "PLACEHOLDER: Clenvia trust and certification section",
+      image: "/assets/case-studies/Clenvia-approach-1.webp",
     },
     {
       title: "Category Architecture That Matches How People Shop",
       body: "Health, skincare, and pet care each got their own clear path through the store, so a visitor never had to wade through products meant for someone else.",
       solves: 1,
-      image: "PLACEHOLDER: Clenvia category navigation",
+      image: "/assets/case-studies/Clenvia-approach-2.webp",
     },
     {
       title: "Conversion-Focused Product Pages",
       body: "Every product page answered the obvious doubts before they came up, built and tested specifically to lift add-to-cart.",
       solves: 2,
-      image: "PLACEHOLDER: Clenvia product page layout",
+      image: "/assets/case-studies/Clenvia-approach-3.webp",
     },
     {
       title: "Frictionless Checkout",
       body: "Checkout matched the brand and removed every extra step, so nothing felt like a generic template bolted on at the end.",
       solves: 2,
-      image: "PLACEHOLDER: Clenvia checkout flow",
+      image: "/assets/case-studies/Clenvia-approach-4.webp",
     },
     {
       title: "Launch Offer Mechanics",
       body: "The first-purchase offer was built to convert new visitors immediately while still encouraging the repeat and cross-category purchases the catalog was built for.",
       solves: 2,
-      image: "PLACEHOLDER: Clenvia launch offer",
+      image: "/assets/case-studies/Clenvia-approach-5.webp",
     },
   ],
   turningPoint: {
@@ -109,7 +109,7 @@ export const CASE_STUDY: CaseStudyData = {
     ],
   },
   results: {
-    chartImage: "PLACEHOLDER: Clenvia results chart",
+    chartImage: "/assets/case-studies/Clenvia-results-chart.webp",
   },
   cta: {
     primary: "Book Your Free Strategy Call",

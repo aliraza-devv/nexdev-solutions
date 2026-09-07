@@ -196,6 +196,57 @@ export function calculateConversionImpact(input: CalculatorInput): CalculatorRes
   };
 }
 
+export interface ScratchInput {
+  businessType: BusinessType;
+  visitors: number;
+  avgValue: number;
+}
+
+export interface ScratchResult {
+  isEmpty: boolean;
+  benchmarkRate: number;
+  customers: number;
+  revenue: number;
+  revenueCapped: boolean;
+}
+
+const EMPTY_SCRATCH_RESULT: Omit<ScratchResult, "benchmarkRate"> = {
+  isEmpty: true,
+  customers: 0,
+  revenue: 0,
+  revenueCapped: false,
+};
+
+// Projection for a buyer with no existing site: there is no "current" state
+// to measure against, so this never computes a gap or a loss, only what the
+// benchmark conversion rate for the business type would produce on the
+// visitors they expect to send to the site.
+export function calculateScratchProjection(input: ScratchInput): ScratchResult {
+  const { businessType, visitors, avgValue } = input;
+  const benchmarkRate = BUSINESS_TYPES[businessType].ceiling;
+
+  if (
+    !isFiniteNumber(visitors) ||
+    !isFiniteNumber(avgValue) ||
+    visitors <= 0 ||
+    avgValue <= 0
+  ) {
+    return { ...EMPTY_SCRATCH_RESULT, benchmarkRate };
+  }
+
+  const rawCustomers = visitors * (benchmarkRate / 100);
+  const rawRevenue = rawCustomers * avgValue;
+  const cappedRevenue = capForDisplay(roundRevenue(rawRevenue));
+
+  return {
+    isEmpty: false,
+    benchmarkRate,
+    customers: roundConversions(rawCustomers),
+    revenue: cappedRevenue.value,
+    revenueCapped: cappedRevenue.capped,
+  };
+}
+
 export function formatCurrency(value: number, currency: CurrencyCode): string {
   const safeValue = isFiniteNumber(value) ? value : 0;
   return new Intl.NumberFormat(CURRENCIES[currency].locale, {

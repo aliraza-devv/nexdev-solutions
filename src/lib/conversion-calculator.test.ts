@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   BUSINESS_TYPES,
   calculateConversionImpact,
+  calculateScratchProjection,
   formatCappedCurrency,
   formatCurrency,
   formatCurrencyRange,
@@ -188,6 +189,40 @@ describe("rounding rules", () => {
     expect(roundRevenue(NaN)).toBe(0);
     expect(roundRevenue(Infinity)).toBe(0);
     expect(roundConversions(NaN)).toBe(0);
+  });
+});
+
+describe("calculateScratchProjection: no current site, projection only", () => {
+  it("uses the business type ceiling as the benchmark rate, matching the existing calculator", () => {
+    const result = calculateScratchProjection({ businessType: "ecommerce", visitors: 5000, avgValue: 85 });
+    expect(result.benchmarkRate).toBe(BUSINESS_TYPES.ecommerce.ceiling);
+  });
+
+  it("computes customers and revenue from visitors x benchmark rate x avg value", () => {
+    const result = calculateScratchProjection({ businessType: "service", visitors: 5000, avgValue: 3000 });
+    // 5000 * 4.0% = 200 customers, 200 * 3000 = 600000 revenue, capped at 500000
+    expect(result.customers).toBe(200);
+    expect(result.revenue).toBe(500000);
+    expect(result.revenueCapped).toBe(true);
+  });
+
+  it("never returns a negative figure and has no notion of a current or today value", () => {
+    const result = calculateScratchProjection({ businessType: "saas", visitors: 5000, avgValue: 500 });
+    expect(result.customers).toBeGreaterThanOrEqual(0);
+    expect(result.revenue).toBeGreaterThanOrEqual(0);
+    expect(result).not.toHaveProperty("currentRevenue");
+    expect(result).not.toHaveProperty("additionalRevenueLow");
+  });
+
+  it("returns a neutral empty result when visitors or avgValue is zero", () => {
+    expect(calculateScratchProjection({ businessType: "service", visitors: 0, avgValue: 3000 }).isEmpty).toBe(true);
+    expect(calculateScratchProjection({ businessType: "service", visitors: 5000, avgValue: 0 }).isEmpty).toBe(true);
+  });
+
+  it("never produces NaN or Infinity for non-finite inputs", () => {
+    const result = calculateScratchProjection({ businessType: "service", visitors: NaN, avgValue: 3000 });
+    expect(result.isEmpty).toBe(true);
+    expect(Number.isFinite(result.revenue)).toBe(true);
   });
 });
 
