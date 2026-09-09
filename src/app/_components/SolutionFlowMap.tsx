@@ -17,6 +17,14 @@ const PIPE_BASE = 4000;
 const PIPE_MIN_STEP = 120;
 const PIPE_MAX_STEP = 340;
 const AUTO_ADVANCE_MS = 2600;
+// Mobile has no particle canvas driving the pipeline number (see the
+// component's own comment on why), so below 720px the number is tied
+// directly to the same stage-advance timer that already runs the node
+// highlighting, one value per stage, climbing to the same ~$52K desktop
+// settles around. Desktop never reads this array, it keeps its own
+// particle-driven total untouched.
+const MOBILE_PIPE_VALUES = [4000, 14000, 26000, 38000, 52000];
+const MOBILE_BREAKPOINT_QUERY = "(max-width: 720px)";
 const PARTICLE_COUNT = 14;
 const TRAIL_STEPS = 5;
 const TRAIL_SPACING = 0.016;
@@ -84,6 +92,11 @@ export default function SolutionFlowMap() {
     n3: null,
     n4: null,
   });
+  // Mobile-only CSS connectors between the stacked nodes, one per stage
+  // tag (0-4), mirroring the SVG segs' tag scheme exactly. Hidden above
+  // 720px by CSS alone, so they cost nothing on desktop and never touch
+  // the SVG/canvas layer at all.
+  const connRefs = useRef<Array<HTMLDivElement | null>>([null, null, null, null, null]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -138,6 +151,13 @@ export default function SolutionFlowMap() {
 
     function paint() {
       segs.forEach((s) => s.el.classList.toggle(styles.lit, s.tag <= active));
+      connRefs.current.forEach((el, tag) => {
+        el?.classList.toggle(styles.lit, tag <= active);
+      });
+    }
+
+    function isMobileViewport(): boolean {
+      return window.matchMedia(MOBILE_BREAKPOINT_QUERY).matches;
     }
 
     let shown = 0;
@@ -145,8 +165,11 @@ export default function SolutionFlowMap() {
     // The number only climbs when a particle actually completes the
     // full path and reaches the "Booked calls..." node, not on a
     // timer, so it reads as traffic converting rather than a generic
-    // ticking counter.
+    // ticking counter. Desktop uses pipelineTotal (random increments,
+    // no ceiling); mobile steps through MOBILE_PIPE_VALUES instead,
+    // same trigger, same "a dot just arrived" causality.
     let pipelineTotal = PIPE_BASE;
+    let mobilePipeIndex = 0;
     function countTo(target: number) {
       cancelAnimationFrame(countId);
       if (reduce) {
@@ -236,17 +259,36 @@ export default function SolutionFlowMap() {
         branch: Math.random() < 0.5 ? "a" : "b",
         stage: 0,
         t: -((i / PARTICLE_COUNT) * STAGE_COUNT) - Math.random() * 0.3,
-        // Slowed from the reference's 0.006-0.009 - at that pace the
-        // audience stream read as a rushed blur instead of a readable,
-        // one-at-a-time flow through the steps.
-        speed: 0.0026 + Math.random() * 0.0013,
+        // Between the reference's 0.006-0.009 (read as a rushed blur)
+        // and an earlier 0.0026-0.0039 pass (read as sluggish, a full
+        // lap took 25-30s) - this settles on a pace that reads as a
+        // steady, visible flow without either extreme, a lap now takes
+        // roughly 13-17s.
+        speed: 0.0048 + Math.random() * 0.0014,
       }));
+    }
+
+    // Mobile equivalent of segmentFor + getPointAtLength: reads the real
+    // on-screen rect of the connector div for this tag directly (plain
+    // DOM measurement, not SVG path geometry), and interpolates a point
+    // straight down its centre. No dependency on the SVG at all, so it
+    // works even though .svgwrap is display:none here.
+    function mobilePoint(tag: number, trailT: number): { x: number; y: number } | null {
+      const el = connRefs.current[tag];
+      if (!el || !map) return null;
+      const r = el.getBoundingClientRect();
+      const m = map.getBoundingClientRect();
+      const x = r.left + r.width / 2 - m.left;
+      const fromY = r.top - m.top;
+      const toY = r.bottom - m.top;
+      return { x, y: fromY + (toY - fromY) * trailT };
     }
 
     function frame() {
       if (!running || !ctx) return;
       ctx.clearRect(0, 0, w, h);
-      if (!segs.length) {
+      const mobile = isMobileViewport();
+      if (!mobile && !segs.length) {
         rafId = requestAnimationFrame(frame);
         return;
       }
@@ -257,17 +299,24 @@ export default function SolutionFlowMap() {
           d.stage += 1;
           if (d.stage >= STAGE_COUNT) {
             // This particle just reached "Booked calls. Sales.
-            // Signups." - count it as a conversion.
+            // Signups." - count it as a conversion, on both mobile and
+            // desktop, same trigger. Desktop steps pipelineTotal up by a
+            // random amount with no ceiling; mobile steps through the
+            // fixed MOBILE_PIPE_VALUES ladder instead, since it needs a
+            // predictable climb toward a real "top" figure rather than
+            // an open-ended random walk.
             d.stage = 0;
             d.branch = Math.random() < 0.5 ? "a" : "b";
-            pipelineTotal += PIPE_MIN_STEP + Math.random() * (PIPE_MAX_STEP - PIPE_MIN_STEP);
-            countTo(pipelineTotal);
+            if (mobile) {
+              mobilePipeIndex = (mobilePipeIndex + 1) % MOBILE_PIPE_VALUES.length;
+              countTo(MOBILE_PIPE_VALUES[mobilePipeIndex]);
+            } else {
+              pipelineTotal += PIPE_MIN_STEP + Math.random() * (PIPE_MAX_STEP - PIPE_MIN_STEP);
+              countTo(pipelineTotal);
+            }
           }
         }
         if (d.t < 0) return;
-        const seg = segmentFor(d.stage, d.branch);
-        if (!seg) return;
-        const length = seg.el.getTotalLength();
         const progress = (d.stage + d.t) / (STAGE_COUNT - 1);
         const color = particleColor(progress);
         // A short fading tail behind the head, so each particle reads
@@ -276,9 +325,21 @@ export default function SolutionFlowMap() {
         for (let i = TRAIL_STEPS; i >= 0; i--) {
           const trailT = d.t - i * TRAIL_SPACING;
           if (trailT < 0) continue;
-          const p = seg.el.getPointAtLength(length * trailT);
-          const x = (p.x / VIEWBOX_W) * w;
-          const y = (p.y / VIEWBOX_H) * h;
+          let x: number;
+          let y: number;
+          if (mobile) {
+            const p = mobilePoint(d.stage, trailT);
+            if (!p) continue;
+            x = p.x;
+            y = p.y;
+          } else {
+            const seg = segmentFor(d.stage, d.branch);
+            if (!seg) continue;
+            const length = seg.el.getTotalLength();
+            const p = seg.el.getPointAtLength(length * trailT);
+            x = (p.x / VIEWBOX_W) * w;
+            y = (p.y / VIEWBOX_H) * h;
+          }
           const fade = 1 - i / (TRAIL_STEPS + 1);
           ctx.beginPath();
           ctx.arc(x, y, 2.6 * fade, 0, Math.PI * 2);
@@ -362,7 +423,19 @@ export default function SolutionFlowMap() {
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(handleFontsReady);
       }
-      setActive(0);
+      // Reduced motion never auto-advances (see startAuto), so it has to
+      // land on the fully-lit final stage right away instead of stage 0 -
+      // otherwise a reduced-motion visitor would be stuck looking at an
+      // unlit map. The pipeline number now only moves on particle
+      // arrival (see frame), which reduced motion also never gets since
+      // .dots is display:none for it - so it needs its own explicit
+      // snap to the final value here too, same reasoning as setActive
+      // above: nothing should sit frozen at an arbitrary low figure.
+      setActive(reduce ? STAGES.length - 1 : 0);
+      if (reduce && isMobileViewport()) {
+        mobilePipeIndex = MOBILE_PIPE_VALUES.length - 1;
+        countTo(MOBILE_PIPE_VALUES[mobilePipeIndex]);
+      }
     }
 
     const raf1 = requestAnimationFrame(() => {
@@ -455,8 +528,13 @@ export default function SolutionFlowMap() {
                 </linearGradient>
               </defs>
             </svg>
-            <canvas className={styles.dots} ref={canvasRef} />
           </div>
+          {/* Outside .svgwrap on purpose - that wrapper is display:none
+              below 720px to hide the SVG connectors, but the particle
+              canvas has to keep working there too, it just switches to
+              straight-line math instead of reading SVG path geometry
+              (which throws when its ancestor is display:none). */}
+          <canvas className={styles.dots} ref={canvasRef} />
 
           <div className={styles.grid}>
             <div
@@ -473,6 +551,14 @@ export default function SolutionFlowMap() {
             </div>
 
             <div
+              className={`${styles.mconn} ${styles.rowFull}`}
+              ref={(el) => {
+                connRefs.current[0] = el;
+              }}
+              aria-hidden="true"
+            />
+
+            <div
               className={`${styles.node} ${styles.key} ${styles.rowFull}`}
               ref={(el) => {
                 nodeRefs.current.n0 = el;
@@ -486,6 +572,14 @@ export default function SolutionFlowMap() {
             </div>
 
             <div
+              className={`${styles.mconn} ${styles.rowFull}`}
+              ref={(el) => {
+                connRefs.current[1] = el;
+              }}
+              aria-hidden="true"
+            />
+
+            <div
               className={`${styles.node} ${styles.rowFull}`}
               ref={(el) => {
                 nodeRefs.current.n1 = el;
@@ -497,6 +591,14 @@ export default function SolutionFlowMap() {
                 <p className={styles.sub}>Website or landing page</p>
               </div>
             </div>
+
+            <div
+              className={`${styles.mconn} ${styles.rowFull}`}
+              ref={(el) => {
+                connRefs.current[2] = el;
+              }}
+              aria-hidden="true"
+            />
 
             <div className={styles.forklabel}>then it splits, by what you sell</div>
 
@@ -526,6 +628,14 @@ export default function SolutionFlowMap() {
             </div>
 
             <div
+              className={`${styles.mconn} ${styles.rowFull}`}
+              ref={(el) => {
+                connRefs.current[3] = el;
+              }}
+              aria-hidden="true"
+            />
+
+            <div
               className={`${styles.node} ${styles.rowFull}`}
               ref={(el) => {
                 nodeRefs.current.n3 = el;
@@ -537,6 +647,14 @@ export default function SolutionFlowMap() {
                 <p className={styles.sub}>Once the selling already works</p>
               </div>
             </div>
+
+            <div
+              className={`${styles.mconn} ${styles.rowFull}`}
+              ref={(el) => {
+                connRefs.current[4] = el;
+              }}
+              aria-hidden="true"
+            />
 
             <div
               className={`${styles.node} ${styles.out} ${styles.wide} ${styles.rowFull}`}
@@ -554,6 +672,9 @@ export default function SolutionFlowMap() {
                   $0
                 </div>
                 <div className={styles.pipeSub}>monthly pipeline</div>
+                <div className={styles.pipeIllustrative}>
+                  Illustrative. Your number depends on your traffic and offer.
+                </div>
               </div>
             </div>
           </div>

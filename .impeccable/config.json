@@ -35,6 +35,15 @@
         "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
         "createdAt": "2026-09-06T23:46:07.964Z",
         "reason": "Intentional snap-back overshoot for the magnetic-button-pull release transition, matches expected magnetic-UI feel (e.g. Apple dock), pre-existing code from earlier in this session, unrelated to this turn's card-tilt removal"
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "files": [
+          "E:/New folder (4)/nexdev-solutions/src/app/_components/SolutionFlowMap.module.css"
+        ],
+        "createdAt": "2026-09-09T17:47:59.521Z",
+        "reason": "Pre-existing: Arial is this project's deliberate sitewide heading font, used identically across Hero, FinalCTA, ConversionCalculator, Qualify, and every other section this session, not a generic AI default"
       }
     ]
   }

@@ -124,11 +124,16 @@
 }
 
 .dots {
+  /* No longer nested in .svgwrap (see the component's own comment on
+     why), so its stacking and pointer-events have to be set directly
+     instead of inherited. z-index 1, not 2, so it still sits behind
+     .grid (z-index 2) same as it did as part of .svgwrap before. */
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .grid {
@@ -318,6 +323,20 @@
   color: rgba(255, 255, 255, 0.85);
   margin-top: 3px;
 }
+/* Mobile only (see the media query below) - desktop's number is a real
+   particle-driven simulation, only the mobile version needs the honest
+   label since it is a simpler stage-synced climb. */
+.pipeIllustrative {
+  display: none;
+}
+
+/* Mobile-only vertical connectors between stacked nodes, standing in
+   for the SVG links that are display:none below 720px. Plain CSS, no
+   canvas/SVG geometry involved, lit the same way the desktop segs are:
+   toggled via JS in lockstep with the same `active` stage index. */
+.mconn {
+  display: none;
+}
 @keyframes solutionPipePulse {
   0%,
   100% {
@@ -338,7 +357,7 @@
   }
   .grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 0;
   }
   .svgwrap {
     display: none;
@@ -348,7 +367,13 @@
     width: 100%;
   }
   .forklabel {
-    margin: 8px 0 0;
+    margin: 8px 0;
+  }
+  /* n2a and n2b sit directly adjacent with no connector between them
+     (they're the two fork branches, not a top-to-bottom step), so with
+     .grid's gap now at 0 they need their own spacing. */
+  .node + .node {
+    margin-top: 12px;
   }
   .pipe {
     /* Once position goes static, this becomes a normal grid item inside
@@ -364,6 +389,43 @@
   }
   .out {
     text-align: center;
+  }
+  .pipeIllustrative {
+    display: block;
+    margin-top: 5px;
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 32ch;
+    margin-inline: auto;
+  }
+
+  /* A thin line between each stacked node, lit progressively the same
+     way the desktop SVG segments are, so the stack still reads as one
+     flow instead of disconnected boxes. */
+  .mconn {
+    display: block;
+    width: 2px;
+    height: 20px;
+    margin: 0 auto;
+    background: var(--line);
+    transition: background 400ms var(--out);
+  }
+  .mconn.lit {
+    background: linear-gradient(180deg, var(--purple-lo), var(--purple));
+    box-shadow: 0 0 6px rgba(92, 69, 253, 0.5);
+  }
+
+  /* The input node reads as just another muted box next to the
+     section's own near-identical dark background, especially with no
+     outgoing connector visible to anchor it as "the start" - brighter
+     border and a lighter fill fix the contrast without changing its
+     dashed "this is where it begins" treatment. */
+  .cap {
+    background: var(--surface);
+    border-color: rgba(168, 155, 255, 0.4);
   }
 }
 @media (prefers-reduced-motion: reduce) {
