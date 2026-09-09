@@ -147,31 +147,76 @@ export default function FinalCTA({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="tracking-tighter text-white max-w-2xl font-medium text-center text-balance"
+            className="tracking-tighter text-white max-w-2xl md:max-w-none font-medium text-center text-balance"
             style={{
               fontFamily: primaryFont,
               fontSize: "clamp(48px, 8vw, 64px)",
               lineHeight: "1.1",
             }}
           >
-            <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="The right">
-              The right
-            </span>{" "}
-            <span
-              className="inline-block italic text-[#5C45FD]"
-              data-cursor="text"
-              data-cursor-on-dark=""
-              data-text="website"
-            >
-              website
-            </span>{" "}
-            <span
-              className="inline-block"
-              data-cursor="text"
-              data-cursor-on-dark=""
-              data-text="turns visitors into customers. Let's build yours."
-            >
-              turns visitors into customers. Let&apos;s build yours.
+            {/* Mobile: natural wrap within the controlled max-width above,
+                unchanged from the earlier fix. */}
+            <span className="md:hidden">
+              <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="The right">
+                The right
+              </span>{" "}
+              <span
+                className="inline-block italic text-[#5C45FD]"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="website"
+              >
+                website
+              </span>{" "}
+              <span
+                className="inline-block"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="turns visitors into customers. Let's build yours."
+              >
+                turns visitors into customers. Let&apos;s build yours.
+              </span>
+            </span>
+
+            {/* Tablet and up: a deliberate three-line break, by request.
+                Each line is its own whitespace-nowrap block so it can
+                never silently re-wrap mid-phrase at some other width -
+                a forced break with no nowrap guard is exactly what broke
+                this heading before. max-w-none above so the box never
+                artificially narrows a line into wrapping either. */}
+            <span className="hidden md:block">
+              <span className="block whitespace-nowrap">
+                <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="The right">
+                  The right
+                </span>{" "}
+                <span
+                  className="inline-block italic text-[#5C45FD]"
+                  data-cursor="text"
+                  data-cursor-on-dark=""
+                  data-text="website"
+                >
+                  website
+                </span>{" "}
+                <span className="inline-block" data-cursor="text" data-cursor-on-dark="" data-text="turns">
+                  turns
+                </span>
+              </span>
+              <span
+                className="block whitespace-nowrap"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="visitors into customers."
+              >
+                visitors into customers.
+              </span>
+              <span
+                className="block whitespace-nowrap"
+                data-cursor="text"
+                data-cursor-on-dark=""
+                data-text="Let's build yours."
+              >
+                Let&apos;s build yours.
+              </span>
             </span>
           </motion.h2>
         )}
