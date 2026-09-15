@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   BUSINESS_TYPES,
+  SCRATCH_LAUNCH_RANGES,
   calculateConversionImpact,
   calculateScratchProjection,
   formatCappedCurrency,
@@ -193,17 +194,34 @@ describe("rounding rules", () => {
 });
 
 describe("calculateScratchProjection: no current site, projection only", () => {
-  it("uses the business type ceiling as the benchmark rate, matching the existing calculator", () => {
+  it("uses the conservative launch range, entirely separate from the have-a-website ceiling", () => {
     const result = calculateScratchProjection({ businessType: "ecommerce", visitors: 5000, avgValue: 85 });
-    expect(result.benchmarkRate).toBe(BUSINESS_TYPES.ecommerce.ceiling);
+    expect(result.lowRate).toBe(SCRATCH_LAUNCH_RANGES.ecommerce.low);
+    expect(result.highRate).toBe(SCRATCH_LAUNCH_RANGES.ecommerce.high);
+    expect(result.lowRate).not.toBe(BUSINESS_TYPES.ecommerce.ceiling);
   });
 
-  it("computes customers and revenue from visitors x benchmark rate x avg value", () => {
+  it("matches the spec's conservative launch ranges per business type", () => {
+    expect(SCRATCH_LAUNCH_RANGES.service).toEqual({ low: 2.0, high: 3.0 });
+    expect(SCRATCH_LAUNCH_RANGES.ecommerce).toEqual({ low: 1.5, high: 2.5 });
+    expect(SCRATCH_LAUNCH_RANGES.saas).toEqual({ low: 2.0, high: 3.0 });
+  });
+
+  it("computes the headline customers and revenue from the LOW end of the range", () => {
     const result = calculateScratchProjection({ businessType: "service", visitors: 5000, avgValue: 3000 });
-    // 5000 * 4.0% = 200 customers, 200 * 3000 = 600000 revenue, capped at 500000
-    expect(result.customers).toBe(200);
-    expect(result.revenue).toBe(500000);
-    expect(result.revenueCapped).toBe(true);
+    // 5000 * 2.0% = 100 customers, 100 * 3000 = 300000 revenue
+    expect(result.customers).toBe(100);
+    expect(result.revenue).toBe(300000);
+    expect(result.revenueCapped).toBe(false);
+  });
+
+  it("also computes the HIGH end of the range as context, never as the headline", () => {
+    const result = calculateScratchProjection({ businessType: "service", visitors: 5000, avgValue: 3000 });
+    // 5000 * 3.0% = 150 customers, 150 * 3000 = 450000 revenue
+    expect(result.customersHigh).toBe(150);
+    expect(result.revenueHigh).toBe(450000);
+    expect(result.customersHigh).toBeGreaterThan(result.customers);
+    expect(result.revenueHigh).toBeGreaterThan(result.revenue);
   });
 
   it("never returns a negative figure and has no notion of a current or today value", () => {
@@ -223,6 +241,7 @@ describe("calculateScratchProjection: no current site, projection only", () => {
     const result = calculateScratchProjection({ businessType: "service", visitors: NaN, avgValue: 3000 });
     expect(result.isEmpty).toBe(true);
     expect(Number.isFinite(result.revenue)).toBe(true);
+    expect(Number.isFinite(result.revenueHigh)).toBe(true);
   });
 });
 

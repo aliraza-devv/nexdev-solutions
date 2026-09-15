@@ -48,6 +48,22 @@ export const BUSINESS_TYPES: Record<BusinessType, BusinessTypeConfig> = {
 
 export const BUSINESS_TYPE_ORDER: BusinessType[] = ["service", "ecommerce", "saas"];
 
+export interface ScratchLaunchRange {
+  low: number;
+  high: number;
+}
+
+// Scratch mode's own rate values, entirely separate from BUSINESS_TYPES.ceiling
+// above. A brand new site has no baseline and no traffic history, so it gets a
+// conservative launch range rather than the ceiling rate the have-a-website
+// mode projects existing traffic toward. Editing either of these two constants
+// never affects the other mode.
+export const SCRATCH_LAUNCH_RANGES: Record<BusinessType, ScratchLaunchRange> = {
+  service: { low: 2.0, high: 3.0 },
+  ecommerce: { low: 1.5, high: 2.5 },
+  saas: { low: 2.0, high: 3.0 },
+};
+
 interface CurrencyConfig {
   locale: string;
 }
@@ -204,26 +220,36 @@ export interface ScratchInput {
 
 export interface ScratchResult {
   isEmpty: boolean;
-  benchmarkRate: number;
+  lowRate: number;
+  highRate: number;
   customers: number;
   revenue: number;
   revenueCapped: boolean;
+  customersHigh: number;
+  revenueHigh: number;
+  revenueHighCapped: boolean;
 }
 
-const EMPTY_SCRATCH_RESULT: Omit<ScratchResult, "benchmarkRate"> = {
+const EMPTY_SCRATCH_RESULT: Omit<ScratchResult, "lowRate" | "highRate"> = {
   isEmpty: true,
   customers: 0,
   revenue: 0,
   revenueCapped: false,
+  customersHigh: 0,
+  revenueHigh: 0,
+  revenueHighCapped: false,
 };
 
 // Projection for a buyer with no existing site: there is no "current" state
-// to measure against, so this never computes a gap or a loss, only what the
-// benchmark conversion rate for the business type would produce on the
-// visitors they expect to send to the site.
+// to measure against, so this never computes a gap or a loss. A brand new
+// site also has no baseline and no traffic history, so the headline figure
+// (customers/revenue) is deliberately calculated off the LOW end of the
+// launch range, not the high end, so the number we lead with is the one we
+// can actually defend on delivery. The high end is still computed so the
+// UI can show it as context, never as the promised figure.
 export function calculateScratchProjection(input: ScratchInput): ScratchResult {
   const { businessType, visitors, avgValue } = input;
-  const benchmarkRate = BUSINESS_TYPES[businessType].ceiling;
+  const { low: lowRate, high: highRate } = SCRATCH_LAUNCH_RANGES[businessType];
 
   if (
     !isFiniteNumber(visitors) ||
@@ -231,19 +257,26 @@ export function calculateScratchProjection(input: ScratchInput): ScratchResult {
     visitors <= 0 ||
     avgValue <= 0
   ) {
-    return { ...EMPTY_SCRATCH_RESULT, benchmarkRate };
+    return { ...EMPTY_SCRATCH_RESULT, lowRate, highRate };
   }
 
-  const rawCustomers = visitors * (benchmarkRate / 100);
-  const rawRevenue = rawCustomers * avgValue;
-  const cappedRevenue = capForDisplay(roundRevenue(rawRevenue));
+  const rawCustomersLow = visitors * (lowRate / 100);
+  const rawCustomersHigh = visitors * (highRate / 100);
+  const rawRevenueLow = rawCustomersLow * avgValue;
+  const rawRevenueHigh = rawCustomersHigh * avgValue;
+  const cappedRevenueLow = capForDisplay(roundRevenue(rawRevenueLow));
+  const cappedRevenueHigh = capForDisplay(roundRevenue(rawRevenueHigh));
 
   return {
     isEmpty: false,
-    benchmarkRate,
-    customers: roundConversions(rawCustomers),
-    revenue: cappedRevenue.value,
-    revenueCapped: cappedRevenue.capped,
+    lowRate,
+    highRate,
+    customers: roundConversions(rawCustomersLow),
+    revenue: cappedRevenueLow.value,
+    revenueCapped: cappedRevenueLow.capped,
+    customersHigh: roundConversions(rawCustomersHigh),
+    revenueHigh: cappedRevenueHigh.value,
+    revenueHighCapped: cappedRevenueHigh.capped,
   };
 }
 

@@ -29,11 +29,13 @@ import {
   BUSINESS_TYPES,
   BUSINESS_TYPE_ORDER,
   CURRENCY_ORDER,
+  SCRATCH_LAUNCH_RANGES,
   calculateConversionImpact,
   calculateScratchProjection,
   formatCappedCurrency,
   formatCurrency,
   formatPercent,
+  formatPercentRange,
   type BusinessType,
   type CalculatorInput,
   type CalculatorResult,
@@ -304,6 +306,7 @@ export default function ConversionCalculator() {
   const analyticsDebounceRef = useRef<number | null>(null);
 
   const config = BUSINESS_TYPES[businessType];
+  const scratchRange = SCRATCH_LAUNCH_RANGES[businessType];
 
   const input: CalculatorInput = useMemo(
     () => ({ businessType, visitors, avgValue, currentCR, currency }),
@@ -691,10 +694,10 @@ export default function ConversionCalculator() {
             ) : (
               <div className="flex items-center justify-between gap-3 rounded-lg bg-[#26262e] px-[14px] py-3">
                 <span className="text-[14.5px] font-semibold tracking-[-0.01em] text-white/[0.66]">
-                  Conversion rate we build toward
+                  A realistic launch range for a well-built site
                 </span>
                 <span className="font-mono text-[15px] font-medium text-[#f5f5f5]">
-                  {formatPercent(config.ceiling)}
+                  {formatPercentRange(scratchRange.low, scratchRange.high)}
                 </span>
               </div>
             )}
@@ -727,10 +730,8 @@ export default function ConversionCalculator() {
             <p className="mt-3.5 max-w-[34ch] text-[15.5px] leading-[1.55] text-white/[0.66]">
               {mode === "scratch"
                 ? `Based on ${visitors.toLocaleString()} visitors a month at a ${formatPercent(
-                    config.ceiling,
-                  )} conversion rate, the benchmark we build toward for ${
-                    BENCHMARK_NAME[businessType]
-                  }. This is a projection, not a promise, your real numbers depend on your offer and traffic.`
+                    scratchRange.low,
+                  )} conversion rate, a realistic starting point for a well-built site. We optimize upward from there. Your real numbers depend on your offer and traffic.`
                 : !result.isEmpty && result.isAboveBenchmark
                   ? `You already convert above the ${formatPercent(
                       result.ceiling,
@@ -823,9 +824,9 @@ export default function ConversionCalculator() {
                           </td>
                         </tr>
                         <tr className="border-b border-white/10">
-                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Benchmark rate used</td>
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Launch range used</td>
                           <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
-                            {formatPercent(config.ceiling)}
+                            {formatPercentRange(scratchRange.low, scratchRange.high)}
                           </td>
                         </tr>
                         <tr className="border-b border-white/10">
@@ -838,24 +839,45 @@ export default function ConversionCalculator() {
                           </td>
                         </tr>
                         <tr className="border-b border-white/10">
-                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Customers per month</td>
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">
+                            Customers per month, at {formatPercent(scratchRange.low)}
+                          </td>
                           <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
                             {scratchResult.customers.toLocaleString()} / month
                           </td>
                         </tr>
-                        <tr>
-                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">Revenue per month</td>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">
+                            Customers per month, at {formatPercent(scratchRange.high)}
+                          </td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {scratchResult.customersHigh.toLocaleString()} / month
+                          </td>
+                        </tr>
+                        <tr className="border-b border-white/10">
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">
+                            Revenue per month, at {formatPercent(scratchRange.low)}
+                          </td>
                           <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
                             {formatCappedCurrency(scratchResult.revenue, scratchResult.revenueCapped, currency)}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="py-[11px] text-[13.5px] text-white/[0.66]">
+                            Revenue per month, at {formatPercent(scratchRange.high)}
+                          </td>
+                          <td className="py-[11px] text-right font-mono text-[13.5px] text-[#f5f5f5]">
+                            {formatCappedCurrency(scratchResult.revenueHigh, scratchResult.revenueHighCapped, currency)}
                           </td>
                         </tr>
                       </tbody>
                     </table>
                     <p className="mt-4 text-[12.5px] leading-[1.55] text-white/[0.38]">
-                      This is a projection based on the {BENCHMARK_NAME[businessType]} benchmark of{" "}
-                      {formatPercent(config.ceiling)}, not a promise. Your real numbers depend on
-                      your offer and traffic. Currency changes formatting only. Figures are not
-                      converted.
+                      This is a projection based on a conservative launch range for{" "}
+                      {BENCHMARK_NAME[businessType]} sites, not a promise. A new site ramps, it
+                      does not launch at its peak, so the headline figure uses the low end on
+                      purpose. Your real numbers depend on your offer and traffic. Currency
+                      changes formatting only. Figures are not converted.
                     </p>
                   </>
                 ) : (
