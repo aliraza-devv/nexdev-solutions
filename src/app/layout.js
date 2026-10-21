@@ -14,8 +14,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 // Public container ID (visible in page source by design), not a secret.
 const GTM_ID = "GTM-KS6ZXGGR";
-// Production only, so local browsing and test runs never reach GA4 or Clarity.
-const LOAD_GTM = process.env.NODE_ENV === "production";
+// Always loads in production builds (Vercel previews included). In development it
+// loads only with NEXT_PUBLIC_ENABLE_GTM=true, so local browsing never reaches
+// GA4 or Clarity unless you opt in.
+const LOAD_GTM = process.env.NODE_ENV === "production" || process.env.NEXT_PUBLIC_ENABLE_GTM === "true";
 
 // Consent Mode v2 defaults. beforeInteractive runs ahead of GTM's
 // afterInteractive loader, so every consent type is denied before any tag
