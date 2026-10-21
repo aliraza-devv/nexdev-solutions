@@ -91,10 +91,17 @@ link or button. Put them on the outer `<a>`, not on a button nested inside it.
 
 ## GTM and consent
 
-- GTM loads in production only (`NODE_ENV === "production"`), so local development never
-  reaches GA4 or Clarity.
+- GTM loads in production builds, or in development when `NEXT_PUBLIC_ENABLE_GTM=true` is set
+  in `.env.local`. Without that flag, local development never reaches GA4 or Clarity.
 - Consent Mode v2 defaults are set before GTM loads: `ad_storage`, `analytics_storage`,
   `ad_user_data` and `ad_personalization` start `denied`, `wait_for_update` is 500.
+- Clicking Accept also pushes `{ event: "consent_granted" }` to the dataLayer. GTM does not
+  re-run tags it blocked at load when consent is updated later, so this event is the extra
+  trigger for `GA4 | Config.` and `Clarity | Base`. It is not sent to GA4. GTM has no
+  once-per-page option on those two tag types, so the banner pushes it at most once per page
+  and never when a saved Accept was restored at load (those tags already started from their
+  normal triggers, because consent is granted before GTM loads).
+- Clarity needs no separate consent call: it honours Google Consent Mode signals itself.
 - Accept grants `analytics_storage` only. Reject keeps everything denied. Ad signals are
   never granted. The choice is stored in `localStorage` under `nexdev_consent_v1` and
   restored before GTM runs on every page load.

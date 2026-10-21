@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
+  CONSENT_GRANTED_EVENT,
   CONSENT_STORAGE_KEY,
   OPEN_COOKIE_SETTINGS_EVENT,
   type StoredConsent,
@@ -11,6 +12,7 @@ import {
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    dataLayer?: Array<Record<string, unknown>>;
   }
 }
 
@@ -36,11 +38,15 @@ export default function CookieConsent() {
   const [current, setCurrent] = useState<StoredConsent | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const shouldFocusRef = useRef(false);
+  const tagsStartedRef = useRef(false);
 
   useEffect(() => {
     const stored = readStoredConsent();
     setCurrent(stored);
     if (!stored) setOpen(true);
+    // A saved Accept is granted before GTM loads, so GA4 Config and Clarity Base
+    // already started from their normal triggers on this page.
+    if (stored?.analytics) tagsStartedRef.current = true;
 
     const reopen = () => {
       shouldFocusRef.current = true;
@@ -75,6 +81,14 @@ export default function CookieConsent() {
       ad_user_data: "denied",
       ad_personalization: "denied",
     });
+    // The update above does not re-run tags GTM already blocked at page load, so a
+    // first-visit Accept needs this event to start GA4 Config and Clarity Base now.
+    // GTM has no once-per-page option on these two tag types, so it is pushed at
+    // most once per page, and never when the tags already started at load.
+    if (analytics && !tagsStartedRef.current) {
+      tagsStartedRef.current = true;
+      window.dataLayer?.push({ event: CONSENT_GRANTED_EVENT });
+    }
     setCurrent(stored);
     setOpen(false);
   }, []);
