@@ -174,7 +174,13 @@ export default function Deliverables() {
 
               {/* CTA Button */}
               <div className="mt-2 flex flex-col items-center gap-2">
-                <Link href="/qualify" data-cursor="cta" className="w-full">
+                <Link
+                  href="/qualify"
+                  data-cursor="cta"
+                  data-track="cta"
+                  data-track-location="deliverables"
+                  className="w-full"
+                >
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

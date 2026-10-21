@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import QualifyStepper from "../_components/QualifyStepper";
+import { emitGenerateLead } from "@/lib/track";
 
 const CONFIRMATION_PATH = "/book-call/confirmed";
 
@@ -82,6 +83,7 @@ function useCalEmbed() {
     Cal.ns["discovery-call"]("on", {
       action: "bookingSuccessful",
       callback: () => {
+        emitGenerateLead("book_call", "booked_call");
         window.location.href = CONFIRMATION_PATH;
       },
     });

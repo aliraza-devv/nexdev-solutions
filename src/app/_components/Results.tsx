@@ -422,6 +422,8 @@ export default function Results() {
           <Link
             href="/qualify"
             data-cursor="cta"
+            data-track="cta"
+            data-track-location="results"
             className="inline-flex items-center gap-2 rounded-full bg-[#5C45FD] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0] hover:scale-[1.02]"
           >
             Let&apos;s build yours <ArrowRight className="h-4 w-4" />

@@ -104,6 +104,7 @@ export default function Navbar({
                 href={item.href}
                 onClick={(e) => handleAnchorClick(e, item.href)}
                 data-cursor="button"
+                data-track="nav"
                 className="text-[15px] font-medium text-[#0A0A0E]/80 transition-colors hover:text-[#5C45FD]"
               >
                 {item.name}
@@ -113,7 +114,7 @@ export default function Navbar({
 
           {/* Desktop CTA Button */}
           <div className="hidden items-center gap-4 lg:flex">
-            <Link href={ctaHref} data-cursor="cta">
+            <Link href={ctaHref} data-cursor="cta" data-track="cta" data-track-location="nav">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -200,6 +201,7 @@ export default function Navbar({
                           setIsOpen(false);
                           handleAnchorClick(e, item.href);
                         }}
+                        data-track="nav"
                         className="block py-2 text-[15px] font-semibold text-[#0A0A0E]/70 transition-colors hover:text-[#5C45FD]"
                       >
                         {item.name}
@@ -211,7 +213,12 @@ export default function Navbar({
 
               {/* Bottom Drawer CTA Button */}
               <div className="pt-6 border-t border-black/5">
-                <Link href={ctaHref} onClick={() => setIsOpen(false)}>
+                <Link
+                  href={ctaHref}
+                  onClick={() => setIsOpen(false)}
+                  data-track="cta"
+                  data-track-location="nav_mobile"
+                >
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

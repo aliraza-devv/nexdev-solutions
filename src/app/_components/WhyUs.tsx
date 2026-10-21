@@ -96,7 +96,12 @@ export default function WhyUs() {
             Curious how we&apos;d approach your website?
           </p>
           <div className="flex flex-shrink-0 flex-col items-center gap-2">
-            <Link href="/qualify" data-cursor="cta">
+            <Link
+              href="/qualify"
+              data-cursor="cta"
+              data-track="cta"
+              data-track-location="why_us"
+            >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

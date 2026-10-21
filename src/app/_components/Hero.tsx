@@ -230,7 +230,13 @@ export default function Hero() {
               className="w-full mt-8 lg:mt-5 flex flex-col sm:flex-row items-stretch sm:items-start justify-center lg:justify-start gap-3"
             >
               <div className="flex flex-col items-center lg:items-start w-full sm:w-auto gap-2">
-                <Link href="/qualify" data-cursor="cta" className="w-full sm:w-auto">
+                <Link
+                  href="/qualify"
+                  data-cursor="cta"
+                  data-track="cta"
+                  data-track-location="hero"
+                  className="w-full sm:w-auto"
+                >
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

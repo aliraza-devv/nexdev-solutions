@@ -372,6 +372,8 @@ function Hero({ data }: { data: CaseStudyData }) {
         <Reveal delay={0.2} className="mt-8 flex flex-col items-center gap-3">
           <a
             href={CTA_HREF}
+            data-track="cta"
+            data-track-location="case_study_hero"
             className="inline-flex items-center gap-2 rounded-full bg-[#5C45FD] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#5C45FD]/25 transition-all hover:bg-[#4a36e0] hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5C45FD]"
           >
             {data.cta.primary}

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
 import styles from "./Qualify.module.css";
 import QualifyStepper from "../_components/QualifyStepper";
+import { emitGenerateLead, emitQualifyComplete } from "@/lib/track";
 import { OPTION_QUESTIONS, type QuestionKey } from "./questions";
 import type { QualifyOption, QualifyPayload, QualifyResponse, QualifySelections } from "./types";
 
@@ -86,6 +87,7 @@ export default function QualifyPage() {
         throw new Error(`Request failed (${res.status}) ${detail}`);
       }
       const data = (await res.json()) as QualifyResponse;
+      emitQualifyComplete(data.qualified);
       if (data.qualified) {
         // Straight to the calendar, no confirmation screen or delay - by
         // request. The "qualified" phase/screen and its auto-redirect
@@ -118,6 +120,7 @@ export default function QualifyPage() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      emitGenerateLead("qualify", "nurture");
       setDownsellStatus("sent");
     } catch (err) {
       console.error("Downsell submit failed:", err);
@@ -176,7 +179,7 @@ export default function QualifyPage() {
       />
 
       <div className={styles.stage}>
-        <div className={styles.card}>
+        <div className={styles.card} data-track-form="qualify">
           {phase === "form" && question && (
             <div>
               <div className={styles.countRow}>

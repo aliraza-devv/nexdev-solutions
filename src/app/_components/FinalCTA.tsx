@@ -12,6 +12,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useLenisScrollTo } from "@/hooks/use-lenis-scroll-to";
+import { OPEN_COOKIE_SETTINGS_EVENT } from "@/lib/consent";
 import FooterWatermarkReveal from "./FooterWatermarkReveal";
 
 // lucide-react has no WhatsApp glyph, so this is a plain inline SVG of the
@@ -246,7 +247,13 @@ export default function FinalCTA({
           transition={{ delay: 0.4 }}
           className="mt-8 flex flex-col items-center gap-8 w-full max-w-md sm:max-w-none"
         >
-          <Link href="/qualify" data-cursor="cta" className="w-full sm:w-auto">
+          <Link
+            href="/qualify"
+            data-cursor="cta"
+            data-track="cta"
+            data-track-location="final_cta"
+            className="w-full sm:w-auto"
+          >
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -442,6 +449,14 @@ export default function FinalCTA({
               >
                 Terms of Service
               </Link>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS_EVENT))}
+                data-cursor="button"
+                className="hover:text-white transition-colors py-2 px-1"
+              >
+                Cookie settings
+              </button>
             </div>
           </div>
 
