@@ -31,7 +31,15 @@ export default function SmoothScroll({
   // to a hash on the SAME route is handled by useLenisScrollTo directly in
   // the click handler instead, since there is no navigation to wait for.
   useEffect(() => {
-    if (!window.location.hash) return;
+    if (!window.location.hash) {
+      // Next resets the window to the top on navigation, but Lenis ignores
+      // that native scroll while a wheel glide is still in flight and keeps
+      // writing its old position onto the new page, which lands deep in a
+      // shorter page (the footer). Snap Lenis itself to the top so its
+      // internal target and animation drop the stale position.
+      lenisRef.current?.scrollTo(0, { immediate: true, force: true });
+      return;
+    }
     const id = window.location.hash.slice(1);
     const el = document.getElementById(id);
     if (!el) return;
