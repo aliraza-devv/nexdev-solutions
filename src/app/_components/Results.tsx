@@ -154,7 +154,7 @@ function MetricValue({ value }: { value: string }) {
 // to sit in two columns even on a phone.
 function CaseMetrics({ results }: { results: [CaseMetric, CaseMetric] }) {
   return (
-    <div className="mb-8 flex max-w-md flex-row items-start gap-6 border-t border-white/10 pt-6 md:mb-10 md:gap-8">
+    <div className="mb-6 flex max-w-md flex-row items-start gap-6 border-t border-white/10 pt-6 sm:mb-8 md:mb-10 md:gap-8">
       {results.map((r, ri) => (
         <div key={ri} className={ri > 0 ? "border-l border-white/10 pl-6 md:pl-8" : ""}>
           <MetricValue value={r.value} />
@@ -200,17 +200,22 @@ function CaseMockup({ image, brand }: { image?: string; brand: string }) {
 
 function CaseCardBody({ c }: { c: CaseStudyCard }) {
   return (
-    <div className="p-10 lg:p-16">
-      <span className="mb-5 inline-block rounded-full bg-[#5C45FD] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+    // Below sm (phones) the card text column was only ~245px wide (40px
+    // padding each side) with a 36px heading, so a headline wrapped to 6-7
+    // lines and each card ran ~1000px tall. Phones get tighter padding, a
+    // smaller balanced heading and tighter spacing; sm and up keep the
+    // previous sizes. The heading is an h3 under the section's h2.
+    <div className="p-6 sm:p-10 lg:p-16">
+      <span className="mb-4 inline-block rounded-full bg-[#5C45FD] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white sm:mb-5">
         {c.brand}
       </span>
-      <div
-        className="mb-6 text-4xl font-bold text-white lg:text-5xl"
+      <h3
+        className="mb-4 text-balance text-[26px] font-bold leading-[1.15] tracking-tight text-white sm:mb-6 sm:text-wrap sm:text-4xl sm:leading-10 sm:tracking-normal lg:text-5xl lg:leading-none"
         style={{ fontFamily: "Arial, sans-serif" }}
       >
         {c.heading}
-      </div>
-      <p className="mb-8 max-w-md text-lg font-light leading-relaxed text-white/60">{c.desc}</p>
+      </h3>
+      <p className="mb-6 max-w-md text-base font-light leading-relaxed text-white/60 sm:mb-8 sm:text-lg">{c.desc}</p>
       <CaseMetrics results={c.results} />
       <span className="inline-flex items-center gap-2 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#5C45FD] transition-all duration-300 group-hover:gap-4">
         See how we did it <ArrowRight className="h-4 w-4" />
