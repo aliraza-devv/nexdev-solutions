@@ -57,11 +57,12 @@ function money(n: number): string {
   return "$" + Math.round(n).toLocaleString("en-US");
 }
 
-// Colour a particle by how far it has travelled: white where it
-// enters as raw audience, brand light-purple once it is being
-// qualified, full brand purple right as it converts at the bottom.
+// Colour a particle by how far it has travelled: slate grey where it
+// enters as raw audience (white would vanish on the white section),
+// brand light-purple once it is being qualified, full brand purple
+// right as it converts at the bottom.
 const PARTICLE_STOPS: Array<[number, number, number]> = [
-  [255, 255, 255],
+  [110, 110, 132],
   [168, 155, 255],
   [92, 69, 253],
 ];

@@ -9,31 +9,33 @@
    page instead of switching to a "technical" font mid-section. */
 
 .section {
-  /* Matches the site's own dark sections (Problem, Results, FAQ,
-     Calculator, Testimonials all use #0A0A0E), not the reference
-     demo's own #161616. */
-  --ink: #0a0a0e;
-  --ink2: #121218;
-  --surface: #1a1a22;
-  --surface2: #232330;
-  --surface3: #30303e;
+  /* Light theme, to break up the run of dark sections around it. The
+     token names are from the original dark port and kept so the rules
+     below did not have to be renamed: --ink is the section background
+     (white now), --paper is the text colour (near-black now), and the
+     --surface tokens are the node fills. --purple-lo stays the light
+     lilac for gradients and for text on the dark output card;
+     --purple-text is the brand purple for text on white. */
+  --ink: #ffffff;
+  --ink2: #f7f7fa;
+  --surface: #f5f5f9;
+  --surface2: #ebe8ff;
+  --surface3: #cfcfdc;
   --purple: #5c45fd;
   --purple-lo: #a89bff;
+  --purple-text: #5c45fd;
   --purple-deep: #201a3d;
-  --paper: #f5f5f5;
-  --faint: rgba(245, 245, 245, 0.42);
-  --dim: rgba(245, 245, 245, 0.64);
-  --hair: rgba(245, 245, 245, 0.09);
-  --line: #3a3a46;
+  --paper: #0a0a0e;
+  --faint: rgba(10, 10, 14, 0.5);
+  --dim: rgba(10, 10, 14, 0.68);
+  --hair: rgba(10, 10, 14, 0.1);
+  --line: #d2d2de;
   --out: cubic-bezier(0.23, 1, 0.32, 1);
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
   --heading: Arial, Helvetica, sans-serif;
 
-  /* Flat, matching every other dark section on the page exactly
-     (Problem, Results, FAQ, Calculator): a solid --ink background,
-     no grid lines, no radial glow. Those decorative layers were
-     what made this section read as a different shade of dark next
-     to its neighbours. */
+  /* Flat white, like the other white sections (OurProcess, WhyUs):
+     a solid --ink background, no grid lines, no radial glow. */
   position: relative;
   overflow: hidden;
   padding: 104px 0 116px;
@@ -68,13 +70,13 @@
   align-items: center;
   padding: 6px 16px;
   border-radius: 9999px;
-  border: 1px solid rgba(92, 69, 253, 0.4);
-  background: rgba(92, 69, 253, 0.1);
+  border: 1px solid rgba(92, 69, 253, 0.25);
+  background: rgba(92, 69, 253, 0.08);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--purple-lo);
+  color: var(--purple-text);
   margin-bottom: 24px;
 }
 .head h2 {
@@ -110,7 +112,7 @@
   /* Brighter and thicker than the reference's faint 0.35 alpha, which
      read as a broken/dashed thread rather than a continuous line
      next to the moving particle trail. */
-  stroke: rgba(180, 180, 200, 0.55);
+  stroke: rgba(80, 80, 110, 0.38);
   stroke-width: 2.25;
   stroke-linecap: round;
   transition:
@@ -120,7 +122,7 @@
 .links :global(path).lit {
   stroke: url(#solutionFlowLitGrad);
   stroke-width: 2.5;
-  filter: drop-shadow(0 0 5px rgba(92, 69, 253, 0.55));
+  filter: drop-shadow(0 0 5px rgba(92, 69, 253, 0.35));
 }
 
 .dots {
@@ -158,6 +160,7 @@
   align-items: center;
   background: var(--surface);
   border: 1px solid var(--hair);
+  box-shadow: 0 1px 2px rgba(10, 10, 14, 0.04);
   border-radius: 16px;
   padding: 16px 22px;
   cursor: pointer;
@@ -196,7 +199,7 @@
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: rgba(245, 245, 245, 0.06);
+  background: rgba(10, 10, 14, 0.06);
   font-family: var(--sans);
   font-size: 11px;
   font-weight: 700;
@@ -235,7 +238,7 @@
 }
 .on .idx,
 .on .sub {
-  color: var(--purple-lo);
+  color: var(--purple-text);
 }
 .on .idx {
   background: rgba(168, 155, 255, 0.16);
@@ -263,7 +266,8 @@
   border-color: var(--surface3);
 }
 .out {
-  background: linear-gradient(135deg, var(--purple-deep), var(--ink2));
+  /* Stays a dark card on the white section, as the end point of the flow. */
+  background: linear-gradient(135deg, var(--purple-deep), #121218);
   border: 1px solid rgba(168, 155, 255, 0.5);
   box-shadow: 0 24px 56px -28px rgba(92, 69, 253, 0.8);
 }
@@ -419,10 +423,10 @@
   }
 
   /* The input node reads as just another muted box next to the
-     section's own near-identical dark background, especially with no
-     outgoing connector visible to anchor it as "the start" - brighter
-     border and a lighter fill fix the contrast without changing its
-     dashed "this is where it begins" treatment. */
+     section's own near-identical background, especially with no
+     outgoing connector visible to anchor it as "the start" - a
+     purple-tinted border and the node fill fix the contrast without
+     changing its dashed "this is where it begins" treatment. */
   .cap {
     background: var(--surface);
     border-color: rgba(168, 155, 255, 0.4);

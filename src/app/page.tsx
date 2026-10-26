@@ -28,6 +28,10 @@ export default function Home() {
           removing SolutionFlowMap below. */}
       {/* <Solution /> */}
       <SolutionFlowMap />
+      <Results />
+      <Testimonials />
+      <ReviewsMarquee />
+      <ConversionCalculator />
       <OurProcess
         chipText="HOW WE WORK"
         headingLines={[
@@ -60,10 +64,6 @@ export default function Home() {
           },
         ]}
       />
-      <Results />
-      <ConversionCalculator />
-      <Testimonials />
-      <ReviewsMarquee />
       <Deliverables />
       <WhyUs />
       <FAQ />

@@ -116,6 +116,10 @@ export default function OurProcess({
   const mockupScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
   const mockupRotate = useTransform(scrollYProgress, [0, 1], [5, -5]);
 
+  // The bar is a full-width purple line by the time the pinned scroll ends,
+  // which reads as a divider under step 4. Fade it out over the last 10%.
+  const progressBarOpacity = useTransform(scrollYProgress, [0.9, 1], [1, 0]);
+
   return (
     <section id="how-it-works" ref={containerRef} className="relative bg-white">
       {/* 1. Static Headline Section (Mobile Only) */}
@@ -177,12 +181,15 @@ export default function OurProcess({
       {/* 2. Sticky Interactive Section (Desktop/Tablet Only) */}
       <div className="hidden lg:block h-[400vh] relative">
         <div className="sticky top-0 flex h-[100dvh] w-full items-center overflow-hidden bg-white pt-24 pb-8">
-          <div className="absolute bottom-0 left-0 h-1 bg-[#5C45FD]/10 w-full z-50">
+          <motion.div
+            style={{ opacity: progressBarOpacity }}
+            className="absolute bottom-0 left-0 h-1 bg-[#5C45FD]/10 w-full z-50"
+          >
             <motion.div
               style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
               className="h-full bg-[#5C45FD] w-full"
             />
-          </div>
+          </motion.div>
           <div className="mx-auto w-full max-w-[1280px] px-6 md:px-12 flex flex-col justify-center relative gap-8 lg:gap-10">
             
             {/* Integrated Desktop Headline */}
