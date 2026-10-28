@@ -213,9 +213,9 @@ export default function Hero() {
               }}
               className="mt-5 lg:mt-3 max-w-lg text-sm text-[#4B5563] md:text-base mx-auto lg:mx-0 font-medium"
             >
-              We build websites that 2x conversions in 60 days using our{" "}
+              We build websites that turn visitors into customers/clients using our{" "}
               <span className="font-bold text-gray-900">SYNC Method™</span> - or
-              we work for free until it does. Whether you&apos;re starting fresh or fixing a site that isn&apos;t selling.
+              we work for free until it does.
             </motion.p>
 
             <motion.div
