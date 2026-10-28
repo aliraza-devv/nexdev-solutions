@@ -55,9 +55,9 @@ export default function Navbar({
   }, [isOpen]);
 
   const navLinks = [
-    { name: "How It Works", href: "/#how-it-works" },
     { name: "Results", href: "/#results" },
     { name: "The Math", href: "/#calculator" },
+    { name: "How It Works", href: "/#how-it-works" },
     { name: "FAQs", href: "/#faq" },
   ];
 

@@ -30,7 +30,7 @@ try/catch.
 |---|---|
 | `cta_text` | The button label, trimmed to 60 characters. From `data-track-text` if present, otherwise the element text. |
 | `cta_location` | From `data-track-location`. Values in use: `nav`, `nav_mobile`, `hero`, `results`, `calculator`, `calculator_sticky`, `deliverables`, `why_us`, `final_cta`, `case_study_hero`. Falls back to `footer`, `nav` or `page` from the DOM when missing. |
-| `link_text` | The nav link label (How It Works, Results, The Math, FAQs), trimmed to 60 characters. |
+| `link_text` | The nav link label (Results, The Math, How It Works, FAQs), trimmed to 60 characters. |
 | `form_name` | `qualify` or `book_call`. Any `[a-z0-9_]` identifier up to 40 characters is accepted, so a future form needs only the attribute. |
 | `lead_type` | `nurture` (checklist email submitted) or `booked_call` (Cal.com booking confirmed). |
 | `click_location` | Same values as `cta_location`, with the same DOM fallback. |
