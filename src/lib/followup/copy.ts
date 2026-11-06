@@ -120,9 +120,9 @@ export function bookingPrepare(input: {
     `You are booked for ${input.whenText}. It is a video call on Google Meet. The link is in your calendar invite.`,
     [
       "To make the 30 minutes count, have these ready:",
-      "1. Your website address, or the site you want to replace.",
-      "2. The one thing you want it to do. For example more calls, more sales or more sign-ups.",
-      "3. Any numbers you know. For example visitors a month or your conversion rate.",
+      "1. What you sell and who you sell it to.",
+      "2. The one thing you want more of. For example calls, sales or sign-ups.",
+      "3. Any numbers you know. For example customers a month or what one customer is worth.",
     ].join("\n"),
     "No numbers? No problem. We will work with what you have.",
     `Need a different time? Reschedule in one click: ${input.rescheduleUrl}`,
