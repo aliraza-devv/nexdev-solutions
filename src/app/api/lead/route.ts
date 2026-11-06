@@ -1,17 +1,15 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { parseLeadInput } from "@/lib/lead-input";
+import { handleReviewRequest } from "@/lib/followup/handlers";
 
-// Receives the "quick website review" email box on /book-call and sends the
-// owner a notification. Phase 3 of the conversion work extends this route
-// (stores the lead, sends the visitor a thank-you, starts the follow-up).
+// Receives the "quick website review" email box on /book-call. It stores the
+// lead, tells the owner, and sends the visitor a thank-you; the daily job then
+// sends the follow-ups until they book or unsubscribe (src/lib/followup).
 //
-// Privacy: the email address and phone number only ever go into the
-// notification below. They are never logged, never sent to analytics and
-// never written to the repository. Error logs name the failure only.
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const LEAD_INBOX = "info@nexdevsolutions.net";
-const FROM_ADDRESS = "NeXDev Solutions <notifications@nexdevsolutions.net>";
+// Privacy: the email address and phone number only go to the lead store, the
+// owner's notification and the visitor's own emails. They are never logged,
+// never sent to analytics and never written to the repository. Error logs name
+// the failure only.
 
 // Best-effort, single-instance throttle, same idea as /api/qualify: it
 // stops a warm serverless instance from being hammered. The honeypot and
@@ -57,36 +55,12 @@ export async function POST(request: Request) {
   if ("error" in parsed) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
-  const { email, whatsapp, cameFrom } = parsed.value;
-
-  if (!RESEND_API_KEY) {
-    console.error("RESEND_API_KEY is not set - the lead notification was not sent.");
-    return NextResponse.json({ error: "not_configured" }, { status: 500 });
-  }
-
-  const lines = [
-    `Email: ${email}`,
-    `WhatsApp: ${whatsapp ?? "not given"}`,
-    `Came from: ${cameFrom || "unknown"}`,
-    "Page: /book-call (quick website review box)",
-    "Status: Asked for a quick website review by email",
-  ];
 
   try {
-    const resend = new Resend(RESEND_API_KEY);
-    const { error } = await resend.emails.send({
-      from: FROM_ADDRESS,
-      to: LEAD_INBOX,
-      subject: "New lead - REVIEW REQUEST",
-      text: lines.join("\n"),
-    });
-    if (error) {
-      // Name only: the error object can echo the recipient.
-      console.error("Lead notification was rejected by the email service:", error.name);
-      return NextResponse.json({ error: "send_failed" }, { status: 502 });
-    }
+    const notified = await handleReviewRequest(parsed.value);
+    if (!notified) return NextResponse.json({ error: "send_failed" }, { status: 502 });
   } catch {
-    console.error("Lead notification could not be sent.");
+    console.error("A lead could not be processed.");
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
   }
 

@@ -41,6 +41,39 @@ Website:
   (`nurture`, form `review_request`). `/qualify` no longer sends `form_start` or
   `qualify_complete`. See `TRACKING_PLAN.md`.
 
+Follow-up system (`src/lib/followup/`, all email through Resend):
+
+- Someone who leaves their email: a thank-you at once, then a tip on day 2, "Want to talk it
+  through?" on day 5 and a last note on day 10. The job runs once a day, so each email lands
+  within half a day of its day. It stops the moment they book or unsubscribe.
+- Someone who books (matched by email through a Cal.com webhook): "what to prepare" within
+  minutes, reminders 24 hours and 2 hours before with a one-click reschedule link, and "Sorry
+  we missed you" one hour after a no-show. Moving or cancelling a booking moves or cancels its
+  reminders. Cal.com cannot detect a no-show on Google Meet, so that email goes out only when
+  the owner marks the attendee as a no-show in Cal.com.
+- The owner gets an email for every new lead and booking (contact details, page they came
+  from, answers). If a WhatsApp number was given, it includes a pre-written message and a
+  `wa.me` link to send by hand. Nothing is ever sent on WhatsApp automatically. About 15
+  minutes after a call ends, the owner gets a draft thank-you to edit and send by hand. It is
+  never sent automatically, and it is cancelled if the owner marks the attendee as a no-show
+  before it goes out. Every Monday the owner gets the list of people who asked for a
+  review and have not booked.
+- Every email to a lead has an unsubscribe link, the business name and a one line reason for
+  receiving it, plus the one-click `List-Unsubscribe` header. Unsubscribing takes effect at
+  once and deletes the contact details.
+- Storage is Upstash Redis (free tier). The daily job is one cron entry in `vercel.json`
+  (`0 5 * * *`, 10 AM Pakistan time, Mondays include the weekly list).
+- Environment variables (names only, values are set in Vercel): `RESEND_API_KEY` (already
+  set), `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, `LEAD_TOKEN_SECRET`,
+  `CAL_WEBHOOK_SECRET`, `CRON_SECRET`, and optionally `MAIL_POSTAL_ADDRESS` (printed in the
+  footer of lead emails when set).
+- Cal.com: one webhook to `https://www.nexdevsolutions.net/api/cal-webhook` with the secret
+  above, for Booking created, Booking cancelled, Booking rescheduled and No-show updated. When
+  it goes live, Cal.com's three default email workflows are paused so people do not get
+  duplicate reminders.
+- To turn it off without removing code: delete the Cal.com webhook (stops booking emails),
+  remove the `crons` entry in `vercel.json` (stops follow-ups), or revert the commit.
+
 ### Hypotheses
 
 1. Fewer steps before the calendar means more visitors reach it.

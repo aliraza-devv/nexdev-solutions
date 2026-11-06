@@ -30,6 +30,12 @@ function text(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
+/** A path or host name, or "" when the value is anything else. */
+export function cleanCameFrom(value: unknown): string {
+  const from = text(value);
+  return CAME_FROM_RE.test(from) ? from : "";
+}
+
 export function parseLeadInput(body: unknown): LeadInputResult {
   const input = (body && typeof body === "object" ? body : {}) as Record<string, unknown>;
 
@@ -52,9 +58,8 @@ export function parseLeadInput(body: unknown): LeadInputResult {
     whatsapp = whatsappRaw;
   }
 
-  const from = text(input.cameFrom);
   return {
     ok: true,
-    value: { email, whatsapp, cameFrom: CAME_FROM_RE.test(from) ? from : "" },
+    value: { email, whatsapp, cameFrom: cleanCameFrom(input.cameFrom) },
   };
 }

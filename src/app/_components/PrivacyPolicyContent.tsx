@@ -132,6 +132,10 @@ export default function PrivacyPolicyContent() {
                 You can ask us to stop contacting you at any time by replying to any email or WhatsApp
                 message, or by emailing us directly at the address in Section 10.
               </li>
+              <li>
+                Our automatic follow-up emails have an unsubscribe link. It works straight away, and we
+                delete your email address when you use it.
+              </li>
             </UL>
 
             <H2>4. Information Sharing &amp; Disclosure</H2>
@@ -142,6 +146,11 @@ export default function PrivacyPolicyContent() {
             <Label>Service Providers, solely to help us operate:</Label>
             <UL>
               <li>Cal.com, for scheduling and managing calls</li>
+              <li>Resend, for sending our emails</li>
+              <li>
+                Upstash, for storing your email address and the status of your request, so we can send
+                the follow-ups you asked for and stop them when you unsubscribe
+              </li>
               <li>Wise and Meezan Bank, solely to process payments arranged directly with you</li>
               <li>Google Analytics and Microsoft Clarity, for understanding website usage and improving user experience</li>
             </UL>

@@ -59,8 +59,34 @@ that `tracking.js` turns into the push. A failed request never reaches that call
 - `src/lib/track.ts` types its arguments as fixed string unions, so free text cannot be
   passed through by mistake.
 - The review-by-email box sends the email address and optional WhatsApp number only to
-  `/api/lead` (our own server), which forwards them to the owner's inbox. Nothing from the
-  box reaches `dataLayer`, GA4 or Clarity, and the API route never logs the values.
+  `/api/lead` (our own server). Nothing from the box reaches `dataLayer`, GA4 or Clarity,
+  and the API route never logs the values.
+- The follow-up system (below) keeps contact details in our own database and sends them
+  only to Resend, which delivers the emails. No code in it pushes to `dataLayer`, calls
+  `clarity(...)` or loads an analytics script.
+
+## Follow-up emails
+
+Code: `src/lib/followup/`. Routes: `/api/lead`, `/api/cal-webhook`, `/api/cron/daily`,
+`/api/unsubscribe`, page `/unsubscribe`. Nothing in this system is a tracking event: the
+emails, the unsubscribe page and the webhook fire no `dataLayer` pushes, GA4 events or
+Clarity events, so there is nothing to register in GTM.
+
+What is stored (Upstash Redis, our own database), and why:
+
+| Key | Holds | Needed for |
+|---|---|---|
+| `lead:<hash>` | Email, optional WhatsApp number, status (`new`, `booked`, `cancelled`, `done`, `unsubscribed`), when they asked, the page they came from, number of follow-ups sent, booking ids | Sending the next follow-up and stopping it. The key is a hash of the email. Expires after 365 days |
+| `booking:<id>` | Start and end time, time zone, first name, ids of emails already handed to Resend | Cancelling or moving reminders if the booking changes. Expires 30 days after the call |
+| `leads:all`, `bookings:pending` | Lists of the keys above | The daily job |
+
+Not stored anywhere: answers to the booking questions and full names. They appear only in
+the owner's notification email. On unsubscribe the email address, WhatsApp number, page and
+booking ids are deleted and only the `unsubscribed` marker stays, so the address is never
+emailed again.
+
+Never logged: addresses, names, numbers, answers, request bodies, Redis commands. Errors
+log a fixed sentence or an error name.
 
 ## Tagged elements
 
