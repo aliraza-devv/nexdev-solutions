@@ -333,12 +333,13 @@ export default function Testimonials() {
                       </div>
                     ) : (
                       <>
-                        {/* Background Thumbnail: video start frame if present, fallback to static design */}
+                        {/* Background Thumbnail: the poster image. preload="none" keeps the video
+                            files (up to 7 MB each) from downloading until someone taps play. */}
                         {v.videoUrl ? (
                           <video
                             src={v.videoUrl}
                             poster={v.poster}
-                            preload="metadata"
+                            preload="none"
                             muted
                             playsInline
                             className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-300"

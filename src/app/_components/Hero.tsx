@@ -114,8 +114,12 @@ export default function Hero() {
       <div className="mx-auto max-w-[1280px] w-full px-6 md:px-12">
         <div className="grid grid-cols-1 items-center gap-12 pt-28 pb-6 lg:pt-24 lg:pb-8 lg:grid-cols-[1.15fr_0.85fr] xl:grid-cols-2 lg:gap-8 xl:gap-20">
           {/* Left Content */}
+          {/* initial={false} renders the final state in the server HTML. The old
+              intro started every line at opacity 0, so the hero text (the largest
+              thing on the page) stayed invisible until JavaScript loaded and ran:
+              5.2 s LCP on phones. */}
           <motion.div
-            initial="hidden"
+            initial={false}
             animate="visible"
             variants={{
               hidden: { opacity: 0 },
@@ -316,7 +320,7 @@ export default function Hero() {
           {/* Right Visuals */}
           <motion.div
             id="hero-carousel-target"
-            initial={{ opacity: 0, y: 24, scale: 0.97 }}
+            initial={false}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 55, damping: 18, delay: 0.25 }}
             className="relative hidden lg:h-[min(480px,44vh)] xl:h-[min(560px,48vh)] 2xl:h-[min(620px,52vh)] lg:block"
