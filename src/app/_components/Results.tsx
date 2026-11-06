@@ -425,7 +425,7 @@ export default function Results() {
             Want results like these?
           </p>
           <Link
-            href="/qualify"
+            href="/book-call"
             data-cursor="cta"
             data-track="cta"
             data-track-location="results"

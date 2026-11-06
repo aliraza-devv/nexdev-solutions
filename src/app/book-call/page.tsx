@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import QualifyStepper from "../_components/QualifyStepper";
+import ReviewRequest from "./ReviewRequest";
 import { emitGenerateLead } from "@/lib/track";
 
 const CONFIRMATION_PATH = "/book-call/confirmed";
@@ -79,14 +79,19 @@ function useCalEmbed() {
 
     // Send them to our own confirmation page once a booking actually goes
     // through, instead of leaving them looking at Cal's own success screen
-    // inside the embed.
-    Cal.ns["discovery-call"]("on", {
-      action: "bookingSuccessful",
-      callback: () => {
-        emitGenerateLead("book_call", "booked_call");
-        window.location.href = CONFIRMATION_PATH;
-      },
-    });
+    // inside the embed. Cal.com marks bookingSuccessful as deprecated in
+    // favour of bookingSuccessfulV2, so listen to both: if Cal ever removes
+    // the old one, lead tracking and this redirect keep working. The guard
+    // makes sure a booking that fires both messages is handled once.
+    let handled = false;
+    const onBooked = () => {
+      if (handled) return;
+      handled = true;
+      emitGenerateLead("book_call", "booked_call");
+      window.location.href = CONFIRMATION_PATH;
+    };
+    Cal.ns["discovery-call"]("on", { action: "bookingSuccessfulV2", callback: onBooked });
+    Cal.ns["discovery-call"]("on", { action: "bookingSuccessful", callback: onBooked });
   }, []);
 }
 
@@ -95,8 +100,9 @@ export default function BookCallPage() {
 
   return (
     <main className="relative min-h-screen bg-white">
-      {/* Bare logo, not a link - this page has exactly one thing to do:
-          book the call. No navigation, no other CTA, no exit. */}
+      {/* Bare logo, not a link - this page has one main thing to do: book
+          the call. No navigation, no exit. The only other option is the small
+          review-by-email line under the calendar. */}
       <div className="px-6 pt-6 md:px-12 md:pt-8">
         <div className="relative h-7 w-36 md:h-8 md:w-40">
           <Image
@@ -109,8 +115,6 @@ export default function BookCallPage() {
           />
         </div>
       </div>
-
-      <QualifyStepper step1="done" step2="active" connectorFilled />
 
       <section className="px-6 pb-16 pt-6 md:px-12 md:pt-10">
         <motion.div
@@ -134,6 +138,7 @@ export default function BookCallPage() {
             style={{ width: "100%", overflow: "auto" }}
             className="min-h-[500px] rounded-2xl border border-black/[0.06] bg-[#1a1a1a] shadow-[0_20px_50px_-24px_rgba(0,0,0,0.15)]"
           />
+          <ReviewRequest />
         </motion.div>
       </section>
     </main>

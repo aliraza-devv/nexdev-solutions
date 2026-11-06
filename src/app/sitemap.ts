@@ -8,7 +8,6 @@ const BASE_URL = "https://nexdevsolutions.net";
 // standalone SEO value, so it's excluded here.
 const SITE_ROUTES = [
   "/",
-  "/qualify",
   "/book-call",
   "/case-studies",
   "/case-studies/case-study-bamper",

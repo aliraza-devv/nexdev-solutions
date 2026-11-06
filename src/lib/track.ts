@@ -4,7 +4,7 @@
 // the dataLayer push. The parameter types are fixed string unions on purpose,
 // so no name, email, phone number or message text can be passed through.
 // The event names below must match the ones in public/tracking.js.
-type FormName = "qualify" | "book_call";
+type FormName = "qualify" | "book_call" | "review_request";
 type LeadType = "nurture" | "booked_call";
 
 export function emitGenerateLead(formName: FormName, leadType: LeadType): void {

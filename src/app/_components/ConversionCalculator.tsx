@@ -782,7 +782,7 @@ export default function ConversionCalculator() {
             <div className="mt-auto flex flex-wrap items-start gap-6 pt-7">
               <div className="flex flex-col items-start gap-2">
                 <Link
-                  href="/qualify"
+                  href="/book-call"
                   onClick={handleCtaClick}
                   data-cursor="cta"
                   data-track="cta"
@@ -962,7 +962,7 @@ export default function ConversionCalculator() {
             </p>
           </div>
           <Link
-            href="/qualify"
+            href="/book-call"
             onClick={handleCtaClick}
             data-track="cta"
             data-track-location="calculator_sticky"

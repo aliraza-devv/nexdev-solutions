@@ -5,6 +5,15 @@ const nextConfig = {
   // working instead of 404ing.
   async redirects() {
     return [
+      // The qualification step was removed: every CTA goes straight to the
+      // calendar. The /qualify page and /api/qualify code are kept in the repo,
+      // so reverting is deleting this one entry (browsers cache a permanent
+      // redirect, so returning visitors may need a hard refresh afterwards).
+      {
+        source: "/qualify",
+        destination: "/book-call",
+        permanent: true,
+      },
       {
         source: "/landing-page",
         destination: "/",

@@ -97,7 +97,7 @@ export default function WhyUs() {
           </p>
           <div className="flex flex-shrink-0 flex-col items-center gap-2">
             <Link
-              href="/qualify"
+              href="/book-call"
               data-cursor="cta"
               data-track="cta"
               data-track-location="why_us"

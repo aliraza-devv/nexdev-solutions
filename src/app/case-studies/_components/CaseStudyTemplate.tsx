@@ -13,7 +13,7 @@
 // footer) are the real site-wide components, not case-study-specific
 // reimplementations.
 //
-// Single-CTA rule: every button on this page points at the /qualify page
+// Single-CTA rule: every button on this page points at the /book-call page
 // via the same href, and the Navbar's CTA is overridden (via its
 // ctaLabel/ctaHref props) to match, so there is exactly one conversion
 // action repeated in different words, not several destinations.
@@ -54,7 +54,7 @@ import SiteFooter from "../../_components/FinalCTA";
 
 const ACCENT = "#5C45FD";
 const METRIC_ICONS = [TrendingUp, MousePointerClick, BarChart3];
-const CTA_HREF = "/qualify";
+const CTA_HREF = "/book-call";
 
 // A results tier usually has 3 stats, but not always (e.g. a two-stat MVP
 // phase) - size the grid to what's actually there instead of leaving an

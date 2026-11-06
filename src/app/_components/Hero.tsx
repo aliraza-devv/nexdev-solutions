@@ -235,7 +235,7 @@ export default function Hero() {
             >
               <div className="flex flex-col items-center lg:items-start w-full sm:w-auto gap-2">
                 <Link
-                  href="/qualify"
+                  href="/book-call"
                   data-cursor="cta"
                   data-track="cta"
                   data-track-location="hero"

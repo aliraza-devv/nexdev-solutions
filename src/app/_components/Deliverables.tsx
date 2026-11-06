@@ -175,7 +175,7 @@ export default function Deliverables() {
               {/* CTA Button */}
               <div className="mt-2 flex flex-col items-center gap-2">
                 <Link
-                  href="/qualify"
+                  href="/book-call"
                   data-cursor="cta"
                   data-track="cta"
                   data-track-location="deliverables"

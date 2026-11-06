@@ -248,7 +248,7 @@ export default function FinalCTA({
           className="mt-8 flex flex-col items-center gap-8 w-full max-w-md sm:max-w-none"
         >
           <Link
-            href="/qualify"
+            href="/book-call"
             data-cursor="cta"
             data-track="cta"
             data-track-location="final_cta"

@@ -11,7 +11,7 @@ import { useLenisScrollTo } from "@/hooks/use-lenis-scroll-to";
 
 export default function Navbar({
   ctaLabel = "Book Your Free Call",
-  ctaHref = "/qualify",
+  ctaHref = "/book-call",
 }: {
   ctaLabel?: string;
   ctaHref?: string;
