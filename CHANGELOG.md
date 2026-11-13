@@ -3,6 +3,16 @@
 Conversion experiments on nexdevsolutions.net. Newest first. Each entry says what
 changed, what we expect, and the one number that decides whether it worked.
 
+## 2026-11-13: Calculator section hidden
+
+- The "Conversion Impact Calculator" ("The Math") section is hidden on the home page, and
+  its "The Math" link is removed from the navigation (desktop and mobile menu). The component,
+  its math and its tests are kept. To bring it back, uncomment `<ConversionCalculator />` in
+  `src/app/page.tsx` and the "The Math" entry in `src/app/_components/Navbar.tsx`.
+- Effect on numbers: the two calculator CTAs (`calculator`, `calculator_sticky`) stop
+  appearing. Judge the metric below with that in mind, since this changes the page during the
+  same period.
+
 ## 2026-11-07: Fewer steps, workable call times, follow-up
 
 ### Why

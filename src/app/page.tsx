@@ -31,7 +31,9 @@ export default function Home() {
       <Results />
       <Testimonials />
       <ReviewsMarquee />
-      <ConversionCalculator />
+      {/* Calculator ("The Math") hidden on request. To bring it back,
+          uncomment this and the "The Math" link in Navbar.tsx. */}
+      {/* <ConversionCalculator /> */}
       <OurProcess
         chipText="HOW WE WORK"
         headingLines={[

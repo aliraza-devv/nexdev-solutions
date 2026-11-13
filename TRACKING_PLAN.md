@@ -118,6 +118,9 @@ link or button. Put them on the outer `<a>`, not on a button nested inside it.
 - Vercel Web Analytics custom events are not used: they need a Pro plan, and the project is
   on Hobby. Page views for `/book-call` (reached the calendar) and `/book-call/confirmed`
   (booking confirmed) already count visitors without cookies.
+- The calculator section ("The Math") is hidden on the home page (`page.tsx`) and its nav
+  link is commented out (`Navbar.tsx`). While hidden, the `calculator` and `calculator_sticky`
+  CTA locations cannot fire. The component and its tests are kept.
 - `booking_click` currently has no live trigger: CTAs are normal links to `/book-call`, not
   to cal.com. It is ready for the day a direct Cal.com or Calendly link is added.
 - `phone_click` has no live trigger today: the footer phone number is a WhatsApp link.
