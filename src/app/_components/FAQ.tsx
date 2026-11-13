@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "What does it cost?",
-    a: "Projects start at $500 and go up based on scope. You'll get a fixed quote after the audit call, not a surprise invoice at the end. If you're under $500, we'll point you to the right starting option instead.",
+    a: "The price depends on the scope of your project. You'll get a fixed quote after the audit call, not a surprise invoice at the end.",
   },
   {
     q: "Can you guarantee results?",
